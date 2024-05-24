@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Born2bSporty";
-    src: url("/fonts/born2bsporty-fs.regular.otf") format('opentype');
+    src: url("../fonts/born2bsporty-fs.regular.otf") format('opentype');
 }
 
 body{
