@@ -177,11 +177,12 @@ function start(){
             td0.append(input);
             let td1 = $("<td></td>").attr("id", "out" + pet + "Medals").text("NaN");
             let td2 = $("<td></td>").attr("id", "out" + pet + "Time").text("NaN");
-            tr.append(th).append(td0).append(td1).append(td2);
+            let td3 = $("<td></td>").attr("id", "out" + pet + "MedalsSpent").text("NaN");
+            tr.append(th).append(td0).append(td1).append(td2).append(td3);
             petMedals.append(tr);
         });
     });
-    let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td>");
+    let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td>");
     petMedals.append(totalPet);
 
     let legendaryItems = $("#legendaryitems");
@@ -215,23 +216,28 @@ function start(){
 
 function onChangePetBond(event){
     let bondTotal = 0;
-    let medalTotal = 0;
+    let medalsTotal = 0;
     let timeTotal = 0;
+    let medalsSpentTotal = 0;
     Object.keys(petList).forEach(kind => {
         petList[kind].forEach(pet => {
             localStorage.setItem(pet+"Bond", Number($("#in" + pet).val()));
             bondTotal += Number($("#in" + pet).val());
             let medalResult = calcMedals($("#in" + pet).val());
             $("#out" + pet + "Medals").text(medalResult);
-            medalTotal += medalResult;
+            medalsTotal += medalResult;
             let timeResult = calcTime($("#in" + pet).val());
             $("#out" + pet + "Time").text(formatTime(timeResult));
             timeTotal += timeResult;
+            let medalSpentResult = calcMedalsSpent($("#in" + pet).val());
+            $("#out" + pet + "MedalsSpent").text(medalSpentResult);
+            medalsSpentTotal += medalSpentResult;
         });
     });
     $("#outTotalBond").text(bondTotal);
-    $("#outTotalMedals").text(medalTotal);
+    $("#outTotalMedals").text(medalsTotal);
     $("#outTotalTime").text(formatTime(timeTotal));
+    $("#outTotalMedalsSpent").text(medalsTotal);
 }
 
 function onChangeLegendaryBonus(event){
@@ -257,6 +263,14 @@ function onChangeLegendaryBonus(event){
 function calcMedals(bond){
     let result = 0;
     for (let s = Number(bond); s < lookUpLvlMedalsTime.length; s++) {
+        result += lookUpLvlMedalsTime[s][0];
+    }
+    return result;
+}
+
+function calcMedalsSpent(bond){
+    let result = 0;
+    for (let s = 0; s < Number(bond); s++) {
         result += lookUpLvlMedalsTime[s][0];
     }
     return result;
