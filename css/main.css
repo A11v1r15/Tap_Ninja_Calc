@@ -44,6 +44,11 @@ body h1{
     display: block;
     float: right;
 }
+@media (max-width: 768px) {
+    #legendaryitems {
+      float: none;
+    }
+}
 
 #legendtotal{
     background-color: #181B26;
