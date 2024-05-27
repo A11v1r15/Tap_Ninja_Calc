@@ -1,25 +1,29 @@
-const petList = [
-    ["critter", "Bunny"    ],
-    ["critter", "Mouse"    ],
-    ["critter", "Hedgehog" ],
-    ["critter", "Snake"    ],
-    ["critter", "Frog"     ],
-    ["critter", "Squirrel" ],
-
-    ["beast",   "Cat"      ],
-    ["beast",   "Dog"      ],
-    ["beast",   "Fox"      ],
-    ["beast",   "Panda"    ],
-    ["beast",   "Turtle"   ],
-    ["beast",   "Racoon"   ],
-
-    ["bird",    "Chicken"  ],
-    ["bird",    "Crane"    ],
-    ["bird",    "Raven"    ],
-    ["bird",    "Dragonfly"],
-    ["bird",    "Dragon"   ],
-    ["bird",    "Parrot"   ]
-];
+const petList = {
+    "critter" : [
+        "Bunny",
+        "Mouse",
+        "Hedgehog",
+        "Snake",
+        "Frog",
+        "Squirrel"
+    ],
+    "beast" : [
+        "Cat",
+        "Dog",
+        "Fox",
+        "Panda",
+        "Turtle",
+        "Racoon"
+    ],
+    "bird" : [
+        "Chicken",
+        "Crane",
+        "Raven",
+        "Dragonfly",
+        "Dragon",
+        "Parrot"   
+    ]
+};
 
 const lookUpLvlMedalsTime = [
     [  0,       0],
@@ -156,24 +160,26 @@ const lookUpLegendaryItems = {
 
 function start(){
     let petMedals = $("#petmedals");
-    petList.forEach(pet => {
-        let tr = $("<tr></tr>").addClass(pet[0]);
-        let th = $("<th></th>");
-        let label = $("<label></label>").attr("for", "in" + pet[1])
-            .text(pet[1]);
-        th.append(label);
-        let td0 = $("<td></td>");
-        let input = $("<input></input>").attr("type", "number")
-            .attr("min", 0).attr("max", 15)
-            .attr("id", "in" + pet[1])
-            .attr("name", "in" + pet[1])
-            .val(localStorageGetItem(pet[1]+"Bond", 0));
-        input.change(onChangePetBond);
-        td0.append(input);
-        let td1 = $("<td></td>").attr("id", "out" + pet[1] + "Medals").text("NaN");
-        let td2 = $("<td></td>").attr("id", "out" + pet[1] + "Time").text("NaN");
-        tr.append(th).append(td0).append(td1).append(td2);
-        petMedals.append(tr);
+    Object.keys(petList).forEach(kind => {
+        petList[kind].forEach(pet => {
+            let tr = $("<tr></tr>").addClass(kind);
+            let th = $("<th></th>");
+            let label = $("<label></label>").attr("for", "in" + pet)
+                .text(pet);
+            th.append(label);
+            let td0 = $("<td></td>");
+            let input = $("<input></input>").attr("type", "number")
+                .attr("min", 0).attr("max", 15)
+                .attr("id", "in" + pet)
+                .attr("name", "in" + pet)
+                .val(localStorageGetItem(pet+"Bond", 0));
+            input.change(onChangePetBond);
+            td0.append(input);
+            let td1 = $("<td></td>").attr("id", "out" + pet + "Medals").text("NaN");
+            let td2 = $("<td></td>").attr("id", "out" + pet + "Time").text("NaN");
+            tr.append(th).append(td0).append(td1).append(td2);
+            petMedals.append(tr);
+        });
     });
     let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td>");
     petMedals.append(totalPet);
@@ -211,15 +217,17 @@ function onChangePetBond(event){
     let bondTotal = 0;
     let medalTotal = 0;
     let timeTotal = 0;
-    petList.forEach(pet => {
-        localStorage.setItem(pet[1]+"Bond", Number($("#in" + pet[1]).val()));
-        bondTotal += Number($("#in" + pet[1]).val());
-        let medalResult = calcMedals($("#in" + pet[1]).val());
-        $("#out" + pet[1] + "Medals").text(medalResult);
-        medalTotal += medalResult;
-        let timeResult = calcTime($("#in" + pet[1]).val());
-        $("#out" + pet[1] + "Time").text(formatTime(timeResult));
-        timeTotal += timeResult;
+    Object.keys(petList).forEach(kind => {
+        petList[kind].forEach(pet => {
+            localStorage.setItem(pet+"Bond", Number($("#in" + pet).val()));
+            bondTotal += Number($("#in" + pet).val());
+            let medalResult = calcMedals($("#in" + pet).val());
+            $("#out" + pet + "Medals").text(medalResult);
+            medalTotal += medalResult;
+            let timeResult = calcTime($("#in" + pet).val());
+            $("#out" + pet + "Time").text(formatTime(timeResult));
+            timeTotal += timeResult;
+        });
     });
     $("#outTotalBond").text(bondTotal);
     $("#outTotalMedals").text(medalTotal);
