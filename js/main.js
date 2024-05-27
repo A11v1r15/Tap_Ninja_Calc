@@ -162,20 +162,20 @@ function start(){
         let label = $("<label></label>").attr("for", "in" + pet[1])
             .text(pet[1]);
         th.append(label);
-        let td0 = $("<th></th>");
+        let td0 = $("<td></td>");
         let input = $("<input></input>").attr("type", "number")
             .attr("min", 0).attr("max", 15)
             .attr("id", "in" + pet[1])
             .attr("name", "in" + pet[1])
-            .val(localStorageGetItem(pet[1]+"Stars", 0));
-        input.change(onChangePetStars);
+            .val(localStorageGetItem(pet[1]+"Bond", 0));
+        input.change(onChangePetBond);
         td0.append(input);
         let td1 = $("<td></td>").attr("id", "out" + pet[1] + "Medals").text("NaN");
         let td2 = $("<td></td>").attr("id", "out" + pet[1] + "Time").text("NaN");
         tr.append(th).append(td0).append(td1).append(td2);
         petMedals.append(tr);
     });
-    let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalStars'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td>");
+    let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td>");
     petMedals.append(totalPet);
 
     let legendaryItems = $("#legendaryitems");
@@ -185,7 +185,7 @@ function start(){
         let label = $("<label></label>").attr("for", "in" + item)
             .text(item);
         th.append(label);
-        let td0 = $("<th></th>");
+        let td0 = $("<td></td>");
         let input = $("<input></input>").attr("type", "number")
             .attr("min", 0).attr("max", lookUpLegendaryItems[item][25][1])
             .attr("step", lookUpLegendaryItems[item][2][1] - lookUpLegendaryItems[item][1][1])
@@ -203,17 +203,17 @@ function start(){
     let totalLegend = $("<tr class='header'><th>Total</td><td colspan='3'></td><td id='outTotalAmber'>NaN</td></td>");
     legendaryItems.append(totalLegend);
 
-    onChangePetStars();
+    onChangePetBond();
     onChangeLegendaryBonus();
 }
 
-function onChangePetStars(event){
-    let starsTotal = 0;
+function onChangePetBond(event){
+    let bondTotal = 0;
     let medalTotal = 0;
     let timeTotal = 0;
     petList.forEach(pet => {
-        localStorage.setItem(pet[1]+"Stars", Number($("#in" + pet[1]).val()));
-        starsTotal += Number($("#in" + pet[1]).val());
+        localStorage.setItem(pet[1]+"Bond", Number($("#in" + pet[1]).val()));
+        bondTotal += Number($("#in" + pet[1]).val());
         let medalResult = calcMedals($("#in" + pet[1]).val());
         $("#out" + pet[1] + "Medals").text(medalResult);
         medalTotal += medalResult;
@@ -221,7 +221,7 @@ function onChangePetStars(event){
         $("#out" + pet[1] + "Time").text(formatTime(timeResult));
         timeTotal += timeResult;
     });
-    $("#outTotalStars").text(starsTotal);
+    $("#outTotalBond").text(bondTotal);
     $("#outTotalMedals").text(medalTotal);
     $("#outTotalTime").text(formatTime(timeTotal));
 }
@@ -246,17 +246,17 @@ function onChangeLegendaryBonus(event){
     $("#legendtotal div").attr("style", "width:" + lvlTotalWidth + "%;").text("+" + lvlTotal + "%");
 }
 
-function calcMedals(stars){
+function calcMedals(bond){
     let result = 0;
-    for (let s = Number(stars); s < lookUpLvlMedalsTime.length; s++) {
+    for (let s = Number(bond); s < lookUpLvlMedalsTime.length; s++) {
         result += lookUpLvlMedalsTime[s][0];
     }
     return result;
 }
 
-function calcTime(stars){
+function calcTime(bond){
     let result = 0;
-    for (let s = Number(stars); s < lookUpLvlMedalsTime.length; s++) {
+    for (let s = Number(bond); s < lookUpLvlMedalsTime.length; s++) {
         result += lookUpLvlMedalsTime[s][1];
     }
     return result;
