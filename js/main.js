@@ -231,6 +231,7 @@ function start(){
 
     onChangePetBond();
     onChangeEquipamentBonus();
+    petTab();
 }
 
 function onChangePetBond(event){
@@ -331,11 +332,15 @@ function formatTime(secs){
 function petTab(){
     $("#petTable").show();
     $("#equipamentTable").hide();
+    $("#equipamentTabButton").removeClass();
+    $("#petTabButton").addClass("selected");
 }
 
 function equipamentTab(){
     $("#petTable").hide();
     $("#equipamentTable").show();
+    $("#petTabButton").removeClass();
+    $("#equipamentTabButton").addClass("selected");
 }
 
 $(document).ready(start());

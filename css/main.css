@@ -5,27 +5,27 @@
 
 body{
     font-family: "Born2bSporty";
-    background-color: #75bce2;
-    color: #ad1d15;
+    background-color: #75bCE2;
+    color: #AD1D15;
 }
 body h1{
     margin: 1%;
     text-align: center;
     font-size: 4em;
-    background: -webkit-linear-gradient(#ad2312, #ad1d15, #c86e66);
+    background: -webkit-linear-gradient(#AD2312, #AD1D15, #C86E66);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-color: #000000;
 }
 
 #main{
-    background-color: black;
+    background-color: #000000;
     position: relative;
-    margin: 0 auto;
+    margin: 20px auto;
     margin-bottom: 80px;
-    padding: 1%;
+    padding: 10px;
     width: -moz-fit-content;
     width: fit-content;
 }
@@ -36,6 +36,13 @@ body h1{
     text-align: right;
 }
 
+#tabs{
+    position: absolute;
+    height: 20px;
+    margin-top: -28px;
+    margin-left: -10px;
+}
+
 #equipamentBar{
     background-color: #181B26;
     color: #FFFFFF;
@@ -43,6 +50,17 @@ body h1{
 }
 #equipamentBar div{
     background-color: #9927C0;
+}
+
+button{
+    font-family: inherit;
+    color: #FFFFFF;
+    background-color: #3B4365;
+    border-radius: 10px 10px 0px 0px;
+    border-bottom-width: 0px;
+}
+button.selected{
+    background-color: #000000;
 }
 
 input{
@@ -55,7 +73,7 @@ th{
 }
 
 .header{
-    background-color: #46a5d5;
+    background-color: #46A5d5;
     color: #000000;
 }
 
@@ -64,23 +82,23 @@ th{
     color: #224312;
 }
 .Critter input{
-    background-color: #a2e26e;
+    background-color: #A2E26E;
 }
 
 .Beast{
-    background-color: #9e4935;
+    background-color: #9E4935;
     color: #611912;
 }
 .Beast input{
-    background-color: #ef8036;
+    background-color: #EF8036;
 }
 
 .Bird{
-    background-color: #a08033;
+    background-color: #A08033;
     color: #503512;
 }
 .Bird input{
-    background-color: #ffe659;
+    background-color: #FFE659;
 }
 
 .Legendary{
@@ -144,7 +162,7 @@ footer{
     left: 0px;
     width: 100%;
     height: 60px;
-    background-color: #46a5d5;
+    background-color: #46A5D5;
 }
 footer span{
     display: inline-block;
