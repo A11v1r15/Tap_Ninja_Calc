@@ -64,7 +64,7 @@ const lookUpLvlMedalsTime = [
     [175, 1152000]
 ];
 
-const lookUpLegendaryItems = {
+const lookUpEquipaments = {
     "Kimono" : [
         [   0,   0],
         [  50,  25],
@@ -204,8 +204,8 @@ function start(){
     let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td>");
     petMedals.append(totalPet);
 
-    let legendaryItems = $("#legendaryitems");
-    Object.keys(lookUpLegendaryItems).forEach(item => {
+    let equipaments = $("#equipament");
+    Object.keys(lookUpEquipaments).forEach(item => {
         let tr = $("<tr></tr>").addClass("legend");
         let th = $("<th></th>");
         let label = $("<label></label>").attr("for", "in" + item)
@@ -213,24 +213,24 @@ function start(){
         th.append(label);
         let td0 = $("<td></td>");
         let input = $("<input></input>").attr("type", "number")
-            .attr("min", 0).attr("max", lookUpLegendaryItems[item][25][1])
-            .attr("step", lookUpLegendaryItems[item][2][1] - lookUpLegendaryItems[item][1][1])
+            .attr("min", 0).attr("max", lookUpEquipaments[item][25][1])
+            .attr("step", lookUpEquipaments[item][2][1] - lookUpEquipaments[item][1][1])
             .attr("id", "in" + item)
             .attr("name", "in" + item)
             .val(localStorageGetItem(item+"Bonus", 0));
-        input.change(onChangeLegendaryBonus);
+        input.change(onChangeEquipamentBonus);
         td0.append(input);
         let td1 = $("<td></td>").attr("id", "out" + item + "Level").text("NaN");
         let td2 = $("<td></td>").attr("id", "out" + item + "Cost").text("NaN");
         let td3 = $("<td></td>").attr("id", "out" + item + "Amber").text("NaN");
         tr.append(th).append(td0).append(td1).append(td2).append(td3);
-        legendaryItems.append(tr);
+        equipaments.append(tr);
     });
-    let totalLegend = $("<tr class='header'><th>Total</td><td colspan='3'></td><td id='outTotalAmber'>NaN</td></td>");
-    legendaryItems.append(totalLegend);
+    let totalEquipament = $("<tr class='header'><th>Total</td><td colspan='3'></td><td id='outTotalAmber'>NaN</td></td>");
+    equipaments.append(totalEquipament);
 
     onChangePetBond();
-    onChangeLegendaryBonus();
+    onChangeEquipamentBonus();
 }
 
 function onChangePetBond(event){
@@ -257,15 +257,15 @@ function onChangePetBond(event){
     $("#outTotalMedalsSpent").text(medalsTotal);
 }
 
-function onChangeLegendaryBonus(event){
+function onChangeEquipamentBonus(event){
     let lvlTotal = 0;
     let amberTotal = 0;
-    Object.keys(lookUpLegendaryItems).forEach(item => {
+    Object.keys(lookUpEquipaments).forEach(item => {
         localStorage.setItem(item+"Bonus", Number($("#in" + item).val()));
-        let step = lookUpLegendaryItems[item][2][1] - lookUpLegendaryItems[item][1][1];
+        let step = lookUpEquipaments[item][2][1] - lookUpEquipaments[item][1][1];
         let lvl = Number($("#in" + item).val())/step;
         lvlTotal += lvl;
-        let cost = lookUpLegendaryItems[item][(lvl + 1)%26][0];
+        let cost = lookUpEquipaments[item][(lvl + 1)%26][0];
         let amber = calcAmber(item, lvl);
         amberTotal += amber;
         $("#out" + item + "Level").text(lvl);
@@ -273,8 +273,8 @@ function onChangeLegendaryBonus(event){
         $("#out" + item + "Amber").text(amber);
     });
     $("#outTotalAmber").text(amberTotal);
-    let lvlTotalWidth = (lvlTotal / (Object.keys(lookUpLegendaryItems).length * 25)) * 100
-    $("#legendtotal div").attr("style", "width:" + lvlTotalWidth + "%;").text("+" + lvlTotal + "%");
+    let lvlTotalWidth = (lvlTotal / (Object.keys(lookUpEquipaments).length * 25)) * 100
+    $("#equipamentbar div").attr("style", "width:" + lvlTotalWidth + "%;").text("+" + lvlTotal + "%");
 }
 
 function calcMedals(bond){
@@ -304,8 +304,8 @@ function calcTime(bond){
 function calcAmber(item, lvl){
     if (lvl == 25) return 0;
     let result = 0;
-    for (let s = Number(lvl + 1); s < lookUpLegendaryItems[item].length; s++) {
-        result += lookUpLegendaryItems[item][s][0];
+    for (let s = Number(lvl + 1); s < lookUpEquipaments[item].length; s++) {
+        result += lookUpEquipaments[item][s][0];
     }
     return result;
 }
