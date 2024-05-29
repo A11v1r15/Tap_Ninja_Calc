@@ -254,7 +254,7 @@ function onChangePetBond(event){
     $("#outTotalBond").text(bondTotal);
     $("#outTotalMedals").text(medalsTotal);
     $("#outTotalTime").text(formatTime(timeTotal));
-    $("#outTotalMedalsSpent").text(medalsTotal);
+    $("#outTotalMedalsSpent").text(medalsSpentTotal);
 }
 
 function onChangeEquipamentBonus(event){

@@ -40,12 +40,12 @@ body h1{
     display: inline;
 }
 
-#legendaryitems{
+#equipament{
     display: block;
     float: right;
 }
 @media (max-width: 768px) {
-    #legendaryitems {
+    #equipament {
       float: none;
     }
 }
