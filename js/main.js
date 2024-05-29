@@ -328,4 +328,14 @@ function formatTime(secs){
     return result[0] + "h " + result[1] + "m " + result[2] + "s";
 }
 
+function petTab(){
+    $("#petTable").show();
+    $("#equipamentTable").hide();
+}
+
+function equipamentTab(){
+    $("#petTable").hide();
+    $("#equipamentTable").show();
+}
+
 $(document).ready(start());

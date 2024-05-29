@@ -36,20 +36,6 @@ body h1{
     text-align: right;
 }
 
-#petmedals{
-    display: inline;
-}
-
-#equipament{
-    display: block;
-    float: right;
-}
-@media (max-width: 768px) {
-    #equipament {
-      float: none;
-    }
-}
-
 #equipamentBar{
     background-color: #181B26;
     color: #FFFFFF;
