@@ -73,27 +73,27 @@ th{
     color: #000000;
 }
 
-.critter{
+.Critter{
     background-color: #638739;
     color: #224312;
 }
-.critter input{
+.Critter input{
     background-color: #a2e26e;
 }
 
-.beast{
+.Beast{
     background-color: #9e4935;
     color: #611912;
 }
-.beast input{
+.Beast input{
     background-color: #ef8036;
 }
 
-.bird{
+.Bird{
     background-color: #a08033;
     color: #503512;
 }
-.bird input{
+.Bird input{
     background-color: #ffe659;
 }
 

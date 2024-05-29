@@ -1,29 +1,23 @@
-const petList = {
-    "critter" : [
-        "Bunny",
-        "Mouse",
-        "Hedgehog",
-        "Snake",
-        "Frog",
-        "Squirrel"
-    ],
-    "beast" : [
-        "Cat",
-        "Dog",
-        "Fox",
-        "Panda",
-        "Turtle",
-        "Racoon"
-    ],
-    "bird" : [
-        "Chicken",
-        "Crane",
-        "Raven",
-        "Dragonfly",
-        "Dragon",
-        "Parrot"   
-    ]
-};
+const petList = [
+    ["Bunny"    ,"Critter"],
+    ["Mouse"    ,"Critter"],
+    ["Hedgehog" ,"Critter"],
+    ["Snake"    ,"Critter"],
+    ["Frog"     ,"Critter"],
+    ["Squirrel" ,"Critter"],
+    ["Cat"      ,"Beast"  ],
+    ["Dog"      ,"Beast"  ],
+    ["Fox"      ,"Beast"  ],
+    ["Panda"    ,"Beast"  ],
+    ["Turtle"   ,"Beast"  ],
+    ["Racoon"   ,"Beast"  ],
+    ["Chicken"  ,"Bird"   ],
+    ["Crane"    ,"Bird"   ],
+    ["Raven"    ,"Bird"   ],
+    ["Dragonfly","Bird"   ],
+    ["Dragon"   ,"Bird"   ],
+    ["Parrot"   ,"Bird"   ]
+];
 
 const heroList = [
     ["Falkron", "Legendary", "Water", "Support" ],
@@ -187,27 +181,25 @@ const lookUpLegendaryItems = {
 
 function start(){
     let petMedals = $("#petmedals");
-    Object.keys(petList).forEach(kind => {
-        petList[kind].forEach(pet => {
-            let tr = $("<tr></tr>").addClass(kind);
-            let th = $("<th></th>");
-            let label = $("<label></label>").attr("for", "in" + pet)
-                .text(pet);
-            th.append(label);
-            let td0 = $("<td></td>");
-            let input = $("<input></input>").attr("type", "number")
-                .attr("min", 0).attr("max", 15)
-                .attr("id", "in" + pet)
-                .attr("name", "in" + pet)
-                .val(localStorageGetItem(pet+"Bond", 0));
-            input.change(onChangePetBond);
-            td0.append(input);
-            let td1 = $("<td></td>").attr("id", "out" + pet + "Medals").text("NaN");
-            let td2 = $("<td></td>").attr("id", "out" + pet + "Time").text("NaN");
-            let td3 = $("<td></td>").attr("id", "out" + pet + "MedalsSpent").text("NaN");
-            tr.append(th).append(td0).append(td1).append(td2).append(td3);
-            petMedals.append(tr);
-        });
+    petList.forEach(pet => {
+        let tr = $("<tr></tr>").addClass(pet[1]);
+        let th = $("<th></th>");
+        let label = $("<label></label>").attr("for", "in" + pet[0])
+            .text(pet[0]);
+        th.append(label);
+        let td0 = $("<td></td>");
+        let input = $("<input></input>").attr("type", "number")
+            .attr("min", 0).attr("max", 15)
+            .attr("id", "in" + pet[0])
+            .attr("name", "in" + pet[0])
+            .val(localStorageGetItem(pet[0]+"Bond", 0));
+        input.change(onChangePetBond);
+        td0.append(input);
+        let td1 = $("<td></td>").attr("id", "out" + pet[0] + "Medals").text("NaN");
+        let td2 = $("<td></td>").attr("id", "out" + pet[0] + "Time").text("NaN");
+        let td3 = $("<td></td>").attr("id", "out" + pet[0] + "MedalsSpent").text("NaN");
+        tr.append(th).append(td0).append(td1).append(td2).append(td3);
+        petMedals.append(tr);
     });
     let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td>");
     petMedals.append(totalPet);
@@ -246,20 +238,18 @@ function onChangePetBond(event){
     let medalsTotal = 0;
     let timeTotal = 0;
     let medalsSpentTotal = 0;
-    Object.keys(petList).forEach(kind => {
-        petList[kind].forEach(pet => {
-            localStorage.setItem(pet+"Bond", Number($("#in" + pet).val()));
-            bondTotal += Number($("#in" + pet).val());
-            let medalResult = calcMedals($("#in" + pet).val());
-            $("#out" + pet + "Medals").text(medalResult);
-            medalsTotal += medalResult;
-            let timeResult = calcTime($("#in" + pet).val());
-            $("#out" + pet + "Time").text(formatTime(timeResult));
-            timeTotal += timeResult;
-            let medalSpentResult = calcMedalsSpent($("#in" + pet).val());
-            $("#out" + pet + "MedalsSpent").text(medalSpentResult);
-            medalsSpentTotal += medalSpentResult;
-        });
+    petList.forEach(pet => {
+        localStorage.setItem(pet[0]+"Bond", Number($("#in" + pet[0]).val()));
+        bondTotal += Number($("#in" + pet[0]).val());
+        let medalResult = calcMedals($("#in" + pet[0]).val());
+        $("#out" + pet[0] + "Medals").text(medalResult);
+        medalsTotal += medalResult;
+        let timeResult = calcTime($("#in" + pet[0]).val());
+        $("#out" + pet[0] + "Time").text(formatTime(timeResult));
+        timeTotal += timeResult;
+        let medalsSpentResult = calcMedalsSpent($("#in" + pet[0]).val());
+        $("#out" + pet[0] + "MedalsSpent").text(medalsSpentResult);
+        medalsSpentTotal += medalsSpentResult;
     });
     $("#outTotalBond").text(bondTotal);
     $("#outTotalMedals").text(medalsTotal);
