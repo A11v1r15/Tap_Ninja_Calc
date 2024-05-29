@@ -180,7 +180,7 @@ const lookUpEquipaments = {
 }
 
 function start(){
-    let petMedals = $("#petmedals");
+    let petTable = $("#petTable");
     petList.forEach(pet => {
         let tr = $("<tr></tr>").addClass(pet[1]);
         let th = $("<th></th>");
@@ -199,12 +199,12 @@ function start(){
         let td2 = $("<td></td>").attr("id", "out" + pet[0] + "Time").text("NaN");
         let td3 = $("<td></td>").attr("id", "out" + pet[0] + "MedalsSpent").text("NaN");
         tr.append(th).append(td0).append(td1).append(td2).append(td3);
-        petMedals.append(tr);
+        petTable.append(tr);
     });
     let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td>");
-    petMedals.append(totalPet);
+    petTable.append(totalPet);
 
-    let equipaments = $("#equipament");
+    let equipamentTable = $("#equipamentTable");
     Object.keys(lookUpEquipaments).forEach(item => {
         let tr = $("<tr></tr>").addClass("legend");
         let th = $("<th></th>");
@@ -224,10 +224,10 @@ function start(){
         let td2 = $("<td></td>").attr("id", "out" + item + "Cost").text("NaN");
         let td3 = $("<td></td>").attr("id", "out" + item + "Amber").text("NaN");
         tr.append(th).append(td0).append(td1).append(td2).append(td3);
-        equipaments.append(tr);
+        equipamentTable.append(tr);
     });
     let totalEquipament = $("<tr class='header'><th>Total</td><td colspan='3'></td><td id='outTotalAmber'>NaN</td></td>");
-    equipaments.append(totalEquipament);
+    equipamentTable.append(totalEquipament);
 
     onChangePetBond();
     onChangeEquipamentBonus();
@@ -274,7 +274,7 @@ function onChangeEquipamentBonus(event){
     });
     $("#outTotalAmber").text(amberTotal);
     let lvlTotalWidth = (lvlTotal / (Object.keys(lookUpEquipaments).length * 25)) * 100
-    $("#equipamentbar div").attr("style", "width:" + lvlTotalWidth + "%;").text("+" + lvlTotal + "%");
+    $("#equipamentBar div").attr("style", "width:" + lvlTotalWidth + "%;").text("+" + lvlTotal + "%");
 }
 
 function calcMedals(bond){
