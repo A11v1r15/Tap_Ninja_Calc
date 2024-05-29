@@ -97,6 +97,50 @@ th{
     background-color: #ffe659;
 }
 
+.Legendary{
+    background-color: #E2980D;
+}
+
+.Epic{
+    background-color: #7630A7;
+}
+
+.Rare{
+    background-color: #0068CB;
+}
+
+.Water{
+    color: #2287AE;
+}
+
+.Earth{
+    color: #227F34;
+}
+
+.Fire{
+    color: #E32703;
+}
+
+.Wind{
+    color: #E5A11F;
+}
+
+.Mage{
+    outline-color: #1687AE;
+}
+
+.Assassin{
+    outline-color: #227F34;
+}
+
+.Warrior{
+    outline-color: #E32703;
+}
+
+.Support{
+    outline-color: #E5A11F;
+}
+
 .legend{
     background-color: #593A27;
     color: #DE6C00;

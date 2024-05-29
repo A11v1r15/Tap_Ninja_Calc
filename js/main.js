@@ -25,6 +25,33 @@ const petList = {
     ]
 };
 
+const heroList = [
+    ["Falkron", "Legendary", "Water", "Support" ],
+    ["Tièr"   , "Legendary", "Water", "Mage"    ],
+    ["Kito"   , "Legendary", "Water", "Assassin"],
+    ["Fin"    , "Legendary", "Water", "Warrior" ],
+    ["Elyanna", "Legendary", "Earth", "Support" ],
+    ["Wasp"   , "Legendary", "Earth", "Mage"    ],
+    ["Alivia" , "Legendary", "Earth", "Assassin"],
+    ["Husk"   , "Legendary", "Earth", "Warrior" ],
+    ["Irbinok", "Legendary", "Wind" , "Support" ],
+    ["Scythe" , "Legendary", "Wind" , "Mage"    ],
+    ["Akira"  , "Legendary", "Wind" , "Assassin"],
+    ["Hiro"   , "Legendary", "Wind" , "Warrior" ],
+    ["Maki"   , "Legendary", "Fire" , "Support" ],
+    ["Blazer" , "Legendary", "Fire" , "Mage"    ],
+    ["Scarlet", "Legendary", "Fire" , "Assassin"],
+    ["Scorn"  , "Legendary", "Fire" , "Warrior" ],
+    ["Ray"    , "Epic"     , "Fire" , "Mage"    ],
+    ["Kaoru"  , "Epic"     , "Wind" , "Mage"    ],
+    ["Terra"  , "Epic"     , "Earth", "Mage"    ],
+    ["Demid"  , "Epic"     , "Water", "Mage"    ],
+    ["Fang"   , "Rare"     , "Fire" , "Assassin"],
+    ["Jari"   , "Rare"     , "Wind" , "Warrior" ],
+    ["Jie"    , "Rare"     , "Earth", "Support" ],
+    ["Kenju"  , "Rare"     , "Water", "Warrior" ]
+]
+
 const lookUpLvlMedalsTime = [
     [  0,       0],
     [  0,     200],
