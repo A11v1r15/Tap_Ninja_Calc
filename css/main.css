@@ -56,11 +56,20 @@ button{
     font-family: inherit;
     color: #FFFFFF;
     background-color: #3B4365;
-    border-radius: 10px 10px 0px 0px;
-    border-bottom-width: 0px;
 }
 button.selected{
     background-color: #000000;
+}
+
+#tabs button{
+    border-radius: 0px 10px 0px 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    margin-left: -10px;
+}
+
+#tabs:first-child{
+    margin-left: 0px;
 }
 
 input{
