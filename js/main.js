@@ -226,7 +226,7 @@ function start(){
         tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
         petTable.append(tr);
     });
-    let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalStars'>NaN</td><td id='outTotalMaterials'>NaN</td>");
+    let totalPet = $("<tr class='header'><th>Total</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalStars'>NaN</td><td id='outTotalMaterials'>NaN</td></tr>");
     petTable.append(totalPet);
 
     let equipamentTable = $("#equipamentTable");
@@ -251,7 +251,7 @@ function start(){
         tr.append(th).append(td0).append(td1).append(td2).append(td3);
         equipamentTable.append(tr);
     });
-    let totalEquipament = $("<tr class='header'><th>Total</td><td colspan='3'></td><td id='outTotalAmber'>NaN</td></td>");
+    let totalEquipament = $("<tr class='header'><th>Total</th><td colspan='3'></td><td id='outTotalAmber'>NaN</td></td></tr>");
     equipamentTable.append(totalEquipament);
 
     onChangePetBond();
@@ -395,8 +395,8 @@ function formatTime(secs){
 function petTab(){
     $("#petTable").show();
     $("#equipamentTable").hide();
-    $("#equipamentTabButton").removeClass();
     $("#petTabButton").addClass("selected");
+    $("#equipamentTabButton").removeClass();
 }
 
 function equipamentTab(){
