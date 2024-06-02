@@ -263,9 +263,9 @@ function onChangePetBond(event){
         medalsSpentTotal += medalsSpentResult;
     });
     $("#outTotalBond").text(bondTotal);
-    $("#outTotalMedals").text(medalsTotal);
+    $("#outTotalMedals").text(medalsTotal.toLocaleString());
     $("#outTotalTime").text(formatTime(timeTotal));
-    $("#outTotalMedalsSpent").text(medalsSpentTotal);
+    $("#outTotalMedalsSpent").text(medalsSpentTotal.toLocaleString());
 }
 
 function onChangePetStars(event){
@@ -279,12 +279,12 @@ function onChangePetStars(event){
         localStorage.setItem(pet[0]+"Stars", Number($("#in" + pet[0] + "Stars").val()));
         starsTotal += Number($("#in" + pet[0] + "Stars").val());
         let materialsResult = calcMaterials($("#in" + pet[0] + "Stars").val());
-        $("#out" + pet[0] + "Materials").text(materialsResult);
+        $("#out" + pet[0] + "Materials").text(materialsResult.toLocaleString());
         materials["Total"] += materialsResult;
         materials[pet[1]] += materialsResult;
     });
     $("#outTotalStars").text(starsTotal);
-    $("#outTotalMaterials").text(materials["Total"]);
+    $("#outTotalMaterials").text(materials["Total"].toLocaleString());
     let title = "";
     Object.keys(materials).forEach(kind => {
         title += kind + ": " + materials[kind] + "\n"
@@ -304,10 +304,10 @@ function onChangeEquipamentBonus(event){
         let amber = calcAmber(item, lvl);
         amberTotal += amber;
         $("#out" + item + "Level").text(lvl);
-        $("#out" + item + "Cost" ).text(cost);
-        $("#out" + item + "Amber").text(amber);
+        $("#out" + item + "Cost" ).text(cost.toLocaleString());
+        $("#out" + item + "Amber").text(amber.toLocaleString());
     });
-    $("#outTotalAmber").text(amberTotal);
+    $("#outTotalAmber").text(amberTotal.toLocaleString());
     let lvlTotalWidth = (lvlTotal / (Object.keys(lookUpEquipaments).length * 25)) * 100
     $("#equipamentBar div").attr("style", "width:" + lvlTotalWidth + "%;").text("+" + lvlTotal + "%");
 }
