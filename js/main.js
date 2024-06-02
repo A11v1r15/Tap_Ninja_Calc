@@ -195,22 +195,22 @@ function start(){
             .val(localStorageGetItem(pet[0]+"Bond", 0));
         input0.change(onChangePetBond);
         td0.append(input0);
-        let td1 = $("<td></td>");
+        let td1 = $("<td></td>").attr("id", "out" + pet[0] + "Medals").text("NaN");
+        let td2 = $("<td></td>").attr("id", "out" + pet[0] + "Time").text("NaN");
+        let td3 = $("<td></td>").attr("id", "out" + pet[0] + "MedalsSpent").text("NaN");
+        let td4 = $("<td></td>");
         let input1 = $("<input></input>").attr("type", "number")
             .attr("min", 0).attr("max", 12)
             .attr("id", "in" + pet[0] + "Stars")
             .attr("name", "in" + pet[0] + "Stars")
             .val(localStorageGetItem(pet[0]+"Stars", 0));
         input1.change(onChangePetStars);
-        td1.append(input1);
-        let td2 = $("<td></td>").attr("id", "out" + pet[0] + "Medals").text("NaN");
-        let td3 = $("<td></td>").attr("id", "out" + pet[0] + "Time").text("NaN");
-        let td4 = $("<td></td>").attr("id", "out" + pet[0] + "MedalsSpent").text("NaN");
+        td4.append(input1);
         let td5 = $("<td></td>").attr("id", "out" + pet[0] + "Materials").text("NaN");
         tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
         petTable.append(tr);
     });
-    let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalBond'>NaN</td><td id='outTotalStars'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalMaterials'>NaN</td>");
+    let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalStars'>NaN</td><td id='outTotalMaterials'>NaN</td>");
     petTable.append(totalPet);
 
     let equipamentTable = $("#equipamentTable");
