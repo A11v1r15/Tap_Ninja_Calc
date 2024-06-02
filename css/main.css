@@ -113,47 +113,38 @@ th{
 }
 
 .Legendary{
-    background-color: #E2980D;
+    background-color: #FFBB00;
+    color: #A27700;
 }
 
 .Epic{
-    background-color: #7630A7;
+    background-color: #9717FD;
+    color: #5F0FA0;
 }
 
 .Rare{
-    background-color: #0068CB;
+    background-color: #3372FA;
+    color: #214AA3;
 }
 
-.Water{
-    color: #2287AE;
+.Water, .Mage{
+    background-color: #2287AE;
+    color: #12607F;
 }
 
-.Earth{
-    color: #227F34;
+.Earth, .Assassin{
+    background-color: #227F34;
+    color: #164C2F;
 }
 
-.Fire{
-    color: #E32703;
+.Fire, .Warrior{
+    background-color: #E32703;
+    color: #A5001E;
 }
 
-.Wind{
-    color: #E5A11F;
-}
-
-.Mage{
-    outline-color: #1687AE;
-}
-
-.Assassin{
-    outline-color: #227F34;
-}
-
-.Warrior{
-    outline-color: #E32703;
-}
-
-.Support{
-    outline-color: #E5A11F;
+.Wind, .Support{
+    background-color: #E5A11F;
+    color: #B27400;
 }
 
 .legend{
