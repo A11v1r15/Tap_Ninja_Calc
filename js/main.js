@@ -64,6 +64,22 @@ const lookUpMedalsTimeMaterials = [
     [175, 1152000,      0]
 ];
 
+const lookUpStars = [
+    "",
+    "☆",
+    "☆☆",
+    "☆☆☆",
+    "☆☆☆☆",
+    "☆☆☆☆☆",
+    "★",
+    "★★",
+    "★★★",
+    "★★★★",
+    "★★★★★",
+    "✭",
+    "✭✭"
+];
+
 const lookUpEquipaments = {
     "Kimono" : [
         [   0,   0],
@@ -282,6 +298,7 @@ function onChangePetStars(event){
         $("#out" + pet[0] + "Materials").text(materialsResult.toLocaleString());
         materials["Total"] += materialsResult;
         materials[pet[1]] += materialsResult;
+        $("#in" + pet[0] + "Stars").attr("title", lookUpStars[Number($("#in" + pet[0] + "Stars").val())]);
     });
     $("#outTotalStars").text(starsTotal);
     $("#outTotalMaterials").text(materials["Total"].toLocaleString());
