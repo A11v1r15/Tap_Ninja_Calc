@@ -255,6 +255,19 @@ function start(){
     let totalEquipament = $("<tr class='header'><th>Total</th><td colspan='3'></td><td id='outTotalAmber' class='Amber'>NaN</td><td id='outTotalAmberSpent' class='Amber'>NaN</td></tr>");
     equipamentTable.append(totalEquipament);
 
+
+    let heroTable = $("#heroTable");
+    heroList.forEach(hero => {
+        let tr = $("<tr></tr>").addClass(hero[1]);
+        let th = $("<th></th>").text(hero[0]);
+        let td0 = $("<td></td>").addClass(hero[2]).text(hero[2]);
+        let td1 = $("<td></td>").addClass(hero[3]).text(hero[3]);
+        tr.append(th).append(td0).append(td1);
+        heroTable.append(tr);
+    });
+    let totalHero = $("<tr class='header'><th colspan='3'>Total</th></tr>");
+    heroTable.append(totalHero);
+
     onChangePetBond();
     onChangePetStars();
     onChangeEquipamentBonus();
@@ -415,15 +428,28 @@ function formatTime(secs){
 
 function petTab(){
     $("#petTable").show();
+    $("#heroTable").hide();
     $("#equipamentTable").hide();
     $("#petTabButton").addClass("selected");
+    $("#heroTabButton").removeClass();
+    $("#equipamentTabButton").removeClass();
+}
+
+function heroTab(){
+    $("#petTable").hide();
+    $("#heroTable").show();
+    $("#equipamentTable").hide();
+    $("#petTabButton").removeClass();
+    $("#heroTabButton").addClass("selected");
     $("#equipamentTabButton").removeClass();
 }
 
 function equipamentTab(){
     $("#petTable").hide();
+    $("#heroTable").hide();
     $("#equipamentTable").show();
     $("#petTabButton").removeClass();
+    $("#heroTabButton").removeClass();
     $("#equipamentTabButton").addClass("selected");
 }
 
