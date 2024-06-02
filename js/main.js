@@ -46,22 +46,22 @@ const heroList = [
     ["Kenju"  , "Rare"     , "Water", "Warrior" ]
 ]
 
-const lookUpLvlMedalsTime = [
-    [  0,       0],
-    [  0,     200],
-    [  2,   11520],
-    [  5,   46080],
-    [ 10,  103680],
-    [ 15,  172800],
-    [ 20,  270720],
-    [ 30,  368640],
-    [ 40,  460800],
-    [ 60,  604800],
-    [ 80,  806400],
-    [100, 1152000],
-    [125, 1152000],
-    [150, 1152000],
-    [175, 1152000]
+const lookUpMedalsTimeMaterials = [
+    [  0,       0,      0],
+    [  0,     200,     10],
+    [  2,   11520,     25],
+    [  5,   46080,     50],
+    [ 10,  103680,    200],
+    [ 15,  172800,    500],
+    [ 20,  270720,   1000],
+    [ 30,  368640,   2500],
+    [ 40,  460800,   5000],
+    [ 60,  604800,  10000],
+    [ 80,  806400,  25000],
+    [100, 1152000, 100000],
+    [125, 1152000,      0],
+    [150, 1152000,      0],
+    [175, 1152000,      0]
 ];
 
 const lookUpEquipaments = {
@@ -184,24 +184,33 @@ function start(){
     petList.forEach(pet => {
         let tr = $("<tr></tr>").addClass(pet[1]);
         let th = $("<th></th>");
-        let label = $("<label></label>").attr("for", "in" + pet[0])
+        let label = $("<label></label>").attr("for", "in" + pet[0] + "Bond")
             .text(pet[0]);
         th.append(label);
         let td0 = $("<td></td>");
-        let input = $("<input></input>").attr("type", "number")
+        let input0 = $("<input></input>").attr("type", "number")
             .attr("min", 0).attr("max", 15)
-            .attr("id", "in" + pet[0])
-            .attr("name", "in" + pet[0])
+            .attr("id", "in" + pet[0] + "Bond")
+            .attr("name", "in" + pet[0] + "Bond")
             .val(localStorageGetItem(pet[0]+"Bond", 0));
-        input.change(onChangePetBond);
-        td0.append(input);
-        let td1 = $("<td></td>").attr("id", "out" + pet[0] + "Medals").text("NaN");
-        let td2 = $("<td></td>").attr("id", "out" + pet[0] + "Time").text("NaN");
-        let td3 = $("<td></td>").attr("id", "out" + pet[0] + "MedalsSpent").text("NaN");
-        tr.append(th).append(td0).append(td1).append(td2).append(td3);
+        input0.change(onChangePetBond);
+        td0.append(input0);
+        let td1 = $("<td></td>");
+        let input1 = $("<input></input>").attr("type", "number")
+            .attr("min", 0).attr("max", 12)
+            .attr("id", "in" + pet[0] + "Stars")
+            .attr("name", "in" + pet[0] + "Stars")
+            .val(localStorageGetItem(pet[0]+"Stars", 0));
+        input1.change(onChangePetStars);
+        td1.append(input1);
+        let td2 = $("<td></td>").attr("id", "out" + pet[0] + "Medals").text("NaN");
+        let td3 = $("<td></td>").attr("id", "out" + pet[0] + "Time").text("NaN");
+        let td4 = $("<td></td>").attr("id", "out" + pet[0] + "MedalsSpent").text("NaN");
+        let td5 = $("<td></td>").attr("id", "out" + pet[0] + "Materials").text("NaN");
+        tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
         petTable.append(tr);
     });
-    let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td>");
+    let totalPet = $("<tr class='header'><th>Total</td><td id='outTotalBond'>NaN</td><td id='outTotalStars'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalMaterials'>NaN</td>");
     petTable.append(totalPet);
 
     let equipamentTable = $("#equipamentTable");
@@ -230,6 +239,7 @@ function start(){
     equipamentTable.append(totalEquipament);
 
     onChangePetBond();
+    onChangePetStars();
     onChangeEquipamentBonus();
     petTab();
 }
@@ -240,15 +250,15 @@ function onChangePetBond(event){
     let timeTotal = 0;
     let medalsSpentTotal = 0;
     petList.forEach(pet => {
-        localStorage.setItem(pet[0]+"Bond", Number($("#in" + pet[0]).val()));
-        bondTotal += Number($("#in" + pet[0]).val());
-        let medalResult = calcMedals($("#in" + pet[0]).val());
+        localStorage.setItem(pet[0]+"Bond", Number($("#in" + pet[0] + "Bond").val()));
+        bondTotal += Number($("#in" + pet[0] + "Bond").val());
+        let medalResult = calcMedals($("#in" + pet[0] + "Bond").val());
         $("#out" + pet[0] + "Medals").text(medalResult);
         medalsTotal += medalResult;
-        let timeResult = calcTime($("#in" + pet[0]).val());
+        let timeResult = calcTime($("#in" + pet[0] + "Bond").val());
         $("#out" + pet[0] + "Time").text(formatTime(timeResult));
         timeTotal += timeResult;
-        let medalsSpentResult = calcMedalsSpent($("#in" + pet[0]).val());
+        let medalsSpentResult = calcMedalsSpent($("#in" + pet[0] + "Bond").val());
         $("#out" + pet[0] + "MedalsSpent").text(medalsSpentResult);
         medalsSpentTotal += medalsSpentResult;
     });
@@ -256,6 +266,30 @@ function onChangePetBond(event){
     $("#outTotalMedals").text(medalsTotal);
     $("#outTotalTime").text(formatTime(timeTotal));
     $("#outTotalMedalsSpent").text(medalsSpentTotal);
+}
+
+function onChangePetStars(event){
+    let starsTotal = 0;
+    let materials = {};
+    materials["Total"] = 0;
+    petList.forEach(pet => {
+        materials[pet[1]] = 0;
+    });
+    petList.forEach(pet => {
+        localStorage.setItem(pet[0]+"Stars", Number($("#in" + pet[0] + "Stars").val()));
+        starsTotal += Number($("#in" + pet[0] + "Stars").val());
+        let materialsResult = calcMaterials($("#in" + pet[0] + "Stars").val());
+        $("#out" + pet[0] + "Materials").text(materialsResult);
+        materials["Total"] += materialsResult;
+        materials[pet[1]] += materialsResult;
+    });
+    $("#outTotalStars").text(starsTotal);
+    $("#outTotalMaterials").text(materials["Total"]);
+    let title = "";
+    Object.keys(materials).forEach(kind => {
+        title += kind + ": " + materials[kind] + "\n"
+    });
+    $("#outTotalMaterials").attr("title", title);
 }
 
 function onChangeEquipamentBonus(event){
@@ -280,8 +314,8 @@ function onChangeEquipamentBonus(event){
 
 function calcMedals(bond){
     let result = 0;
-    for (let s = Number(bond); s < lookUpLvlMedalsTime.length; s++) {
-        result += lookUpLvlMedalsTime[s][0];
+    for (let s = Number(bond); s < lookUpMedalsTimeMaterials.length; s++) {
+        result += lookUpMedalsTimeMaterials[s][0];
     }
     return result;
 }
@@ -289,15 +323,23 @@ function calcMedals(bond){
 function calcMedalsSpent(bond){
     let result = 0;
     for (let s = 0; s < Number(bond); s++) {
-        result += lookUpLvlMedalsTime[s][0];
+        result += lookUpMedalsTimeMaterials[s][0];
     }
     return result;
 }
 
 function calcTime(bond){
     let result = 0;
-    for (let s = Number(bond); s < lookUpLvlMedalsTime.length; s++) {
-        result += lookUpLvlMedalsTime[s][1];
+    for (let s = Number(bond); s < lookUpMedalsTimeMaterials.length; s++) {
+        result += lookUpMedalsTimeMaterials[s][1];
+    }
+    return result;
+}
+
+function calcMaterials(stars){
+    let result = 0;
+    for (let s = Number(stars); s < lookUpMedalsTimeMaterials.length; s++) {
+        result += lookUpMedalsTimeMaterials[s][2];
     }
     return result;
 }
@@ -312,7 +354,11 @@ function calcAmber(item, lvl){
 }
 
 function localStorageGetItem(key, value){
-    return localStorage.getItem(key) == null ? value : localStorage.getItem(key);
+    if (localStorage.getItem(key) == null  ||
+        localStorage.getItem(key) == 'NaN' ||
+        localStorage.getItem(key) == ''    )
+        return value;
+    return localStorage.getItem(key);
 }
 
 function formatTime(secs){
