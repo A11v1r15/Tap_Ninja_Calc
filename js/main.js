@@ -305,7 +305,7 @@ function onChangePetStars(event){
     $("#outTotalMaterials").text(materials["Total"].toLocaleString());
     let title = "";
     Object.keys(materials).forEach(kind => {
-        title += kind + ": " + materials[kind] + "\n"
+        title += kind + ": " + Number(materials[kind]).toLocaleString() + "\n"
     });
     $("#outTotalMaterials").attr("title", title);
 }
