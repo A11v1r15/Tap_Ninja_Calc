@@ -128,22 +128,22 @@ th{
 }
 
 .Water, .Mage{
-    background-color: #2287AE;
+    background-color: #66AECC;
     color: #12607F;
 }
 
 .Earth, .Assassin{
-    background-color: #227F34;
+    background-color: #8CB234;
     color: #164C2F;
 }
 
 .Fire, .Warrior{
-    background-color: #E32703;
+    background-color: #FF6D04;
     color: #A5001E;
 }
 
 .Wind, .Support{
-    background-color: #E5A11F;
+    background-color: #E5BA00;
     color: #B27400;
 }
 
