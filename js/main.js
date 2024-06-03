@@ -248,10 +248,11 @@ function start(){
         let td1 = $("<td></td>").attr("id", "out" + item + "Level").text("NaN");
         let td2 = $("<td></td>").attr("id", "out" + item + "Cost").text("NaN");
         let td3 = $("<td></td>").attr("id", "out" + item + "Amber").text("NaN");
-        tr.append(th).append(td0).append(td1).append(td2).append(td3);
+        let td4 = $("<td></td>").attr("id", "out" + item + "AmberSpent").text("NaN");
+        tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4);
         equipamentTable.append(tr);
     });
-    let totalEquipament = $("<tr class='header'><th>Total</th><td colspan='3'></td><td id='outTotalAmber'>NaN</td></td></tr>");
+    let totalEquipament = $("<tr class='header'><th>Total</th><td colspan='3'></td><td id='outTotalAmber'>NaN</td><td id='outTotalAmberSpent'>NaN</td></tr>");
     equipamentTable.append(totalEquipament);
 
     onChangePetBond();
@@ -312,6 +313,7 @@ function onChangePetStars(event){
 function onChangeEquipamentBonus(event){
     let lvlTotal = 0;
     let amberTotal = 0;
+    let amberSpentTotal = 0;
     Object.keys(lookUpEquipaments).forEach(item => {
         localStorage.setItem(item+"Bonus", Number($("#in" + item).val()));
         let step = lookUpEquipaments[item][2][1] - lookUpEquipaments[item][1][1];
@@ -319,12 +321,16 @@ function onChangeEquipamentBonus(event){
         lvlTotal += lvl;
         let cost = lookUpEquipaments[item][lvl][0];
         let amber = calcAmber(item, lvl);
+        let amberSpent = calcAmberSpent(item, lvl);
         amberTotal += amber;
+        amberSpentTotal += amberSpent;
         $("#out" + item + "Level").text(lvl);
         $("#out" + item + "Cost" ).text(cost.toLocaleString());
         $("#out" + item + "Amber").text(amber.toLocaleString());
+        $("#out" + item + "AmberSpent").text(amberSpent.toLocaleString());
     });
     $("#outTotalAmber").text(amberTotal.toLocaleString());
+    $("#outTotalAmberSpent").text(amberSpentTotal.toLocaleString());
     let lvlTotalWidth = (lvlTotal / (Object.keys(lookUpEquipaments).length * 25)) * 100
     $("#equipamentBar div").attr("style", "width:" + lvlTotalWidth + "%;").text("+" + lvlTotal + "%");
 }
@@ -362,9 +368,16 @@ function calcMaterials(stars){
 }
 
 function calcAmber(item, lvl){
-    if (lvl == 25) return 0;
     let result = 0;
     for (let s = Number(lvl); s < lookUpEquipaments[item].length; s++) {
+        result += lookUpEquipaments[item][s][0];
+    }
+    return result;
+}
+
+function calcAmberSpent(item, lvl){
+    let result = 0;
+    for (let s = 0; s < Number(lvl); s++) {
         result += lookUpEquipaments[item][s][0];
     }
     return result;
