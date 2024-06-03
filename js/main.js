@@ -274,6 +274,7 @@ function onChangePetBond(event){
         medalsTotal += medalResult;
         let timeResult = calcTime($("#in" + pet[0] + "Bond").val());
         $("#out" + pet[0] + "Time").text(formatTime(timeResult));
+        $("#out" + pet[0] + "Time").attr("title", "About " + Math.ceil(timeResult / 86400) + " days");
         timeTotal += timeResult;
         let medalsSpentResult = calcMedalsSpent($("#in" + pet[0] + "Bond").val());
         $("#out" + pet[0] + "MedalsSpent").text(medalsSpentResult);
@@ -282,6 +283,7 @@ function onChangePetBond(event){
     $("#outTotalBond").text(bondTotal);
     $("#outTotalMedals").text(medalsTotal.toLocaleString());
     $("#outTotalTime").text(formatTime(timeTotal));
+    $("#outTotalTime").attr("title", "About " + Math.ceil(timeTotal / 86400) + " days in 1 slot");
     $("#outTotalMedalsSpent").text(medalsSpentTotal.toLocaleString());
 }
 
@@ -402,7 +404,7 @@ function formatTime(secs){
         .map(v => v < 10 ? "0" + v : v)
         .filter((v,i) => v !== "00" || i > 0);
 
-    return result[0] + "h " + result[1] + "m " + result[2] + "s";
+    return result[0].toLocaleString() + "h " + result[1] + "m " + result[2] + "s";
 }
 
 function petTab(){
