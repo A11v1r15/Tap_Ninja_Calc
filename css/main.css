@@ -138,15 +138,30 @@ th{
     background-color: #FFBB00;
     color: #A27700;
 }
+.Legendary input{
+    background-color: #181B26;
+    color: #94BCC4;
+    width: 80%;
+}
 
 .Epic{
     background-color: #9717FD;
     color: #5F0FA0;
 }
+.Epic input{
+    background-color: #181B26;
+    color: #94BCC4;
+    width: 80%;
+}
 
 .Rare{
     background-color: #3372FA;
     color: #214AA3;
+}
+.Rare input{
+    background-color: #181B26;
+    color: #94BCC4;
+    width: 80%;
 }
 
 .Water, .Mage{
@@ -169,11 +184,11 @@ th{
     color: #B27400;
 }
 
-.legend{
+.Equipament{
     background-color: #593A27;
     color: #DE6C00;
 }
-.legend input{
+.Equipament input{
     background-color: #181B26;
     color: #94BCC4;
     width: 80%;

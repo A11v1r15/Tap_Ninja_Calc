@@ -46,7 +46,22 @@ const heroList = [
     ["Kenju"  , "Rare"     , "Water", "Warrior" ]
 ]
 
-const lookUpMedalsTimeMaterials = [
+const lookUpDustRareEpicLegendary = [
+    [    25,     50,     100],
+    [   125,    250,     500],
+    [   250,    500,    1000],
+    [   625,   1250,    2500],
+    [  1250,   2500,    5000],
+    [  1875,   3750,    7500],
+    [  2500,   5000,   10000],
+    [  6250,  12500,   25000],
+    [ 12500,  25000,   50000],
+    [ 25000,  50000,  100000],
+    [ 62500, 125000,  250000],
+    [250000, 500000, 1000000]
+]
+
+const lookUpMedalsTimeFeathers = [
     [  0,       0,      0],
     [  0,     200,     10],
     [  2,   11520,     25],
@@ -222,16 +237,41 @@ function start(){
             .val(localStorageGetItem(pet[0]+"Stars", 0));
         input1.change(onChangePetStars);
         td4.append(input1);
-        let td5 = $("<td></td>").attr("id", "out" + pet[0] + "Materials").text("NaN");
+        let td5 = $("<td></td>").attr("id", "out" + pet[0] + "Feathers").text("NaN");
         tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
         petTable.append(tr);
     });
-    let totalPet = $("<tr class='header'><th>Total</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalStars'>NaN</td><td id='outTotalMaterials'>NaN</td></tr>");
+    let totalPet = $("<tr class='header'><th>Total</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalPetStars'>NaN</td><td id='outTotalFeathers'>NaN</td></tr>");
     petTable.append(totalPet);
+
+    let heroTable = $("#heroTable");
+    heroList.forEach(hero => {
+        let tr = $("<tr></tr>").addClass(hero[1]);
+        let th = $("<th></th>");
+        let label = $("<label></label>").attr("for", "in" + hero[0] + "Stars")
+            .text(hero[0]);
+        th.append(label);
+        let td0 = $("<td></td>").addClass(hero[2]).text(hero[2]);
+        let td1 = $("<td></td>").addClass(hero[3]).text(hero[3]);
+        let td2 = $("<td></td>");
+        let input0 = $("<input></input>").attr("type", "number")
+            .attr("min", 0).attr("max", 12)
+            .attr("id", "in" + hero[0] + "Stars")
+            .attr("name", "in" + hero[0] + "Stars")
+            .val(localStorageGetItem(hero[0]+"Stars", 0));
+        input0.change(onChangeHeroStars);
+        td2.append(input0);
+        let td3 = $("<td></td>").attr("id", "out" + hero[0] + "Dust")
+            .text("NaN").addClass(hero[2]);
+        tr.append(th).append(td0).append(td1).append(td2).append(td3);
+        heroTable.append(tr);
+    });
+    let totalHero = $("<tr class='header'><th colspan='3'>Total</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td></tr>");
+    heroTable.append(totalHero);
 
     let equipamentTable = $("#equipamentTable");
     Object.keys(lookUpEquipaments).forEach(item => {
-        let tr = $("<tr></tr>").addClass("legend");
+        let tr = $("<tr></tr>").addClass("Equipament");
         let th = $("<th></th>");
         let label = $("<label></label>").attr("for", "in" + item)
             .text(item);
@@ -255,22 +295,10 @@ function start(){
     let totalEquipament = $("<tr class='header'><th>Total</th><td colspan='3'></td><td id='outTotalAmber' class='Amber'>NaN</td><td id='outTotalAmberSpent' class='Amber'>NaN</td></tr>");
     equipamentTable.append(totalEquipament);
 
-
-    let heroTable = $("#heroTable");
-    heroList.forEach(hero => {
-        let tr = $("<tr></tr>").addClass(hero[1]);
-        let th = $("<th></th>").text(hero[0]);
-        let td0 = $("<td></td>").addClass(hero[2]).text(hero[2]);
-        let td1 = $("<td></td>").addClass(hero[3]).text(hero[3]);
-        tr.append(th).append(td0).append(td1);
-        heroTable.append(tr);
-    });
-    let totalHero = $("<tr class='header'><th colspan='3'>Total</th></tr>");
-    heroTable.append(totalHero);
-
     onChangePetBond();
     onChangePetStars();
     onChangeEquipamentBonus();
+    onChangeHeroStars();
     petTab();
     if(localStorageGetItem("noFunMode", 'false') == 'true'){
         $("#noFunButton").click(funMode);
@@ -308,27 +336,52 @@ function onChangePetBond(event){
 
 function onChangePetStars(event){
     let starsTotal = 0;
-    let materials = {};
-    materials["Total"] = 0;
+    let feathers = {};
+    feathers["Total"] = 0;
     petList.forEach(pet => {
-        materials[pet[1]] = 0;
+        feathers[pet[1]] = 0;
     });
     petList.forEach(pet => {
         localStorage.setItem(pet[0]+"Stars", Number($("#in" + pet[0] + "Stars").val()));
         starsTotal += Number($("#in" + pet[0] + "Stars").val());
-        let materialsResult = calcMaterials($("#in" + pet[0] + "Stars").val());
-        $("#out" + pet[0] + "Materials").text(materialsResult.toLocaleString());
-        materials["Total"] += materialsResult;
-        materials[pet[1]] += materialsResult;
+        let feathersResult = calcFeathers($("#in" + pet[0] + "Stars").val());
+        $("#out" + pet[0] + "Feathers").text(feathersResult.toLocaleString());
+        feathers["Total"] += feathersResult;
+        feathers[pet[1]] += feathersResult;
         $("#in" + pet[0] + "Stars").attr("title", lookUpStars[Number($("#in" + pet[0] + "Stars").val())]);
     });
-    $("#outTotalStars").text(starsTotal);
-    $("#outTotalMaterials").text(materials["Total"].toLocaleString());
+    $("#outTotalPetStars").text(starsTotal);
+    $("#outTotalFeathers").text(feathers["Total"].toLocaleString());
     let title = "";
-    Object.keys(materials).forEach(kind => {
-        title += kind + ": " + Number(materials[kind]).toLocaleString() + "\n"
+    Object.keys(feathers).forEach(kind => {
+        title += kind + ": " + feathers[kind] + "\n"
     });
-    $("#outTotalMaterials").attr("title", title);
+    $("#outTotalFeathers").attr("title", title);
+}
+
+function onChangeHeroStars(event){
+    let starsTotal = 0;
+    let dust = {};
+    dust["Total"] = 0;
+    heroList.forEach(hero => {
+        dust[hero[2]] = 0;
+    });
+    heroList.forEach(hero => {
+        localStorage.setItem(hero[0]+"Stars", Number($("#in" + hero[0] + "Stars").val()));
+        starsTotal += Number($("#in" + hero[0] + "Stars").val());
+        let dustResult = calcDust($("#in" + hero[0] + "Stars").val(), hero[1]);
+        $("#out" + hero[0] + "Dust").text(dustResult.toLocaleString());
+        dust["Total"] += dustResult;
+        dust[hero[2]] += dustResult;
+        $("#in" + hero[0] + "Stars").attr("title", lookUpStars[Number($("#in" + hero[0] + "Stars").val())]);
+    });
+    $("#outTotalHeroStars").text(starsTotal);
+    $("#outTotalDust").text(dust["Total"].toLocaleString());
+    let title = "";
+    Object.keys(dust).forEach(faction => {
+        title += faction + ": " + dust[faction].toLocaleString() + "\n"
+    });
+    $("#outTotalDust").attr("title", title);
 }
 
 function onChangeEquipamentBonus(event){
@@ -358,8 +411,8 @@ function onChangeEquipamentBonus(event){
 
 function calcMedals(bond){
     let result = 0;
-    for (let s = Number(bond); s < lookUpMedalsTimeMaterials.length; s++) {
-        result += lookUpMedalsTimeMaterials[s][0];
+    for (let s = Number(bond); s < lookUpMedalsTimeFeathers.length; s++) {
+        result += lookUpMedalsTimeFeathers[s][0];
     }
     return result;
 }
@@ -367,23 +420,37 @@ function calcMedals(bond){
 function calcMedalsSpent(bond){
     let result = 0;
     for (let s = 0; s < Number(bond); s++) {
-        result += lookUpMedalsTimeMaterials[s][0];
+        result += lookUpMedalsTimeFeathers[s][0];
     }
     return result;
 }
 
 function calcTime(bond){
     let result = 0;
-    for (let s = Number(bond); s < lookUpMedalsTimeMaterials.length; s++) {
-        result += lookUpMedalsTimeMaterials[s][1];
+    for (let s = Number(bond); s < lookUpMedalsTimeFeathers.length; s++) {
+        result += lookUpMedalsTimeFeathers[s][1];
     }
     return result;
 }
 
-function calcMaterials(stars){
+function calcFeathers(stars){
     let result = 0;
-    for (let s = Number(stars); s < lookUpMedalsTimeMaterials.length; s++) {
-        result += lookUpMedalsTimeMaterials[s][2];
+    for (let s = Number(stars); s < lookUpMedalsTimeFeathers.length; s++) {
+        result += lookUpMedalsTimeFeathers[s][2];
+    }
+    return result;
+}
+
+function calcDust(stars, rarity){
+    let result = 0;
+    let rarityIndex = 0;
+    switch (rarity) {
+        case "Rare"     : rarityIndex = 0; break;
+        case "Epic"     : rarityIndex = 1; break;
+        case "Legendary": rarityIndex = 2; break;
+    }
+    for (let s = Number(stars); s < lookUpDustRareEpicLegendary.length; s++) {
+        result += lookUpDustRareEpicLegendary[s][rarityIndex];
     }
     return result;
 }
