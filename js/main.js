@@ -259,6 +259,7 @@ function start(){
     onChangePetStars();
     onChangeEquipamentBonus();
     petTab();
+    if(localStorageGetItem("noFunMode", 'false') == 'true') noFunMode();
 }
 
 function onChangePetBond(event){
@@ -419,6 +420,28 @@ function equipamentTab(){
     $("#equipamentTable").show();
     $("#petTabButton").removeClass();
     $("#equipamentTabButton").addClass("selected");
+}
+
+function noFunMode(){
+    localStorage.setItem("noFunMode", 'true');
+    $("tr:even").css("background-color", "#FFFFFF");
+    $("tr:odd").css("background-color", "#AAAAAA");
+    $("tr").css("color", "#000000");
+    $("input").css("background-color", "inherit");
+    $("input").css("color", "#000000");
+    $("body").css("font-family", "Trebuchet MS black");
+    $("#noFunButton").click(funMode);
+}
+
+function funMode(){
+    localStorage.setItem("noFunMode", 'false');
+    $("tr:even").attr("style", "");
+    $("tr:odd").attr("style", "");
+    $("tr").attr("style", "");
+    $("input").attr("style", "");
+    $("input").attr("style", "");
+    $("body").attr("style", "");
+    $("#noFunButton").click(noFunMode);
 }
 
 $(document).ready(start());
