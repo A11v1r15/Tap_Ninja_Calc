@@ -259,7 +259,7 @@ function start(){
     onChangePetStars();
     onChangeEquipamentBonus();
     petTab();
-    if(localStorageGetItem("noFunMode", 'false') == 'true') noFunMode();
+    if(localStorageGetItem("noFunMode", 'true') == 'true') noFunMode();
 }
 
 function onChangePetBond(event){
