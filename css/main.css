@@ -164,24 +164,92 @@ th{
     width: 80%;
 }
 
-.Water, .Mage{
+td.Water, td.Mage{
     background-color: #66AECC;
     color: #12607F;
 }
 
-.Earth, .Assassin{
+th.Water::before{
+    content: " ";
+    background: url("../img/Water.png") no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+    float: left;
+}
+th.Mage::after{
+    content: " ";
+    background: url("../img/Mage.png") no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+    float: right;
+}
+
+td.Earth, td.Assassin{
     background-color: #8CB234;
     color: #164C2F;
 }
 
-.Fire, .Warrior{
+th.Earth::before{
+    content: " ";
+    background: url("../img/Earth.png") no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+    float: left;
+}
+th.Assassin::after{
+    content: " ";
+    background: url("../img/Assassin.png") no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+    float: right;
+}
+
+td.Fire, td.Warrior{
     background-color: #FF6D04;
     color: #A5001E;
 }
 
-.Wind, .Support{
+th.Fire::before{
+    content: " ";
+    background: url("../img/Fire.png") no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+    float: left;
+}
+th.Warrior::after{
+    content: " ";
+    background: url("../img/Warrior.png") no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+    float: right;
+}
+
+td.Wind, td.Support{
     background-color: #E5BA00;
     color: #B27400;
+}
+
+th.Wind::before{
+    content: " ";
+    background: url("../img/Wind.png") no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+    float: left;
+}
+th.Support::after{
+    content: " ";
+    background: url("../img/Support.png") no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+    float: right;
 }
 
 .Equipament{
