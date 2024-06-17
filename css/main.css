@@ -5,7 +5,7 @@
 
 body{
     font-family: "Born2bSporty";
-    background-color: #75bCE2;
+    background-color: #75BCE2;
     color: #AD1D15;
 }
 body h1{
@@ -84,8 +84,30 @@ th{
 }
 
 .header{
-    background-color: #46A5d5;
+    background-color: #46A5D5;
     color: #000000;
+}
+
+.Amber::after{
+    content: "";
+    display: block;
+    background: url("../img/Amber.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    float: right;
+}
+
+.Elixir{
+    white-space: nowrap;
+}
+
+.Elixir::before{
+    content: "";
+    display: -webkit-box;
+    background: url("../img/Elixir.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    float: left;
 }
 
 .Critter{

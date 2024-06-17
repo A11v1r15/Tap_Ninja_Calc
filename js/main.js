@@ -246,13 +246,13 @@ function start(){
         input.change(onChangeEquipamentBonus);
         td0.append(input);
         let td1 = $("<td></td>").attr("id", "out" + item + "Level").text("NaN");
-        let td2 = $("<td></td>").attr("id", "out" + item + "Cost").text("NaN");
-        let td3 = $("<td></td>").attr("id", "out" + item + "Amber").text("NaN");
-        let td4 = $("<td></td>").attr("id", "out" + item + "AmberSpent").text("NaN");
+        let td2 = $("<td></td>").attr("id", "out" + item + "Cost").text("NaN").addClass("Amber");
+        let td3 = $("<td></td>").attr("id", "out" + item + "Amber").text("NaN").addClass("Amber");
+        let td4 = $("<td></td>").attr("id", "out" + item + "AmberSpent").text("NaN").addClass("Amber");
         tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4);
         equipamentTable.append(tr);
     });
-    let totalEquipament = $("<tr class='header'><th>Total</th><td colspan='3'></td><td id='outTotalAmber'>NaN</td><td id='outTotalAmberSpent'>NaN</td></tr>");
+    let totalEquipament = $("<tr class='header'><th>Total</th><td colspan='3'></td><td id='outTotalAmber' class='Amber'>NaN</td><td id='outTotalAmberSpent' class='Amber'>NaN</td></tr>");
     equipamentTable.append(totalEquipament);
 
     onChangePetBond();
