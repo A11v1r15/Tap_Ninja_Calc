@@ -247,26 +247,24 @@ function start(){
     let heroTable = $("#heroTable");
     heroList.forEach(hero => {
         let tr = $("<tr></tr>").addClass(hero[1]);
-        let th = $("<th></th>");
+        let th = $("<th></th>").addClass(hero[2]).addClass(hero[3]);
         let label = $("<label></label>").attr("for", "in" + hero[0] + "Stars")
             .text(hero[0]);
         th.append(label);
-        let td0 = $("<td></td>").addClass(hero[2]).text(hero[2]);
-        let td1 = $("<td></td>").addClass(hero[3]).text(hero[3]);
-        let td2 = $("<td></td>");
+        let td0 = $("<td></td>");
         let input0 = $("<input></input>").attr("type", "number")
             .attr("min", 0).attr("max", 12)
             .attr("id", "in" + hero[0] + "Stars")
             .attr("name", "in" + hero[0] + "Stars")
             .val(localStorageGetItem(hero[0]+"Stars", 0));
         input0.change(onChangeHeroStars);
-        td2.append(input0);
-        let td3 = $("<td></td>").attr("id", "out" + hero[0] + "Dust")
+        td0.append(input0);
+        let td1 = $("<td></td>").attr("id", "out" + hero[0] + "Dust")
             .text("NaN").addClass(hero[2]);
-        tr.append(th).append(td0).append(td1).append(td2).append(td3);
+        tr.append(th).append(td0).append(td1);
         heroTable.append(tr);
     });
-    let totalHero = $("<tr class='header'><th colspan='3'>Total</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td></tr>");
+    let totalHero = $("<tr class='header'><th>Total</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td></tr>");
     heroTable.append(totalHero);
 
     let equipamentTable = $("#equipamentTable");
