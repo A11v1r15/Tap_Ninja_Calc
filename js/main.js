@@ -208,17 +208,17 @@ const lookUpEquipaments = {
         [1767,  4.4],
         [1882,  4.8],
         [2072,  5.2],
-        [9999,  5.6],
-        [9999,  6  ],
-        [9999,  6.4],
-        [9999,  6.8],
-        [9999,  7.2],
-        [9999,  7.6],
-        [9999,  8  ],
-        [9999,  8.4],
-        [9999,  8.8],
-        [9999,  9.2],
-        [9999,  9.6],
+        [2253,  5.6],
+        [2418,  6  ],
+        [2560,  6.4],
+        [2670,  6.8], // Not real values
+        [2741,  7.2], // Not real values
+        [2779,  7.6], // Not real values
+        [3057,  8  ], // Not real values
+        [3026,  8.4],
+        [2932,  8.8],
+        [3167,  9.2],
+        [3420,  9.6],
         [   0, 10  ]
     ]
 }
@@ -353,7 +353,7 @@ function onChangeEquipamentBonus(event){
     Object.keys(lookUpEquipaments).forEach(item => {
         localStorage.setItem(item+"Bonus", Number($("#in" + item).val()));
         let step = lookUpEquipaments[item][2][1] - lookUpEquipaments[item][1][1];
-        let lvl = Number($("#in" + item).val())/step;
+        let lvl = (Number($("#in" + item).val()) * 10)/(step * 10);
         lvlTotal += lvl;
         let cost = lookUpEquipaments[item][lvl][0];
         let amber = calcAmber(item, lvl);
@@ -362,6 +362,13 @@ function onChangeEquipamentBonus(event){
         amberSpentTotal += amberSpent;
         $("#out" + item + "Level").text(lvl);
         $("#out" + item + "Cost" ).text(cost.toLocaleString());
+        if (item == "Kote" && lvl > 16 && lvl <= 20){
+            $("#out" + item + "Cost" ).attr("title", "Placeholder value, contact me if you reach here to confirm actual cost");
+            $("#out" + item + "Cost" ).attr("style", "color: #FF0000");
+        } else {
+            $("#out" + item + "Cost" ).attr("title", "");
+            $("#out" + item + "Cost" ).attr("style", "");
+        }
         $("#out" + item + "Amber").text(amber.toLocaleString());
         $("#out" + item + "AmberSpent").text(amberSpent.toLocaleString());
     });
