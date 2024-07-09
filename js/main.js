@@ -261,10 +261,18 @@ function start(){
         td0.append(input0);
         let td1 = $("<td></td>").attr("id", "out" + hero[0] + "Dust")
             .text("NaN").addClass(hero[2]);
-        tr.append(th).append(td0).append(td1);
+        let td2 = $("<td></td>");
+        let input1 = $("<input></input>").attr("type", "number")
+            .attr("min", 0).attr("max", 100)
+            .attr("id", "in" + hero[0] + "Level")
+            .attr("name", "in" + hero[0] + "Level")
+            .val(localStorageGetItem(hero[0]+"Level", 0));
+        input1.change(onChangeHeroLevels);
+        td2.append(input1);
+        tr.append(th).append(td0).append(td1).append(td2);
         heroTable.append(tr);
     });
-    let totalHero = $("<tr class='header'><th>Total</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td></tr>");
+    let totalHero = $("<tr class='header'><th>Total</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td><td id='outTotalHeroLevels'>NaN</td></tr>");
     heroTable.append(totalHero);
 
     let equipamentTable = $("#equipamentTable");
@@ -297,6 +305,7 @@ function start(){
     onChangePetStars();
     onChangeEquipamentBonus();
     onChangeHeroStars();
+    onChangeHeroLevels();
     petTab();
     if(localStorageGetItem("noFunMode", 'false') == 'true'){
         $("#noFunButton").click(funMode);
@@ -380,6 +389,15 @@ function onChangeHeroStars(event){
         title += faction + ": " + dust[faction].toLocaleString() + "\n"
     });
     $("#outTotalDust").attr("title", title);
+}
+
+function onChangeHeroLevels(event){
+    let levelsTotal = 0;
+    heroList.forEach(hero => {
+        localStorage.setItem(hero[0]+"Level", Number($("#in" + hero[0] + "Level").val()));
+        levelsTotal += Number($("#in" + hero[0] + "Level").val());
+    });
+    $("#outTotalHeroLevels").text(levelsTotal);
 }
 
 function onChangeEquipamentBonus(event){
