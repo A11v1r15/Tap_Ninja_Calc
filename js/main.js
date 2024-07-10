@@ -270,7 +270,10 @@ function start(){
         petTable.append(tr);
     });
     let totalPet = $("<tr class='header'><th>Total</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalPetStars'>NaN</td><td id='outTotalFeathers'>NaN</td></tr>");
-    petTable.append(totalPet);
+    let hidePetInput = $("<input></input>").attr("type", "checkbox").attr("id", "hidePetCheckbox")
+        .change(hidePet).prop("checked", localStorageGetItem("HidePet", 'false') == 'true').change();
+    let hidePetInputLabel = $("<label>").attr("for", "hidePetCheckbox").text("Hide non-obtained pets");
+    petTable.append(totalPet).append(hidePetInput).append(hidePetInputLabel);
 
     let heroTable = $("#heroTable");
     heroList.forEach(hero => {
@@ -301,7 +304,10 @@ function start(){
         heroTable.append(tr);
     });
     let totalHero = $("<tr class='header'><th>Total</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td><td id='outTotalHeroLevels'>NaN</td></tr>");
-    heroTable.append(totalHero);
+    let hideHeroInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideHeroCheckbox")
+        .change(hideHero).prop("checked", localStorageGetItem("HideHero", 'false') == 'true').change();
+    let hideHeroInputLabel = $("<label>").attr("for", "hideHeroCheckbox").text("Hide non-obtained heroes");
+    heroTable.append(totalHero).append(hideHeroInput).append(hideHeroInputLabel);
 
     let equipamentTable = $("#equipamentTable");
     Object.keys(lookUpEquipaments).forEach(item => {
@@ -569,6 +575,24 @@ function equipamentTab(){
     $("#petTabButton").removeClass();
     $("#heroTabButton").removeClass();
     $("#equipamentTabButton").addClass("selected");
+}
+
+function hidePet(event){
+    petList.forEach(pet => {
+        if($("#in" + pet[0] + "Stars").val() == 0){
+            localStorage.setItem("HidePet", event.target.checked);
+            $("#in" + pet[0] + "Stars").parent().parent().toggle(!event.target.checked);
+        }
+    })
+}
+
+function hideHero(event){
+    heroList.forEach(hero => {
+        if($("#in" + hero[0] + "Stars").val() == 0){
+            localStorage.setItem("HideHero", event.target.checked);
+            $("#in" + hero[0] + "Stars").parent().parent().toggle(!event.target.checked);
+        }
+    })
 }
 
 function noFunMode(){
