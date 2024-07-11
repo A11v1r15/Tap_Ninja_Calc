@@ -239,31 +239,11 @@ const lookUpEquipaments = {
 }
 
 function heroLevelUpExperienceCost(level){
-    if(level ==  1) return  100;
-    if(level ==  2) return  150;
-    if(level ==  3) return  200;
-    if(level ==  4) return  250;
-    if(level ==  5) return  300;
-    if(level ==  6) return  350;
-    if(level ==  7) return  400;
-    if(level ==  8) return  450;
-    if(level ==  9) return  500;
-    if(level == 10) return  600;
-    if(level == 11) return  700;
-    if(level == 12) return  800;
-    if(level == 13) return  900;
-    if(level == 14) return 1000;
-    if(level == 15) return 1200;
-    if(level == 16) return 1400;
-    if(level == 17) return 1600;
-    if(level == 18) return 1800;
-    if(level == 19) return 2000;
-    if(level == 20) return 2250;
-    if(level == 21) return 2500;
-    if(level == 22) return 2750;
-    if(level == 23) return 3000;
-    if(level == 24) return 3500;
-    if(level == 25) return 4000;
+    if(level < 10) return   50 +  50 * (level -  0);
+    if(level < 15) return  500 + 100 * (level -  9);
+    if(level < 20) return 1000 + 200 * (level - 14);
+    if(level < 24) return 2000 + 250 * (level - 19);
+    if(level < 28) return 3500 + 500 * (level - 24); // Entering speculation realm
 }
 
 function start(){
