@@ -238,7 +238,7 @@ const lookUpEquipaments = {
 	]
 }
 
-const heroLevelUpExperienceCost = [
+const heroLevelUpExperienceCost = [ 0,
 	  100,   150,   200,   250,   300,   350,   400,   450,   500,   600,
 	  700,   800,   900,  1000,  1200,  1400,  1600,  1800,  2000,  2250,
 	 2500,  2750,  3000,  3500,  4000,  4500,  5000,  6000,  7000,  8000,
@@ -286,7 +286,9 @@ function start() {
 	let hidePetInput = $("<input></input>").attr("type", "checkbox").attr("id", "hidePetCheckbox")
 		.change(hidePet).prop("checked", localStorageGetItem("HidePet", 'false') == 'true').change();
 	let hidePetInputLabel = $("<label>").attr("for", "hidePetCheckbox").text("Hide non-obtained pets");
-	petTable.append(totalPet).append(hidePetInput).append(hidePetInputLabel);
+	let tdFp = $("<td colspan='5' style='text-align: left;'></td>");
+	tdFp.append(hidePetInput).append(hidePetInputLabel)
+	petTable.append(totalPet).append(tdFp);
 
 	let heroTable = $("#heroTable");
 	heroList.forEach(hero => {
@@ -307,20 +309,24 @@ function start() {
 			.text("NaN").addClass(hero[2]);
 		let td2 = $("<td></td>");
 		let input1 = $("<input></input>").attr("type", "number")
-			.attr("min", 0).attr("max", 100)
+			.attr("min", 0).attr("max", 40)
 			.attr("id", "in" + hero[0] + "Level")
 			.attr("name", "in" + hero[0] + "Level")
 			.val(localStorageGetItem(hero[0] + "Level", 0));
 		input1.change(onChangeHeroLevels);
 		td2.append(input1);
-		tr.append(th).append(td0).append(td1).append(td2);
+		let td3 = $("<td></td>").attr("id", "out" + hero[0] + "ExperienceNeeded")
+			.text("NaN").addClass("Experience");
+		tr.append(th).append(td0).append(td1).append(td2).append(td3);
 		heroTable.append(tr);
 	});
-	let totalHero = $("<tr class='header'><th>Total</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td><td id='outTotalHeroLevels'>NaN</td></tr>");
+	let totalHero = $("<tr class='header'><th>Total</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td><td id='outTotalHeroLevels'>NaN</td><td id='outTotalHeroExperienceNeeded' class='Experience'>NaN</td></tr>");
 	let hideHeroInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideHeroCheckbox")
 		.change(hideHero).prop("checked", localStorageGetItem("HideHero", 'false') == 'true').change();
 	let hideHeroInputLabel = $("<label>").attr("for", "hideHeroCheckbox").text("Hide non-obtained heroes");
-	heroTable.append(totalHero).append(hideHeroInput).append(hideHeroInputLabel);
+	let tdFh = $("<td colspan='5' style='text-align: left;'></td>");
+	tdFh.append(hideHeroInput).append(hideHeroInputLabel);
+	heroTable.append(totalHero).append(tdFh);
 
 	let equipamentTable = $("#equipamentTable");
 	Object.keys(lookUpEquipaments).forEach(item => {
@@ -384,7 +390,13 @@ function onChangePetBond(event) {
 	$("#outTotalBond").text(bondTotal);
 	$("#outTotalMedals").text(medalsTotal.toLocaleString());
 	$("#outTotalTime").text(formatTime(timeTotal));
-	$("#outTotalTime").attr("title", "About " + Math.ceil(timeTotal / 86400) + " days in 1 slot");
+	let timeInDays = Math.ceil(timeTotal / 86400);
+	if (timeInDays >= 365){
+		let timeInYears = Math.ceil(timeInDays / 365);
+		$("#outTotalTime").attr("title", "About " + timeInYears + "y " + (timeInDays%365) + "d in 1 slot");
+	} else{
+		$("#outTotalTime").attr("title", "About " + timeInDays + "d in 1 slot");
+	}
 	$("#outTotalMedalsSpent").text(medalsSpentTotal.toLocaleString());
 }
 
@@ -440,11 +452,16 @@ function onChangeHeroStars(event) {
 
 function onChangeHeroLevels(event) {
 	let levelsTotal = 0;
+	let experienceNeededTotal = 0;
 	heroList.forEach(hero => {
 		localStorage.setItem(hero[0] + "Level", Number($("#in" + hero[0] + "Level").val()));
 		levelsTotal += Number($("#in" + hero[0] + "Level").val());
+		let experienceNeeded = calcExperience($("#in" + hero[0] + "Level").val());
+		$("#out" + hero[0] + "ExperienceNeeded").text(experienceNeeded.toLocaleString());
+		experienceNeededTotal += experienceNeeded;
 	});
 	$("#outTotalHeroLevels").text(levelsTotal);
+	$("#outTotalHeroExperienceNeeded").text(experienceNeededTotal.toLocaleString());
 }
 
 function onChangeEquipamentBonus(event) {
@@ -521,6 +538,14 @@ function calcDust(stars, rarity) {
 	}
 	for (let s = Number(stars); s < lookUpDustRareEpicLegendary.length; s++) {
 		result += lookUpDustRareEpicLegendary[s][rarityIndex];
+	}
+	return result;
+}
+
+function calcExperience(experience) {
+	let result = 0;
+	for (let s = Number(experience); s < 40; s++) {
+		result += heroLevelUpExperienceCost[s];
 	}
 	return result;
 }

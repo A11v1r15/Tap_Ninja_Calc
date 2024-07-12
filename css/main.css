@@ -110,6 +110,15 @@ th{
     float: left;
 }
 
+.Experience::after{
+    content: "";
+    display: block;
+    background: url("../img/Experience.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    float: right;
+}
+
 .Critter{
     background-color: #638739;
     color: #224312;
