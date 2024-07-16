@@ -135,12 +135,29 @@ th{
     background-color: #EF8036;
 }
 
-.Bird{
+.Flying{
     background-color: #A08033;
     color: #503512;
 }
-.Bird input{
+.Flying input{
     background-color: #FFE659;
+}
+
+.Feather::after{
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    float: right;
+}
+.Critter .Feather::after{
+    background: url("../img/Critter Feather.png") no-repeat;
+}
+.Beast .Feather::after{
+    background: url("../img/Beast Feather.png") no-repeat;
+}
+.Flying .Feather::after{
+    background: url("../img/Flying Feather.png") no-repeat;
 }
 
 .Legendary{
@@ -253,6 +270,26 @@ th.Support::after{
     width: 16px;
     height: 16px;
     float: right;
+}
+
+.Dust::after{
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    float: right;
+}
+.Water.Dust::after{
+    background: url("../img/Water Dust.png") no-repeat;
+}
+.Earth.Dust::after{
+    background: url("../img/Earth Dust.png") no-repeat;
+}
+.Fire.Dust::after{
+    background: url("../img/Fire Dust.png") no-repeat;
+}
+.Wind.Dust::after{
+    background: url("../img/Wind Dust.png") no-repeat;
 }
 
 .Equipament{

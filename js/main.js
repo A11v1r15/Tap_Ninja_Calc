@@ -11,12 +11,12 @@ const petList = [
 	["Panda"    ,"Beast"  ],
 	["Turtle"   ,"Beast"  ],
 	["Racoon"   ,"Beast"  ],
-	["Chicken"  ,"Bird"   ],
-	["Crane"    ,"Bird"   ],
-	["Raven"    ,"Bird"   ],
-	["Dragonfly","Bird"   ],
-	["Dragon"   ,"Bird"   ],
-	["Parrot"   ,"Bird"   ]
+	["Chicken"  ,"Flying" ],
+	["Crane"    ,"Flying" ],
+	["Raven"    ,"Flying" ],
+	["Dragonfly","Flying" ],
+	["Dragon"   ,"Flying" ],
+	["Parrot"   ,"Flying" ]
 ];
 
 const heroList = [
@@ -278,7 +278,8 @@ function start() {
 			.val(localStorageGetItem(pet[0] + "Stars", 0));
 		input1.change(onChangePetStars);
 		td4.append(input1);
-		let td5 = $("<td></td>").attr("id", "out" + pet[0] + "Feathers").text("NaN");
+		let td5 = $("<td></td>").attr("id", "out" + pet[0] + "Feathers")
+			.text("NaN").addClass("Feather");
 		tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
 		petTable.append(tr);
 	});
@@ -306,7 +307,7 @@ function start() {
 		input0.change(onChangeHeroStars);
 		td0.append(input0);
 		let td1 = $("<td></td>").attr("id", "out" + hero[0] + "Dust")
-			.text("NaN").addClass(hero[2]);
+			.text("NaN").addClass(hero[2]).addClass("Dust");
 		let td2 = $("<td></td>");
 		let input1 = $("<input></input>").attr("type", "number")
 			.attr("min", 0).attr("max", 50)
