@@ -148,9 +148,7 @@ th{
     color: #A27700;
 }
 .Legendary input{
-    background-color: #181B26;
-    color: #94BCC4;
-    width: 80%;
+    background-color: #FFFB99;
 }
 
 .Epic{
@@ -158,9 +156,7 @@ th{
     color: #5F0FA0;
 }
 .Epic input{
-    background-color: #181B26;
-    color: #94BCC4;
-    width: 80%;
+    background-color: #FFCCEE;
 }
 
 .Rare{
@@ -168,9 +164,7 @@ th{
     color: #214AA3;
 }
 .Rare input{
-    background-color: #181B26;
-    color: #94BCC4;
-    width: 80%;
+    background-color: #CCFFED;
 }
 
 td.Water, td.Mage{

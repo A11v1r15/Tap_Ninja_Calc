@@ -439,7 +439,7 @@ function onChangeHeroStars(event) {
 		$("#out" + hero[0] + "Dust").text(dustResult.toLocaleString());
 		dust["Total"] += dustResult;
 		dust[hero[2]] += dustResult;
-		$("#in" + hero[0] + "Stars").attr("title", lookUpStars[Number($("#in" + hero[0] + "Stars").val())]);
+		$("#in" + hero[0] + "Stars").removeClass().addClass("S" + $("#in" + hero[0] + "Stars").val());
 	});
 	$("#outTotalHeroStars").text(starsTotal);
 	$("#outTotalDust").text(dust["Total"].toLocaleString());
