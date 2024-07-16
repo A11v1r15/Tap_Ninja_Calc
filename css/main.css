@@ -271,6 +271,36 @@ th.Support::after{
     width: 80%;
 }
 
+.S0{background-image: url("../img/S0.png");}
+.S1{background-image: url("../img/S1.png");}
+.S2{background-image: url("../img/S2.png");}
+.S3{background-image: url("../img/S3.png");}
+.S4{background-image: url("../img/S4.png");}
+.S5{background-image: url("../img/S5.png");}
+.S6{background-image: url("../img/S6.png");}
+.S7{background-image: url("../img/S7.png");}
+.S8{background-image: url("../img/S8.png");}
+.S9{background-image: url("../img/S9.png");}
+.S10{background-image: url("../img/S10.png");}
+.S11{background-image: url("../img/S11.png");}
+.S12{background-image: url("../img/S12.png");}
+.S0, .S1, .S2, .S3, .S4, .S5, .S6, .S7, .S8, .S9, .S10, .S11, .S12{
+    color: rgba(0,0,0,0) !important;
+    background-size: contain;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+.S0:hover, .S1:hover, .S2:hover, .S3:hover, .S4:hover, .S5:hover,
+.S6:hover, .S7:hover, .S8:hover, .S9:hover, .S10:hover, .S11:hover, .S12:hover{
+    color: inherit !important;
+    background-image: url("../img/S0.png");
+}
+.S0:focus, .S1:focus, .S2:focus, .S3:focus, .S4:focus, .S5:focus,
+.S6:focus, .S7:focus, .S8:focus, .S9:focus, .S10:focus, .S11:focus, .S12:focus{
+    color: inherit !important;
+    background-image: url("../img/S0.png");
+}
+
 footer{
     text-align: center;
     position:fixed;

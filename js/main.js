@@ -242,8 +242,8 @@ const heroLevelUpExperienceCost = [ 0,
 	  100,   150,   200,   250,   300,   350,   400,   450,   500,   600,
 	  700,   800,   900,  1000,  1200,  1400,  1600,  1800,  2000,  2250,
 	 2500,  2750,  3000,  3500,  4000,  4500,  5000,  6000,  7000,  8000,
-	 9000, 10000, 12000, 14000, 16000, 18000, 20000, 22000, 24000, 26000, // Speculated numbers: 9000, 10000, 12000, 18000, 24000, 26000
-//	28000,  0x42,  0x43, 35000,  0x45,  0x46,  0x47,  0x48,  0x49,  0x50,
+	 9000, 10000, 12000, 14000, 16000, 18000, 20000, 22000, 24000, 26000,
+  	28000, 30000, 32500, 35000, 37500, 40000, 42500, 45000, 47500, 50000,
 //	 0x51,  0x52,  0x53,  0x54,  0x55,  0x56,  0x57,  0x58,  0x59,  0x60,
 //	 0x61,  0x62,  0x63,  0x64,  0x65,  0x66,  0x67,  0x68,  0x69,  0x70,
 //	 0x71,  0x72,  0x73,  0x74,  0x75,  0x76,  0x77,  0x78,  0x79,  0x80,
@@ -309,7 +309,7 @@ function start() {
 			.text("NaN").addClass(hero[2]);
 		let td2 = $("<td></td>");
 		let input1 = $("<input></input>").attr("type", "number")
-			.attr("min", 0).attr("max", 40)
+			.attr("min", 0).attr("max", 50)
 			.attr("id", "in" + hero[0] + "Level")
 			.attr("name", "in" + hero[0] + "Level")
 			.val(localStorageGetItem(hero[0] + "Level", 0));
@@ -414,7 +414,7 @@ function onChangePetStars(event) {
 		$("#out" + pet[0] + "Feathers").text(feathersResult.toLocaleString());
 		feathers["Total"] += feathersResult;
 		feathers[pet[1]] += feathersResult;
-		$("#in" + pet[0] + "Stars").attr("title", lookUpStars[Number($("#in" + pet[0] + "Stars").val())]);
+		$("#in" + pet[0] + "Stars").removeClass().addClass("S" + $("#in" + pet[0] + "Stars").val());
 	});
 	$("#outTotalPetStars").text(starsTotal);
 	$("#outTotalFeathers").text(feathers["Total"].toLocaleString());
@@ -544,7 +544,7 @@ function calcDust(stars, rarity) {
 
 function calcExperience(experience) {
 	let result = 0;
-	for (let s = Number(experience); s < 40; s++) {
+	for (let s = Number(experience); s < 50; s++) {
 		result += heroLevelUpExperienceCost[s];
 	}
 	return result;
