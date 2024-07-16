@@ -267,9 +267,11 @@ function start() {
 			.val(localStorageGetItem(pet[0] + "Bond", 0));
 		input0.change(onChangePetBond);
 		td0.append(input0);
-		let td1 = $("<td></td>").attr("id", "out" + pet[0] + "Medals").text("NaN");
+		let td1 = $("<td></td>").attr("id", "out" + pet[0] + "Medals")
+			.text("NaN").addClass("Medal");
 		let td2 = $("<td></td>").attr("id", "out" + pet[0] + "Time").text("NaN");
-		let td3 = $("<td></td>").attr("id", "out" + pet[0] + "MedalsSpent").text("NaN");
+		let td3 = $("<td></td>").attr("id", "out" + pet[0] + "MedalsSpent")
+			.text("NaN").addClass("Medal");
 		let td4 = $("<td></td>");
 		let input1 = $("<input></input>").attr("type", "number")
 			.attr("min", 0).attr("max", 12)
@@ -321,7 +323,7 @@ function start() {
 		tr.append(th).append(td0).append(td1).append(td2).append(td3);
 		heroTable.append(tr);
 	});
-	let totalHero = $("<tr class='header'><th>Total</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td><td id='outTotalHeroLevels'>NaN</td><td id='outTotalHeroExperienceNeeded' class='Experience'>NaN</td></tr>");
+	let totalHero = $("<tr class='header'><th>Total</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td><td id='outTotalHeroLevels'>NaN</td><td id='outTotalHeroExperienceNeeded'>NaN</td></tr>");
 	let hideHeroInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideHeroCheckbox")
 		.change(hideHero).prop("checked", localStorageGetItem("HideHero", 'false') == 'true').change();
 	let hideHeroInputLabel = $("<label>").attr("for", "hideHeroCheckbox").text("Hide non-obtained heroes");
@@ -352,7 +354,7 @@ function start() {
 		tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4);
 		equipamentTable.append(tr);
 	});
-	let totalEquipament = $("<tr class='header'><th>Total</th><td colspan='3'></td><td id='outTotalAmber' class='Amber'>NaN</td><td id='outTotalAmberSpent' class='Amber'>NaN</td></tr>");
+	let totalEquipament = $("<tr class='header'><th>Total</th><td colspan='3'></td><td id='outTotalAmber'>NaN</td><td id='outTotalAmberSpent'>NaN</td></tr>");
 	equipamentTable.append(totalEquipament);
 
 	onChangePetBond();

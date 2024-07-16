@@ -97,6 +97,15 @@ th{
     float: right;
 }
 
+.Medal::after{
+    content: "";
+    display: block;
+    background: url("../img/Medal.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    float: right;
+}
+
 .Elixir{
     white-space: nowrap;
 }
@@ -160,6 +169,31 @@ th{
     background: url("../img/Flying Feather.png") no-repeat;
 }
 
+.Critter th::before{
+    background: url("../img/Critter.png") no-repeat;
+    content: "";
+    display: block;
+    width: 22px;
+    height: 22px;
+    float: left;
+}
+.Beast th::before{
+    background: url("../img/Beast.png") no-repeat;
+    content: "";
+    display: block;
+    width: 22px;
+    height: 22px;
+    float: left;
+}
+.Flying th::before{
+    background: url("../img/Flying.png") no-repeat;
+    content: "";
+    display: block;
+    width: 22px;
+    height: 22px;
+    float: left;
+}
+
 .Legendary{
     background-color: #FFBB00;
     color: #A27700;
@@ -183,12 +217,12 @@ th{
 .Rare input{
     background-color: #CCFFED;
 }
-
+/*
 td.Water, td.Mage{
     background-color: #66AECC;
     color: #12607F;
 }
-
+*/
 th.Water::before{
     content: " ";
     background: url("../img/Water.png") no-repeat;
@@ -205,12 +239,12 @@ th.Mage::after{
     height: 16px;
     float: right;
 }
-
+/*
 td.Earth, td.Assassin{
     background-color: #8CB234;
     color: #164C2F;
 }
-
+*/
 th.Earth::before{
     content: " ";
     background: url("../img/Earth.png") no-repeat;
@@ -227,12 +261,12 @@ th.Assassin::after{
     height: 16px;
     float: right;
 }
-
+/*
 td.Fire, td.Warrior{
     background-color: #FF6D04;
     color: #A5001E;
 }
-
+*/
 th.Fire::before{
     content: " ";
     background: url("../img/Fire.png") no-repeat;
@@ -249,12 +283,12 @@ th.Warrior::after{
     height: 16px;
     float: right;
 }
-
+/*
 td.Wind, td.Support{
     background-color: #E5BA00;
     color: #B27400;
 }
-
+*/
 th.Wind::before{
     content: " ";
     background: url("../img/Wind.png") no-repeat;
