@@ -43,12 +43,12 @@ body h1{
     margin-left: -10px;
 }
 
-#equipamentBar{
+#equipmentBar{
     background-color: #181B26;
     color: #FFFFFF;
     text-align: left !important;
 }
-#equipamentBar div{
+#equipmentBar div{
     background-color: #9927C0;
 }
 
@@ -88,6 +88,14 @@ th{
     color: #000000;
 }
 
+.Amber{
+    background-color: #593A27;
+    color: #DE6C00;
+}
+.Amber input{
+    background-color: #F3D200;
+    color: #9D0F00;
+}
 .Amber::after{
     content: "";
     display: block;
@@ -217,12 +225,15 @@ th{
 .Rare input{
     background-color: #CCFFED;
 }
-/*
+
 td.Water, td.Mage{
     background-color: #66AECC;
     color: #12607F;
 }
-*/
+td.Water input, td.Mage input{
+    background-color: #65E5FF;
+}
+
 th.Water::before{
     content: " ";
     background: url("../img/Water.png") no-repeat;
@@ -239,12 +250,15 @@ th.Mage::after{
     height: 16px;
     float: right;
 }
-/*
+
 td.Earth, td.Assassin{
     background-color: #8CB234;
     color: #164C2F;
 }
-*/
+td.Earth input, td.Assassin input{
+    background-color: #E3FF99;
+}
+
 th.Earth::before{
     content: " ";
     background: url("../img/Earth.png") no-repeat;
@@ -261,12 +275,15 @@ th.Assassin::after{
     height: 16px;
     float: right;
 }
-/*
+
 td.Fire, td.Warrior{
     background-color: #FF6D04;
     color: #A5001E;
 }
-*/
+td.Fire input, td.Warrior input{
+    background-color: #FFCA99;
+}
+
 th.Fire::before{
     content: " ";
     background: url("../img/Fire.png") no-repeat;
@@ -283,12 +300,15 @@ th.Warrior::after{
     height: 16px;
     float: right;
 }
-/*
+
 td.Wind, td.Support{
     background-color: #E5BA00;
     color: #B27400;
 }
-*/
+td.Wind input, td.Support input{
+    background-color: #FFFDCC;
+}
+
 th.Wind::before{
     content: " ";
     background: url("../img/Wind.png") no-repeat;
@@ -326,11 +346,11 @@ th.Support::after{
     background: url("../img/Wind Dust.png") no-repeat;
 }
 
-.Equipament{
+.Equipment{
     background-color: #593A27;
     color: #DE6C00;
 }
-.Equipament input{
+.Equipment input{
     background-color: #181B26;
     color: #94BCC4;
     width: 80%;

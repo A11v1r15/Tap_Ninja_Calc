@@ -79,23 +79,7 @@ const lookUpMedalsTimeFeathers = [
 	[175, 1152000,      0]
 ];
 
-const lookUpStars = [
-	"",
-	"☆",
-	"☆☆",
-	"☆☆☆",
-	"☆☆☆☆",
-	"☆☆☆☆☆",
-	"★",
-	"★★",
-	"★★★",
-	"★★★★",
-	"★★★★★",
-	"✭",
-	"✭✭"
-];
-
-const lookUpEquipaments = {
+const lookUpEquipments = {
 	"Kimono" : [
 		[  50,   0],
 		[ 140,  25],
@@ -251,6 +235,19 @@ const heroLevelUpExperienceCost = [ 0,
 //	 0x91,  0x92,  0x93,  0x94,  0x95,  0x96,  0x97,  0x98,  0x99,  0x100
 ]
 
+const currencies = [
+	"CritterFeather",
+	"BeastFeather",
+	"FlyingFeather",
+	"WaterDust",
+	"EarthDust",
+	"WindDust",
+	"FireDust",
+	"Medal",
+	"Amber",
+	"Experience",
+]
+
 function start() {
 	let petTable = $("#petTable");
 	petList.forEach(pet => {
@@ -331,35 +328,39 @@ function start() {
 	tdFh.append(hideHeroInput).append(hideHeroInputLabel);
 	heroTable.append(totalHero).append(tdFh);
 
-	let equipamentTable = $("#equipamentTable");
-	Object.keys(lookUpEquipaments).forEach(item => {
-		let tr = $("<tr></tr>").addClass("Equipament");
+	let equipmentTable = $("#equipmentTable");
+	Object.keys(lookUpEquipments).forEach(item => {
+		let tr = $("<tr></tr>").addClass("Equipment");
 		let th = $("<th></th>");
 		let label = $("<label></label>").attr("for", "in" + item)
 			.text(item);
 		th.append(label);
 		let td0 = $("<td></td>");
 		let input = $("<input></input>").attr("type", "number")
-			.attr("min", 0).attr("max", lookUpEquipaments[item][25][1])
-			.attr("step", lookUpEquipaments[item][2][1] - lookUpEquipaments[item][1][1])
+			.attr("min", 0).attr("max", lookUpEquipments[item][25][1])
+			.attr("step", lookUpEquipments[item][2][1] - lookUpEquipments[item][1][1])
 			.attr("id", "in" + item)
 			.attr("name", "in" + item)
 			.val(localStorageGetItem(item + "Bonus", 0));
-		input.change(onChangeEquipamentBonus);
+		input.change(onChangeEquipmentBonus);
 		td0.append(input);
 		let td1 = $("<td></td>").attr("id", "out" + item + "Level").text("NaN");
 		let td2 = $("<td></td>").attr("id", "out" + item + "Cost").text("NaN").addClass("Amber");
 		let td3 = $("<td></td>").attr("id", "out" + item + "Amber").text("NaN").addClass("Amber");
 		let td4 = $("<td></td>").attr("id", "out" + item + "AmberSpent").text("NaN").addClass("Amber");
 		tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4);
-		equipamentTable.append(tr);
+		equipmentTable.append(tr);
 	});
-	let totalEquipament = $("<tr class='header'><th>Total</th><td colspan='3'></td><td id='outTotalAmber'>NaN</td><td id='outTotalAmberSpent'>NaN</td></tr>");
-	equipamentTable.append(totalEquipament);
+	let totalEquipment = $("<tr class='header'><th>Total</th><td colspan='3'></td><td id='outTotalAmber'>NaN</td><td id='outTotalAmberSpent'>NaN</td></tr>");
+	equipmentTable.append(totalEquipment);
+	currencies.forEach(currency => {
+			$("#storage" + currency).val(localStorageGetItem("storage" + currency, 0));
+		}
+	)
 
 	onChangePetBond();
 	onChangePetStars();
-	onChangeEquipamentBonus();
+	onChangeEquipmentBonus();
 	onChangeHeroStars();
 	onChangeHeroLevels();
 	petTab();
@@ -467,16 +468,16 @@ function onChangeHeroLevels(event) {
 	$("#outTotalHeroExperienceNeeded").text(experienceNeededTotal.toLocaleString());
 }
 
-function onChangeEquipamentBonus(event) {
+function onChangeEquipmentBonus(event) {
 	let lvlTotal = 0;
 	let amberTotal = 0;
 	let amberSpentTotal = 0;
-	Object.keys(lookUpEquipaments).forEach(item => {
+	Object.keys(lookUpEquipments).forEach(item => {
 		localStorage.setItem(item + "Bonus", Number($("#in" + item).val()));
-		let step = lookUpEquipaments[item][2][1] - lookUpEquipaments[item][1][1];
+		let step = lookUpEquipments[item][2][1] - lookUpEquipments[item][1][1];
 		let lvl = (Number($("#in" + item).val()) * 10) / (step * 10);
 		lvlTotal += lvl;
-		let cost = lookUpEquipaments[item][lvl][0];
+		let cost = lookUpEquipments[item][lvl][0];
 		let amber = calcAmber(item, lvl);
 		let amberSpent = calcAmberSpent(item, lvl);
 		amberTotal += amber;
@@ -495,8 +496,15 @@ function onChangeEquipamentBonus(event) {
 	});
 	$("#outTotalAmber").text(amberTotal.toLocaleString());
 	$("#outTotalAmberSpent").text(amberSpentTotal.toLocaleString());
-	let lvlTotalWidth = (lvlTotal / (Object.keys(lookUpEquipaments).length * 25)) * 100
-	$("#equipamentBar div").attr("style", "width:" + lvlTotalWidth + "%;").text("+" + lvlTotal + "%");
+	let lvlTotalWidth = (lvlTotal / (Object.keys(lookUpEquipments).length * 25)) * 100
+	$("#equipmentBar div").attr("style", "width:" + lvlTotalWidth + "%;").text("+" + lvlTotal + "%");
+}
+
+function onChangeStorage(event) {
+	currencies.forEach(currency => {
+			localStorage.setItem("storage" + currency, $("#storage" + currency).val());
+		}
+	)
 }
 
 function calcMedals(bond) {
@@ -555,8 +563,8 @@ function calcExperience(experience) {
 
 function calcAmber(item, lvl) {
 	let result = 0;
-	for (let s = Number(lvl); s < lookUpEquipaments[item].length; s++) {
-		result += lookUpEquipaments[item][s][0];
+	for (let s = Number(lvl); s < lookUpEquipments[item].length; s++) {
+		result += lookUpEquipments[item][s][0];
 	}
 	return result;
 }
@@ -564,7 +572,7 @@ function calcAmber(item, lvl) {
 function calcAmberSpent(item, lvl) {
 	let result = 0;
 	for (let s = 0; s < Number(lvl); s++) {
-		result += lookUpEquipaments[item][s][0];
+		result += lookUpEquipments[item][s][0];
 	}
 	return result;
 }
@@ -594,28 +602,45 @@ function formatTime(secs) {
 function petTab() {
 	$("#petTable").show();
 	$("#heroTable").hide();
-	$("#equipamentTable").hide();
+	$("#equipmentTable").hide();
+	$("#storageTable").hide();
 	$("#petTabButton").addClass("selected");
 	$("#heroTabButton").removeClass();
-	$("#equipamentTabButton").removeClass();
+	$("#equipmentTabButton").removeClass();
+	$("#storageTabButton").removeClass();
 }
 
 function heroTab() {
 	$("#petTable").hide();
 	$("#heroTable").show();
-	$("#equipamentTable").hide();
+	$("#equipmentTable").hide();
+	$("#storageTable").hide();
 	$("#petTabButton").removeClass();
 	$("#heroTabButton").addClass("selected");
-	$("#equipamentTabButton").removeClass();
+	$("#equipmentTabButton").removeClass();
+	$("#storageTabButton").removeClass();
 }
 
-function equipamentTab() {
+function equipmentTab() {
 	$("#petTable").hide();
 	$("#heroTable").hide();
-	$("#equipamentTable").show();
+	$("#equipmentTable").show();
+	$("#storageTable").hide();
 	$("#petTabButton").removeClass();
 	$("#heroTabButton").removeClass();
-	$("#equipamentTabButton").addClass("selected");
+	$("#equipmentTabButton").addClass("selected");
+	$("#storageTabButton").removeClass();
+}
+
+function storageTab() {
+	$("#petTable").hide();
+	$("#heroTable").hide();
+	$("#equipmentTable").hide();
+	$("#storageTable").show();
+	$("#petTabButton").removeClass();
+	$("#heroTabButton").removeClass();
+	$("#equipmentTabButton").removeClass();
+	$("#storageTabButton").addClass("selected");
 }
 
 function hidePet(event) {

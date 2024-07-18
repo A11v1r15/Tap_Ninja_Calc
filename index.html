@@ -13,7 +13,8 @@
         <h1>TAP NINJA CALC</h1>
         <div id="main">
             <nav id="tabs">
-                <button id="equipamentTabButton" onclick="equipamentTab()">Equipament</button>
+                <button id="storageTabButton" onclick="storageTab()">Storage</button>
+                <button id="equipmentTabButton" onclick="equipmentTab()">Equipment</button>
                 <button id="heroTabButton" onclick="heroTab()">Heroes</button>
                 <button id="petTabButton" onclick="petTab()">Pets</button>
             </nav>
@@ -28,7 +29,7 @@
                     <th>Feathers needed</th>
                 </tr>
             </table>
-            <table id="equipamentTable">
+            <table id="equipmentTable">
                 <tr class="header">
                     <th>Item</th>
                     <th>Bonus</th>
@@ -38,7 +39,7 @@
                     <th>Amber spent</th>
                 </tr>
                 <tr>
-                    <td colspan="6" id="equipamentBar"><div style="width:0%" class="Elixir">+NaN%</div></td>
+                    <td colspan="6" id="equipmentBar"><div style="width:0%" class="Elixir">+NaN%</div></td>
                 </tr>
             </table>
             <table id="heroTable">
@@ -48,6 +49,28 @@
                     <th>Dust needed</th>
                     <th>Level</th>
                     <th title="to lvl 50, due to WIP">Experience needed</th>
+                </tr>
+            </table>
+            <table id="storageTable">
+                <tr class="Critter">
+                    <td class="Feather"><input type="number" min="0" id="storageCritterFeather" onchange="onChangeStorage()" title="Critter Feather"></td>
+                    <td class="Water Dust"><input type="number" min="0" id="storageWaterDust" onchange="onChangeStorage()" title="Water Dust"></td>
+                </tr>
+                <tr class="Beast">
+                    <td class="Feather"><input type="number" min="0" id="storageBeastFeather" onchange="onChangeStorage()" title="Beast Feather"></td>
+                    <td class="Earth Dust"><input type="number" min="0" id="storageEarthDust" onchange="onChangeStorage()" title="Earth Dust"></td>
+                </tr>
+                <tr class="Flying">
+                    <td class="Feather"><input type="number" min="0" id="storageFlyingFeather" onchange="onChangeStorage()" title="Flying Feather"></td>
+                    <td class="Wind Dust"><input type="number" min="0" id="storageWindDust" onchange="onChangeStorage()" title="Wind Dust"></td>
+                </tr>
+                <tr>
+                    <td class="Medal"><input type="number" min="0" id="storageMedal" onchange="onChangeStorage()" title="Medal"></td>
+                    <td class="Fire Dust"><input type="number" min="0" id="storageFireDust" onchange="onChangeStorage()" title="Fire Dust"></td>
+                </tr>
+                <tr>
+                    <td class="Amber"><input type="number" min="0" id="storageAmber" onchange="onChangeStorage()" title="Amber"></td>
+                    <td class="Experience"><input type="number" min="0" id="storageExperience" onchange="onChangeStorage()" title="Experience"></td>
                 </tr>
             </table>
         </div>
