@@ -1,22 +1,51 @@
 const petList = [
-	["Bunny"    ,"Critter"],
-	["Mouse"    ,"Critter"],
-	["Hedgehog" ,"Critter"],
-	["Snake"    ,"Critter"],
-	["Frog"     ,"Critter"],
-	["Squirrel" ,"Critter"],
-	["Cat"      ,"Beast"  ],
-	["Dog"      ,"Beast"  ],
-	["Fox"      ,"Beast"  ],
-	["Panda"    ,"Beast"  ],
-	["Turtle"   ,"Beast"  ],
-	["Racoon"   ,"Beast"  ],
-	["Chicken"  ,"Flying" ],
-	["Crane"    ,"Flying" ],
-	["Raven"    ,"Flying" ],
-	["Dragonfly","Flying" ],
-	["Dragon"   ,"Flying" ],
-	["Parrot"   ,"Flying" ]
+	["Bunny"     , "Critter"],
+	["Mouse"     , "Critter"],
+	["Hedgehog"  , "Critter"],
+	["Snake"     , "Critter"],
+	["Frog"      , "Critter"],
+	["Squirrel"  , "Critter"],
+	["Cat"       , "Beast"  ],
+	["Dog"       , "Beast"  ],
+	["Fox"       , "Beast"  ],
+	["Panda"     , "Beast"  ],
+	["Turtle"    , "Beast"  ],
+	["Racoon"    , "Beast"  ],
+	["Chicken"   , "Flying" ],
+	["Crane"     , "Flying" ],
+	["Raven"     , "Flying" ],
+	["Dragonfly" , "Flying" ],
+	["Dragonling", "Flying" ],
+	["Parrot"    , "Flying" ]
+];
+
+const tintList = [
+//  Name          Enemy Challenge Amber
+	["Bunny"     , "Critter", true , false, false],
+	["Mouse"     , "Critter", false, true , false],
+	["Capybara"  , "Critter", true , false, false],
+	["Hedgehog"  , "Critter", false, false, true ],
+	["Snake"     , "Critter", true , false, false],
+	["Frog"      , "Critter", false, true , true ],
+	["Squirrel"  , "Critter", false, false, true ],
+	["Cat"       , "Beast"  , true , true , true ],
+	["LilCat"    , "Beast"  , true , true , true ],
+	["Dog"       , "Beast"  , true , false, true ],
+	["LilDog"    , "Beast"  , true , false, true ],
+	["Wolf"      , "Beast"  , true , false, true ],
+	["Fox"       , "Beast"  , false, false, true ],
+	["LilFox"    , "Beast"  , false, false, true ],
+	["Panda"     , "Beast"  , false, false, true ],
+	["Turtle"    , "Beast"  , true , true , false],
+	["Racoon"    , "Beast"  , false, true , false],
+	["Chicken"   , "Flying" , false, true , false],
+	["Duck"      , "Flying" , false, true , true ],
+	["Crane"     , "Flying" , false, false, true ],
+	["Raven"     , "Flying" , false, true , false],
+	["Dragonfly" , "Flying" , true , true , true ],
+	["Dragonling", "Flying" , false, true , false],
+	["LuckDragon", "Flying" , false, true , true ],
+	["Parrot"    , "Flying" , true , false, false]
 ];
 
 const heroList = [
@@ -282,7 +311,7 @@ function start() {
 		tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
 		petTable.append(tr);
 	});
-	let totalPet = $("<tr class='header'><th>Total</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalPetStars'>NaN</td><td id='outTotalFeathers'>NaN</td></tr>");
+	let totalPet = $("<tr class='header'><th>Total:</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalPetStars'>NaN</td><td id='outTotalFeathers'>NaN</td></tr>");
 	let hidePetInput = $("<input></input>").attr("type", "checkbox").attr("id", "hidePetCheckbox")
 		.change(hidePet).prop("checked", localStorageGetItem("HidePet", 'false') == 'true').change();
 	let hidePetInputLabel = $("<label>").attr("for", "hidePetCheckbox").text("Hide non-obtained pets");
@@ -320,7 +349,7 @@ function start() {
 		tr.append(th).append(td0).append(td1).append(td2).append(td3);
 		heroTable.append(tr);
 	});
-	let totalHero = $("<tr class='header'><th>Total</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td><td id='outTotalHeroLevels'>NaN</td><td id='outTotalHeroExperienceNeeded'>NaN</td></tr>");
+	let totalHero = $("<tr class='header'><th>Total:</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td><td id='outTotalHeroLevels'>NaN</td><td id='outTotalHeroExperienceNeeded'>NaN</td></tr>");
 	let hideHeroInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideHeroCheckbox")
 		.change(hideHero).prop("checked", localStorageGetItem("HideHero", 'false') == 'true').change();
 	let hideHeroInputLabel = $("<label>").attr("for", "hideHeroCheckbox").text("Hide non-obtained heroes");
@@ -351,18 +380,66 @@ function start() {
 		tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4);
 		equipmentTable.append(tr);
 	});
-	let totalEquipment = $("<tr class='header'><th>Total</th><td colspan='3'></td><td id='outTotalAmber'>NaN</td><td id='outTotalAmberSpent'>NaN</td></tr>");
+	let totalEquipment = $("<tr class='header'><th>Total:</th><td colspan='3'></td><td id='outTotalAmber'>NaN</td><td id='outTotalAmberSpent'>NaN</td></tr>");
 	equipmentTable.append(totalEquipment);
 	currencies.forEach(currency => {
 			$("#storage" + currency).val(localStorageGetItem("storage" + currency, 0));
 		}
 	)
 
+	let tintTable = $("#tintTable");
+	tintList.forEach(tint => {
+		let tr = $("<tr></tr>").addClass(tint[1]);
+		let th = $("<th></th>");
+		let label = $("<label></label>").text(tint[0]);
+		th.append(label);
+		let td0 = $("<td></td>");
+		if(tint[2]){
+			let input0 = $("<input></input>").attr("type", "number")
+				.attr("min", 0).attr("max", 10000000)
+				.attr("id", "in" + tint[0] + "TintEnemies")
+				.attr("name", "in" + tint[0] + "TintEnemies")
+				.val(localStorageGetItem(tint[0] + "TintEnemies", 0));
+			input0.change(onChangeTint);
+			 td0.append(input0);
+		}
+		let td1 = $("<td></td>");
+		if(tint[3]){
+			let input1 = $("<input></input>").attr("type", "number")
+				.attr("min", 0).attr("max", 150)
+				.attr("id", "in" + tint[0] + "TintChallenges")
+				.attr("name", "in" + tint[0] + "TintChallenges")
+				.val(localStorageGetItem(tint[0] + "TintChallenges", 0));
+			input1.change(onChangeTint);
+			td1.append(input1);
+		}
+		let td2 = $("<td></td>");
+		if(tint[4]){
+			let input2 = $("<input></input>").attr("type", "number")
+				.attr("min", 0).attr("max", 15000)
+				.attr("id", "in" + tint[0] + "TintAmber")
+				.attr("name", "in" + tint[0] + "TintAmber")
+				.val(localStorageGetItem(tint[0] + "TintAmber", 0));
+			input2.change(onChangeTint);
+			td2.append(input2);
+		}
+		tr.append(th).append(td0).append(td1).append(td2);
+		tintTable.append(tr);
+	});
+	let totalTint = $("<tr class='header'><th>Total missing:</th><td id='outTotalTintEnemies'>NaN</td><td id='outTotalTintChallenges'>NaN</td><td id='outTotalTintAmber'>NaN</td></tr>");
+	let hideTintInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideTintCheckbox")
+		.change(hideTint).prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
+	let hideTintInputLabel = $("<label>").attr("for", "hideTintCheckbox").text("Hide completed tints");
+	let tdFt = $("<td colspan='5' style='text-align: left;'></td>");
+	tdFt.append(hideTintInput).append(hideTintInputLabel)
+	tintTable.append(totalTint).append(tdFt);
+
 	onChangePetBond();
 	onChangePetStars();
 	onChangeEquipmentBonus();
 	onChangeHeroStars();
 	onChangeHeroLevels();
+	onChangeTint();
 	petTab();
 	if (localStorageGetItem("noFunMode", 'false') == 'true') {
 		$("#noFunButton").click(funMode);
@@ -507,6 +584,44 @@ function onChangeStorage(event) {
 	)
 }
 
+function onChangeTint(event) {
+	let totalTintEnemies = 0;
+	let totalTintChallenges = 0;
+	let totalTintAmber = 0;
+	tintList.forEach(tint => {
+		if(tint[2]){
+			localStorage.setItem(tint[0] + "TintEnemies", $("#in" + tint[0] + "TintEnemies").val());
+			if($("#in" + tint[0] + "TintEnemies").val() == 10000000){
+				$("#in" + tint[0] + "TintEnemies").parent().addClass("Complete");
+			} else {
+				$("#in" + tint[0] + "TintEnemies").parent().removeClass();
+				totalTintEnemies += $("#in" + tint[0] + "TintEnemies").val() - 10000000;
+			}
+		}
+		if(tint[3]){
+			localStorage.setItem(tint[0] + "TintChallenges", $("#in" + tint[0] + "TintChallenges").val());
+			if($("#in" + tint[0] + "TintChallenges").val() == 150){
+				$("#in" + tint[0] + "TintChallenges").parent().addClass("Complete");
+			} else {
+				$("#in" + tint[0] + "TintChallenges").parent().removeClass();
+				totalTintChallenges += $("#in" + tint[0] + "TintChallenges").val() - 150;
+			}
+		}
+		if(tint[4]){
+			localStorage.setItem(tint[0] + "TintAmber", $("#in" + tint[0] + "TintAmber").val());
+			if($("#in" + tint[0] + "TintAmber").val() == 15000){
+				$("#in" + tint[0] + "TintAmber").parent().addClass("Complete");
+			} else {
+				$("#in" + tint[0] + "TintAmber").parent().removeClass();
+				totalTintAmber += $("#in" + tint[0] + "TintAmber").val() - 15000;
+			}
+		}
+	})
+	$("#outTotalTintEnemies").text((totalTintEnemies * -1).toLocaleString());
+	$("#outTotalTintChallenges").text((totalTintChallenges * -1).toLocaleString());
+	$("#outTotalTintAmber").text((totalTintAmber * -1).toLocaleString());
+}
+
 function calcMedals(bond) {
 	let result = 0;
 	for (let s = Number(bond); s < lookUpMedalsTimeFeathers.length; s++) {
@@ -604,10 +719,12 @@ function petTab() {
 	$("#heroTable").hide();
 	$("#equipmentTable").hide();
 	$("#storageTable").hide();
+	$("#tintTable").hide();
 	$("#petTabButton").addClass("selected");
 	$("#heroTabButton").removeClass();
 	$("#equipmentTabButton").removeClass();
 	$("#storageTabButton").removeClass();
+	$("#tintTabButton").removeClass();
 }
 
 function heroTab() {
@@ -615,10 +732,12 @@ function heroTab() {
 	$("#heroTable").show();
 	$("#equipmentTable").hide();
 	$("#storageTable").hide();
+	$("#tintTable").hide();
 	$("#petTabButton").removeClass();
 	$("#heroTabButton").addClass("selected");
 	$("#equipmentTabButton").removeClass();
 	$("#storageTabButton").removeClass();
+	$("#tintTabButton").removeClass();
 }
 
 function equipmentTab() {
@@ -626,10 +745,12 @@ function equipmentTab() {
 	$("#heroTable").hide();
 	$("#equipmentTable").show();
 	$("#storageTable").hide();
+	$("#tintTable").hide();
 	$("#petTabButton").removeClass();
 	$("#heroTabButton").removeClass();
 	$("#equipmentTabButton").addClass("selected");
 	$("#storageTabButton").removeClass();
+	$("#tintTabButton").removeClass();
 }
 
 function storageTab() {
@@ -637,10 +758,25 @@ function storageTab() {
 	$("#heroTable").hide();
 	$("#equipmentTable").hide();
 	$("#storageTable").show();
+	$("#tintTable").hide();
 	$("#petTabButton").removeClass();
 	$("#heroTabButton").removeClass();
 	$("#equipmentTabButton").removeClass();
 	$("#storageTabButton").addClass("selected");
+	$("#tintTabButton").removeClass();
+}
+
+function tintTab() {
+	$("#petTable").hide();
+	$("#heroTable").hide();
+	$("#equipmentTable").hide();
+	$("#storageTable").hide();
+	$("#tintTable").show();
+	$("#petTabButton").removeClass();
+	$("#heroTabButton").removeClass();
+	$("#equipmentTabButton").removeClass();
+	$("#storageTabButton").removeClass();
+	$("#tintTabButton").addClass("selected");
 }
 
 function hidePet(event) {
@@ -658,6 +794,31 @@ function hideHero(event) {
 			localStorage.setItem("HideHero", event.target.checked);
 			$("#in" + hero[0] + "Stars").parent().parent().toggle(!event.target.checked);
 		}
+	})
+}
+
+function hideTint(event) {
+	let checked = event.target.checked;
+	tintList.forEach(tint => {
+		let nonComplete = false;
+		if(tint[2]){
+			if(Number($("#in" + tint[0] + "TintEnemies").val()) != 10000000){
+				nonComplete = true;
+			}
+		}
+		if(tint[3]){
+			if(Number($("#in" + tint[0] + "TintChallenges").val()) != 150){
+				nonComplete = true;
+			}
+		}
+		if(tint[4]){
+			if(Number($("#in" + tint[0] + "TintAmber").val()) != 15000){
+				nonComplete = true;
+			}
+		}
+		$("#in" + tint[0] + "TintEnemies").parent().parent().toggle(!(!nonComplete && checked));
+		$("#in" + tint[0] + "TintChallenges").parent().parent().toggle(!(!nonComplete && checked));
+		$("#in" + tint[0] + "TintAmber").parent().parent().toggle(!(!nonComplete && checked));
 	})
 }
 

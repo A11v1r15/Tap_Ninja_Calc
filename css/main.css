@@ -105,6 +105,13 @@ th{
     float: right;
 }
 
+.Complete::after{
+    content: "✅";
+    display: block;
+    float: right;
+    font-size: 0.8em;
+}
+
 .Medal::after{
     content: "";
     display: block;
@@ -142,6 +149,15 @@ th{
 }
 .Critter input{
     background-color: #A2E26E;
+    float: left;
+}
+.Critter th::before{
+    background: url("../img/Critter.png") no-repeat;
+    content: "";
+    display: block;
+    width: 17px;
+    height: 16px;
+    float: left;
 }
 
 .Beast{
@@ -150,6 +166,15 @@ th{
 }
 .Beast input{
     background-color: #EF8036;
+    float: left;
+}
+.Beast th::before{
+    background: url("../img/Beast.png") no-repeat;
+    content: "";
+    display: block;
+    width: 17px;
+    height: 16px;
+    float: left;
 }
 
 .Flying{
@@ -158,6 +183,15 @@ th{
 }
 .Flying input{
     background-color: #FFE659;
+    float: left;
+}
+.Flying th::before{
+    background: url("../img/Flying.png") no-repeat;
+    content: "";
+    display: block;
+    width: 17px;
+    height: 16px;
+    float: left;
 }
 
 .Feather::after{
@@ -175,31 +209,6 @@ th{
 }
 .Flying .Feather::after{
     background: url("../img/Flying Feather.png") no-repeat;
-}
-
-.Critter th::before{
-    background: url("../img/Critter.png") no-repeat;
-    content: "";
-    display: block;
-    width: 22px;
-    height: 22px;
-    float: left;
-}
-.Beast th::before{
-    background: url("../img/Beast.png") no-repeat;
-    content: "";
-    display: block;
-    width: 22px;
-    height: 22px;
-    float: left;
-}
-.Flying th::before{
-    background: url("../img/Flying.png") no-repeat;
-    content: "";
-    display: block;
-    width: 22px;
-    height: 22px;
-    float: left;
 }
 
 .Legendary{
