@@ -462,17 +462,19 @@ function onChangePetBond(event) {
 	let medalsSpentTotal = 0;
 	petList.forEach(pet => {
 		localStorage.setItem(pet[0] + "Bond", $("#in" + pet[0] + "Bond").val());
-		bondTotal += Number($("#in" + pet[0] + "Bond").val());
-		let medalResult = calcMedals($("#in" + pet[0] + "Bond").val());
-		$("#out" + pet[0] + "Medals").text(medalResult);
-		medalsTotal += medalResult;
-		let timeResult = calcTime($("#in" + pet[0] + "Bond").val());
-		$("#out" + pet[0] + "Time").text(formatTime(timeResult));
-		$("#out" + pet[0] + "Time").attr("title", "About " + Math.ceil(timeResult / 86400) + " days");
-		timeTotal += timeResult;
-		let medalsSpentResult = calcMedalsSpent($("#in" + pet[0] + "Bond").val());
-		$("#out" + pet[0] + "MedalsSpent").text(medalsSpentResult);
-		medalsSpentTotal += medalsSpentResult;
+		if ($("#in" + pet[0] + "Bond").is(":visible")){
+			bondTotal += Number($("#in" + pet[0] + "Bond").val());
+			let medalResult = calcMedals($("#in" + pet[0] + "Bond").val());
+			$("#out" + pet[0] + "Medals").text(medalResult);
+			medalsTotal += medalResult;
+			let timeResult = calcTime($("#in" + pet[0] + "Bond").val());
+			$("#out" + pet[0] + "Time").text(formatTime(timeResult));
+			$("#out" + pet[0] + "Time").attr("title", "About " + Math.ceil(timeResult / 86400) + " days");
+			timeTotal += timeResult;
+			let medalsSpentResult = calcMedalsSpent($("#in" + pet[0] + "Bond").val());
+			$("#out" + pet[0] + "MedalsSpent").text(medalsSpentResult);
+			medalsSpentTotal += medalsSpentResult;
+		}
 	});
 	$("#outTotalBond").text(bondTotal);
 	$("#outTotalMedals").text(medalsTotal.toLocaleString());
@@ -497,13 +499,15 @@ function onChangePetStars(event) {
 		feathers[pet[1]] = 0;
 	});
 	petList.forEach(pet => {
-		localStorage.setItem(pet[0] + "Stars", $("#in" + pet[0] + "Stars").val());
-		starsTotal += Number($("#in" + pet[0] + "Stars").val());
-		let feathersResult = calcFeathers($("#in" + pet[0] + "Stars").val());
-		$("#out" + pet[0] + "Feathers").text(feathersResult.toLocaleString());
-		feathers["Total"] += feathersResult;
-		feathers[pet[1]] += feathersResult;
-		$("#in" + pet[0] + "Stars").removeClass().addClass("S" + $("#in" + pet[0] + "Stars").val());
+		if ($("#in" + pet[0] + "Stars").is(":visible")){
+			localStorage.setItem(pet[0] + "Stars", $("#in" + pet[0] + "Stars").val());
+			starsTotal += Number($("#in" + pet[0] + "Stars").val());
+			let feathersResult = calcFeathers($("#in" + pet[0] + "Stars").val());
+			$("#out" + pet[0] + "Feathers").text(feathersResult.toLocaleString());
+			feathers["Total"] += feathersResult;
+			feathers[pet[1]] += feathersResult;
+			$("#in" + pet[0] + "Stars").removeClass().addClass("S" + $("#in" + pet[0] + "Stars").val());
+		}
 	});
 	$("#outTotalPetStars").text(starsTotal);
 	$("#outTotalFeathers").text(feathers["Total"].toLocaleString());
@@ -524,13 +528,15 @@ function onChangeHeroStars(event) {
 		dust[hero[2]] = 0;
 	});
 	heroList.forEach(hero => {
-		localStorage.setItem(hero[0] + "Stars", $("#in" + hero[0] + "Stars").val());
-		starsTotal += Number($("#in" + hero[0] + "Stars").val());
-		let dustResult = calcDust($("#in" + hero[0] + "Stars").val(), hero[1]);
-		$("#out" + hero[0] + "Dust").text(dustResult.toLocaleString());
-		dust["Total"] += dustResult;
-		dust[hero[2]] += dustResult;
-		$("#in" + hero[0] + "Stars").removeClass().addClass("S" + $("#in" + hero[0] + "Stars").val());
+		if ($("#in" + hero[0] + "Stars").is(":visible")){
+			localStorage.setItem(hero[0] + "Stars", $("#in" + hero[0] + "Stars").val());
+			starsTotal += Number($("#in" + hero[0] + "Stars").val());
+			let dustResult = calcDust($("#in" + hero[0] + "Stars").val(), hero[1]);
+			$("#out" + hero[0] + "Dust").text(dustResult.toLocaleString());
+			dust["Total"] += dustResult;
+			dust[hero[2]] += dustResult;
+			$("#in" + hero[0] + "Stars").removeClass().addClass("S" + $("#in" + hero[0] + "Stars").val());
+		}
 	});
 	$("#outTotalHeroStars").text(starsTotal);
 	$("#outTotalDust").text(dust["Total"].toLocaleString());
@@ -546,11 +552,13 @@ function onChangeHeroLevels(event) {
 	let levelsTotal = 0;
 	let experienceNeededTotal = 0;
 	heroList.forEach(hero => {
-		localStorage.setItem(hero[0] + "Level", $("#in" + hero[0] + "Level").val());
-		levelsTotal += Number($("#in" + hero[0] + "Level").val());
-		let experienceNeeded = calcExperience($("#in" + hero[0] + "Level").val());
-		$("#out" + hero[0] + "ExperienceNeeded").text(experienceNeeded.toLocaleString());
-		experienceNeededTotal += experienceNeeded;
+		if ($("#in" + hero[0] + "Level").is(":visible")){
+			localStorage.setItem(hero[0] + "Level", $("#in" + hero[0] + "Level").val());
+			levelsTotal += Number($("#in" + hero[0] + "Level").val());
+			let experienceNeeded = calcExperience($("#in" + hero[0] + "Level").val());
+			$("#out" + hero[0] + "ExperienceNeeded").text(experienceNeeded.toLocaleString());
+			experienceNeededTotal += experienceNeeded;
+		}
 	});
 	$("#outTotalHeroLevels").text(levelsTotal);
 	$("#outTotalHeroExperienceNeeded").text(experienceNeededTotal.toLocaleString());
@@ -798,6 +806,8 @@ function hidePet(event) {
 			$("#in" + pet[0] + "Stars").parent().parent().toggle(!event.target.checked);
 		}
 	})
+	onChangePetBond();
+	onChangePetStars();
 }
 
 function hideHero(event) {
@@ -807,6 +817,8 @@ function hideHero(event) {
 			$("#in" + hero[0] + "Stars").parent().parent().toggle(!event.target.checked);
 		}
 	})
+	onChangeHeroStars();
+	onChangeHeroLevels();
 }
 
 function hideTint(event) {
