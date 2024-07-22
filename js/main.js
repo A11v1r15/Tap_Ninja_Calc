@@ -256,8 +256,8 @@ const heroLevelUpExperienceCost = [ 0,
 	  700,   800,   900,  1000,  1200,  1400,  1600,  1800,  2000,  2250,
 	 2500,  2750,  3000,  3500,  4000,  4500,  5000,  6000,  7000,  8000,
 	 9000, 10000, 12000, 14000, 16000, 18000, 20000, 22000, 24000, 26000,
-  	28000, 30000, 32500, 35000, 37500, 40000, 42500, 45000, 47500, 50000,
-//	 0x51,  0x52,  0x53,  0x54,  0x55,  0x56,  0x57,  0x58,  0x59,  0x60,
+	28000, 30000, 32500, 35000, 37500, 40000, 42500, 45000, 47500, 50000,
+	52500, 55000, 57500, 60000, 62500, 65000, 67500, 70000, 72500, 75000,
 //	 0x61,  0x62,  0x63,  0x64,  0x65,  0x66,  0x67,  0x68,  0x69,  0x70,
 //	 0x71,  0x72,  0x73,  0x74,  0x75,  0x76,  0x77,  0x78,  0x79,  0x80,
 //	 0x81,  0x82,  0x83,  0x84,  0x85,  0x86,  0x87,  0x88,  0x89,  0x90,
@@ -434,6 +434,11 @@ function start() {
 	tdFt.append(hideTintInput).append(hideTintInputLabel)
 	tintTable.append(totalTint).append(tdFt);
 
+	$("#PetBondCap").val(localStorageGetItem("PetBondCap", 15));
+	$("#PetStarCap").val(localStorageGetItem("PetStarCap", 12));
+	$("#HeroStarCap").val(localStorageGetItem("HeroStarCap", 12));
+	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 60));
+
 	onChangePetBond();
 	onChangePetStars();
 	onChangeEquipmentBonus();
@@ -450,12 +455,13 @@ function start() {
 }
 
 function onChangePetBond(event) {
+	localStorage.setItem("PetBondCap", $("#PetBondCap").val());
 	let bondTotal = 0;
 	let medalsTotal = 0;
 	let timeTotal = 0;
 	let medalsSpentTotal = 0;
 	petList.forEach(pet => {
-		localStorage.setItem(pet[0] + "Bond", Number($("#in" + pet[0] + "Bond").val()));
+		localStorage.setItem(pet[0] + "Bond", $("#in" + pet[0] + "Bond").val());
 		bondTotal += Number($("#in" + pet[0] + "Bond").val());
 		let medalResult = calcMedals($("#in" + pet[0] + "Bond").val());
 		$("#out" + pet[0] + "Medals").text(medalResult);
@@ -482,6 +488,7 @@ function onChangePetBond(event) {
 }
 
 function onChangePetStars(event) {
+	localStorage.setItem("PetStarCap", $("#PetStarCap").val());
 	let starsTotal = 0;
 	let feathers = {};
 	feathers["Total"] = 0;
@@ -489,7 +496,7 @@ function onChangePetStars(event) {
 		feathers[pet[1]] = 0;
 	});
 	petList.forEach(pet => {
-		localStorage.setItem(pet[0] + "Stars", Number($("#in" + pet[0] + "Stars").val()));
+		localStorage.setItem(pet[0] + "Stars", $("#in" + pet[0] + "Stars").val());
 		starsTotal += Number($("#in" + pet[0] + "Stars").val());
 		let feathersResult = calcFeathers($("#in" + pet[0] + "Stars").val());
 		$("#out" + pet[0] + "Feathers").text(feathersResult.toLocaleString());
@@ -507,6 +514,7 @@ function onChangePetStars(event) {
 }
 
 function onChangeHeroStars(event) {
+	localStorage.setItem("HeroStarCap", $("#HeroStarCap").val());
 	let starsTotal = 0;
 	let dust = {};
 	dust["Total"] = 0;
@@ -514,7 +522,7 @@ function onChangeHeroStars(event) {
 		dust[hero[2]] = 0;
 	});
 	heroList.forEach(hero => {
-		localStorage.setItem(hero[0] + "Stars", Number($("#in" + hero[0] + "Stars").val()));
+		localStorage.setItem(hero[0] + "Stars", $("#in" + hero[0] + "Stars").val());
 		starsTotal += Number($("#in" + hero[0] + "Stars").val());
 		let dustResult = calcDust($("#in" + hero[0] + "Stars").val(), hero[1]);
 		$("#out" + hero[0] + "Dust").text(dustResult.toLocaleString());
@@ -532,10 +540,11 @@ function onChangeHeroStars(event) {
 }
 
 function onChangeHeroLevels(event) {
+	localStorage.setItem("HeroLevelCap", $("#HeroLevelCap").val());
 	let levelsTotal = 0;
 	let experienceNeededTotal = 0;
 	heroList.forEach(hero => {
-		localStorage.setItem(hero[0] + "Level", Number($("#in" + hero[0] + "Level").val()));
+		localStorage.setItem(hero[0] + "Level", $("#in" + hero[0] + "Level").val());
 		levelsTotal += Number($("#in" + hero[0] + "Level").val());
 		let experienceNeeded = calcExperience($("#in" + hero[0] + "Level").val());
 		$("#out" + hero[0] + "ExperienceNeeded").text(experienceNeeded.toLocaleString());
@@ -550,7 +559,7 @@ function onChangeEquipmentBonus(event) {
 	let amberTotal = 0;
 	let amberSpentTotal = 0;
 	Object.keys(lookUpEquipments).forEach(item => {
-		localStorage.setItem(item + "Bonus", Number($("#in" + item).val()));
+		localStorage.setItem(item + "Bonus", $("#in" + item).val());
 		let step = lookUpEquipments[item][2][1] - lookUpEquipments[item][1][1];
 		let lvl = (Number($("#in" + item).val()) * 10) / (step * 10);
 		lvlTotal += lvl;
@@ -624,7 +633,7 @@ function onChangeTint(event) {
 
 function calcMedals(bond) {
 	let result = 0;
-	for (let s = Number(bond); s < lookUpMedalsTimeFeathers.length; s++) {
+	for (let s = Number(bond); s < $("#PetBondCap").val(); s++) {
 		result += lookUpMedalsTimeFeathers[s][0];
 	}
 	return result;
@@ -640,7 +649,7 @@ function calcMedalsSpent(bond) {
 
 function calcTime(bond) {
 	let result = 0;
-	for (let s = Number(bond); s < lookUpMedalsTimeFeathers.length; s++) {
+	for (let s = Number(bond); s < $("#PetBondCap").val(); s++) {
 		result += lookUpMedalsTimeFeathers[s][1];
 	}
 	return result;
@@ -648,7 +657,7 @@ function calcTime(bond) {
 
 function calcFeathers(stars) {
 	let result = 0;
-	for (let s = Number(stars); s < lookUpMedalsTimeFeathers.length; s++) {
+	for (let s = Number(stars); s < $("#PetStarCap").val(); s++) {
 		result += lookUpMedalsTimeFeathers[s][2];
 	}
 	return result;
@@ -662,7 +671,7 @@ function calcDust(stars, rarity) {
 		case "Epic": rarityIndex = 1; break;
 		case "Legendary": rarityIndex = 2; break;
 	}
-	for (let s = Number(stars); s < lookUpDustRareEpicLegendary.length; s++) {
+	for (let s = Number(stars); s < $("#HeroStarCap").val(); s++) {
 		result += lookUpDustRareEpicLegendary[s][rarityIndex];
 	}
 	return result;
@@ -670,7 +679,7 @@ function calcDust(stars, rarity) {
 
 function calcExperience(experience) {
 	let result = 0;
-	for (let s = Number(experience); s < 50; s++) {
+	for (let s = Number(experience); s < $("#HeroLevelCap").val(); s++) {
 		result += heroLevelUpExperienceCost[s];
 	}
 	return result;
@@ -695,7 +704,8 @@ function calcAmberSpent(item, lvl) {
 function localStorageGetItem(key, value) {
 	if (localStorage.getItem(key) == null ||
 		localStorage.getItem(key) == 'NaN' ||
-		localStorage.getItem(key) == '')
+		localStorage.getItem(key) == '' ||
+		localStorage.getItem(key) == 'undefined')
 		return value;
 	return localStorage.getItem(key);
 }

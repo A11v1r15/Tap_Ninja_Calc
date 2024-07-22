@@ -14,8 +14,8 @@
         <div id="main">
             <nav id="tabs">
                 <button id="storageTabButton" onclick="storageTab()">Storage</button>
-                <button id="tintTabButton" onclick="tintTab()">Tint</button>
-                <button id="equipmentTabButton" onclick="equipmentTab()">Equipment</button>
+                <button id="tintTabButton" onclick="tintTab()">Tints</button>
+                <button id="equipmentTabButton" onclick="equipmentTab()">Equipments</button>
                 <button id="heroTabButton" onclick="heroTab()">Heroes</button>
                 <button id="petTabButton" onclick="petTab()">Pets</button>
             </nav>
@@ -23,11 +23,11 @@
                 <tr class="header">
                     <th>Pet</th>
                     <th>Bond</th>
-                    <th>Medals needed</th>
+                    <th><label for="PetBondCap">Medals needed to</label><input type="number" min="0" max="15" id="PetBondCap" onchange="onChangePetBond()"></th>
                     <th title='With "Tamer" and "Forming a Bond"'>Time needed</th>
                     <th>Medals spent</th>
                     <th>Stars</th>
-                    <th>Feathers needed</th>
+                    <th><label for="PetStarCap">Feathers needed to</label><input type="number" min="0" max="12" id="PetStarCap" onchange="onChangePetStars()"></th>
                 </tr>
             </table>
             <table id="equipmentTable">
@@ -47,9 +47,9 @@
                 <tr class="header">
                     <th>Hero</th>
                     <th>Stars</th>
-                    <th>Dust needed</th>
+                    <th><label for="HeroStarCap">Dust needed to</label><input type="number" min="0" max="12" id="HeroStarCap" onchange="onChangeHeroStars()"></th>
                     <th>Level</th>
-                    <th title="to lvl 50, due to WIP">Experience needed</th>
+                    <th title="up to lvl 60, due to WIP"><label for="HeroLevelCap">Experience needed to</label><input type="number" min="0" max="60" id="HeroLevelCap" onchange="onChangeHeroLevels()"></th>
                 </tr>
             </table>
             <table id="tintTable">
