@@ -489,6 +489,7 @@ function onChangePetBond(event) {
 
 function onChangePetStars(event) {
 	localStorage.setItem("PetStarCap", $("#PetStarCap").val());
+	$("#PetStarCap").removeClass().addClass("S" + $("#PetStarCap").val());
 	let starsTotal = 0;
 	let feathers = {};
 	feathers["Total"] = 0;
@@ -515,6 +516,7 @@ function onChangePetStars(event) {
 
 function onChangeHeroStars(event) {
 	localStorage.setItem("HeroStarCap", $("#HeroStarCap").val());
+	$("#HeroStarCap").removeClass().addClass("S" + $("#HeroStarCap").val());
 	let starsTotal = 0;
 	let dust = {};
 	dust["Total"] = 0;
