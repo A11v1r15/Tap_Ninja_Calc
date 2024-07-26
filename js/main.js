@@ -439,6 +439,8 @@ function start() {
 	$("#HeroStarCap").val(localStorageGetItem("HeroStarCap", 12));
 	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 60));
 
+  $("#tintTable .header").first().children().eq(1).text((10000000).toLocaleString() + " Enemies");
+    $("#tintTable .header").first().children().eq(3).text((15000).toLocaleString() + " Amber");
 	onChangePetBond();
 	onChangePetStars();
 	onChangeEquipmentBonus();
@@ -636,9 +638,9 @@ function onChangeTint(event) {
 			}
 		}
 	})
-	$("#outTotalTintEnemies").text((totalTintEnemies * -1).toLocaleString());
-	$("#outTotalTintChallenges").text((totalTintChallenges * -1).toLocaleString());
-	$("#outTotalTintAmber").text((totalTintAmber * -1).toLocaleString());
+	$("#outTotalTintEnemies").text((totalTintEnemies * -1).toLocaleString(undefined, {signDisplay: "negative"}));
+	$("#outTotalTintChallenges").text((totalTintChallenges * -1).toLocaleString(undefined, {signDisplay: "negative"}));
+	$("#outTotalTintAmber").text((totalTintAmber * -1).toLocaleString(undefined, {signDisplay: "negative"}));
 }
 
 function calcMedals(bond) {
@@ -715,7 +717,8 @@ function localStorageGetItem(key, value) {
 	if (localStorage.getItem(key) == null ||
 		localStorage.getItem(key) == 'NaN' ||
 		localStorage.getItem(key) == '' ||
-		localStorage.getItem(key) == 'undefined')
+		localStorage.getItem(key) == 'undefined' ||
+		localStorage.getItem(key) == undefined)
 		return value;
 	return localStorage.getItem(key);
 }
