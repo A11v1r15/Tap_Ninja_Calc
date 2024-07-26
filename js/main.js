@@ -338,7 +338,7 @@ function start() {
 			.text("NaN").addClass(hero[2]).addClass("Dust");
 		let td2 = $("<td></td>");
 		let input1 = $("<input></input>").attr("type", "number")
-			.attr("min", 0).attr("max", 50)
+			.attr("min", 0).attr("max", 100)
 			.attr("id", "in" + hero[0] + "Level")
 			.attr("name", "in" + hero[0] + "Level")
 			.val(localStorageGetItem(hero[0] + "Level", 0));
