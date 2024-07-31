@@ -1,14 +1,14 @@
 @font-face {
     font-family: "Born2bSporty";
-    src: url("../fonts/born2bsporty-fs.regular.otf") format('opentype');
-}
-
-body{
+    src: url("../fonts/born2bsporty-fs.regular.otf") format("opentype");
+  }
+  
+  body {
     font-family: "Born2bSporty";
     background-color: #75BCE2;
     color: #AD1D15;
-}
-body h1{
+  }
+  body h1 {
     margin: 1%;
     text-align: center;
     font-size: 4em;
@@ -18,9 +18,9 @@ body h1{
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-width: 0.005em;
     -webkit-text-stroke-color: #000000;
-}
-
-#main{
+  }
+  
+  #main {
     background-color: #000000;
     position: relative;
     margin: 20px auto;
@@ -28,387 +28,456 @@ body h1{
     padding: 10px;
     width: -moz-fit-content;
     width: fit-content;
-}
-#main label{
+  }
+  #main label {
     padding: 0px 3px;
-}
-#main td{
+  }
+  #main td {
     text-align: right;
-}
-
-#tabs{
+  }
+  
+  #tabs {
     position: absolute;
     height: 20px;
     margin-top: -28px;
     margin-left: -10px;
-}
-
-#equipmentBar{
+  }
+  
+  #equipmentBar {
     background-color: #181B26;
     color: #FFFFFF;
     text-align: left !important;
-}
-#equipmentBar div{
+  }
+  #equipmentBar div {
     background-color: #9927C0;
-}
-
-button{
+  }
+  
+  button {
     font-family: inherit;
     color: #FFFFFF;
     background-color: #3B4365;
-}
-button.selected{
+  }
+  button.selected {
     background-color: #000000;
-}
-
-#tabs button{
+  }
+  
+  #tabs button {
     border-radius: 0px 10px 0px 0px;
     border-bottom-width: 0px;
     border-left-width: 0px;
     margin-left: -8px;
     padding-left: 13px;
     float: right;
-}
-
-#tabs:first-child{
+  }
+  
+  #tabs:first-child {
     margin-left: -2px;
-}
-
-input{
+  }
+  
+  input {
     font-family: inherit;
     color: inherit;
-}
-
-th{
+  }
+  
+  th {
     font-weight: normal;
-}
-
-.header{
+  }
+  
+  .header {
     background-color: #46A5D5;
     color: #000000;
-}
-.header input{
+  }
+  .header input {
     background-color: #46A5D5;
-}
-
-.Amber{
+  }
+  
+  .Amber {
     background-color: #593A27;
     color: #DE6C00;
-}
-.Amber input{
+  }
+  .Amber input {
     background-color: #F3D200;
     color: #9D0F00;
-}
-.Amber::after{
+  }
+  .Amber::after {
     content: "";
     display: block;
     background: url("../img/Amber.png") no-repeat;
     width: 16px;
     height: 16px;
     float: right;
-}
-
-.Complete::after{
+  }
+  
+  .Complete::after {
     content: "✅";
     display: block;
     float: right;
     font-size: 0.8em;
-}
-
-.Medal::after{
+  }
+  
+  .Medal::after {
     content: "";
     display: block;
     background: url("../img/Medal.png") no-repeat;
     width: 16px;
     height: 16px;
     float: right;
-}
-
-.Elixir{
+  }
+  
+  .Elixir {
     white-space: nowrap;
-}
-
-.Elixir::before{
+  }
+  
+  .Elixir::before {
     content: "";
     display: -webkit-box;
     background: url("../img/Elixir.png") no-repeat;
     width: 16px;
     height: 16px;
     float: left;
-}
-
-.Experience::after{
+  }
+  
+  .Experience::after {
     content: "";
     display: block;
     background: url("../img/Experience.png") no-repeat;
     width: 16px;
     height: 16px;
     float: right;
-}
-
-.Critter{
+  }
+  
+  .Critter {
     background-color: #638739;
     color: #224312;
-}
-.Critter input{
+  }
+  .Critter input {
     background-color: #A2E26E;
     float: left;
-}
-.Critter th::before{
+  }
+  .Critter th::before {
     background: url("../img/Critter.png") no-repeat;
     content: "";
     display: block;
     width: 17px;
     height: 16px;
     float: left;
-}
-
-.Beast{
+  }
+  
+  .Beast {
     background-color: #9E4935;
     color: #611912;
-}
-.Beast input{
+  }
+  .Beast input {
     background-color: #EF8036;
     float: left;
-}
-.Beast th::before{
+  }
+  .Beast th::before {
     background: url("../img/Beast.png") no-repeat;
     content: "";
     display: block;
     width: 17px;
     height: 16px;
     float: left;
-}
-
-.Flying{
+  }
+  
+  .Flying {
     background-color: #A08033;
     color: #503512;
-}
-.Flying input{
+  }
+  .Flying input {
     background-color: #FFE659;
     float: left;
-}
-.Flying th::before{
+  }
+  .Flying th::before {
     background: url("../img/Flying.png") no-repeat;
     content: "";
     display: block;
     width: 17px;
     height: 16px;
     float: left;
-}
-
-.Feather::after{
+  }
+  
+  .Feather::after {
     content: "";
     display: block;
     width: 16px;
     height: 16px;
     float: right;
-}
-.Critter .Feather::after{
+  }
+  .Critter .Feather::after {
     background: url("../img/Critter Feather.png") no-repeat;
-}
-.Beast .Feather::after{
+  }
+  .Beast .Feather::after {
     background: url("../img/Beast Feather.png") no-repeat;
-}
-.Flying .Feather::after{
+  }
+  .Flying .Feather::after {
     background: url("../img/Flying Feather.png") no-repeat;
-}
-
-.Legendary{
+  }
+  
+  .Legendary {
     background-color: #FFBB00;
     color: #A27700;
-}
-.Legendary input{
+  }
+  .Legendary input {
     background-color: #FFFB99;
-}
-
-.Epic{
+  }
+  
+  .Epic {
     background-color: #9717FD;
     color: #5F0FA0;
-}
-.Epic input{
+  }
+  .Epic input {
     background-color: #FFCCEE;
-}
-
-.Rare{
+  }
+  
+  .Rare {
     background-color: #3372FA;
     color: #214AA3;
-}
-.Rare input{
+  }
+  .Rare input {
     background-color: #CCFFED;
-}
-
-td.Water, td.Mage{
+  }
+  
+  td.Water,
+  td.Mage {
     background-color: #66AECC;
     color: #12607F;
-}
-td.Water input, td.Mage input{
+  }
+  td.Water input,
+  td.Mage input {
     background-color: #65E5FF;
-}
-
-th.Water::before{
+  }
+  
+  th.Water::before {
     content: " ";
     background: url("../img/Water.png") no-repeat;
     display: block;
     width: 16px;
     height: 16px;
     float: left;
-}
-th.Mage::after{
+  }
+  th.Mage::after {
     content: " ";
     background: url("../img/Mage.png") no-repeat;
     display: block;
     width: 16px;
     height: 16px;
     float: right;
-}
-
-td.Earth, td.Assassin{
+  }
+  
+  td.Earth,
+  td.Assassin {
     background-color: #8CB234;
     color: #164C2F;
-}
-td.Earth input, td.Assassin input{
+  }
+  td.Earth input,
+  td.Assassin input {
     background-color: #E3FF99;
-}
-
-th.Earth::before{
+  }
+  
+  th.Earth::before {
     content: " ";
     background: url("../img/Earth.png") no-repeat;
     display: block;
     width: 16px;
     height: 16px;
     float: left;
-}
-th.Assassin::after{
+  }
+  th.Assassin::after {
     content: " ";
     background: url("../img/Assassin.png") no-repeat;
     display: block;
     width: 16px;
     height: 16px;
     float: right;
-}
-
-td.Fire, td.Warrior{
+  }
+  
+  td.Fire,
+  td.Warrior {
     background-color: #FF6D04;
     color: #A5001E;
-}
-td.Fire input, td.Warrior input{
+  }
+  td.Fire input,
+  td.Warrior input {
     background-color: #FFCA99;
-}
-
-th.Fire::before{
+  }
+  
+  th.Fire::before {
     content: " ";
     background: url("../img/Fire.png") no-repeat;
     display: block;
     width: 16px;
     height: 16px;
     float: left;
-}
-th.Warrior::after{
+  }
+  th.Warrior::after {
     content: " ";
     background: url("../img/Warrior.png") no-repeat;
     display: block;
     width: 16px;
     height: 16px;
     float: right;
-}
-
-td.Wind, td.Support{
+  }
+  
+  td.Wind,
+  td.Support {
     background-color: #E5BA00;
     color: #B27400;
-}
-td.Wind input, td.Support input{
+  }
+  td.Wind input,
+  td.Support input {
     background-color: #FFFDCC;
-}
-
-th.Wind::before{
+  }
+  
+  th.Wind::before {
     content: " ";
     background: url("../img/Wind.png") no-repeat;
     display: block;
     width: 16px;
     height: 16px;
     float: left;
-}
-th.Support::after{
+  }
+  th.Support::after {
     content: " ";
     background: url("../img/Support.png") no-repeat;
     display: block;
     width: 16px;
     height: 16px;
     float: right;
-}
-
-.Dust::after{
+  }
+  
+  .Dust::after {
     content: "";
     display: block;
     width: 16px;
     height: 16px;
     float: right;
-}
-.Water.Dust::after{
+  }
+  .Water.Dust::after {
     background: url("../img/Water Dust.png") no-repeat;
-}
-.Earth.Dust::after{
+  }
+  .Earth.Dust::after {
     background: url("../img/Earth Dust.png") no-repeat;
-}
-.Fire.Dust::after{
+  }
+  .Fire.Dust::after {
     background: url("../img/Fire Dust.png") no-repeat;
-}
-.Wind.Dust::after{
+  }
+  .Wind.Dust::after {
     background: url("../img/Wind Dust.png") no-repeat;
-}
-
-.Equipment{
+  }
+  
+  .Equipment {
     background-color: #593A27;
     color: #DE6C00;
-}
-.Equipment input{
+  }
+  .Equipment input {
     background-color: #181B26;
     color: #94BCC4;
     width: 80%;
-}
-
-.S0{background-image: url("../img/S0.png");}
-.S1{background-image: url("../img/S1.png");}
-.S2{background-image: url("../img/S2.png");}
-.S3{background-image: url("../img/S3.png");}
-.S4{background-image: url("../img/S4.png");}
-.S5{background-image: url("../img/S5.png");}
-.S6{background-image: url("../img/S6.png");}
-.S7{background-image: url("../img/S7.png");}
-.S8{background-image: url("../img/S8.png");}
-.S9{background-image: url("../img/S9.png");}
-.S10{background-image: url("../img/S10.png");}
-.S11{background-image: url("../img/S11.png");}
-.S12{background-image: url("../img/S12.png");}
-.S0, .S1, .S2, .S3, .S4, .S5, .S6, .S7, .S8, .S9, .S10, .S11, .S12{
-    color: rgba(0,0,0,0) !important;
+  }
+  
+  .S0 {
+    background-image: url("../img/S0.png");
+  }
+  .S1 {
+    background-image: url("../img/S1.png");
+  }
+  .S2 {
+    background-image: url("../img/S2.png");
+  }
+  .S3 {
+    background-image: url("../img/S3.png");
+  }
+  .S4 {
+    background-image: url("../img/S4.png");
+  }
+  .S5 {
+    background-image: url("../img/S5.png");
+  }
+  .S6 {
+    background-image: url("../img/S6.png");
+  }
+  .S7 {
+    background-image: url("../img/S7.png");
+  }
+  .S8 {
+    background-image: url("../img/S8.png");
+  }
+  .S9 {
+    background-image: url("../img/S9.png");
+  }
+  .S10 {
+    background-image: url("../img/S10.png");
+  }
+  .S11 {
+    background-image: url("../img/S11.png");
+  }
+  .S12 {
+    background-image: url("../img/S12.png");
+  }
+  .S0,
+  .S1,
+  .S2,
+  .S3,
+  .S4,
+  .S5,
+  .S6,
+  .S7,
+  .S8,
+  .S9,
+  .S10,
+  .S11,
+  .S12 {
+    color: rgba(0, 0, 0, 0) !important;
     background-size: contain;
     background-position-y: center;
     background-repeat: no-repeat;
-}
-.S0:hover, .S1:hover, .S2:hover, .S3:hover, .S4:hover, .S5:hover,
-.S6:hover, .S7:hover, .S8:hover, .S9:hover, .S10:hover, .S11:hover, .S12:hover{
+  }
+  .S0:hover,
+  .S1:hover,
+  .S2:hover,
+  .S3:hover,
+  .S4:hover,
+  .S5:hover,
+  .S6:hover,
+  .S7:hover,
+  .S8:hover,
+  .S9:hover,
+  .S10:hover,
+  .S11:hover,
+  .S12:hover {
     color: inherit !important;
     background-image: url("../img/S0.png");
-}
-.S0:focus, .S1:focus, .S2:focus, .S3:focus, .S4:focus, .S5:focus,
-.S6:focus, .S7:focus, .S8:focus, .S9:focus, .S10:focus, .S11:focus, .S12:focus{
+  }
+  .S0:focus,
+  .S1:focus,
+  .S2:focus,
+  .S3:focus,
+  .S4:focus,
+  .S5:focus,
+  .S6:focus,
+  .S7:focus,
+  .S8:focus,
+  .S9:focus,
+  .S10:focus,
+  .S11:focus,
+  .S12:focus {
     color: inherit !important;
     background-image: url("../img/S0.png");
-}
-
-footer{
+  }
+  
+  footer {
     text-align: center;
-    position:fixed;
+    position: fixed;
     bottom: 0px;
     left: 0px;
     width: 100%;
-    height: 60px;
+    height: 4em;
     background-color: #46A5D5;
-}
-footer span{
+  }
+  footer span {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
-}
+  }
+  

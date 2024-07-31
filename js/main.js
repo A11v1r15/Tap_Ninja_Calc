@@ -251,17 +251,17 @@ const lookUpEquipments = {
 	]
 }
 
-const heroLevelUpExperienceCost = [ 0,
-	  100,   150,   200,   250,   300,   350,   400,   450,   500,   600,
-	  700,   800,   900,  1000,  1200,  1400,  1600,  1800,  2000,  2250,
-	 2500,  2750,  3000,  3500,  4000,  4500,  5000,  6000,  7000,  8000,
-	 9000, 10000, 12000, 14000, 16000, 18000, 20000, 22000, 24000, 26000,
-	28000, 30000, 32500, 35000, 37500, 40000, 42500, 45000, 47500, 50000,
-	52500, 55000, 57500, 60000, 62500, 65000, 67500, 70000, 72500, 75000,
-	77500, 80000, 82500, 85000, 87500, 90000, 92500, 95000, 97500,100000,
-//	 0x71,  0x72,  0x73,  0x74,  0x75,  0x76,  0x77,  0x78,  0x79,  0x80,
-//	 0x81,  0x82,  0x83,  0x84,  0x85,  0x86,  0x87,  0x88,  0x89,  0x90,
-//	 0x91,  0x92,  0x93,  0x94,  0x95,  0x96,  0x97,  0x98,  0x99,  0x100
+const heroLevelUpExperienceCost = [      0,
+	   100,    150,    200,    250,    300,    350,    400,    450,    500,    600,
+	   700,    800,    900,   1000,   1200,   1400,   1600,   1800,   2000,   2250,
+	  2500,   2750,   3000,   3500,   4000,   4500,   5000,   6000,   7000,   8000,
+	  9000,  10000,  12000,  14000,  16000,  18000,  20000,  22000,  24000,  26000,
+	 28000,  30000,  32500,  35000,  37500,  40000,  42500,  45000,  47500,  50000,
+	 52500,  55000,  57500,  60000,  62500,  65000,  67500,  70000,  72500,  75000,
+	 77500,  80000,  82500,  85000,  87500,  90000,  92500,  95000,  97500, 100000,
+  	105000, 110000, 115000, 120000, 125000, 130000, 135000, 140000, 145000, 150000,
+//	  0x81,   0x82,   0x83,   0x84,   0x85,   0x86,   0x87,   0x88,   0x89,   0x90,
+//	  0x91,   0x92,   0x93,   0x94,   0x95,   0x96,   0x97,   0x98,   0x99,   0x100
 ]
 
 const currencies = [
@@ -383,9 +383,8 @@ function start() {
 	let totalEquipment = $("<tr class='header'><th>Total:</th><td colspan='3'></td><td id='outTotalAmber'>NaN</td><td id='outTotalAmberSpent'>NaN</td></tr>");
 	equipmentTable.append(totalEquipment);
 	currencies.forEach(currency => {
-			$("#storage" + currency).val(localStorageGetItem("storage" + currency, 0));
-		}
-	)
+		$("#storage" + currency).val(localStorageGetItem("storage" + currency, 0));
+	})
 
 	let tintTable = $("#tintTable");
 	tintList.forEach(tint => {
@@ -394,17 +393,17 @@ function start() {
 		let label = $("<label></label>").text(tint[0]);
 		th.append(label);
 		let td0 = $("<td></td>");
-		if(tint[2]){
+		if (tint[2]) {
 			let input0 = $("<input></input>").attr("type", "number")
 				.attr("min", 0).attr("max", 10000000)
 				.attr("id", "in" + tint[0] + "TintEnemies")
 				.attr("name", "in" + tint[0] + "TintEnemies")
 				.val(localStorageGetItem(tint[0] + "TintEnemies", 0));
 			input0.change(onChangeTint);
-			 td0.append(input0);
+			td0.append(input0);
 		}
 		let td1 = $("<td></td>");
-		if(tint[3]){
+		if (tint[3]) {
 			let input1 = $("<input></input>").attr("type", "number")
 				.attr("min", 0).attr("max", 150)
 				.attr("id", "in" + tint[0] + "TintChallenges")
@@ -414,7 +413,7 @@ function start() {
 			td1.append(input1);
 		}
 		let td2 = $("<td></td>");
-		if(tint[4]){
+		if (tint[4]) {
 			let input2 = $("<input></input>").attr("type", "number")
 				.attr("min", 0).attr("max", 15000)
 				.attr("id", "in" + tint[0] + "TintAmber")
@@ -437,7 +436,7 @@ function start() {
 	$("#PetBondCap").val(localStorageGetItem("PetBondCap", 15));
 	$("#PetStarCap").val(localStorageGetItem("PetStarCap", 12));
 	$("#HeroStarCap").val(localStorageGetItem("HeroStarCap", 12));
-	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 70));
+	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 80));
 
 	$("#tintTable .header").first().children().eq(1).text((10000000).toLocaleString() + " Enemies");
 	$("#tintTable .header").first().children().eq(3).text((15000).toLocaleString() + " Amber");
@@ -464,7 +463,7 @@ function onChangePetBond(event) {
 	let medalsSpentTotal = 0;
 	petList.forEach(pet => {
 		localStorage.setItem(pet[0] + "Bond", $("#in" + pet[0] + "Bond").val());
-		if ($("#in" + pet[0] + "Bond").is(":visible")){
+		if ($("#in" + pet[0] + "Bond").is(":visible")) {
 			bondTotal += Number($("#in" + pet[0] + "Bond").val());
 			let medalResult = calcMedals($("#in" + pet[0] + "Bond").val());
 			$("#out" + pet[0] + "Medals").text(medalResult);
@@ -482,10 +481,10 @@ function onChangePetBond(event) {
 	$("#outTotalMedals").text(medalsTotal.toLocaleString());
 	$("#outTotalTime").text(formatTime(timeTotal));
 	let timeInDays = Math.ceil(timeTotal / 86400);
-	if (timeInDays >= 365){
+	if (timeInDays >= 365) {
 		let timeInYears = Math.ceil(timeInDays / 365);
-		$("#outTotalTime").attr("title", "About " + timeInYears + "y " + (timeInDays%365) + "d in 1 slot");
-	} else{
+		$("#outTotalTime").attr("title", "About " + timeInYears + "y " + (timeInDays % 365) + "d in 1 slot");
+	} else {
 		$("#outTotalTime").attr("title", "About " + timeInDays + "d in 1 slot");
 	}
 	$("#outTotalMedalsSpent").text(medalsSpentTotal.toLocaleString());
@@ -501,7 +500,7 @@ function onChangePetStars(event) {
 		feathers[pet[1]] = 0;
 	});
 	petList.forEach(pet => {
-		if ($("#in" + pet[0] + "Stars").is(":visible")){
+		if ($("#in" + pet[0] + "Stars").is(":visible")) {
 			localStorage.setItem(pet[0] + "Stars", $("#in" + pet[0] + "Stars").val());
 			starsTotal += Number($("#in" + pet[0] + "Stars").val());
 			let feathersResult = calcFeathers($("#in" + pet[0] + "Stars").val());
@@ -530,7 +529,7 @@ function onChangeHeroStars(event) {
 		dust[hero[2]] = 0;
 	});
 	heroList.forEach(hero => {
-		if ($("#in" + hero[0] + "Stars").is(":visible")){
+		if ($("#in" + hero[0] + "Stars").is(":visible")) {
 			localStorage.setItem(hero[0] + "Stars", $("#in" + hero[0] + "Stars").val());
 			starsTotal += Number($("#in" + hero[0] + "Stars").val());
 			let dustResult = calcDust($("#in" + hero[0] + "Stars").val(), hero[1]);
@@ -554,7 +553,7 @@ function onChangeHeroLevels(event) {
 	let levelsTotal = 0;
 	let experienceNeededTotal = 0;
 	heroList.forEach(hero => {
-		if ($("#in" + hero[0] + "Level").is(":visible")){
+		if ($("#in" + hero[0] + "Level").is(":visible")) {
 			localStorage.setItem(hero[0] + "Level", $("#in" + hero[0] + "Level").val());
 			levelsTotal += Number($("#in" + hero[0] + "Level").val());
 			let experienceNeeded = calcExperience($("#in" + hero[0] + "Level").val());
@@ -600,9 +599,8 @@ function onChangeEquipmentBonus(event) {
 
 function onChangeStorage(event) {
 	currencies.forEach(currency => {
-			localStorage.setItem("storage" + currency, $("#storage" + currency).val());
-		}
-	)
+		localStorage.setItem("storage" + currency, $("#storage" + currency).val());
+	})
 }
 
 function onChangeTint(event) {
@@ -610,27 +608,27 @@ function onChangeTint(event) {
 	let totalTintChallenges = 0;
 	let totalTintAmber = 0;
 	tintList.forEach(tint => {
-		if(tint[2]){
+		if (tint[2]) {
 			localStorage.setItem(tint[0] + "TintEnemies", $("#in" + tint[0] + "TintEnemies").val());
-			if($("#in" + tint[0] + "TintEnemies").val() == 10000000){
+			if ($("#in" + tint[0] + "TintEnemies").val() == 10000000) {
 				$("#in" + tint[0] + "TintEnemies").parent().addClass("Complete");
 			} else {
 				$("#in" + tint[0] + "TintEnemies").parent().removeClass();
 				totalTintEnemies += $("#in" + tint[0] + "TintEnemies").val() - 10000000;
 			}
 		}
-		if(tint[3]){
+		if (tint[3]) {
 			localStorage.setItem(tint[0] + "TintChallenges", $("#in" + tint[0] + "TintChallenges").val());
-			if($("#in" + tint[0] + "TintChallenges").val() == 150){
+			if ($("#in" + tint[0] + "TintChallenges").val() == 150) {
 				$("#in" + tint[0] + "TintChallenges").parent().addClass("Complete");
 			} else {
 				$("#in" + tint[0] + "TintChallenges").parent().removeClass();
 				totalTintChallenges += $("#in" + tint[0] + "TintChallenges").val() - 150;
 			}
 		}
-		if(tint[4]){
+		if (tint[4]) {
 			localStorage.setItem(tint[0] + "TintAmber", $("#in" + tint[0] + "TintAmber").val());
-			if($("#in" + tint[0] + "TintAmber").val() == 15000){
+			if ($("#in" + tint[0] + "TintAmber").val() == 15000) {
 				$("#in" + tint[0] + "TintAmber").parent().addClass("Complete");
 			} else {
 				$("#in" + tint[0] + "TintAmber").parent().removeClass();
@@ -828,18 +826,18 @@ function hideTint(event) {
 	let checked = event.target.checked;
 	tintList.forEach(tint => {
 		let nonComplete = false;
-		if(tint[2]){
-			if(Number($("#in" + tint[0] + "TintEnemies").val()) != 10000000){
+		if (tint[2]) {
+			if (Number($("#in" + tint[0] + "TintEnemies").val()) != 10000000) {
 				nonComplete = true;
 			}
 		}
-		if(tint[3]){
-			if(Number($("#in" + tint[0] + "TintChallenges").val()) != 150){
+		if (tint[3]) {
+			if (Number($("#in" + tint[0] + "TintChallenges").val()) != 150) {
 				nonComplete = true;
 			}
 		}
-		if(tint[4]){
-			if(Number($("#in" + tint[0] + "TintAmber").val()) != 15000){
+		if (tint[4]) {
+			if (Number($("#in" + tint[0] + "TintAmber").val()) != 15000) {
 				nonComplete = true;
 			}
 		}
