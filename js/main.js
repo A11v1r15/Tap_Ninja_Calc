@@ -258,10 +258,10 @@ const heroLevelUpExperienceCost = [      0,
 	  9000,  10000,  12000,  14000,  16000,  18000,  20000,  22000,  24000,  26000,
 	 28000,  30000,  32500,  35000,  37500,  40000,  42500,  45000,  47500,  50000,
 	 52500,  55000,  57500,  60000,  62500,  65000,  67500,  70000,  72500,  75000,
-	 77500,  80000,  82500,  85000,  87500,  90000,  92500,  95000,  97500, 100000,
-  	105000, 110000, 115000, 120000, 125000, 130000, 135000, 140000, 145000, 150000,
+	 77500,  80000,  82500,  85000,  87500,  90000,  92500,  95000,  97500, 100000, // Checked: Total 2'047'200 to lvl 70
+	105000, 110000, 115000, 120000, 125000, 130000, 135000, 140000, 145000, 150000, // Inferred from 70, 71, 72
 //	  0x81,   0x82,   0x83,   0x84,   0x85,   0x86,   0x87,   0x88,   0x89,   0x90,
-//	  0x91,   0x92,   0x93,   0x94,   0x95,   0x96,   0x97,   0x98,   0x99,   0x100
+//	  0x91,   0x92,   0x93,   0x94,   0x95,   0x96,   0x97,   0x98,   0x99, //Total should be 8'812'200
 ]
 
 const currencies = [
@@ -346,10 +346,12 @@ function start() {
 		td2.append(input1);
 		let td3 = $("<td></td>").attr("id", "out" + hero[0] + "ExperienceNeeded")
 			.text("NaN").addClass("Experience");
-		tr.append(th).append(td0).append(td1).append(td2).append(td3);
+		let td4 = $("<td></td>").attr("id", "out" + hero[0] + "ExperienceCumulated")
+			.text("NaN").addClass("Experience");
+		tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4);
 		heroTable.append(tr);
 	});
-	let totalHero = $("<tr class='header'><th>Total:</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td><td id='outTotalHeroLevels'>NaN</td><td id='outTotalHeroExperienceNeeded'>NaN</td></tr>");
+	let totalHero = $("<tr class='header'><th>Total:</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td><td id='outTotalHeroLevels'>NaN</td><td id='outTotalHeroExperienceNeeded'>NaN</td><td id='outTotalHeroExperienceCumulated'>NaN</td></tr>");
 	let hideHeroInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideHeroCheckbox")
 		.change(hideHero).prop("checked", localStorageGetItem("HideHero", 'false') == 'true').change();
 	let hideHeroInputLabel = $("<label>").attr("for", "hideHeroCheckbox").text("Hide non-obtained heroes");
@@ -552,6 +554,7 @@ function onChangeHeroLevels(event) {
 	localStorage.setItem("HeroLevelCap", $("#HeroLevelCap").val());
 	let levelsTotal = 0;
 	let experienceNeededTotal = 0;
+	let experienceCumulatedTotal = 0;
 	heroList.forEach(hero => {
 		if ($("#in" + hero[0] + "Level").is(":visible")) {
 			localStorage.setItem(hero[0] + "Level", $("#in" + hero[0] + "Level").val());
@@ -559,10 +562,14 @@ function onChangeHeroLevels(event) {
 			let experienceNeeded = calcExperience($("#in" + hero[0] + "Level").val());
 			$("#out" + hero[0] + "ExperienceNeeded").text(experienceNeeded.toLocaleString());
 			experienceNeededTotal += experienceNeeded;
+			let experienceCumulated = calcCumulatedExperience($("#in" + hero[0] + "Level").val());
+			$("#out" + hero[0] + "ExperienceCumulated").text(experienceCumulated.toLocaleString());
+			experienceCumulatedTotal += experienceCumulated;
 		}
 	});
 	$("#outTotalHeroLevels").text(levelsTotal);
 	$("#outTotalHeroExperienceNeeded").text(experienceNeededTotal.toLocaleString());
+	$("#outTotalHeroExperienceCumulated").text(experienceCumulatedTotal.toLocaleString());
 }
 
 function onChangeEquipmentBonus(event) {
@@ -687,9 +694,17 @@ function calcDust(stars, rarity) {
 	return result;
 }
 
-function calcExperience(experience) {
+function calcExperience(level) {
 	let result = 0;
-	for (let s = Number(experience); s < $("#HeroLevelCap").val(); s++) {
+	for (let s = Number(level); s < $("#HeroLevelCap").val(); s++) {
+		result += heroLevelUpExperienceCost[s];
+	}
+	return result;
+}
+
+function calcCumulatedExperience(level) {
+	let result = 0;
+	for (let s = 0; s < Number(level); s++) {
 		result += heroLevelUpExperienceCost[s];
 	}
 	return result;
