@@ -619,6 +619,7 @@ function onChangeTint(event) {
 			localStorage.setItem(tint[0] + "TintEnemies", $("#in" + tint[0] + "TintEnemies").val());
 			if ($("#in" + tint[0] + "TintEnemies").val() == 10000000) {
 				$("#in" + tint[0] + "TintEnemies").parent().addClass("Complete");
+				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
 				$("#in" + tint[0] + "TintEnemies").parent().removeClass();
 				totalTintEnemies += $("#in" + tint[0] + "TintEnemies").val() - 10000000;
@@ -628,6 +629,7 @@ function onChangeTint(event) {
 			localStorage.setItem(tint[0] + "TintChallenges", $("#in" + tint[0] + "TintChallenges").val());
 			if ($("#in" + tint[0] + "TintChallenges").val() == 150) {
 				$("#in" + tint[0] + "TintChallenges").parent().addClass("Complete");
+				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
 				$("#in" + tint[0] + "TintChallenges").parent().removeClass();
 				totalTintChallenges += $("#in" + tint[0] + "TintChallenges").val() - 150;
@@ -637,6 +639,7 @@ function onChangeTint(event) {
 			localStorage.setItem(tint[0] + "TintAmber", $("#in" + tint[0] + "TintAmber").val());
 			if ($("#in" + tint[0] + "TintAmber").val() == 15000) {
 				$("#in" + tint[0] + "TintAmber").parent().addClass("Complete");
+				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
 				$("#in" + tint[0] + "TintAmber").parent().removeClass();
 				totalTintAmber += $("#in" + tint[0] + "TintAmber").val() - 15000;
@@ -839,6 +842,7 @@ function hideHero(event) {
 
 function hideTint(event) {
 	let checked = event.target.checked;
+	localStorage.setItem("HideTint", checked);
 	tintList.forEach(tint => {
 		let nonComplete = false;
 		if (tint[2]) {
