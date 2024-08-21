@@ -258,10 +258,10 @@ const heroLevelUpExperienceCost = [      0,
 	  9000,  10000,  12000,  14000,  16000,  18000,  20000,  22000,  24000,  26000,
 	 28000,  30000,  32500,  35000,  37500,  40000,  42500,  45000,  47500,  50000,
 	 52500,  55000,  57500,  60000,  62500,  65000,  67500,  70000,  72500,  75000,
-	 77500,  80000,  82500,  85000,  87500,  90000,  92500,  95000,  97500, 100000, // Checked: Total 2'047'200 to lvl 70
-	105000, 110000, 115000, 120000, 125000, 130000, 135000, 140000, 145000, 150000, // Inferred from 70, 71, 72
-//	  0x81,   0x82,   0x83,   0x84,   0x85,   0x86,   0x87,   0x88,   0x89,   0x90,
-//	  0x91,   0x92,   0x93,   0x94,   0x95,   0x96,   0x97,   0x98,   0x99, //Total should be 8'812'200
+	 77500,  80000,  82500,  85000,  87500,  90000,  92500,  95000,  97500, 100000,
+	105000, 110000, 115000, 120000, 125000, 130000, 135000, 140000, 145000, 150000,
+  	160000, 170000, 180000, 190000, 200000, 210000, 220000, 230000, 240000, 250000, // Checked: Total 5'222'200 to lvl 90
+//	  0x91,   0x92,   0x93,   0x94,   0x95,   0x96,   0x97,   0x98,   0x99, //Total should be 8'812'200 to lvl 100
 ]
 
 const currencies = [
@@ -438,7 +438,7 @@ function start() {
 	$("#PetBondCap").val(localStorageGetItem("PetBondCap", 15));
 	$("#PetStarCap").val(localStorageGetItem("PetStarCap", 12));
 	$("#HeroStarCap").val(localStorageGetItem("HeroStarCap", 12));
-	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 80));
+	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 90));
 
 	$("#tintTable .header").first().children().eq(1).text((10000000).toLocaleString() + " Enemies");
 	$("#tintTable .header").first().children().eq(3).text((15000).toLocaleString() + " Amber");
