@@ -240,7 +240,7 @@ const lookUpEquipments = {
 		[2418,  6  ],
 		[2560,  6.4],
 		[2670,  6.8], // Not real values
-		[2741,  7.2], // Not real values
+		[2754,  7.2],
 		[2779,  7.6], // Not real values
 		[3057,  8  ], // Not real values
 		[3026,  8.4],
@@ -435,10 +435,10 @@ function start() {
 	tdFt.append(hideTintInput).append(hideTintInputLabel)
 	tintTable.append(totalTint).append(tdFt);
 
-	$("#PetBondCap").val(localStorageGetItem("PetBondCap", 15));
-	$("#PetStarCap").val(localStorageGetItem("PetStarCap", 12));
-	$("#HeroStarCap").val(localStorageGetItem("HeroStarCap", 12));
-	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 90));
+	$("#PetBondCap").val(localStorageGetItem("PetBondCap", 15)).change();
+	$("#PetStarCap").val(localStorageGetItem("PetStarCap", 12)).change();
+	$("#HeroStarCap").val(localStorageGetItem("HeroStarCap", 12)).change();
+	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 90)).change();
 
 	$("#tintTable .header").first().children().eq(1).text((10000000).toLocaleString() + " Enemies");
 	$("#tintTable .header").first().children().eq(3).text((15000).toLocaleString() + " Amber");
@@ -458,7 +458,6 @@ function start() {
 }
 
 function onChangePetBond(event) {
-	localStorage.setItem("PetBondCap", $("#PetBondCap").val());
 	let bondTotal = 0;
 	let medalsTotal = 0;
 	let timeTotal = 0;
@@ -493,7 +492,6 @@ function onChangePetBond(event) {
 }
 
 function onChangePetStars(event) {
-	localStorage.setItem("PetStarCap", $("#PetStarCap").val());
 	$("#PetStarCap").removeClass().addClass("S" + $("#PetStarCap").val());
 	let starsTotal = 0;
 	let feathers = {};
@@ -522,7 +520,6 @@ function onChangePetStars(event) {
 }
 
 function onChangeHeroStars(event) {
-	localStorage.setItem("HeroStarCap", $("#HeroStarCap").val());
 	$("#HeroStarCap").removeClass().addClass("S" + $("#HeroStarCap").val());
 	let starsTotal = 0;
 	let dust = {};
@@ -551,7 +548,6 @@ function onChangeHeroStars(event) {
 }
 
 function onChangeHeroLevels(event) {
-	localStorage.setItem("HeroLevelCap", $("#HeroLevelCap").val());
 	let levelsTotal = 0;
 	let experienceNeededTotal = 0;
 	let experienceCumulatedTotal = 0;
@@ -570,6 +566,26 @@ function onChangeHeroLevels(event) {
 	$("#outTotalHeroLevels").text(levelsTotal);
 	$("#outTotalHeroExperienceNeeded").text(experienceNeededTotal.toLocaleString());
 	$("#outTotalHeroExperienceCumulated").text(experienceCumulatedTotal.toLocaleString());
+}
+
+function onChangePetBondCap(event){
+	localStorage.setItem("PetBondCap", $("#PetBondCap").val());
+	onChangePetBond(event);
+}
+
+function onChangePetStarCap(event){
+	localStorage.setItem("PetStarCap", $("#PetStarCap").val());
+	onChangePetStars(event);
+}
+
+function onChangeHeroStarCap(event){
+	localStorage.setItem("HeroStarCap", $("#HeroStarCap").val());
+	onChangeHeroStars(event);
+}
+
+function onChangeHeroLevelCap(event){
+	localStorage.setItem("HeroLevelCap", $("#HeroLevelCap").val());
+	onChangeHeroLevels(event);
 }
 
 function onChangeEquipmentBonus(event) {
