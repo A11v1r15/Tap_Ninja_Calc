@@ -239,7 +239,7 @@ const lookUpEquipments = {
 		[2253,  5.6],
 		[2418,  6  ],
 		[2560,  6.4],
-		[2670,  6.8], // Not real values
+		[2782,  6.8],
 		[2754,  7.2],
 		[2779,  7.6], // Not real values
 		[3057,  8  ], // Not real values
@@ -260,8 +260,8 @@ const heroLevelUpExperienceCost = [      0,
 	 52500,  55000,  57500,  60000,  62500,  65000,  67500,  70000,  72500,  75000,
 	 77500,  80000,  82500,  85000,  87500,  90000,  92500,  95000,  97500, 100000,
 	105000, 110000, 115000, 120000, 125000, 130000, 135000, 140000, 145000, 150000,
-  	160000, 170000, 180000, 190000, 200000, 210000, 220000, 230000, 240000, 250000, // Checked: Total 5'222'200 to lvl 90
-//	  0x91,   0x92,   0x93,   0x94,   0x95,   0x96,   0x97,   0x98,   0x99, //Total should be 8'812'200 to lvl 100
+	160000, 170000, 180000, 190000, 200000, 210000, 220000, 230000, 240000, 260000,
+	280000, 300000, 320000, 340000, 360000, 380000, 400000, 450000, 500000,  0x100
 ]
 
 const currencies = [
@@ -438,7 +438,7 @@ function start() {
 	$("#PetBondCap").val(localStorageGetItem("PetBondCap", 15)).change();
 	$("#PetStarCap").val(localStorageGetItem("PetStarCap", 12)).change();
 	$("#HeroStarCap").val(localStorageGetItem("HeroStarCap", 12)).change();
-	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 90)).change();
+	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 100)).change();
 
 	$("#tintTable .header").first().children().eq(1).text((10000000).toLocaleString() + " Enemies");
 	$("#tintTable .header").first().children().eq(3).text((15000).toLocaleString() + " Amber");
@@ -604,7 +604,7 @@ function onChangeEquipmentBonus(event) {
 		amberSpentTotal += amberSpent;
 		$("#out" + item + "Level").text(lvl);
 		$("#out" + item + "Cost").text(cost.toLocaleString());
-		if (item == "Kote" && lvl > 16 && lvl <= 20) {
+		if (item == "Kote" && lvl > 18 && lvl <= 20) {
 			$("#out" + item + "Cost").attr("title", "Placeholder value, contact me if you reach here to confirm actual cost");
 			$("#out" + item + "Cost").attr("style", "color: #FF0000");
 		} else {
