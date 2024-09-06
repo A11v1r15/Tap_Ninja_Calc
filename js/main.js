@@ -20,32 +20,32 @@ const petList = [
 ];
 
 const tintList = [
-//  Name          Enemy Challenge Amber
-	["Bunny"     , "Critter", true , false, false],
-	["Mouse"     , "Critter", false, true , false],
-	["Capybara"  , "Critter", true , false, false],
-	["Hedgehog"  , "Critter", false, false, true ],
-	["Snake"     , "Critter", true , false, false],
-	["Frog"      , "Critter", false, true , true ],
-	["Squirrel"  , "Critter", false, false, true ],
-	["Cat"       , "Beast"  , true , true , true ],
-	["LilCat"    , "Beast"  , true , true , true ],
-	["Dog"       , "Beast"  , true , false, true ],
-	["LilDog"    , "Beast"  , true , false, true ],
-	["Wolf"      , "Beast"  , true , false, true ],
-	["Fox"       , "Beast"  , false, false, true ],
-	["LilFox"    , "Beast"  , false, false, true ],
-	["Panda"     , "Beast"  , false, false, true ],
-	["Turtle"    , "Beast"  , true , true , false],
-	["Racoon"    , "Beast"  , false, true , false],
-	["Chicken"   , "Flying" , false, true , false],
-	["Duck"      , "Flying" , false, true , true ],
-	["Crane"     , "Flying" , false, false, true ],
-	["Raven"     , "Flying" , false, true , false],
-	["Dragonfly" , "Flying" , true , true , true ],
-	["Dragonling", "Flying" , false, true , false],
-	["LuckDragon", "Flying" , false, true , true ],
-	["Parrot"    , "Flying" , true , false, false]
+//	Name           Parent        Enemy Challenge Amber
+	["Bunny"     , "Bunny"      , true , false, false],
+	["Mouse"     , "Mouse"      , false, true , false],
+	["Capybara"  , "Mouse"      , true , false, false],
+	["Hedgehog"  , "Hedgehog"   , false, false, true ],
+	["Snake"     , "Snake"      , true , false, false],
+	["Frog"      , "Frog"       , false, true , true ],
+	["Squirrel"  , "Squirrel"   , false, false, true ],
+	["Cat"       , "Cat"        , true , true , true ],
+	["LilCat"    , "Cat"        , true , true , true ],
+	["Dog"       , "Dog"        , true , false, true ],
+	["LilDog"    , "Dog"        , true , false, true ],
+	["Wolf"      , "Dog"        , true , false, true ],
+	["Fox"       , "Fox"        , false, false, true ],
+	["LilFox"    , "Fox"        , false, false, true ],
+	["Panda"     , "Panda"      , false, false, true ],
+	["Turtle"    , "Turtle"     , true , true , false],
+	["Racoon"    , "Racoon"     , false, true , false],
+	["Chicken"   , "Chicken"    , false, true , false],
+	["Duck"      , "Chicken"    , false, true , true ],
+	["Crane"     , "Crane"      , false, false, true ],
+	["Raven"     , "Raven"      , false, true , false],
+	["Dragonfly" , "Dragonfly"  , true , true , true ],
+	["Dragonling", "Dragonling" , false, true , false],
+	["LuckDragon", "Dragonling" , false, true , true ],
+	["Parrot"    , "Parrot"     , true , false, false]
 ];
 
 const heroList = [
@@ -392,7 +392,8 @@ function start() {
 
 	let tintTable = $("#tintTable");
 	tintList.forEach(tint => {
-		let tr = $("<tr></tr>").addClass(tint[1]);
+		console.log(tint[0]);
+		let tr = $("<tr></tr>").addClass(getPetClass(tint[1]));
 		let th = $("<th></th>");
 		let label = $("<label></label>").text(tint[0]);
 		th.append(label);
@@ -476,7 +477,9 @@ function onChangePetBond(event) {
 			let timeResult = calcTime($("#in" + pet[0] + "Bond").val());
 			$("#out" + pet[0] + "Time").text(formatTime(timeResult));
 			$("#out" + pet[0] + "Time").attr("title", "About " + Math.ceil(timeResult / 86400) + " days");
-			if (timeResult != 0) {
+			if ($("#in" + pet[0] + "Stars").val() == 0) {
+				$("#out" + pet[0] + "Time").removeClass().addClass("Unobtained");
+			} else if (timeResult != 0) {
 				timeRanking.push([timeResult, pet[0]]);
 			} else {
 				$("#out" + pet[0] + "Time").removeClass().addClass("Complete");
@@ -501,7 +504,6 @@ function onChangePetBond(event) {
 		if (x >= 2 && i + 1 < timeRanking.length) $("#out" + timeRanking[i + 1][1] + "Time").removeClass().addClass("Group" + ((i/x) < 9 ? ((i/x) + 1) : 0));
 		if (x >= 3 && i + 2 < timeRanking.length) $("#out" + timeRanking[i + 2][1] + "Time").removeClass().addClass("Group" + ((i/x) < 9 ? ((i/x) + 1) : 0));
 	}
-	console.log(timeRanking);
 	$("#outTotalBond").text(bondTotal);
 	$("#outTotalMedals").text(medalsTotal.toLocaleString());
 	$("#outTotalTime").text(formatTime(timeTotal));
@@ -541,6 +543,10 @@ function onChangePetStars(event) {
 			feathers["Total"] += feathersResult;
 			feathers[pet[1]] += feathersResult;
 			$("#in" + pet[0] + "Stars").removeClass().addClass("S" + $("#in" + pet[0] + "Stars").val());
+			if ($("#in" + pet[0] + "Stars").val() > 0 && $("#in" + pet[0] + "Bond").val() == 0)
+				$("#in" + pet[0] + "Bond").val(1).change();
+			if ($("#in" + pet[0] + "Stars").val() == 0)
+				$("#in" + pet[0] + "Bond").val(0).change();
 		}
 	});
 	$("#outTotalPetStars").text(starsTotal);
@@ -550,6 +556,7 @@ function onChangePetStars(event) {
 		title += kind + ": " + feathers[kind] + "\n"
 	});
 	$("#outTotalFeathers").attr("title", title);
+	onChangeTint(event);
 }
 
 function onChangeHeroStars(event) {
@@ -569,6 +576,10 @@ function onChangeHeroStars(event) {
 			dust["Total"] += dustResult;
 			dust[hero[2]] += dustResult;
 			$("#in" + hero[0] + "Stars").removeClass().addClass("S" + $("#in" + hero[0] + "Stars").val());
+			if ($("#in" + hero[0] + "Stars").val() > 0 && $("#in" + hero[0] + "Level").val() == 0)
+				$("#in" + hero[0] + "Level").val(1).change();
+			if ($("#in" + hero[0] + "Stars").val() == 0)
+				$("#in" + hero[0] + "Level").val(0).change();
 		}
 	});
 	$("#outTotalHeroStars").text(starsTotal);
@@ -669,7 +680,9 @@ function onChangeTint(event) {
 	tintList.forEach(tint => {
 		if (tint[2]) {
 			localStorage.setItem(tint[0] + "TintEnemies", $("#in" + tint[0] + "TintEnemies").val());
-			if ($("#in" + tint[0] + "TintEnemies").val() == 10000000) {
+			if ($("#in" + tint[1] + "Stars").val() == 0) {
+				$("#in" + tint[0] + "TintEnemies").parent().removeClass().addClass("Unobtained");
+			} else if ($("#in" + tint[0] + "TintEnemies").val() == 10000000) {
 				$("#in" + tint[0] + "TintEnemies").parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
@@ -680,7 +693,9 @@ function onChangeTint(event) {
 		}
 		if (tint[3]) {
 			localStorage.setItem(tint[0] + "TintChallenges", $("#in" + tint[0] + "TintChallenges").val());
-			if ($("#in" + tint[0] + "TintChallenges").val() == 150) {
+			if ($("#in" + tint[1] + "Stars").val() == 0) {
+				$("#in" + tint[0] + "TintChallenges").parent().removeClass().addClass("Unobtained");
+			} else if ($("#in" + tint[0] + "TintChallenges").val() == 150) {
 				$("#in" + tint[0] + "TintChallenges").parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
@@ -691,7 +706,9 @@ function onChangeTint(event) {
 		}
 		if (tint[4]) {
 			localStorage.setItem(tint[0] + "TintAmber", $("#in" + tint[0] + "TintAmber").val());
-			if ($("#in" + tint[0] + "TintAmber").val() == 15000) {
+			if ($("#in" + tint[1] + "Stars").val() == 0) {
+				$("#in" + tint[0] + "TintAmber").parent().removeClass().addClass("Unobtained");
+			} else if ($("#in" + tint[0] + "TintAmber").val() == 15000) {
 				$("#in" + tint[0] + "TintAmber").parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
@@ -833,6 +850,14 @@ function formatTime(secs) {
 		.filter((v, i) => v !== "00" || i > 0);
 
 	return result[0].toLocaleString() + "h " + result[1] + "m " + result[2] + "s";
+}
+
+function getPetClass(test){
+	let result = "";
+	petList.forEach(pet => {
+		if (pet[0] == test) result = pet[1];
+	});
+	return result;
 }
 
 function petTab() {

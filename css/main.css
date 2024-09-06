@@ -115,6 +115,13 @@
     font-size: 0.8em;
   }
   
+  .Unobtained::after {
+    content: "❎";
+    display: block;
+    float: right;
+    font-size: 0.8em;
+  }
+  
   .Group1::after {
     content: "1️⃣";
     display: block;
