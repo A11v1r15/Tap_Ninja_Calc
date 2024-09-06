@@ -430,12 +430,13 @@ function start() {
 		tintTable.append(tr);
 	});
 	let totalTint = $("<tr class='header'><th>Total missing:</th><td id='outTotalTintEnemies'>NaN</td><td id='outTotalTintChallenges'>NaN</td><td id='outTotalTintAmber'>NaN</td></tr>");
+	let optimalTint = $("<tr class='header'><th>Optmized:</th><td id='outOptimalTintEnemies'>NaN</td><td id='outOptimalTintChallenges'>NaN</td><td id='outOptimalTintAmber'>NaN</td></tr>");
 	let hideTintInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideTintCheckbox")
 		.change(hideTint).prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 	let hideTintInputLabel = $("<label>").attr("for", "hideTintCheckbox").text("Hide completed tints");
 	let tdFt = $("<td colspan='5' style='text-align: left;'></td>");
 	tdFt.append(hideTintInput).append(hideTintInputLabel)
-	tintTable.append(totalTint).append(tdFt);
+	tintTable.append(totalTint).append(optimalTint).append(tdFt);
 
 	$("#PetBondCap").val(localStorageGetItem("PetBondCap", 15)).change();
 	$("#PetStarCap").val(localStorageGetItem("PetStarCap", 12)).change();
@@ -632,41 +633,74 @@ function onChangeTint(event) {
 	let totalTintEnemies = 0;
 	let totalTintChallenges = 0;
 	let totalTintAmber = 0;
+	let rankingEnemies = [];
+	let rankingChallenges = [];
+	let rankingAmber = [];
 	tintList.forEach(tint => {
 		if (tint[2]) {
 			localStorage.setItem(tint[0] + "TintEnemies", $("#in" + tint[0] + "TintEnemies").val());
 			if ($("#in" + tint[0] + "TintEnemies").val() == 10000000) {
-				$("#in" + tint[0] + "TintEnemies").parent().addClass("Complete");
+				$("#in" + tint[0] + "TintEnemies").parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
 				$("#in" + tint[0] + "TintEnemies").parent().removeClass();
 				totalTintEnemies += $("#in" + tint[0] + "TintEnemies").val() - 10000000;
+				rankingEnemies.push([$("#in" + tint[0] + "TintEnemies").val() - 10000000, tint[0]]);
 			}
 		}
 		if (tint[3]) {
 			localStorage.setItem(tint[0] + "TintChallenges", $("#in" + tint[0] + "TintChallenges").val());
 			if ($("#in" + tint[0] + "TintChallenges").val() == 150) {
-				$("#in" + tint[0] + "TintChallenges").parent().addClass("Complete");
+				$("#in" + tint[0] + "TintChallenges").parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
 				$("#in" + tint[0] + "TintChallenges").parent().removeClass();
 				totalTintChallenges += $("#in" + tint[0] + "TintChallenges").val() - 150;
+				rankingChallenges.push([$("#in" + tint[0] + "TintChallenges").val() - 150, tint[0]]);
 			}
 		}
 		if (tint[4]) {
 			localStorage.setItem(tint[0] + "TintAmber", $("#in" + tint[0] + "TintAmber").val());
 			if ($("#in" + tint[0] + "TintAmber").val() == 15000) {
-				$("#in" + tint[0] + "TintAmber").parent().addClass("Complete");
+				$("#in" + tint[0] + "TintAmber").parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
 				$("#in" + tint[0] + "TintAmber").parent().removeClass();
 				totalTintAmber += $("#in" + tint[0] + "TintAmber").val() - 15000;
+				rankingAmber.push([$("#in" + tint[0] + "TintAmber").val() - 15000, tint[0]]);
 			}
 		}
 	})
+	rankingEnemies   .sort((a,b) => a[0] - b[0]);
+	rankingChallenges.sort((a,b) => a[0] - b[0]);
+	rankingAmber     .sort((a,b) => a[0] - b[0]);
+	let optimalTintEnemies = 0;
+	let optimalTintChallenges = 0;
+	let optimalTintAmber = 0;
+	for(let i = 0; i < rankingEnemies.length; i += 3) {
+		optimalTintEnemies += rankingEnemies[i][0];
+		if (i + 0 < rankingEnemies.length) $("#in" + rankingEnemies[i + 0][1] + "TintEnemies").parent().removeClass().addClass("Group" + ((i/3) + 1));
+		if (i + 1 < rankingEnemies.length) $("#in" + rankingEnemies[i + 1][1] + "TintEnemies").parent().removeClass().addClass("Group" + ((i/3) + 1));
+		if (i + 2 < rankingEnemies.length) $("#in" + rankingEnemies[i + 2][1] + "TintEnemies").parent().removeClass().addClass("Group" + ((i/3) + 1));
+	}
+	for(let i = 0; i < rankingChallenges.length; i += 3) {
+		optimalTintChallenges += rankingChallenges[i][0];
+		if (i + 0 < rankingChallenges.length) $("#in" + rankingChallenges[i + 0][1] + "TintChallenges").parent().removeClass().addClass("Group" + ((i/3) + 1));
+		if (i + 1 < rankingChallenges.length) $("#in" + rankingChallenges[i + 1][1] + "TintChallenges").parent().removeClass().addClass("Group" + ((i/3) + 1));
+		if (i + 2 < rankingChallenges.length) $("#in" + rankingChallenges[i + 2][1] + "TintChallenges").parent().removeClass().addClass("Group" + ((i/3) + 1));
+	}
+	for(let i = 0; i < rankingAmber.length; i += 3) {
+		optimalTintAmber += rankingAmber[i][0];
+		if (i + 0 < rankingAmber.length) $("#in" + rankingAmber[i + 0][1] + "TintAmber").parent().removeClass().addClass("Group" + ((i/3) + 1));
+		if (i + 1 < rankingAmber.length) $("#in" + rankingAmber[i + 1][1] + "TintAmber").parent().removeClass().addClass("Group" + ((i/3) + 1));
+		if (i + 2 < rankingAmber.length) $("#in" + rankingAmber[i + 2][1] + "TintAmber").parent().removeClass().addClass("Group" + ((i/3) + 1));
+	}
 	$("#outTotalTintEnemies").text((totalTintEnemies * -1).toLocaleString(undefined, {signDisplay: "negative"}));
 	$("#outTotalTintChallenges").text((totalTintChallenges * -1).toLocaleString(undefined, {signDisplay: "negative"}));
 	$("#outTotalTintAmber").text((totalTintAmber * -1).toLocaleString(undefined, {signDisplay: "negative"}));
+	$("#outOptimalTintEnemies").text((optimalTintEnemies * -1).toLocaleString(undefined, {signDisplay: "negative"}));
+	$("#outOptimalTintChallenges").text((optimalTintChallenges * -1).toLocaleString(undefined, {signDisplay: "negative"}));
+	$("#outOptimalTintAmber").text((optimalTintAmber * -1).toLocaleString(undefined, {signDisplay: "negative"}));
 }
 
 function calcMedals(bond) {

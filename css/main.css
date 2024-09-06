@@ -115,6 +115,41 @@
     font-size: 0.8em;
   }
   
+  .Group1::after {
+    content: "1️⃣";
+    display: block;
+    float: right;
+    font-size: 0.8em;
+  }
+  
+  .Group2::after {
+    content: "2️⃣";
+    display: block;
+    float: right;
+    font-size: 0.8em;
+  }
+  
+  .Group3::after {
+    content: "3️⃣";
+    display: block;
+    float: right;
+    font-size: 0.8em;
+  }
+  
+  .Group4::after {
+    content: "4️⃣";
+    display: block;
+    float: right;
+    font-size: 0.8em;
+  }
+  
+  .Group5::after {
+    content: "5️⃣";
+    display: block;
+    float: right;
+    font-size: 0.8em;
+  }
+  
   .Medal::after {
     content: "";
     display: block;
