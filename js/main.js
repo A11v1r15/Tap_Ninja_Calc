@@ -465,6 +465,7 @@ function onChangePetBond(event) {
 	let medalsTotal = 0;
 	let timeTotal = 0;
 	let medalsSpentTotal = 0;
+	let timeRanking = [];
 	petList.forEach(pet => {
 		localStorage.setItem(pet[0] + "Bond", $("#in" + pet[0] + "Bond").val());
 		if ($("#in" + pet[0] + "Bond").is(":visible")) {
@@ -475,22 +476,51 @@ function onChangePetBond(event) {
 			let timeResult = calcTime($("#in" + pet[0] + "Bond").val());
 			$("#out" + pet[0] + "Time").text(formatTime(timeResult));
 			$("#out" + pet[0] + "Time").attr("title", "About " + Math.ceil(timeResult / 86400) + " days");
-			timeTotal += timeResult;
+			if (timeResult != 0) {
+				timeRanking.push([timeResult, pet[0]]);
+			} else {
+				$("#out" + pet[0] + "Time").removeClass().addClass("Complete");
+			}
 			let medalsSpentResult = calcMedalsSpent($("#in" + pet[0] + "Bond").val());
 			$("#out" + pet[0] + "MedalsSpent").text(medalsSpentResult);
 			medalsSpentTotal += medalsSpentResult;
 		}
 	});
+	timeRanking.sort((a,b) => a[0] - b[0]);
+	let x = 3;
+	if (bondTotal < 90) {
+		x = 2;
+		timeRanking.sort((a,b) => b[0] - a[0]);
+		if (bondTotal < 55) {
+			x = 1;
+		}
+    }
+	for (let i = 0; i < timeRanking.length; i += x) {
+		timeTotal += timeRanking[i][0];
+		if (x >= 1 && i + 0 < timeRanking.length) $("#out" + timeRanking[i + 0][1] + "Time").removeClass().addClass("Group" + ((i/x) < 9 ? ((i/x) + 1) : 0));
+		if (x >= 2 && i + 1 < timeRanking.length) $("#out" + timeRanking[i + 1][1] + "Time").removeClass().addClass("Group" + ((i/x) < 9 ? ((i/x) + 1) : 0));
+		if (x >= 3 && i + 2 < timeRanking.length) $("#out" + timeRanking[i + 2][1] + "Time").removeClass().addClass("Group" + ((i/x) < 9 ? ((i/x) + 1) : 0));
+	}
+	console.log(timeRanking);
 	$("#outTotalBond").text(bondTotal);
 	$("#outTotalMedals").text(medalsTotal.toLocaleString());
 	$("#outTotalTime").text(formatTime(timeTotal));
 	let timeInDays = Math.ceil(timeTotal / 86400);
+	let timeInYears = Math.ceil(timeInDays / 365);
+	let titleText = "Optimally about ";
 	if (timeInDays >= 365) {
-		let timeInYears = Math.ceil(timeInDays / 365);
-		$("#outTotalTime").attr("title", "About " + timeInYears + "y " + (timeInDays % 365) + "d in 1 slot");
+		titleText += timeInYears + "y " + (timeInDays % 365);
 	} else {
-		$("#outTotalTime").attr("title", "About " + timeInDays + "d in 1 slot");
+		titleText += timeInDays;
 	}
+	if (bondTotal < 55) {
+		titleText += "d with 1 slot";
+	} else if (bondTotal < 90) {
+		titleText += "d with 2 slots";
+    } else {
+		titleText += "d with 3 slots";
+    }
+	$("#outTotalTime").attr("title", titleText);
 	$("#outTotalMedalsSpent").text(medalsSpentTotal.toLocaleString());
 }
 

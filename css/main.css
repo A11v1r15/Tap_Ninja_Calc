@@ -150,6 +150,41 @@
     font-size: 0.8em;
   }
   
+  .Group6::after {
+    content: "6️⃣";
+    display: block;
+    float: right;
+    font-size: 0.8em;
+  }
+  
+  .Group7::after {
+    content: "7️⃣";
+    display: block;
+    float: right;
+    font-size: 0.8em;
+  }
+  
+  .Group8::after {
+    content: "8️⃣";
+    display: block;
+    float: right;
+    font-size: 0.8em;
+  }
+  
+  .Group9::after {
+    content: "9️⃣";
+    display: block;
+    float: right;
+    font-size: 0.8em;
+  }
+  
+  .Group0::after {
+    content: "0️⃣";
+    display: block;
+    float: right;
+    font-size: 0.8em;
+  }
+  
   .Medal::after {
     content: "";
     display: block;
