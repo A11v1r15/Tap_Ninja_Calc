@@ -2,78 +2,88 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Tap Ninja Calc</title>
+    <title>Tap Ninja Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="description" content="Calculator app for the idle game 'Tap Ninja'">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
   </head>
   <body>
-    <span id="noFunButton" style="position: absolute;">👁</span>
+    <span id="noFunButton" aria-label="Change colour scheme">👁</span>
     <h1>TAP NINJA CALC</h1>
-    <div id="main">
+    <article id="main">
       <nav id="tabs">
-        <button id="storageTabButton" onclick="storageTab()">Storage</button>
-        <button id="tintTabButton" onclick="tintTab()">Tints</button>
-        <button id="equipmentTabButton" onclick="equipmentTab()">Equipments</button>
-        <button id="heroTabButton" onclick="heroTab()">Heroes</button>
-        <button id="petTabButton" onclick="petTab()">Pets</button>
+        <button id="storageTabButton"   type="button" onclick="storageTab()"  >Storage</button>
+        <button id="tintTabButton"      type="button" onclick="tintTab()"     >Tints</button>
+        <button id="equipmentTabButton" type="button" onclick="equipmentTab()">Equipments</button>
+        <button id="heroTabButton"      type="button" onclick="heroTab()"     >Heroes</button>
+        <button id="petTabButton"       type="button" onclick="petTab()"      >Pets</button>
       </nav>
       <table id="petTable">
-        <tr class="header">
-          <th>Pet</th>
-          <th>Bond</th>
-          <th>
-            <label for="PetBondCap">Medals needed to</label>
-            <input type="number" min="0" max="15" id="PetBondCap" onchange="onChangePetBondCap()">
-          </th>
-          <th title='With "Tamer" and "Forming a Bond"'>Time needed</th>
-          <th>Medals spent</th>
-          <th>Stars</th>
-          <th>
-            <label for="PetStarCap">Feathers needed to</label>
-            <input type="number" min="0" max="12" id="PetStarCap" onchange="onChangePetStarCap()">
-          </th>
-        </tr>
+        <thead>
+          <tr class="header">
+            <th>Pet</th>
+            <th>Bond</th>
+            <th>
+              <label for="PetBondCap">Medals needed to</label>
+              <input type="number" min="0" max="15" id="PetBondCap" onchange="onChangePetBondCap()">
+            </th>
+            <th title='With "Tamer" and "Forming a Bond"'>Time needed</th>
+            <th>Medals spent</th>
+            <th>Stars</th>
+            <th>
+              <label for="PetStarCap">Feathers needed to</label>
+              <input type="number" min="0" max="12" id="PetStarCap" onchange="onChangePetStarCap()">
+            </th>
+          </tr>
+        </thead>
       </table>
       <table id="equipmentTable">
-        <tr class="header">
-          <th>Item</th>
-          <th>Bonus</th>
-          <th>Lvl</th>
-          <th>Next Cost</th>
-          <th>Amber needed</th>
-          <th>Amber spent</th>
-        </tr>
-        <tr>
-          <td colspan="6" id="equipmentBar">
-            <div style="width:0%" class="Elixir">+NaN%</div>
-          </td>
-        </tr>
+        <thead>
+          <tr class="header">
+            <th>Item</th>
+            <th>Bonus</th>
+            <th>Lvl</th>
+            <th>Next Cost</th>
+            <th>Amber needed</th>
+            <th>Amber spent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="6" id="equipmentBar">
+              <div style="width:0%" class="Elixir">+NaN%</div>
+            </td>
+          </tr>
+        </tbody>
       </table>
       <table id="heroTable">
-        <tr class="header">
-          <th>Hero</th>
-          <th>Stars</th>
-          <th>
-            <label for="HeroStarCap">Dust needed to</label>
-            <input type="number" min="0" max="12" id="HeroStarCap" onchange="onChangeHeroStarCap()">
-          </th>
-          <th>Level</th>
-          <th>
-            <label for="HeroLevelCap">Experience needed to</label>
-            <input type="number" min="0" max="100" id="HeroLevelCap" onchange="onChangeHeroLevelCap()">
-          </th>
-          <th>Experience Cumulated</th>
-        </tr>
+        <thead>
+          <tr class="header">
+            <th>Hero</th>
+            <th>Stars</th>
+            <th>
+              <label for="HeroStarCap">Dust needed to</label>
+              <input type="number" min="0" max="12" id="HeroStarCap" onchange="onChangeHeroStarCap()">
+            </th>
+            <th>Level</th>
+            <th>
+              <label for="HeroLevelCap">Experience needed to</label>
+              <input type="number" min="0" max="100" id="HeroLevelCap" onchange="onChangeHeroLevelCap()">
+            </th>
+            <th>Experience Cumulated</th>
+          </tr>
+        </thead>
       </table>
       <table id="tintTable">
-        <tr class="header">
-          <th>Pet</th>
-          <th>10000000 Enemies</th>
-          <th>150 Challenges</th>
-          <th>15000 Amber</th>
-        </tr>
+        <thead>
+          <tr class="header">
+            <th>Pet</th>
+            <th>10000000 Enemies</th>
+            <th>150 Challenges</th>
+            <th>15000 Amber</th>
+          </tr>
+        </thead>
       </table>
       <table id="storageTable">
         <tr class="Critter">
@@ -117,7 +127,7 @@
           </td>
         </tr>
       </table>
-    </div>
+    </article>
     <footer>
       <span>Made by A11v11r5</span>
       <br>
@@ -125,6 +135,7 @@
       <br>
       <span>Tap Ninja by Broken Glass/Shamahan</span>
     </footer>
-    <script src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="js/main.js" defer></script>
   </body>
 </html>
