@@ -242,7 +242,7 @@ const lookUpEquipments = {
 		[2782,  6.8],
 		[2754,  7.2],
 		[2779,  7.6],
-		[3057,  8  ], // Not real values
+		[3057,  8  ], // Not real value
 		[3026,  8.4],
 		[2932,  8.8],
 		[3167,  9.2],
@@ -453,7 +453,7 @@ function start() {
 	hideTintInput.prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 	onChangeEquipmentBonus();
 	onChangeTint();
-	petTab();
+	tab(localStorageGetItem("Tab", 'pet'));
 	if (localStorageGetItem("noFunMode", 'false') == 'true') {
 		$("#noFunButton").click(funMode);
 		noFunMode();
@@ -830,15 +830,16 @@ function calcAmberSpent(item, lvl) {
 }
 
 function localStorageGetItem(key, value) {
-	if (localStorage.getItem(key) == null ||
-		localStorage.getItem(key) == 'NaN' ||
-		localStorage.getItem(key) == '' ||
-		localStorage.getItem(key) == 'undefined' ||
-		localStorage.getItem(key) == undefined) {
+    const storage = localStorage.getItem(key);
+	if (storage == null ||
+		storage == 'NaN' ||
+		storage == '' ||
+		storage == 'undefined' ||
+		storage == undefined) {
 		console.log("Getting default value for " + key);
 		return value;
 	}
-	return localStorage.getItem(key);
+	return storage;
 }
 
 function formatTime(secs) {
@@ -863,69 +864,19 @@ function getPetClass(test) {
 	return result;
 }
 
-function petTab() {
-	$("#petTable").show();
-	$("#heroTable").hide();
-	$("#equipmentTable").hide();
-	$("#storageTable").hide();
-	$("#tintTable").hide();
-	$("#petTabButton").addClass("selected");
-	$("#heroTabButton").removeClass();
-	$("#equipmentTabButton").removeClass();
-	$("#storageTabButton").removeClass();
-	$("#tintTabButton").removeClass();
-}
-
-function heroTab() {
-	$("#petTable").hide();
-	$("#heroTable").show();
-	$("#equipmentTable").hide();
-	$("#storageTable").hide();
-	$("#tintTable").hide();
-	$("#petTabButton").removeClass();
-	$("#heroTabButton").addClass("selected");
-	$("#equipmentTabButton").removeClass();
-	$("#storageTabButton").removeClass();
-	$("#tintTabButton").removeClass();
-}
-
-function equipmentTab() {
-	$("#petTable").hide();
-	$("#heroTable").hide();
-	$("#equipmentTable").show();
-	$("#storageTable").hide();
-	$("#tintTable").hide();
-	$("#petTabButton").removeClass();
-	$("#heroTabButton").removeClass();
-	$("#equipmentTabButton").addClass("selected");
-	$("#storageTabButton").removeClass();
-	$("#tintTabButton").removeClass();
-}
-
-function storageTab() {
-	$("#petTable").hide();
-	$("#heroTable").hide();
-	$("#equipmentTable").hide();
-	$("#storageTable").show();
-	$("#tintTable").hide();
-	$("#petTabButton").removeClass();
-	$("#heroTabButton").removeClass();
-	$("#equipmentTabButton").removeClass();
-	$("#storageTabButton").addClass("selected");
-	$("#tintTabButton").removeClass();
-}
-
-function tintTab() {
-	$("#petTable").hide();
-	$("#heroTable").hide();
-	$("#equipmentTable").hide();
-	$("#storageTable").hide();
-	$("#tintTable").show();
-	$("#petTabButton").removeClass();
-	$("#heroTabButton").removeClass();
-	$("#equipmentTabButton").removeClass();
-	$("#storageTabButton").removeClass();
-	$("#tintTabButton").addClass("selected");
+function tab(id){
+	localStorage.setItem("Tab", id);
+    const ids = ['pet', 'hero', 'equipment', 'storage', 'tint'];
+    
+    ids.forEach(test => {
+        if (test === id) {
+            $("#" + id + "Table").show();
+            $("#" + id + "TabButton").addClass("selected");
+        } else {
+            $("#" + test + "Table").hide();
+            $("#" + test + "TabButton").removeClass("selected");
+        }
+    });
 }
 
 function hidePet(event) {
