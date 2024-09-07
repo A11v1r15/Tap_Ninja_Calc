@@ -8,7 +8,9 @@ body {
 	background-color: #75BCE2;
 	color: #AD1D15;
 }
-body h1 {
+
+h1 {
+	font-family: "Born2bSporty";
 	margin: 1%;
 	text-align: center;
 	font-size: 4em;
@@ -562,16 +564,46 @@ footer span {
 	position: absolute;
 }
 
+/* No Fun Mode */
+
+body.noFunMode {
+	font-family: "Trebuchet MS black";
+}
+
+.noFunMode tr:nth-child(even) {
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+.noFunMode tr:nth-child(odd) {
+	color: #000000;
+	background-color: #AAAAAA;
+}
+
+.noFunMode td {
+	color: inherit;
+	background-color: inherit;
+}
+
+.noFunMode input {
+	color: inherit;
+	background-color: inherit !important;
+}
+
+.noFunMode tr.header {
+	background-color: #666666;
+}
+
 @media (max-width: 768px) {
 	body h1 {
-	  font-size: 3em;
+		font-size: 3em;
 	}
-  
+
 	table {
-	  font-size: 0.8em;
+		font-size: 0.8em;
 	}
-  
-	footer {
-	  height: 3em;
+
+	.noFunMode table {
+		font-size: 0.7em;
 	}
-  }
+}

@@ -929,24 +929,14 @@ function hideTint(event) {
 
 function noFunMode() {
 	localStorage.setItem("noFunMode", 'true');
-	$("tr:even").css("background-color", "#FFFFFF");
-	$("tr:odd").css("background-color", "#AAAAAA");
-	$("tr").css("color", "#000000");
-	$("input").css("background-color", "inherit");
-	$("input").css("color", "#000000");
-	$("body").css("font-family", "Trebuchet MS black");
-	$("#noFunButton").click(funMode);
+	$("body").addClass("noFunMode");
+	$("#noFunButton").off("click").on("click", funMode);
 }
 
 function funMode() {
 	localStorage.setItem("noFunMode", 'false');
-	$("tr:even").attr("style", "");
-	$("tr:odd").attr("style", "");
-	$("tr").attr("style", "");
-	$("input").attr("style", "");
-	$("input").attr("style", "");
-	$("body").attr("style", "");
-	$("#noFunButton").click(noFunMode);
+	$("body").removeClass("noFunMode");
+	$("#noFunButton").off("click").on("click", noFunMode);
 }
 
 $(document).ready(start());
