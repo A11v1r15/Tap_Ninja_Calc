@@ -315,7 +315,7 @@ function start() {
 	});
 	let totalPet = $("<tr class='header'><th>Total:</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalPetStars'>NaN</td><td id='outTotalFeathers'>NaN</td></tr>");
 	let hidePetInput = $("<input></input>").attr("type", "checkbox").attr("id", "hidePetCheckbox")
-		.change(hidePet).prop("checked", localStorageGetItem("HidePet", 'false') == 'true').change();
+		.change(hidePet);
 	let hidePetInputLabel = $("<label>").attr("for", "hidePetCheckbox").text("Hide non-obtained pets");
 	let tdFp = $("<td colspan='5' style='text-align: left;'></td>");
 	tdFp.append(hidePetInput).append(hidePetInputLabel)
@@ -355,7 +355,7 @@ function start() {
 	});
 	let totalHero = $("<tr class='header'><th>Total:</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td><td id='outTotalHeroLevels'>NaN</td><td id='outTotalHeroExperienceNeeded'>NaN</td><td id='outTotalHeroExperienceCumulated'>NaN</td></tr>");
 	let hideHeroInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideHeroCheckbox")
-		.change(hideHero).prop("checked", localStorageGetItem("HideHero", 'false') == 'true').change();
+		.change(hideHero);
 	let hideHeroInputLabel = $("<label>").attr("for", "hideHeroCheckbox").text("Hide non-obtained heroes");
 	let tdFh = $("<td colspan='5' style='text-align: left;'></td>");
 	tdFh.append(hideHeroInput).append(hideHeroInputLabel);
@@ -392,7 +392,6 @@ function start() {
 
 	let tintTable = $("#tintTable");
 	tintList.forEach(tint => {
-		console.log(tint[0]);
 		let tr = $("<tr></tr>").addClass(getPetClass(tint[1]));
 		let th = $("<th></th>");
 		let label = $("<label></label>").text(tint[0]);
@@ -433,24 +432,23 @@ function start() {
 	let totalTint = $("<tr class='header'><th>Total missing:</th><td id='outTotalTintEnemies'>NaN</td><td id='outTotalTintChallenges'>NaN</td><td id='outTotalTintAmber'>NaN</td></tr>");
 	let optimalTint = $("<tr class='header'><th>Optmized:</th><td id='outOptimalTintEnemies'>NaN</td><td id='outOptimalTintChallenges'>NaN</td><td id='outOptimalTintAmber'>NaN</td></tr>");
 	let hideTintInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideTintCheckbox")
-		.change(hideTint).prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
+		.change(hideTint);
 	let hideTintInputLabel = $("<label>").attr("for", "hideTintCheckbox").text("Hide completed tints");
 	let tdFt = $("<td colspan='5' style='text-align: left;'></td>");
 	tdFt.append(hideTintInput).append(hideTintInputLabel)
 	tintTable.append(totalTint).append(optimalTint).append(tdFt);
 
-	$("#PetBondCap").val(localStorageGetItem("PetBondCap", 15)).change();
-	$("#PetStarCap").val(localStorageGetItem("PetStarCap", 12)).change();
-	$("#HeroStarCap").val(localStorageGetItem("HeroStarCap", 12)).change();
-	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 100)).change();
-
 	$("#tintTable .header").first().children().eq(1).text((10000000).toLocaleString() + " Enemies");
 	$("#tintTable .header").first().children().eq(3).text((15000).toLocaleString() + " Amber");
-	onChangePetBond();
-	onChangePetStars();
+
+	$("#PetBondCap")  .val(localStorageGetItem("PetBondCap", 15)).change();
+	$("#PetStarCap")  .val(localStorageGetItem("PetStarCap", 12)).change();
+	$("#HeroStarCap") .val(localStorageGetItem("HeroStarCap", 12)).change();
+	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 100)).change();
+	hidePetInput .prop("checked", localStorageGetItem("HidePet",  'false') == 'true').change();
+	hideHeroInput.prop("checked", localStorageGetItem("HideHero", 'false') == 'true').change();
+	hideTintInput.prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 	onChangeEquipmentBonus();
-	onChangeHeroStars();
-	onChangeHeroLevels();
 	onChangeTint();
 	petTab();
 	if (localStorageGetItem("noFunMode", 'false') == 'true') {
@@ -834,7 +832,10 @@ function localStorageGetItem(key, value) {
 		localStorage.getItem(key) == '' ||
 		localStorage.getItem(key) == 'undefined' ||
 		localStorage.getItem(key) == undefined)
-		return value;
+		{
+			console.log("Getting default value for " + key);
+			return value;
+		}
 	return localStorage.getItem(key);
 }
 
