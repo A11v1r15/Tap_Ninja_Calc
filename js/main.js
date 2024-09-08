@@ -308,12 +308,12 @@ function start() {
 			.val(localStorageGetItem(pet[0] + "Stars", 0));
 		input1.change(onChangePetStars);
 		td4.append(input1);
-		let td5 = $("<td></td>").attr("id", "out" + pet[0] + "Feathers")
+		let td5 = $("<td colspan='3'></td>").attr("id", "out" + pet[0] + "Feathers")
 			.text("NaN").addClass("Feather");
 		tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
 		petTable.append(tr);
 	});
-	let totalPet = $("<tr class='header'><th>Total:</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalPetStars'>NaN</td><td id='outTotalFeathers'>NaN</td></tr>");
+	let totalPet = $("<tr class='header'><th>Total:</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalPetStars'>NaN</td><td id='outCritterFeathers' class='Critter Feather'>NaN</td><td id='outBeastFeathers' class='Beast Feather'>NaN</td><td id='outFlyingFeathers' class='Flying Feather'>NaN</td></tr>");
 	let hidePetInput = $("<input></input>").attr("type", "checkbox").attr("id", "hidePetCheckbox")
 		.change(hidePet);
 	let hidePetInputLabel = $("<label>").attr("for", "hidePetCheckbox").text("Hide non-obtained pets");
@@ -337,7 +337,7 @@ function start() {
 			.val(localStorageGetItem(hero[0] + "Stars", 0));
 		input0.change(onChangeHeroStars);
 		td0.append(input0);
-		let td1 = $("<td></td>").attr("id", "out" + hero[0] + "Dust")
+		let td1 = $("<td colspan='2'></td>").attr("id", "out" + hero[0] + "Dust")
 			.text("NaN").addClass(hero[2]).addClass("Dust");
 		let td2 = $("<td></td>");
 		let input1 = $("<input></input>").attr("type", "number")
@@ -354,7 +354,7 @@ function start() {
 		tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4);
 		heroTable.append(tr);
 	});
-	let totalHero = $("<tr class='header'><th>Total:</th><td id='outTotalHeroStars'>NaN</td><td id='outTotalDust'>NaN</td><td id='outTotalHeroLevels'>NaN</td><td id='outTotalHeroExperienceNeeded'>NaN</td><td id='outTotalHeroExperienceCumulated'>NaN</td></tr>");
+	let totalHero = $("<tr class='header'><th rowspan='2'>Total:</th><td id='outTotalHeroStars' rowspan='2'>NaN</td><td id='outFireDust' class='Fire Dust'>NaN</td><td id='outWindDust' class='Wind Dust'>NaN</td><td id='outTotalHeroLevels' rowspan='2'>NaN</td><td id='outTotalHeroExperienceNeeded' rowspan='2'>NaN</td><td id='outTotalHeroExperienceCumulated' rowspan='2'>NaN</td></tr><tr><td id='outWaterDust' class='Water Dust'>NaN</td><td id='outEarthDust' class='Earth Dust'>NaN</td></tr>");
 	let hideHeroInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideHeroCheckbox")
 		.change(hideHero);
 	let hideHeroInputLabel = $("<label>").attr("for", "hideHeroCheckbox").text("Hide non-obtained heroes");
@@ -531,7 +531,6 @@ function onChangePetStars(event) {
 	$("#PetStarCap").removeClass().addClass("S" + $("#PetStarCap").val());
 	let starsTotal = 0;
 	let feathers = {};
-	feathers["Total"] = 0;
 	petList.forEach(pet => {
 		feathers[pet[1]] = 0;
 	});
@@ -541,7 +540,6 @@ function onChangePetStars(event) {
 			starsTotal += Number($("#in" + pet[0] + "Stars").val());
 			let feathersResult = calcFeathers($("#in" + pet[0] + "Stars").val());
 			$("#out" + pet[0] + "Feathers").text(feathersResult.toLocaleString());
-			feathers["Total"] += feathersResult;
 			feathers[pet[1]] += feathersResult;
 			$("#in" + pet[0] + "Stars").removeClass().addClass("S" + $("#in" + pet[0] + "Stars").val());
 			if ($("#in" + pet[0] + "Stars").val() > 0 && $("#in" + pet[0] + "Bond").val() == 0)
@@ -551,12 +549,9 @@ function onChangePetStars(event) {
 		}
 	});
 	$("#outTotalPetStars").text(starsTotal);
-	$("#outTotalFeathers").text(feathers["Total"].toLocaleString());
-	let title = "";
 	Object.keys(feathers).forEach(kind => {
-		title += kind + ": " + feathers[kind] + "\n"
+		$("#out" + kind + "Feathers").text(feathers[kind].toLocaleString());
 	});
-	$("#outTotalFeathers").attr("title", title);
 	onChangeTint(event);
 }
 
@@ -564,7 +559,6 @@ function onChangeHeroStars(event) {
 	$("#HeroStarCap").removeClass().addClass("S" + $("#HeroStarCap").val());
 	let starsTotal = 0;
 	let dust = {};
-	dust["Total"] = 0;
 	heroList.forEach(hero => {
 		dust[hero[2]] = 0;
 	});
@@ -584,12 +578,9 @@ function onChangeHeroStars(event) {
 		}
 	});
 	$("#outTotalHeroStars").text(starsTotal);
-	$("#outTotalDust").text(dust["Total"].toLocaleString());
-	let title = "";
 	Object.keys(dust).forEach(faction => {
-		title += faction + ": " + dust[faction].toLocaleString() + "\n"
+		$("#out" + faction + "Dust").text(dust[faction].toLocaleString());
 	});
-	$("#outTotalDust").attr("title", title);
 }
 
 function onChangeHeroLevels(event) {

@@ -292,6 +292,15 @@ th {
 .Flying .Feather::after {
 	background: url("../img/Flying Feather.png") no-repeat;
 }
+.Critter.Feather::after {
+	background: url("../img/Critter Feather.png") no-repeat;
+}
+.Beast.Feather::after {
+	background: url("../img/Beast Feather.png") no-repeat;
+}
+.Flying.Feather::after {
+	background: url("../img/Flying Feather.png") no-repeat;
+}
 
 .Legendary {
 	background-color: #FFBB00;
