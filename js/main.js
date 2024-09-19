@@ -242,7 +242,7 @@ const lookUpEquipments = {
 		[2782,  6.8],
 		[2754,  7.2],
 		[2779,  7.6],
-		[3057,  8  ], // Not real value
+		[3057,  8  ],
 		[3026,  8.4],
 		[2932,  8.8],
 		[3167,  9.2],
@@ -640,13 +640,6 @@ function onChangeEquipmentBonus(event) {
 		amberSpentTotal += amberSpent;
 		$("#out" + item + "Level").text(lvl);
 		$("#out" + item + "Cost").text(cost.toLocaleString());
-		if (item == "Kote" && lvl == 20) {
-			$("#out" + item + "Cost").attr("title", "Placeholder value, contact me if you reach here to confirm actual cost");
-			$("#out" + item + "Cost").attr("style", "color: #FF0000");
-		} else {
-			$("#out" + item + "Cost").attr("title", "");
-			$("#out" + item + "Cost").attr("style", "");
-		}
 		$("#out" + item + "Amber").text(amber.toLocaleString());
 		$("#out" + item + "AmberSpent").text(amberSpent.toLocaleString());
 	});
