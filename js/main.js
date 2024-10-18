@@ -293,6 +293,7 @@ function start() {
 	let petTable = $("<tbody></tbody>");
 	petList.forEach(pet => {
 		let tr = $("<tr></tr>").addClass(pet[1]);
+		let fav = $("<td><a>☆</a></td>").click(toggleFav);
 		let th = $("<th></th>");
 		let label = $("<label></label>").attr("for", "in" + pet[0] + "Bond")
 			.text(pet[0]);
@@ -320,21 +321,23 @@ function start() {
 		td4.append(input1);
 		let td5 = $("<td colspan='3'></td>").attr("id", "out" + pet[0] + "Feathers")
 			.text("NaN").addClass("Feather");
-		tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
+		tr.append(fav).append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
 		petTable.append(tr);
 	});
-	let totalPet = $("<tr class='header'><th>Total:</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalPetStars'>NaN</td><td id='outCritterFeathers' class='Critter Feather'>NaN</td><td id='outBeastFeathers' class='Beast Feather'>NaN</td><td id='outFlyingFeathers' class='Flying Feather'>NaN</td></tr>");
-	let hidePetInput = $("<input></input>").attr("type", "checkbox").attr("id", "hidePetCheckbox")
-		.change(hidePet);
+	let totalPet = $("<tr class='header'><th colspan='2'>Total:</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalPetStars'>NaN</td><td id='outCritterFeathers' class='Critter Feather'>NaN</td><td id='outBeastFeathers' class='Beast Feather'>NaN</td><td id='outFlyingFeathers' class='Flying Feather'>NaN</td></tr>");
+	let hidePetInput = $("<input></input>").attr("type", "checkbox").attr("id", "hidePetCheckbox").change(hidePet);
 	let hidePetInputLabel = $("<label>").attr("for", "hidePetCheckbox").text("Hide non-obtained pets");
+	let hidePetFavInput = $("<input></input>").attr("type", "checkbox").attr("id", "hidePetFavCheckbox").change(hidePetFav);
+	let hidePetFavInputLabel = $("<label>").attr("for", "hidePetFavCheckbox").text("Hide ☆");
 	let tdFp = $("<td colspan='5' style='text-align: left;'></td>");
-	tdFp.append(hidePetInput).append(hidePetInputLabel)
+	tdFp.append(hidePetInput).append(hidePetInputLabel).append(hidePetFavInput).append(hidePetFavInputLabel);
 	petTable.append(totalPet).append(tdFp);
 	$("#petTable").append(petTable);
 
 	let heroTable = $("<tbody></tbody>");
 	heroList.forEach(hero => {
 		let tr = $("<tr></tr>").addClass(hero[1]);
+		let fav = $("<td><a>☆</a></td>").click(toggleFav);
 		let th = $("<th></th>").addClass(hero[2]).addClass(hero[3]);
 		let label = $("<label></label>").attr("for", "in" + hero[0] + "Stars")
 			.text(hero[0]);
@@ -361,15 +364,16 @@ function start() {
 			.text("NaN").addClass("Experience");
 		let td4 = $("<td></td>").attr("id", "out" + hero[0] + "ExperienceCumulated")
 			.text("NaN").addClass("Experience");
-		tr.append(th).append(td0).append(td1).append(td2).append(td3).append(td4);
+		tr.append(fav).append(th).append(td0).append(td1).append(td2).append(td3).append(td4);
 		heroTable.append(tr);
 	});
-	let totalHero = $("<tr class='header'><th rowspan='2'>Total:</th><td id='outTotalHeroStars' rowspan='2'>NaN</td><td id='outFireDust' class='Fire Dust'>NaN</td><td id='outWindDust' class='Wind Dust'>NaN</td><td id='outTotalHeroLevels' rowspan='2'>NaN</td><td id='outTotalHeroExperienceNeeded' rowspan='2'>NaN</td><td id='outTotalHeroExperienceCumulated' rowspan='2'>NaN</td></tr><tr><td id='outWaterDust' class='Water Dust'>NaN</td><td id='outEarthDust' class='Earth Dust'>NaN</td></tr>");
-	let hideHeroInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideHeroCheckbox")
-		.change(hideHero);
+	let totalHero = $("<tr class='header'><th rowspan='2' colspan='2'>Total:</th><td id='outTotalHeroStars' rowspan='2'>NaN</td><td id='outFireDust' class='Fire Dust'>NaN</td><td id='outWindDust' class='Wind Dust'>NaN</td><td id='outTotalHeroLevels' rowspan='2'>NaN</td><td id='outTotalHeroExperienceNeeded' rowspan='2'>NaN</td><td id='outTotalHeroExperienceCumulated' rowspan='2'>NaN</td></tr><tr><td id='outWaterDust' class='Water Dust'>NaN</td><td id='outEarthDust' class='Earth Dust'>NaN</td></tr>");
+	let hideHeroInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideHeroCheckbox").change(hideHero);
 	let hideHeroInputLabel = $("<label>").attr("for", "hideHeroCheckbox").text("Hide non-obtained heroes");
+	let hideHeroFavInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideHeroFavCheckbox").change(hideHeroFav);
+	let hideHeroFavInputLabel = $("<label>").attr("for", "hideHeroFavCheckbox").text("Hide ☆");
 	let tdFh = $("<td colspan='5' style='text-align: left;'></td>");
-	tdFh.append(hideHeroInput).append(hideHeroInputLabel);
+	tdFh.append(hideHeroInput).append(hideHeroInputLabel).append(hideHeroFavInput).append(hideHeroFavInputLabel);
 	heroTable.append(totalHero).append(tdFh);
 	$("#heroTable").append(heroTable);
 
@@ -470,6 +474,14 @@ function start() {
 	} else {
 		$("#noFunButton").click(noFunMode);
 	}
+}
+
+function toggleFav(event){
+	if(event.target.text == "☆")
+		event.target.text = "★"
+	else
+	if(event.target.text == "★")
+		event.target.text = "☆"
 }
 
 function onChangePetBond(event) {
@@ -884,6 +896,16 @@ function hidePet(event) {
 	onChangePetStars();
 }
 
+function hidePetFav(event) {
+	let pets = $("#petTable tr a")
+	pets.each(i => {
+		jQuery(pets[i].parentElement.parentElement)
+			.toggle(!event.target.checked || pets[i].text == "★");
+	})
+	onChangePetBond();
+	onChangePetStars();
+}
+
 function hideHero(event) {
 	heroList.forEach(hero => {
 		if ($("#in" + hero[0] + "Stars").val() == 0) {
@@ -894,6 +916,17 @@ function hideHero(event) {
 	onChangeHeroStars();
 	onChangeHeroLevels();
 }
+
+function hideHeroFav(event) {
+	let heroes = $("#heroTable tr a");
+	heroes.each(i => {
+		jQuery(heroes[i].parentElement.parentElement)
+			.toggle(!event.target.checked || heroes[i].text == "★");
+	})
+	onChangeHeroStars();
+	onChangeHeroLevels();
+}
+
 
 function hideTint(event) {
 	let checked = event.target.checked;

@@ -22,6 +22,12 @@ h1 {
 	-webkit-text-stroke-color: #000000;
 }
 
+td a {
+	width: 100%;
+	display: block;
+	text-align: center;
+}
+
 #main {
 	background-color: #000000;
 	position: relative;
