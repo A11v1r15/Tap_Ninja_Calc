@@ -49,40 +49,45 @@ const tintList = [
 ];
 
 const heroList = [
-	["Archangel"  , "Legendary", "Wind" , "Warrior" ],
-	["Archdemon"  , "Legendary", "Fire" , "Mage"    ],
-	["Lore-Master", "Legendary", "Wind" , "Support" ],
-	["Ladina"     , "Legendary", "Water", "Assassin"],
-	["Shaman"     , "Legendary", "Earth", "Support" ],
-	["Beastmaster", "Legendary", "Fire" , "Assassin"],
-	["Falkron"    , "Legendary", "Water", "Support" ],
-	["Tièr"       , "Legendary", "Water", "Mage"    ],
-	["Kito"       , "Legendary", "Water", "Assassin"],
-	["Fin"        , "Legendary", "Water", "Warrior" ],
-	["Elyanna"    , "Legendary", "Earth", "Support" ],
-	["Wasp"       , "Legendary", "Earth", "Mage"    ],
-	["Alivia"     , "Legendary", "Earth", "Assassin"],
-	["Husk"       , "Legendary", "Earth", "Warrior" ],
-	["Irbinok"    , "Legendary", "Wind" , "Support" ],
-	["Scythe"     , "Legendary", "Wind" , "Mage"    ],
-	["Akira"      , "Legendary", "Wind" , "Assassin"],
-	["Hiro"       , "Legendary", "Wind" , "Warrior" ],
-	["Maki"       , "Legendary", "Fire" , "Support" ],
-	["Blazer"     , "Legendary", "Fire" , "Mage"    ],
-	["Scarlet"    , "Legendary", "Fire" , "Assassin"],
-	["Scorn"      , "Legendary", "Fire" , "Warrior" ],
-	["Assassin"   , "Epic"     , "Water", "Assassin"],
-	["Pirate"     , "Epic"     , "Water", "Mage"    ],
-	["Highlander" , "Epic"     , "Earth", "Warrior" ],
-	["Ray"        , "Epic"     , "Fire" , "Mage"    ],
-	["Kaoru"      , "Epic"     , "Wind" , "Mage"    ],
-	["Terra"      , "Epic"     , "Earth", "Mage"    ],
-	["Demid"      , "Epic"     , "Water", "Mage"    ],
-	["Ninja"      , "Rare"     , "Wind" , "Assassin"],
-	["Fang"       , "Rare"     , "Fire" , "Assassin"],
-	["Jari"       , "Rare"     , "Wind" , "Warrior" ],
-	["Jie"        , "Rare"     , "Earth", "Support" ],
-	["Kenju"      , "Rare"     , "Water", "Warrior" ]
+//	["Waju"       , "Rare"     , ""     , ""        , ""                    ],//06
+//	["Belu"       , "Epic"     , ""     , ""        , "The Old Timer"       ],//11
+//	["Momo"       , "Epic"     , ""     , ""        , "The Peach Warden"    ],//15
+//	["Uchigo"     , "Legendary", ""     , ""        , "The Swift Blade"     ],//42
+//	["Sketchy"    , "Rare"     , ""     , ""        , ""                    ],//48
+	["Alekas"     , "Legendary", "Wind" , "Warrior" , "The Archangel"       ],//52
+	["Xyzl"       , "Legendary", "Fire" , "Mage"    , "The Archdemon"       ],//54
+	["Papyrus"    , "Legendary", "Wind" , "Support" , "The Lore-Master"     ],//53
+	["Dia"        , "Legendary", "Water", "Assassin", "The Rogue"           ],//56
+	["Ekho"       , "Legendary", "Earth", "Support" , "The Shaman"          ],//57
+	["Ulrik"      , "Legendary", "Fire" , "Assassin", "The Beastmaster"     ],//55
+	["Falkron"    , "Legendary", "Water", "Support" , "The Mystic Angler"   ],//47
+	["Tièr"       , "Legendary", "Water", "Mage"    , "The Wandering Prince"],//44
+	["Kito"       , "Legendary", "Water", "Assassin", "The Composed Outlaw" ],//43
+	["Fin"        , "Legendary", "Water", "Warrior" , "The Scuba Knight"    ],//40
+	["Elyanna"    , "Legendary", "Earth", "Support" , "The Natures Guardian"],//39
+	["Wasp"       , "Legendary", "Earth", "Mage"    , "The Sweet Sting"     ],//36
+	["Alivia"     , "Legendary", "Earth", "Assassin", "The Forests Daughter"],//34
+	["Husk"       , "Legendary", "Earth", "Warrior" , "The Immovable Object"],//33
+	["Irbinok"    , "Legendary", "Wind" , "Support" , "The Puzzled Enigma"  ],//31
+	["Scythe"     , "Legendary", "Wind" , "Mage"    , "The Harvester"       ],//29
+	["Akira"      , "Legendary", "Wind" , "Assassin", "The Grim Revenge"    ],//27
+	["Hiro"       , "Legendary", "Wind" , "Warrior" , "The Warrior of Honor"],//25
+	["Maki"       , "Legendary", "Fire" , "Support" , "The Master Chef"     ],//23
+	["Blazer"     , "Legendary", "Fire" , "Mage"    , "The Fire Breather"   ],//20
+	["Scarlet"    , "Legendary", "Fire" , "Assassin", "The Burning Passion" ],//18
+	["Scorn"      , "Legendary", "Fire" , "Warrior" , "The Scorching Anger" ],//16
+	["Sayid"      , "Epic"     , "Water", "Assassin", "The Assassin"        ],//49
+	["Locke"      , "Epic"     , "Water", "Mage"    , "The Pirate"          ],//50
+	["Duncan"     , "Epic"     , "Earth", "Warrior" , "The Highlander"      ],//51
+	["Ray"        , "Epic"     , "Fire" , "Mage"    , "The Glimmer of Light"],//08
+	["Kaoru"      , "Epic"     , "Wind" , "Mage"    , "The Wind Weaver"     ],//10
+	["Terra"      , "Epic"     , "Earth", "Mage"    , "The Earth Mover"     ],//12
+	["Demid"      , "Epic"     , "Water", "Mage"    , "The Water Bender"    ],//14
+	["Ninja"      , "Rare"     , "Wind" , "Assassin", ""                    ],//00
+	["Fang"       , "Rare"     , "Fire" , "Assassin", ""                    ],//01
+	["Jari"       , "Rare"     , "Wind" , "Warrior" , ""                    ],//02
+	["Jie"        , "Rare"     , "Earth", "Support" , ""                    ],//05
+	["Kenju"      , "Rare"     , "Water", "Warrior" , ""                    ] //07
 ]
 
 const lookUpDustRareEpicLegendary = [
@@ -340,7 +345,8 @@ function start() {
 		let fav = $("<td><a>☆</a></td>").click(toggleFav);
 		let th = $("<th></th>").addClass(hero[2]).addClass(hero[3]);
 		let label = $("<label></label>").attr("for", "in" + hero[0] + "Stars")
-			.text(hero[0]);
+			.text(hero[0])
+			.attr("title", hero[4]);
 		th.append(label);
 		let td0 = $("<td></td>");
 		let input0 = $("<input></input>").attr("type", "number")
