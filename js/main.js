@@ -49,17 +49,14 @@ const tintList = [
 ];
 
 const heroList = [
-//	["Waju"       , "Rare"     , ""     , ""        , ""                    ],//06
-//	["Belu"       , "Epic"     , ""     , ""        , "The Old Timer"       ],//11
-//	["Momo"       , "Epic"     , ""     , ""        , "The Peach Warden"    ],//15
 //	["Uchigo"     , "Legendary", ""     , ""        , "The Swift Blade"     ],//42
 //	["Sketchy"    , "Rare"     , ""     , ""        , ""                    ],//48
-	["Alekas"     , "Legendary", "Wind" , "Warrior" , "The Archangel"       ],//52
+	["Ekho"       , "Legendary", "Earth", "Support" , "The Shaman"          ],//57
+	["Dia"        , "Legendary", "Water", "Assassin", "The Rogue"           ],//56
+	["Ulrik"      , "Legendary", "Fire" , "Assassin", "The Beastmaster"     ],//55
 	["Xyzl"       , "Legendary", "Fire" , "Mage"    , "The Archdemon"       ],//54
 	["Papyrus"    , "Legendary", "Wind" , "Support" , "The Lore-Master"     ],//53
-	["Dia"        , "Legendary", "Water", "Assassin", "The Rogue"           ],//56
-	["Ekho"       , "Legendary", "Earth", "Support" , "The Shaman"          ],//57
-	["Ulrik"      , "Legendary", "Fire" , "Assassin", "The Beastmaster"     ],//55
+	["Alekas"     , "Legendary", "Wind" , "Warrior" , "The Archangel"       ],//52
 	["Falkron"    , "Legendary", "Water", "Support" , "The Mystic Angler"   ],//47
 	["Tièr"       , "Legendary", "Water", "Mage"    , "The Wandering Prince"],//44
 	["Kito"       , "Legendary", "Water", "Assassin", "The Composed Outlaw" ],//43
@@ -79,11 +76,14 @@ const heroList = [
 	["Sayid"      , "Epic"     , "Water", "Assassin", "The Assassin"        ],//49
 	["Locke"      , "Epic"     , "Water", "Mage"    , "The Pirate"          ],//50
 	["Duncan"     , "Epic"     , "Earth", "Warrior" , "The Highlander"      ],//51
+	["Belu"       , "Epic"     , "Wind" , "Warrior" , "The Old Timer"       ],//11
+	["Momo"       , "Epic"     , "Water", "Support" , "The Peach Warden"    ],//15
 	["Ray"        , "Epic"     , "Fire" , "Mage"    , "The Glimmer of Light"],//08
 	["Kaoru"      , "Epic"     , "Wind" , "Mage"    , "The Wind Weaver"     ],//10
 	["Terra"      , "Epic"     , "Earth", "Mage"    , "The Earth Mover"     ],//12
 	["Demid"      , "Epic"     , "Water", "Mage"    , "The Water Bender"    ],//14
 	["Ninja"      , "Rare"     , "Wind" , "Assassin", ""                    ],//00
+	["Waju"       , "Rare"     , "Water", "Assassin", ""                    ],//06
 	["Fang"       , "Rare"     , "Fire" , "Assassin", ""                    ],//01
 	["Jari"       , "Rare"     , "Wind" , "Warrior" , ""                    ],//02
 	["Jie"        , "Rare"     , "Earth", "Support" , ""                    ],//05

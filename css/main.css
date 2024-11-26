@@ -243,8 +243,8 @@ th {
 	background: url("../img/Critter.png") no-repeat;
 	content: "";
 	display: block;
-	width: 17px;
-	height: 16px;
+	width: 21px;
+	height: 21px;
 	float: left;
 }
 
@@ -260,8 +260,8 @@ th {
 	background: url("../img/Beast.png") no-repeat;
 	content: "";
 	display: block;
-	width: 17px;
-	height: 16px;
+	width: 21px;
+	height: 21px;
 	float: left;
 }
 
@@ -277,8 +277,8 @@ th {
 	background: url("../img/Flying.png") no-repeat;
 	content: "";
 	display: block;
-	width: 17px;
-	height: 16px;
+	width: 21px;
+	height: 21px;
 	float: left;
 }
 
