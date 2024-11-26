@@ -298,7 +298,12 @@ function start() {
 	let petTable = $("<tbody></tbody>");
 	petList.forEach(pet => {
 		let tr = $("<tr></tr>").addClass(pet[1]);
-		let fav = $("<td><a>☆</a></td>").click(toggleFav);
+		let td00 = $("<td></td>");
+		let fav = $("<a></a>")
+			.text(localStorageGetItem(pet[0] + "Toggle", "☆"))
+			.attr("id", pet[0] + "Toggle")
+			.click(toggleFav);
+		td00.append(fav);
 		let th = $("<th></th>");
 		let label = $("<label></label>").attr("for", "in" + pet[0] + "Bond")
 			.text(pet[0]);
@@ -326,7 +331,7 @@ function start() {
 		td4.append(input1);
 		let td5 = $("<td colspan='3'></td>").attr("id", "out" + pet[0] + "Feathers")
 			.text("NaN").addClass("Feather");
-		tr.append(fav).append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
+		tr.append(td00).append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
 		petTable.append(tr);
 	});
 	let totalPet = $("<tr class='header'><th colspan='2'>Total:</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalPetStars'>NaN</td><td id='outCritterFeathers' class='Critter Feather'>NaN</td><td id='outBeastFeathers' class='Beast Feather'>NaN</td><td id='outFlyingFeathers' class='Flying Feather'>NaN</td></tr>");
@@ -342,7 +347,12 @@ function start() {
 	let heroTable = $("<tbody></tbody>");
 	heroList.forEach(hero => {
 		let tr = $("<tr></tr>").addClass(hero[1]);
-		let fav = $("<td><a>☆</a></td>").click(toggleFav);
+		let td00 = $("<td></td>");
+		let fav = $("<a></a>")
+			.text(localStorageGetItem(hero[0] + "Toggle", "☆"))
+			.attr("id", hero[0] + "Toggle")
+			.click(toggleFav);
+		td00.append(fav);
 		let th = $("<th></th>").addClass(hero[2]).addClass(hero[3]);
 		let label = $("<label></label>").attr("for", "in" + hero[0] + "Stars")
 			.text(hero[0])
@@ -370,7 +380,7 @@ function start() {
 			.text("NaN").addClass("Experience");
 		let td4 = $("<td></td>").attr("id", "out" + hero[0] + "ExperienceCumulated")
 			.text("NaN").addClass("Experience");
-		tr.append(fav).append(th).append(td0).append(td1).append(td2).append(td3).append(td4);
+		tr.append(td00).append(th).append(td0).append(td1).append(td2).append(td3).append(td4);
 		heroTable.append(tr);
 	});
 	let totalHero = $("<tr class='header'><th rowspan='2' colspan='2'>Total:</th><td id='outTotalHeroStars' rowspan='2'>NaN</td><td id='outFireDust' class='Fire Dust'>NaN</td><td id='outWindDust' class='Wind Dust'>NaN</td><td id='outTotalHeroLevels' rowspan='2'>NaN</td><td id='outTotalHeroExperienceNeeded' rowspan='2'>NaN</td><td id='outTotalHeroExperienceCumulated' rowspan='2'>NaN</td></tr><tr><td id='outWaterDust' class='Water Dust'>NaN</td><td id='outEarthDust' class='Earth Dust'>NaN</td></tr>");
@@ -488,6 +498,7 @@ function toggleFav(event){
 	else
 	if(event.target.text == "★")
 		event.target.text = "☆"
+	localStorage.setItem(event.target.id, event.target.text)
 }
 
 function onChangePetBond(event) {
