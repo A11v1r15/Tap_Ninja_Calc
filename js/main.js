@@ -50,7 +50,6 @@ const tintList = [
 
 const heroList = [
 //	["Uchigo"     , "Legendary", ""     , ""        , "The Swift Blade"     ],//42
-//	["Sketchy"    , "Rare"     , ""     , ""        , ""                    ],//48
 	["Ekho"       , "Legendary", "Earth", "Support" , "The Shaman"          ],//57
 	["Dia"        , "Legendary", "Water", "Assassin", "The Rogue"           ],//56
 	["Ulrik"      , "Legendary", "Fire" , "Assassin", "The Beastmaster"     ],//55
@@ -83,6 +82,7 @@ const heroList = [
 	["Terra"      , "Epic"     , "Earth", "Mage"    , "The Earth Mover"     ],//12
 	["Demid"      , "Epic"     , "Water", "Mage"    , "The Water Bender"    ],//14
 	["Ninja"      , "Rare"     , "Wind" , "Assassin", ""                    ],//00
+	["Sketchy"    , "Rare"     , "Earth", "Mage"    , ""                    ],//48
 	["Waju"       , "Rare"     , "Water", "Assassin", ""                    ],//06
 	["Fang"       , "Rare"     , "Fire" , "Assassin", ""                    ],//01
 	["Jari"       , "Rare"     , "Wind" , "Warrior" , ""                    ],//02
