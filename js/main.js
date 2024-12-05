@@ -278,7 +278,7 @@ const heroLevelUpExperienceCost = [  0,
 	 160000,  170000,  180000,  190000,  200000,  210000,  220000,  230000,  240000,  260000,
 	 280000,  300000,  320000,  340000,  360000,  380000,  400000,  450000,  500000,  550000,
 	 600000,  650000,  700000,  750000,  800000,  850000,  900000,  950000, 1000000, 1050000,
-	1100000, 1150000, 1200000, 1250000, 1300000, 1350000, 1400000, 1450000, 1500000,   0x120 //Shamahan: No, only the last 120th level costs 1'500'000 Exp
+	1100000, 1150000, 1200000, 1250000, 1300000, 1350000, 1400000, 1450000, 1500000,   0x120
 ]
 
 const currencies = [
@@ -370,7 +370,7 @@ function start() {
 			.text("NaN").addClass(hero[2]).addClass("Dust");
 		let td2 = $("<td></td>");
 		let input1 = $("<input></input>").attr("type", "number")
-			.attr("min", 0).attr("max", 100)
+			.attr("min", 0).attr("max", 120)
 			.attr("id", "in" + hero[0] + "Level")
 			.attr("name", "in" + hero[0] + "Level")
 			.val(localStorageGetItem(hero[0] + "Level", 0));
@@ -477,7 +477,7 @@ function start() {
 	$("#PetBondCap")  .val(localStorageGetItem("PetBondCap", 15)).change();
 	$("#PetStarCap")  .val(localStorageGetItem("PetStarCap", 12)).change();
 	$("#HeroStarCap") .val(localStorageGetItem("HeroStarCap", 12)).change();
-	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 100)).change();
+	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 120)).change();
 	hidePetInput .prop("checked", localStorageGetItem("HidePet",  'false') == 'true').change();
 	hideHeroInput.prop("checked", localStorageGetItem("HideHero", 'false') == 'true').change();
 	hideTintInput.prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
