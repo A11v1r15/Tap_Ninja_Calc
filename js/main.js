@@ -72,7 +72,7 @@ const heroList = [
 	["Blazer"     , "Legendary", "Fire" , "Mage"    , "The Fire Breather"   ],//20
 	["Scarlet"    , "Legendary", "Fire" , "Assassin", "The Burning Passion" ],//18
 	["Scorn"      , "Legendary", "Fire" , "Warrior" , "The Scorching Anger" ],//16
-	["Sayid"      , "Epic"     , "Water", "Assassin", "The Assassin"        ],//49
+	["Sayid"      , "Epic"     , "Wind" , "Assassin", "The Assassin"        ],//49
 	["Locke"      , "Epic"     , "Water", "Mage"    , "The Pirate"          ],//50
 	["Duncan"     , "Epic"     , "Earth", "Warrior" , "The Highlander"      ],//51
 	["Belu"       , "Epic"     , "Wind" , "Warrior" , "The Old Timer"       ],//11
