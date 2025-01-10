@@ -52,7 +52,7 @@ const heroList = [
 //	["Uchigo"     , "Legendary", ""     , ""        , "The Swift Blade"     ],//42
 	["Ekho"       , "Legendary", "Earth", "Support" , "The Shaman"          ],//57
 	["Dia"        , "Legendary", "Water", "Assassin", "The Rogue"           ],//56
-	["Ulrik"      , "Legendary", "Earth", "Assassin", "The Beastmaster"     ],//55
+	["Ulrik"      , "Legendary", "Earth", "Warrior" , "The Beastmaster"     ],//55
 	["Xyzl"       , "Legendary", "Fire" , "Mage"    , "The Archdemon"       ],//54
 	["Papyrus"    , "Legendary", "Wind" , "Support" , "The Lore-Master"     ],//53
 	["Alekas"     , "Legendary", "Wind" , "Warrior" , "The Archangel"       ],//52
