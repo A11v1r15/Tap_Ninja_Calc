@@ -1,95 +1,97 @@
 const petList = [
-	["Bunny"     , "Critter"],
-	["Mouse"     , "Critter"],
-	["Hedgehog"  , "Critter"],
-	["Snake"     , "Critter"],
-	["Frog"      , "Critter"],
-	["Squirrel"  , "Critter"],
-	["Cat"       , "Beast"  ],
-	["Dog"       , "Beast"  ],
-	["Fox"       , "Beast"  ],
-	["Panda"     , "Beast"  ],
-	["Turtle"    , "Beast"  ],
-	["Racoon"    , "Beast"  ],
-	["Chicken"   , "Flying" ],
-	["Crane"     , "Flying" ],
-	["Raven"     , "Flying" ],
-	["Dragonfly" , "Flying" ],
-	["Dragonling", "Flying" ],
-	["Parrot"    , "Flying" ],
-	["Penguin"   , "Aqua"   ]
+	["Bunny"     , "Critter" ],
+	["Mouse"     , "Critter" ],
+	["Hedgehog"  , "Critter" ],
+	["Snake"     , "Critter" ],
+	["Frog"      , "Critter" ],
+	["Squirrel"  , "Critter" ],
+	["Cat"       , "Beast"   ],
+	["Dog"       , "Beast"   ],
+	["Fox"       , "Beast"   ],
+	["Panda"     , "Beast"   ],
+	["Turtle"    , "Beast"   ],
+	["Racoon"    , "Beast"   ],
+	["Chicken"   , "Flying"  ],
+	["Crane"     , "Flying"  ],
+	["Raven"     , "Flying"  ],
+	["Dragonfly" , "Flying"  ],
+	["Dragonling", "Flying"  ],
+	["Parrot"    , "Flying"  ],
+	["Penguin"   , "Aqua"    ],
+	["Crab"      , "Aqua"    ]
 ];
 
 const tintList = [
-//	Name           Parent        Enemy Challenge Amber
-	["Bunny"     , "Bunny"      , true , false, false],
-	["Mouse"     , "Mouse"      , false, true , false],
-	["Capybara"  , "Mouse"      , true , false, false],
-	["Hedgehog"  , "Hedgehog"   , false, false, true ],
-	["Snake"     , "Snake"      , true , false, false],
-	["Frog"      , "Frog"       , false, true , true ],
-	["Squirrel"  , "Squirrel"   , false, false, true ],
-	["Cat"       , "Cat"        , true , true , true ],
-	["LilKitten" , "Cat"        , true , true , true ],
-	["Dog"       , "Dog"        , true , false, true ],
-	["LilDoggie" , "Dog"        , true , false, true ],
-	["Wolf"      , "Dog"        , true , false, true ],
-	["Fox"       , "Fox"        , false, false, true ],
-	["LilFox"    , "Fox"        , false, false, true ],
-	["Panda"     , "Panda"      , false, false, true ],
-	["Turtle"    , "Turtle"     , true , true , false],
-	["Racoon"    , "Racoon"     , false, true , false],
-	["Chicken"   , "Chicken"    , false, true , false],
-	["Duck"      , "Chicken"    , false, true , true ],
-	["Crane"     , "Crane"      , false, false, true ],
-	["Raven"     , "Raven"      , false, true , false],
-	["Dragonfly" , "Dragonfly"  , true , true , true ],
-	["Dragonling", "Dragonling" , false, true , false],
-	["LuckDragon", "Dragonling" , false, true , true ],
-	["Parrot"    , "Parrot"     , true , false, false],
-	["Penguin"   , "Penguin"    , false, false, false]
+//	Name           Parent         Enemy  Challenge Amber   Enemy       Challenge   Amber
+	["Bunny"     , "Bunny"      , 10000000 , 0   , 0     , "#f187f9" , "#000"    , "#000"   ],
+	["Mouse"     , "Mouse"      , 0        , 150 , 0     , "#000"    , "#cfd2dc" , "#000"   ],
+	["Hedgehog"  , "Hedgehog"   , 0        , 0   , 15000 , "#000"    , "#000"    , "#2d9de5"],
+	["Snake"     , "Snake"      , 10000000 , 0   , 0     , "#8c094e" , "#000"    , "#000"   ],
+	["Frog"      , "Frog"       , 0        , 150 , 15000 , "#000"    , "#c92312" , "#f8941d"],
+	["Squirrel"  , "Squirrel"   , 0        , 0   , 15000 , "#000"    , "#000"    , "#7f1ad2"],
+	["Cat"       , "Cat"        , 10000000 , 150 , 15000 , "#494c54" , "#b3c0cf" , "#161616"],
+	["Dog"       , "Dog"        , 10000000 , 0   , 15000 , "#292930" , "#000"    , "#ccaa51"],
+	["Fox"       , "Fox"        , 0        , 0   , 15000 , "#000"    , "#000"    , "#e1dcd7"],
+	["Panda"     , "Panda"      , 0        , 0   , 15000 , "#000"    , "#000"    , "#fd90b7"],
+	["Turtle"    , "Turtle"     , 10000000 , 150 , 0     , "#da372d" , "#1c4dff" , "#000"   ],
+	["Racoon"    , "Racoon"     , 0        , 150 , 0     , "#000"    , "#8e8e8e" , "#000"   ],
+	["Chicken"   , "Chicken"    , 0        , 150 , 0     , "#000"    , "#cc5210" , "#000"   ],
+	["Crane"     , "Crane"      , 0        , 0   , 15000 , "#000"    , "#000"    , "#e5d244"],
+	["Raven"     , "Raven"      , 0        , 150 , 0     , "#000"    , "#6d4b39" , "#000"   ],
+	["Dragonfly" , "Dragonfly"  , 10000000 , 150 , 15000 , "#48b3ed" , "#7bcf3e" , "#bf2629"],
+	["Dragonling", "Dragonling" , 0        , 150 , 0     , "#000"    , "#64bd48" , "#000"   ],
+	["Parrot"    , "Parrot"     , 10000000 , 0   , 0     , "#fbeed8" , "#000"    , "#000"   ],
+	["Penguin"   , "Penguin"    , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ],
+	["Crab"      , "Crab"       , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ],
+	["Capybara"  , "Mouse"      , 17500000 , 0   , 0     , "#50504f" , "#000"    , "#000"   ],
+	["LilKitten" , "Cat"        , 17500000 , 250 , 25000 , "#494c54" , "#b3c0cf" , "#161616"],
+	["LilDoggie" , "Dog"        , 17500000 , 0   , 25000 , "#292930" , "#000"    , "#ccaa51"],
+	["LilFox"    , "Fox"        , 0        , 0   , 25000 , "#000"    , "#000"    , "#e1dcd7"],
+	["Duck"      , "Chicken"    , 0        , 250 , 25000 , "#000"    , "#825235" , "#ffef7f"],
+	["LuckDragon", "Dragonling" , 0        , 250 , 25000 , "#000"    , "#d164ff" , "#ffc61d"],
+	["Wolf"      , "Dog"        , 25000000 , 0   , 35000 , "#b27623" , "#000"    , "#dce7ea"]
 ];
 
 const heroList = [
-//	["Uchigo"     , "Legendary", ""     , ""        , "The Swift Blade"     ],//42
-	["Falkron"    , "Legendary", "Water", "Support" , "The Mystic Angler"   ],//47
-	["Tièr"       , "Legendary", "Water", "Mage"    , "The Wandering Prince"],//44
-	["Kito"       , "Legendary", "Water", "Assassin", "The Composed Outlaw" ],//43
-	["Dia"        , "Legendary", "Water", "Assassin", "The Rogue"           ],//56
-	["Fin"        , "Legendary", "Water", "Warrior" , "The Scuba Knight"    ],//40
-	["Elyanna"    , "Legendary", "Earth", "Support" , "The Natures Guardian"],//39
-	["Ekho"       , "Legendary", "Earth", "Support" , "The Shaman"          ],//57
-	["Wasp"       , "Legendary", "Earth", "Mage"    , "The Sweet Sting"     ],//36
-	["Alivia"     , "Legendary", "Earth", "Assassin", "The Forests Daughter"],//34
-	["Husk"       , "Legendary", "Earth", "Warrior" , "The Immovable Object"],//33
-	["Ulrik"      , "Legendary", "Earth", "Warrior" , "The Beastmaster"     ],//55
-	["Irbinok"    , "Legendary", "Wind" , "Support" , "The Puzzled Enigma"  ],//31
-	["Papyrus"    , "Legendary", "Wind" , "Support" , "The Lore-Master"     ],//53
-	["Scythe"     , "Legendary", "Wind" , "Mage"    , "The Harvester"       ],//29
-	["Akira"      , "Legendary", "Wind" , "Assassin", "The Grim Revenge"    ],//27
-	["Hiro"       , "Legendary", "Wind" , "Warrior" , "The Warrior of Honor"],//25
-	["Alekas"     , "Legendary", "Wind" , "Warrior" , "The Archangel"       ],//52
-	["Maki"       , "Legendary", "Fire" , "Support" , "The Master Chef"     ],//23
-	["Blazer"     , "Legendary", "Fire" , "Mage"    , "The Fire Breather"   ],//20
-	["Xyzl"       , "Legendary", "Fire" , "Mage"    , "The Archdemon"       ],//54
-	["Scarlet"    , "Legendary", "Fire" , "Assassin", "The Burning Passion" ],//18
-	["Scorn"      , "Legendary", "Fire" , "Warrior" , "The Scorching Anger" ],//16
-	["Momo"       , "Epic"     , "Water", "Support" , "The Peach Warden"    ],//15
-	["Demid"      , "Epic"     , "Water", "Mage"    , "The Water Bender"    ],//14
-	["Locke"      , "Epic"     , "Water", "Mage"    , "The Pirate"          ],//50
-	["Terra"      , "Epic"     , "Earth", "Mage"    , "The Earth Mover"     ],//12
-	["Duncan"     , "Epic"     , "Earth", "Warrior" , "The Highlander"      ],//51
-	["Kaoru"      , "Epic"     , "Wind" , "Mage"    , "The Wind Weaver"     ],//10
-	["Sayid"      , "Epic"     , "Wind" , "Assassin", "The Assassin"        ],//49
-	["Belu"       , "Epic"     , "Wind" , "Warrior" , "The Old Timer"       ],//11
-	["Ray"        , "Epic"     , "Fire" , "Mage"    , "The Glimmer of Light"],//08
-	["Waju"       , "Rare"     , "Water", "Assassin", ""                    ],//06
-	["Kenju"      , "Rare"     , "Water", "Warrior" , ""                    ],//07
-	["Jie"        , "Rare"     , "Earth", "Support" , ""                    ],//05
-	["Sketchy"    , "Rare"     , "Earth", "Mage"    , ""                    ],//48
-	["Ninja"      , "Rare"     , "Wind" , "Assassin", ""                    ],//00
-	["Jari"       , "Rare"     , "Wind" , "Warrior" , ""                    ],//02
-	["Fang"       , "Rare"     , "Fire" , "Assassin", ""                    ] //01
+//	["Uchigo"     , "Legendary" , ""      , ""         , "The Swift Blade"      ],//42
+	["Fin"        , "Legendary" , "Water" , "Warrior"  , "The Scuba Knight"     ],//40
+	["Kito"       , "Legendary" , "Water" , "Assassin" , "The Composed Outlaw"  ],//43
+	["Tièr"       , "Legendary" , "Water" , "Mage"     , "The Wandering Prince" ],//44
+	["Falkron"    , "Legendary" , "Water" , "Support"  , "The Mystic Angler"    ],//47
+	["Dia"        , "Legendary" , "Water" , "Assassin" , "The Rogue"            ],//56
+	["Husk"       , "Legendary" , "Earth" , "Warrior"  , "The Immovable Object" ],//33
+	["Alivia"     , "Legendary" , "Earth" , "Assassin" , "The Forests Daughter" ],//34
+	["Wasp"       , "Legendary" , "Earth" , "Mage"     , "The Sweet Sting"      ],//36
+	["Elyanna"    , "Legendary" , "Earth" , "Support"  , "The Natures Guardian" ],//39
+	["Ulrik"      , "Legendary" , "Earth" , "Warrior"  , "The Beastmaster"      ],//55
+	["Ekho"       , "Legendary" , "Earth" , "Support"  , "The Shaman"           ],//57
+	["Hiro"       , "Legendary" , "Wind"  , "Warrior"  , "The Warrior of Honor" ],//25
+	["Akira"      , "Legendary" , "Wind"  , "Assassin" , "The Grim Revenge"     ],//27
+	["Scythe"     , "Legendary" , "Wind"  , "Mage"     , "The Harvester"        ],//29
+	["Irbinok"    , "Legendary" , "Wind"  , "Support"  , "The Puzzled Enigma"   ],//31
+	["Alekas"     , "Legendary" , "Wind"  , "Warrior"  , "The Archangel"        ],//52
+	["Papyrus"    , "Legendary" , "Wind"  , "Support"  , "The Lore-Master"      ],//53
+	["Scorn"      , "Legendary" , "Fire"  , "Warrior"  , "The Scorching Anger"  ],//16
+	["Scarlet"    , "Legendary" , "Fire"  , "Assassin" , "The Burning Passion"  ],//18
+	["Blazer"     , "Legendary" , "Fire"  , "Mage"     , "The Fire Breather"    ],//20
+	["Maki"       , "Legendary" , "Fire"  , "Support"  , "The Master Chef"      ],//23
+	["Xyzl"       , "Legendary" , "Fire"  , "Mage"     , "The Archdemon"        ],//54
+	["Demid"      , "Epic"      , "Water" , "Mage"     , "The Water Bender"     ],//14
+	["Momo"       , "Epic"      , "Water" , "Support"  , "The Peach Warden"     ],//15
+	["Locke"      , "Epic"      , "Water" , "Mage"     , "The Pirate"           ],//50
+	["Terra"      , "Epic"      , "Earth" , "Mage"     , "The Earth Mover"      ],//12
+	["Duncan"     , "Epic"      , "Earth" , "Warrior"  , "The Highlander"       ],//51
+	["Kaoru"      , "Epic"      , "Wind"  , "Mage"     , "The Wind Weaver"      ],//10
+	["Belu"       , "Epic"      , "Wind"  , "Warrior"  , "The Old Timer"        ],//11
+	["Sayid"      , "Epic"      , "Wind"  , "Assassin" , "The Assassin"         ],//49
+	["Ray"        , "Epic"      , "Fire"  , "Mage"     , "The Glimmer of Light" ],//08
+	["Waju"       , "Rare"      , "Water" , "Assassin" , ""                     ],//06
+	["Kenju"      , "Rare"      , "Water" , "Warrior"  , ""                     ],//07
+	["Jie"        , "Rare"      , "Earth" , "Support"  , ""                     ],//05
+	["Sketchy"    , "Rare"      , "Earth" , "Mage"     , ""                     ],//48
+	["Ninja"      , "Rare"      , "Wind"  , "Assassin" , ""                     ],//00
+	["Jari"       , "Rare"      , "Wind"  , "Warrior"  , ""                     ],//02
+	["Fang"       , "Rare"      , "Fire"  , "Assassin" , ""                     ] //01
 ]
 
 const lookUpDustRareEpicLegendary = [
@@ -385,7 +387,7 @@ function start() {
 		tr.append(td00).append(th).append(td0).append(td1).append(td2).append(td3).append(td4);
 		heroTable.append(tr);
 	});
-	let totalHero = $("<tr class='header'><th rowspan='2' colspan='2'>Total:</th><td id='outTotalHeroStars' rowspan='2'>NaN</td><td id='outFireDust' class='Fire Dust'>NaN</td><td id='outWindDust' class='Wind Dust'>NaN</td><td id='outTotalHeroLevels' rowspan='2'>NaN</td><td id='outTotalHeroExperienceNeeded' rowspan='2'>NaN</td><td id='outTotalHeroExperienceCumulated' rowspan='2'>NaN</td></tr><tr><td id='outWaterDust' class='Water Dust'>NaN</td><td id='outEarthDust' class='Earth Dust'>NaN</td></tr>");
+	let totalHero = $("<tr class='header'><th rowspan='2' colspan='2'>Total:</th><td id='outTotalHeroStars' rowspan='2'>NaN</td><td id='outWaterDust' class='Water Dust'>NaN</td><td id='outEarthDust' class='Earth Dust'>NaN</td><td id='outTotalHeroLevels' rowspan='2'>NaN</td><td id='outTotalHeroExperienceNeeded' rowspan='2'>NaN</td><td id='outTotalHeroExperienceCumulated' rowspan='2'>NaN</td></tr><tr><td id='outWindDust' class='Wind Dust'>NaN</td><td id='outFireDust' class='Fire Dust'>NaN</td></tr>");
 	let hideHeroInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideHeroCheckbox").change(hideHero);
 	let hideHeroInputLabel = $("<label>").attr("for", "hideHeroCheckbox").text("Hide non-obtained heroes");
 	let hideHeroFavInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideHeroFavCheckbox").change(hideHeroFav);
@@ -425,43 +427,52 @@ function start() {
 	})
 
 	let tintTable = $("<tbody></tbody>");
+	let header1 = $("<tr class='header'><th>Skin</th><th>17500000 Enemies</th><th>250 Challenges</th><th>25000 Amber</th></tr>");
+	let header2 = $("<tr class='header'><th>Skin</th><th>25000000 Enemies</th><th>350 Challenges</th><th>35000 Amber</th></tr>");
 	tintList.forEach(tint => {
 		let tr = $("<tr></tr>").addClass(getPetClass(tint[1]));
 		let th = $("<th></th>");
 		let label = $("<label></label>").text(tint[0]);
 		th.append(label);
 		let td0 = $("<td></td>");
-		if (tint[2]) {
+		if (tint[2] != 0) {
 			let input0 = $("<input></input>").attr("type", "number")
-				.attr("min", 0).attr("max", 10000000)
+				.attr("min", 0).attr("max", tint[2])
 				.attr("id", "in" + tint[0] + "TintEnemies")
 				.attr("name", "in" + tint[0] + "TintEnemies")
 				.val(localStorageGetItem(tint[0] + "TintEnemies", 0));
 			input0.change(onChangeTint);
 			td0.append(input0);
 		}
+		td0.css("background", tint[5]);
 		let td1 = $("<td></td>");
-		if (tint[3]) {
+		if (tint[3] != 0) {
 			let input1 = $("<input></input>").attr("type", "number")
-				.attr("min", 0).attr("max", 150)
+				.attr("min", 0).attr("max", tint[3])
 				.attr("id", "in" + tint[0] + "TintChallenges")
 				.attr("name", "in" + tint[0] + "TintChallenges")
 				.val(localStorageGetItem(tint[0] + "TintChallenges", 0));
 			input1.change(onChangeTint);
 			td1.append(input1);
 		}
+		td1.css("background", tint[6]);
 		let td2 = $("<td></td>");
-		if (tint[4]) {
+		if (tint[4] != 0) {
 			let input2 = $("<input></input>").attr("type", "number")
-				.attr("min", 0).attr("max", 15000)
+				.attr("min", 0).attr("max", tint[4])
 				.attr("id", "in" + tint[0] + "TintAmber")
 				.attr("name", "in" + tint[0] + "TintAmber")
 				.val(localStorageGetItem(tint[0] + "TintAmber", 0));
 			input2.change(onChangeTint);
 			td2.append(input2);
 		}
+		td2.css("background", tint[7]);
 		tr.append(th).append(td0).append(td1).append(td2);
 		tintTable.append(tr);
+		if (tintList.indexOf(tint) == 19)
+			tintTable.append(header1);
+		if (tintList.indexOf(tint) == 25)
+			tintTable.append(header2);
 	});
 	let totalTint = $("<tr class='header'><th>Total missing:</th><td id='outTotalTintEnemies'>NaN</td><td id='outTotalTintChallenges'>NaN</td><td id='outTotalTintAmber'>NaN</td></tr>");
 	let optimalTint = $("<tr class='header'><th>Optmized:</th><td id='outOptimalTintEnemies'>NaN</td><td id='outOptimalTintChallenges'>NaN</td><td id='outOptimalTintAmber'>NaN</td></tr>");
@@ -475,6 +486,10 @@ function start() {
 
 	$("#tintTable .header").first().children().eq(1).text((10000000).toLocaleString() + " Enemies");
 	$("#tintTable .header").first().children().eq(3).text((15000).toLocaleString() + " Amber");
+	$("#tintTable .header").eq(1).children().eq(1).text((17500000).toLocaleString() + " Enemies");
+	$("#tintTable .header").eq(1).children().eq(3).text((25000).toLocaleString() + " Amber");
+	$("#tintTable .header").eq(2).children().eq(1).text((25000000).toLocaleString() + " Enemies");
+	$("#tintTable .header").eq(2).children().eq(3).text((35000).toLocaleString() + " Amber");
 
 	$("#PetBondCap")  .val(localStorageGetItem("PetBondCap", 15)).change();
 	$("#PetStarCap")  .val(localStorageGetItem("PetStarCap", 12)).change();
@@ -703,53 +718,53 @@ function onChangeTint(event) {
 	let rankingEnemies = [];
 	let rankingChallenges = [];
 	let rankingAmber = [];
-	tintList.forEach(tint => {
-		if (tint[2]) {
-			localStorage.setItem(tint[0] + "TintEnemies", $("#in" + tint[0] + "TintEnemies").val());
-			if ($("#in" + tint[1] + "Stars").val() == 0) {
-				$("#in" + tint[0] + "TintEnemies").parent().removeClass().addClass("Unobtained");
-			} else if ($("#in" + tint[0] + "TintEnemies").val() == 10000000) {
-				$("#in" + tint[0] + "TintEnemies").parent().removeClass().addClass("Complete");
+	tintList.forEach(skin => {
+		if (skin[2] != 0) {
+			localStorage.setItem(skin[0] + "TintEnemies", $("#in" + skin[0] + "TintEnemies").val());
+			if ($("#in" + skin[1] + "Stars").val() == 0) {
+				$("#in" + skin[0] + "TintEnemies").parent().removeClass().addClass("Unobtained");
+			} else if ($("#in" + skin[0] + "TintEnemies").val() >= skin[2]) {
+				$("#in" + skin[0] + "TintEnemies").parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
-				$("#in" + tint[0] + "TintEnemies").parent().removeClass();
-				totalTintEnemies += $("#in" + tint[0] + "TintEnemies").val() - 10000000;
-				rankingEnemies.push([$("#in" + tint[0] + "TintEnemies").val() - 10000000, tint[0]]);
+				$("#in" + skin[0] + "TintEnemies").parent().removeClass();
+				totalTintEnemies += $("#in" + skin[0] + "TintEnemies").val() - skin[2];
+				rankingEnemies.push([$("#in" + skin[0] + "TintEnemies").val() - skin[2], skin[0]]);
 			}
 		}
-		if (tint[3]) {
-			localStorage.setItem(tint[0] + "TintChallenges", $("#in" + tint[0] + "TintChallenges").val());
-			if ($("#in" + tint[1] + "Stars").val() == 0) {
-				$("#in" + tint[0] + "TintChallenges").parent().removeClass().addClass("Unobtained");
-			} else if ($("#in" + tint[0] + "TintChallenges").val() == 150) {
-				$("#in" + tint[0] + "TintChallenges").parent().removeClass().addClass("Complete");
+		if (skin[3] != 0) {
+			localStorage.setItem(skin[0] + "TintChallenges", $("#in" + skin[0] + "TintChallenges").val());
+			if ($("#in" + skin[1] + "Stars").val() == 0) {
+				$("#in" + skin[0] + "TintChallenges").parent().removeClass().addClass("Unobtained");
+			} else if ($("#in" + skin[0] + "TintChallenges").val() >= skin[3]) {
+				$("#in" + skin[0] + "TintChallenges").parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
-				$("#in" + tint[0] + "TintChallenges").parent().removeClass();
-				totalTintChallenges += $("#in" + tint[0] + "TintChallenges").val() - 150;
-				rankingChallenges.push([$("#in" + tint[0] + "TintChallenges").val() - 150, tint[0]]);
+				$("#in" + skin[0] + "TintChallenges").parent().removeClass();
+				totalTintChallenges += $("#in" + skin[0] + "TintChallenges").val() - skin[3];
+				rankingChallenges.push([$("#in" + skin[0] + "TintChallenges").val() - skin[3], skin[0]]);
 			}
 		}
-		if (tint[4]) {
-			localStorage.setItem(tint[0] + "TintAmber", $("#in" + tint[0] + "TintAmber").val());
-			if ($("#in" + tint[1] + "Stars").val() == 0) {
-				$("#in" + tint[0] + "TintAmber").parent().removeClass().addClass("Unobtained");
-			} else if ($("#in" + tint[0] + "TintAmber").val() == 15000) {
-				$("#in" + tint[0] + "TintAmber").parent().removeClass().addClass("Complete");
+		if (skin[4] != 0) {
+			localStorage.setItem(skin[0] + "TintAmber", $("#in" + skin[0] + "TintAmber").val());
+			if ($("#in" + skin[1] + "Stars").val() == 0) {
+				$("#in" + skin[0] + "TintAmber").parent().removeClass().addClass("Unobtained");
+			} else if ($("#in" + skin[0] + "TintAmber").val() >= skin[4]) {
+				$("#in" + skin[0] + "TintAmber").parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
-				$("#in" + tint[0] + "TintAmber").parent().removeClass();
-				totalTintAmber += $("#in" + tint[0] + "TintAmber").val() - 15000;
-				rankingAmber.push([$("#in" + tint[0] + "TintAmber").val() - 15000, tint[0]]);
+				$("#in" + skin[0] + "TintAmber").parent().removeClass();
+				totalTintAmber += $("#in" + skin[0] + "TintAmber").val() - skin[4];
+				rankingAmber.push([$("#in" + skin[0] + "TintAmber").val() - skin[4], skin[0]]);
 			}
 		}
 	})
 	rankingEnemies   .sort((a, b) => a[0] - b[0]);
 	rankingChallenges.sort((a, b) => a[0] - b[0]);
 	rankingAmber     .sort((a, b) => a[0] - b[0]);
-	let optimalTintEnemies = 0;
+	let optimalTintEnemies    = 0;
 	let optimalTintChallenges = 0;
-	let optimalTintAmber = 0;
+	let optimalTintAmber      = 0;
 	for (let i = 0; i < rankingEnemies.length; i += 3) {
 		optimalTintEnemies += rankingEnemies[i][0];
 		if (i + 0 < rankingEnemies.length) $("#in" + rankingEnemies[i + 0][1] + "TintEnemies").parent().removeClass().addClass("Group" + ((i / 3) + 1));
@@ -861,7 +876,7 @@ function localStorageGetItem(key, value) {
 		storage == '' ||
 		storage == 'undefined' ||
 		storage == undefined) {
-		console.log("Getting default value for " + key);
+		//console.log("Getting default value for " + key);
 		return value;
 	}
 	return storage;
@@ -951,25 +966,23 @@ function hideTint(event) {
 	let checked = event.target.checked;
 	localStorage.setItem("HideTint", checked);
 	tintList.forEach(tint => {
-		let nonComplete = false;
-		if (tint[2]) {
-			if (Number($("#in" + tint[0] + "TintEnemies").val()) != 10000000) {
-				nonComplete = true;
+		let complete = true;
+		if (tint[2] != 0) {
+			if (Number($("#in" + tint[0] + "TintEnemies").val()) < tint[2]) {
+				complete = false;
 			}
 		}
-		if (tint[3]) {
-			if (Number($("#in" + tint[0] + "TintChallenges").val()) != 150) {
-				nonComplete = true;
+		if (tint[3] != 0) {
+			if (Number($("#in" + tint[0] + "TintChallenges").val()) < tint[3]) {
+				complete = false;
 			}
 		}
-		if (tint[4]) {
-			if (Number($("#in" + tint[0] + "TintAmber").val()) != 15000) {
-				nonComplete = true;
+		if (tint[4] != 0) {
+			if (Number($("#in" + tint[0] + "TintAmber").val()) < tint[4]) {
+				complete = false;
 			}
 		}
-		$("#in" + tint[0] + "TintEnemies").parent().parent().toggle(!(!nonComplete && checked));
-		$("#in" + tint[0] + "TintChallenges").parent().parent().toggle(!(!nonComplete && checked));
-		$("#in" + tint[0] + "TintAmber").parent().parent().toggle(!(!nonComplete && checked));
+		$("#tintTable label:contains('" + tint[0] + "')").parent().parent().toggle(!(complete && checked));
 	})
 }
 
