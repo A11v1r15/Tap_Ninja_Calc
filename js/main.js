@@ -345,7 +345,17 @@ function start() {
 	let hidePetFavInputLabel = $("<label>").attr("for", "hidePetFavCheckbox").text("Hide ☆");
 	let tdFp = $("<td colspan='5' style='text-align: left;'></td>");
 	tdFp.append(hidePetInput).append(hidePetInputLabel).append(hidePetFavInput).append(hidePetFavInputLabel);
-	petTable.append(totalPet).append(tdFp);
+	let petStorage0 = $("<tr class='header'></tr>");
+	let petStorage1 = $("<td colspan='10'></td>");
+	let petLabelStorage = $("<td><label>Storage:</label></td>");
+	let pstd0 = $("<td class='Critter Feather'><input type='number' min='0' max='9999999' id='storageCritterFeather' onchange='onChangeStorage()' title='Critter Feather'></td>");
+	let pstd1 = $("<td class='Beast Feather'><input type='number' min='0' max='9999999' id='storageBeastFeather' onchange='onChangeStorage()' title='Beast Feather'></td>");
+	let pstd2 = $("<td class='Flying Feather'><input type='number' min='0' max='9999999' id='storageFlyingFeather' onchange='onChangeStorage()' title='Flying Feather'></td>");
+	let pstd3 = $("<td class='Aqua Feather'><input type='number' min='0' max='9999999' id='storageAquaFeather' onchange='onChangeStorage()' title='Aqua Feather'></td>");
+	let pstd4 = $("<td class='Medal'><input type='number' min='0' max='9999999' id='storageMedal' onchange='onChangeStorage()' title='Medal'></td>");
+	petStorage1.append(petLabelStorage).append(pstd0).append(pstd1).append(pstd2).append(pstd4);
+	petStorage0.append(petStorage1);
+	petTable.append(totalPet).append(petStorage0).append(tdFp);
 	$("#petTable").append(petTable);
 
 	let heroTable = $("<tbody></tbody>");
@@ -394,7 +404,17 @@ function start() {
 	let hideHeroFavInputLabel = $("<label>").attr("for", "hideHeroFavCheckbox").text("Hide ☆");
 	let tdFh = $("<td colspan='5' style='text-align: left;'></td>");
 	tdFh.append(hideHeroInput).append(hideHeroInputLabel).append(hideHeroFavInput).append(hideHeroFavInputLabel);
-	heroTable.append(totalHero).append(tdFh);
+	let heroStorage0 = $("<tr class='header'></tr>");
+	let heroStorage1 = $("<td colspan='8'></td>");
+	let heroLabelStorage = $("<td><label>Storage:</label></td>");
+	let hstd0 = $("<td class='Water Dust'><input type='number' min='0' max='9999999' id='storageWaterDust' onchange='onChangeStorage()' title='Water Dust'></td>");
+	let hstd1 = $("<td class='Earth Dust'><input type='number' min='0' max='9999999' id='storageEarthDust' onchange='onChangeStorage()' title='Earth Dust'></td>");
+	let hstd2 = $("<td class='Wind Dust'><input type='number' min='0' max='9999999' id='storageWindDust' onchange='onChangeStorage()' title='Wind Dust'></td>");
+	let hstd3 = $("<td class='Fire Dust'><input type='number' min='0' max='9999999' id='storageFireDust' onchange='onChangeStorage()' title='Fire Dust'></td>");
+	let hstd4 = $("<td class='Experience'><input type='number' min='0' max='9999999' id='storageExperience' onchange='onChangeStorage()' title='Experience'></td>");
+	heroStorage1.append(heroLabelStorage).append(hstd0).append(hstd1).append(hstd2).append(hstd3).append(hstd4);
+	heroStorage0.append(heroStorage1);
+	heroTable.append(totalHero).append(heroStorage0).append(tdFh);
 	$("#heroTable").append(heroTable);
 
 	let equipmentTable = $("#equipmentTable tbody");
@@ -421,7 +441,14 @@ function start() {
 		equipmentTable.append(tr);
 	});
 	let totalEquipment = $("<tr class='header'><th>Total:</th><td colspan='3'></td><td id='outTotalAmber'>NaN</td><td id='outTotalAmberSpent'>NaN</td></tr>");
-	equipmentTable.append(totalEquipment);
+	let equipmentStorage0 = $("<tr class='header'></tr>");
+	let equipmentStorage1 = $("<td colspan='6'></td>");
+	let equipmentLabelStorage = $("<td><label>Storage:</label></td>");
+	let estd0 = $("<td class='Amber'><input type='number' min='0' id='storageAmber' onchange='onChangeStorage()' title='Amber'></td>");
+	equipmentStorage1.append(equipmentLabelStorage).append(estd0);
+	equipmentStorage0.append(equipmentStorage1);
+	equipmentTable.append(totalEquipment).append(equipmentStorage0);
+
 	currencies.forEach(currency => {
 		$("#storage" + currency).val(localStorageGetItem("storage" + currency, 0));
 	})
@@ -484,8 +511,8 @@ function start() {
 	tintTable.append(totalTint).append(optimalTint).append(tdFt);
 	$("#tintTable").append(tintTable);
 
-	$("#tintTable .header").first().children().eq(1).text((10000000).toLocaleString() + " Enemies");
-	$("#tintTable .header").first().children().eq(3).text((15000).toLocaleString() + " Amber");
+	$("#tintTable .header").eq(0).children().eq(1).text((10000000).toLocaleString() + " Enemies");
+	$("#tintTable .header").eq(0).children().eq(3).text((15000).toLocaleString() + " Amber");
 	$("#tintTable .header").eq(1).children().eq(1).text((17500000).toLocaleString() + " Enemies");
 	$("#tintTable .header").eq(1).children().eq(3).text((25000).toLocaleString() + " Amber");
 	$("#tintTable .header").eq(2).children().eq(1).text((25000000).toLocaleString() + " Enemies");
@@ -906,7 +933,7 @@ function getPetClass(test) {
 
 function tab(id){
 	localStorage.setItem("Tab", id);
-    const ids = ['pet', 'hero', 'equipment', 'storage', 'tint'];
+    const ids = ['pet', 'hero', 'equipment', 'tint'];
     
     ids.forEach(test => {
         if (test === id) {
