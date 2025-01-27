@@ -347,13 +347,16 @@ function start() {
 	tdFp.append(hidePetInput).append(hidePetInputLabel).append(hidePetFavInput).append(hidePetFavInputLabel);
 	let petStorage0 = $("<tr class='header'></tr>");
 	let petStorage1 = $("<td colspan='10'></td>");
-	let petLabelStorage = $("<td><label>Storage:</label></td>");
-	let pstd0 = $("<td class='Critter Feather'><input type='number' min='0' max='9999999' id='storageCritterFeather' onchange='onChangeStorage()' title='Critter Feather'></td>");
-	let pstd1 = $("<td class='Beast Feather'><input type='number' min='0' max='9999999' id='storageBeastFeather' onchange='onChangeStorage()' title='Beast Feather'></td>");
-	let pstd2 = $("<td class='Flying Feather'><input type='number' min='0' max='9999999' id='storageFlyingFeather' onchange='onChangeStorage()' title='Flying Feather'></td>");
-	let pstd3 = $("<td class='Aqua Feather'><input type='number' min='0' max='9999999' id='storageAquaFeather' onchange='onChangeStorage()' title='Aqua Feather'></td>");
-	let pstd4 = $("<td class='Medal'><input type='number' min='0' max='9999999' id='storageMedal' onchange='onChangeStorage()' title='Medal'></td>");
-	petStorage1.append(petLabelStorage).append(pstd0).append(pstd1).append(pstd2).append(pstd4);
+	let pstd = $("<td></td>");
+	let usePetStorageInput = $("<input></input>").attr("type", "checkbox").attr("id", "usePetStorageCheckbox");
+	let petLabelStorage = $("<label for='usePetStorageCheckbox'>Storage:</label>");
+	pstd.append(usePetStorageInput).append(petLabelStorage);
+	let pstd0 = $("<td class='Medal'><input type='number' min='0' max='9999999' id='storageMedal' onchange='onChangeStorage()' title='Medal'></td>");
+	let pstd1 = $("<td class='Critter Feather'><input type='number' min='0' max='9999999' id='storageCritterFeather' onchange='onChangeStorage()' title='Critter Feather'></td>");
+	let pstd2 = $("<td class='Beast Feather'><input type='number' min='0' max='9999999' id='storageBeastFeather' onchange='onChangeStorage()' title='Beast Feather'></td>");
+	let pstd3 = $("<td class='Flying Feather'><input type='number' min='0' max='9999999' id='storageFlyingFeather' onchange='onChangeStorage()' title='Flying Feather'></td>");
+	let pstd4 = $("<td class='Aqua Feather'><input type='number' min='0' max='9999999' id='storageAquaFeather' onchange='onChangeStorage()' title='Aqua Feather'></td>");
+	petStorage1.append(pstd).append(pstd0).append(pstd1).append(pstd2).append(pstd3);
 	petStorage0.append(petStorage1);
 	petTable.append(totalPet).append(petStorage0).append(tdFp);
 	$("#petTable").append(petTable);
@@ -406,13 +409,16 @@ function start() {
 	tdFh.append(hideHeroInput).append(hideHeroInputLabel).append(hideHeroFavInput).append(hideHeroFavInputLabel);
 	let heroStorage0 = $("<tr class='header'></tr>");
 	let heroStorage1 = $("<td colspan='8'></td>");
-	let heroLabelStorage = $("<td><label>Storage:</label></td>");
+	let hstd = $("<td></td>");
+	let useHeroStorageInput = $("<input></input>").attr("type", "checkbox").attr("id", "useHeroStorageCheckbox");
+	let heroLabelStorage = $("<label for='useHeroStorageCheckbox'>Storage:</label>");
+	hstd.append(useHeroStorageInput).append(heroLabelStorage);
 	let hstd0 = $("<td class='Water Dust'><input type='number' min='0' max='9999999' id='storageWaterDust' onchange='onChangeStorage()' title='Water Dust'></td>");
 	let hstd1 = $("<td class='Earth Dust'><input type='number' min='0' max='9999999' id='storageEarthDust' onchange='onChangeStorage()' title='Earth Dust'></td>");
 	let hstd2 = $("<td class='Wind Dust'><input type='number' min='0' max='9999999' id='storageWindDust' onchange='onChangeStorage()' title='Wind Dust'></td>");
 	let hstd3 = $("<td class='Fire Dust'><input type='number' min='0' max='9999999' id='storageFireDust' onchange='onChangeStorage()' title='Fire Dust'></td>");
 	let hstd4 = $("<td class='Experience'><input type='number' min='0' max='9999999' id='storageExperience' onchange='onChangeStorage()' title='Experience'></td>");
-	heroStorage1.append(heroLabelStorage).append(hstd0).append(hstd1).append(hstd2).append(hstd3).append(hstd4);
+	heroStorage1.append(hstd).append(hstd0).append(hstd1).append(hstd2).append(hstd3).append(hstd4);
 	heroStorage0.append(heroStorage1);
 	heroTable.append(totalHero).append(heroStorage0).append(tdFh);
 	$("#heroTable").append(heroTable);
@@ -443,9 +449,12 @@ function start() {
 	let totalEquipment = $("<tr class='header'><th>Total:</th><td colspan='3'></td><td id='outTotalAmber'>NaN</td><td id='outTotalAmberSpent'>NaN</td></tr>");
 	let equipmentStorage0 = $("<tr class='header'></tr>");
 	let equipmentStorage1 = $("<td colspan='6'></td>");
-	let equipmentLabelStorage = $("<td><label>Storage:</label></td>");
+	let estd = $("<td></td>");
+	let useEquipmentStorageInput = $("<input></input>").attr("type", "checkbox").attr("id", "useEquipmentStorageCheckbox");
+	let equipmentLabelStorage = $("<label for='useEquipmentStorageCheckbox'>Storage:</label>");
+	estd.append(useEquipmentStorageInput).append(equipmentLabelStorage);
 	let estd0 = $("<td class='Amber'><input type='number' min='0' id='storageAmber' onchange='onChangeStorage()' title='Amber'></td>");
-	equipmentStorage1.append(equipmentLabelStorage).append(estd0);
+	equipmentStorage1.append(estd).append(estd0);
 	equipmentStorage0.append(equipmentStorage1);
 	equipmentTable.append(totalEquipment).append(equipmentStorage0);
 
@@ -569,6 +578,12 @@ function onChangePetBond(event) {
 				$("#out" + pet[0] + "Time").removeClass().addClass("Complete");
 			}
 			let medalsSpentResult = calcMedalsSpent($("#in" + pet[0] + "Bond").val());
+			if ($("#usePetStorageCheckbox").prop("checked")) {
+				let deltaMedal = $("#out" + pet[0] + "MedalsSpent").text().replace(/\D/g, "") - medalsSpentResult;
+				let storageMedalValue = parseInt($("#storageMedal").val(), 10) || 0;
+				$("#storageMedal").val(storageMedalValue + deltaMedal);
+				$("#storageMedal").trigger("change");
+			}
 			$("#out" + pet[0] + "MedalsSpent").text(medalsSpentResult);
 			medalsSpentTotal += medalsSpentResult;
 		}
@@ -622,6 +637,12 @@ function onChangePetStars(event) {
 			localStorage.setItem(pet[0] + "Stars", $("#in" + pet[0] + "Stars").val());
 			starsTotal += Number($("#in" + pet[0] + "Stars").val());
 			let feathersResult = calcFeathers($("#in" + pet[0] + "Stars").val());
+			if ($("#usePetStorageCheckbox").prop("checked")) {
+				let deltaFeathers = $("#out" + pet[0] + "Feathers").text().replace(/\D/g, "") - feathersResult;
+				let storageFeatherValue = parseInt($("#storage" + pet[1] + "Feather").val(), 10) || 0;
+				$("#storage" + pet[1] + "Feather").val(storageFeatherValue - deltaFeathers);
+				$("#storage" + pet[1] + "Feather").trigger("change");
+			}
 			$("#out" + pet[0] + "Feathers").text(feathersResult.toLocaleString());
 			feathers[pet[1]] += feathersResult;
 			$("#in" + pet[0] + "Stars").removeClass().addClass("S" + $("#in" + pet[0] + "Stars").val());
@@ -650,6 +671,12 @@ function onChangeHeroStars(event) {
 			localStorage.setItem(hero[0] + "Stars", $("#in" + hero[0] + "Stars").val());
 			starsTotal += Number($("#in" + hero[0] + "Stars").val());
 			let dustResult = calcDust($("#in" + hero[0] + "Stars").val(), hero[1]);
+			if ($("#useHeroStorageCheckbox").prop("checked")) {
+				let deltaDust = $("#out" + hero[0] + "Dust").text().replace(/\D/g, "") - dustResult;
+				let storageDustValue = parseInt($("#storage" + hero[2] + "Dust").val(), 10) || 0;
+				$("#storage" + hero[2] + "Dust").val(storageDustValue - deltaDust);
+				$("#storage" + hero[2] + "Dust").trigger("change");
+			}
 			$("#out" + hero[0] + "Dust").text(dustResult.toLocaleString());
 			dust["Total"] += dustResult;
 			dust[hero[2]] += dustResult;
@@ -678,6 +705,12 @@ function onChangeHeroLevels(event) {
 			$("#out" + hero[0] + "ExperienceNeeded").text(experienceNeeded.toLocaleString());
 			experienceNeededTotal += experienceNeeded;
 			let experienceCumulated = calcCumulatedExperience($("#in" + hero[0] + "Level").val());
+			if ($("#useHeroStorageCheckbox").prop("checked")) {
+				let deltaExperience = $("#out" + hero[0] + "ExperienceCumulated").text().replace(/\D/g, "") - experienceCumulated;
+				let storageExperienceValue = parseInt($("#storageExperience").val(), 10) || 0;
+				$("#storageExperience").val(storageExperienceValue + deltaExperience);
+				$("#storageExperience").trigger("change");
+			}
 			$("#out" + hero[0] + "ExperienceCumulated").text(experienceCumulated.toLocaleString());
 			experienceCumulatedTotal += experienceCumulated;
 		}
@@ -689,21 +722,25 @@ function onChangeHeroLevels(event) {
 
 function onChangePetBondCap(event) {
 	localStorage.setItem("PetBondCap", $("#PetBondCap").val());
+	$("#usePetStorageCheckbox").prop("checked", false);
 	onChangePetBond(event);
 }
 
 function onChangePetStarCap(event) {
 	localStorage.setItem("PetStarCap", $("#PetStarCap").val());
+	$("#usePetStorageCheckbox").prop("checked", false);
 	onChangePetStars(event);
 }
 
 function onChangeHeroStarCap(event) {
 	localStorage.setItem("HeroStarCap", $("#HeroStarCap").val());
+	$("#useHeroStorageCheckbox").prop("checked", false);
 	onChangeHeroStars(event);
 }
 
 function onChangeHeroLevelCap(event) {
 	localStorage.setItem("HeroLevelCap", $("#HeroLevelCap").val());
+	$("#useHeroStorageCheckbox").prop("checked", false);
 	onChangeHeroLevels(event);
 }
 
@@ -721,6 +758,12 @@ function onChangeEquipmentBonus(event) {
 		let amberSpent = calcAmberSpent(item, lvl);
 		amberTotal += amber;
 		amberSpentTotal += amberSpent;
+		if ($("#useEquipmentStorageCheckbox").prop("checked")) {
+			let deltaAmber = $("#out" + item + "AmberSpent").text().replace(/\D/g, "") - amberSpent;
+			let storageAmberValue = parseInt($("#storageAmber").val(), 10) || 0;
+			$("#storageAmber").val(storageAmberValue + deltaAmber);
+			$("#storageAmber").trigger("change");
+		}
 		$("#out" + item + "Level").text(lvl);
 		$("#out" + item + "Cost").text(cost.toLocaleString());
 		$("#out" + item + "Amber").text(amber.toLocaleString());
