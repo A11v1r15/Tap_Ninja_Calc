@@ -283,16 +283,16 @@ th {
 	float: left;
 }
 
-.Aqua {
+.Aquatic {
 	background-color: #35499E;
 	color: #121961;
 }
-.Aqua input {
+.Aquatic input {
 	background-color: #3680EF;
 	float: left;
 }
-.Aqua th::before {
-	background: url("../img/Aqua.png") no-repeat;
+.Aquatic th::before {
+	background: url("../img/Aquatic.png") no-repeat;
 	content: "";
 	display: block;
 	width: 21px;
@@ -316,8 +316,8 @@ th {
 .Flying .Feather::after {
 	background: url("../img/Flying Feather.png") no-repeat;
 }
-.Aqua .Feather::after {
-	background: url("../img/Aqua Feather.png") no-repeat;
+.Aquatic .Feather::after {
+	background: url("../img/Aquatic Feather.png") no-repeat;
 }
 .Critter.Feather::after {
 	background: url("../img/Critter Feather.png") no-repeat;
@@ -328,8 +328,8 @@ th {
 .Flying.Feather::after {
 	background: url("../img/Flying Feather.png") no-repeat;
 }
-.Aqua.Feather::after {
-	background: url("../img/Aqua Feather.png") no-repeat;
+.Aquatic.Feather::after {
+	background: url("../img/Aquatic Feather.png") no-repeat;
 }
 
 .Legendary {

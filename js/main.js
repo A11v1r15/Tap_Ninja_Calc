@@ -1,55 +1,60 @@
 const petList = [
-	["Bunny"     , "Critter" ],
-	["Mouse"     , "Critter" ],
-	["Hedgehog"  , "Critter" ],
-	["Snake"     , "Critter" ],
-	["Frog"      , "Critter" ],
-	["Squirrel"  , "Critter" ],
-	["Cat"       , "Beast"   ],
-	["Dog"       , "Beast"   ],
-	["Fox"       , "Beast"   ],
-	["Panda"     , "Beast"   ],
-	["Turtle"    , "Beast"   ],
-	["Racoon"    , "Beast"   ],
-	["Chicken"   , "Flying"  ],
-	["Crane"     , "Flying"  ],
-	["Raven"     , "Flying"  ],
-	["Dragonfly" , "Flying"  ],
-	["Dragonling", "Flying"  ],
-	["Parrot"    , "Flying"  ],
-	["Penguin"   , "Aqua"    ],
-	["Crab"      , "Aqua"    ]
+	["Bunny"     , "Critter" ],//00
+	["Mouse"     , "Critter" ],//08
+	["Hedgehog"  , "Critter" ],//11
+	["Snake"     , "Critter" ],//12
+	["Frog"      , "Critter" ],//07
+	["Squirrel"  , "Critter" ],//15
+	["Cat"       , "Beast"   ],//01
+	["Dog"       , "Beast"   ],//05
+	["Fox"       , "Beast"   ],//06
+	["Panda"     , "Beast"   ],//09
+	["Turtle"    , "Beast"   ],//13
+	["Racoon"    , "Beast"   ],//16
+	["Chicken"   , "Flying"  ],//02
+	["Crane"     , "Flying"  ],//03
+	["Raven"     , "Flying"  ],//04
+	["Dragonfly" , "Flying"  ],//10
+	["Dragonling", "Flying"  ],//14
+	["Parrot"    , "Flying"  ],//17
+	["Penguin"   , "Aquatic" ],//18
+	["Crab"      , "Aquatic" ],//19
+	["Otter"     , "Aquatic" ] //20
 ];
 
 const tintList = [
 //	Name           Parent         Enemy  Challenge Amber   Enemy       Challenge   Amber
-	["Bunny"     , "Bunny"      , 10000000 , 0   , 0     , "#f187f9" , "#000"    , "#000"   ],
-	["Mouse"     , "Mouse"      , 0        , 150 , 0     , "#000"    , "#cfd2dc" , "#000"   ],
-	["Hedgehog"  , "Hedgehog"   , 0        , 0   , 15000 , "#000"    , "#000"    , "#2d9de5"],
+	["Bunny"     , "Bunny"      , 10000000 , 150 , 15000 , "#f187f9" , "#000"    , "#000"   ],
+	["Mouse"     , "Mouse"      , 10000000 , 150 , 15000 , "#000"    , "#cfd2dc" , "#000"   ],
+	["Hedgehog"  , "Hedgehog"   , 10000000 , 150 , 15000 , "#000"    , "#000"    , "#2d9de5"],
 	["Snake"     , "Snake"      , 10000000 , 0   , 0     , "#8c094e" , "#000"    , "#000"   ],
-	["Frog"      , "Frog"       , 0        , 150 , 15000 , "#000"    , "#c92312" , "#f8941d"],
+	["Frog"      , "Frog"       , 10000000 , 150 , 15000 , "#000"    , "#c92312" , "#f8941d"],
 	["Squirrel"  , "Squirrel"   , 0        , 0   , 15000 , "#000"    , "#000"    , "#7f1ad2"],
 	["Cat"       , "Cat"        , 10000000 , 150 , 15000 , "#494c54" , "#b3c0cf" , "#161616"],
 	["Dog"       , "Dog"        , 10000000 , 0   , 15000 , "#292930" , "#000"    , "#ccaa51"],
 	["Fox"       , "Fox"        , 0        , 0   , 15000 , "#000"    , "#000"    , "#e1dcd7"],
-	["Panda"     , "Panda"      , 0        , 0   , 15000 , "#000"    , "#000"    , "#fd90b7"],
-	["Turtle"    , "Turtle"     , 10000000 , 150 , 0     , "#da372d" , "#1c4dff" , "#000"   ],
+	["Panda"     , "Panda"      , 10000000 , 150 , 15000 , "#000"    , "#000"    , "#fd90b7"],
+	["Turtle"    , "Turtle"     , 10000000 , 150 , 15000 , "#da372d" , "#1c4dff" , "#000"   ],
 	["Racoon"    , "Racoon"     , 0        , 150 , 0     , "#000"    , "#8e8e8e" , "#000"   ],
 	["Chicken"   , "Chicken"    , 0        , 150 , 0     , "#000"    , "#cc5210" , "#000"   ],
-	["Crane"     , "Crane"      , 0        , 0   , 15000 , "#000"    , "#000"    , "#e5d244"],
-	["Raven"     , "Raven"      , 0        , 150 , 0     , "#000"    , "#6d4b39" , "#000"   ],
+	["Crane"     , "Crane"      , 10000000 , 150 , 15000 , "#000"    , "#000"    , "#e5d244"],
+	["Raven"     , "Raven"      , 10000000 , 150 , 15000 , "#000"    , "#6d4b39" , "#000"   ],
 	["Dragonfly" , "Dragonfly"  , 10000000 , 150 , 15000 , "#48b3ed" , "#7bcf3e" , "#bf2629"],
-	["Dragonling", "Dragonling" , 0        , 150 , 0     , "#000"    , "#64bd48" , "#000"   ],
-	["Parrot"    , "Parrot"     , 10000000 , 0   , 0     , "#fbeed8" , "#000"    , "#000"   ],
+	["Dragonling", "Dragonling" , 10000000 , 150 , 15000 , "#000"    , "#64bd48" , "#000"   ],
+	["Parrot"    , "Parrot"     , 10000000 , 150 , 15000 , "#fbeed8" , "#000"    , "#000"   ],
 	["Penguin"   , "Penguin"    , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ],
-	["Crab"      , "Crab"       , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ],
-	["Capybara"  , "Mouse"      , 17500000 , 0   , 0     , "#50504f" , "#000"    , "#000"   ],
+	["Crab"      , "Crab"       , 10000000 , 150 , 15000 , "#000"    , "#000"    , "#000"   ],
+	["Otter"     , "Otter"      , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ],
+	["Capybara"  , "Mouse"      , 17500000 , 250 , 25000 , "#50504f" , "#000"    , "#000"   ],
 	["LilKitten" , "Cat"        , 17500000 , 250 , 25000 , "#494c54" , "#b3c0cf" , "#161616"],
 	["LilDoggie" , "Dog"        , 17500000 , 0   , 25000 , "#292930" , "#000"    , "#ccaa51"],
 	["LilFox"    , "Fox"        , 0        , 0   , 25000 , "#000"    , "#000"    , "#e1dcd7"],
-	["Duck"      , "Chicken"    , 0        , 250 , 25000 , "#000"    , "#825235" , "#ffef7f"],
-	["LuckDragon", "Dragonling" , 0        , 250 , 25000 , "#000"    , "#d164ff" , "#ffc61d"],
-	["Wolf"      , "Dog"        , 25000000 , 0   , 35000 , "#b27623" , "#000"    , "#dce7ea"]
+	["Duck"      , "Chicken"    , 17500000 , 250 , 25000 , "#000"    , "#825235" , "#ffef7f"],
+	["LuckDragon", "Dragonling" , 17500000 , 250 , 25000 , "#000"    , "#d164ff" , "#ffc61d"],
+	["Peafowl"   , "Parrot"     , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ],
+	["LilOtter"  , "Otter"      , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ],
+	["Wolf"      , "Dog"        , 25000000 , 0   , 35000 , "#b27623" , "#000"    , "#dce7ea"],
+	["LilChick"  , "Chicken"    , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ]
 ];
 
 const heroList = [
@@ -76,6 +81,10 @@ const heroList = [
 	["Blazer"     , "Legendary" , "Fire"  , "Mage"     , "The Fire Breather"    ],//20
 	["Maki"       , "Legendary" , "Fire"  , "Support"  , "The Master Chef"      ],//23
 	["Xyzl"       , "Legendary" , "Fire"  , "Mage"     , "The Archdemon"        ],//54
+	["Uchigo"     , "Legendary" , ""      , ""         , "The Swift Blade"      ],//42
+	["Snow"       , "Legendary" , ""      , ""         , "The Tranquil Purity"  ],//46
+	["AmiRot"     , "Legendary" , ""      , ""         , "The Rotting Spirit"   ],//37
+	["Tomak"      , "Legendary" , ""      , ""         , "The Lifter"           ],//17
 	["Demid"      , "Epic"      , "Water" , "Mage"     , "The Water Bender"     ],//14
 	["Momo"       , "Epic"      , "Water" , "Support"  , "The Peach Warden"     ],//15
 	["Locke"      , "Epic"      , "Water" , "Mage"     , "The Pirate"           ],//50
@@ -289,6 +298,7 @@ const currencies = [
 	"CritterFeather",
 	"BeastFeather",
 	"FlyingFeather",
+	"AquaticFeather",
 	"WaterDust",
 	"EarthDust",
 	"WindDust",
@@ -338,7 +348,7 @@ function start() {
 		tr.append(td00).append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
 		petTable.append(tr);
 	});
-	let totalPet = $("<tr class='header'><th colspan='2'>Total:</th><td id='outTotalBond'>NaN</td><td id='outTotalMedals'>NaN</td><td id='outTotalTime'>NaN</td></td><td id='outTotalMedalsSpent'>NaN</td><td id='outTotalPetStars'>NaN</td><td id='outCritterFeathers' class='Critter Feather'>NaN</td><td id='outBeastFeathers' class='Beast Feather'>NaN</td><td id='outFlyingFeathers' class='Flying Feather'>NaN</td></tr>");
+	let totalPet = $("<tr class='header'><th rowspan='2' colspan='2'>Total:</th><td rowspan='2' id='outTotalBond'>NaN</td><td rowspan='2' id='outTotalMedals'>NaN</td><td rowspan='2' id='outTotalTime'>NaN</td></td><td rowspan='2' id='outTotalMedalsSpent'>NaN</td><td rowspan='2' id='outTotalPetStars'>NaN</td><td id='outCritterFeathers' class='Critter Feather'>NaN</td><td id='outBeastFeathers' class='Beast Feather'>NaN</td></tr><tr><td id='outFlyingFeathers' class='Flying Feather'>NaN</td><td id='outAquaticFeathers' class='Aquatic Feather'>NaN</td></tr>");
 	let hidePetInput = $("<input></input>").attr("type", "checkbox").attr("id", "hidePetCheckbox").change(hidePet);
 	let hidePetInputLabel = $("<label>").attr("for", "hidePetCheckbox").text("Hide non-obtained pets");
 	let hidePetFavInput = $("<input></input>").attr("type", "checkbox").attr("id", "hidePetFavCheckbox").change(hidePetFav);
@@ -355,8 +365,8 @@ function start() {
 	let pstd1 = $("<td class='Critter Feather'><input type='number' min='0' max='9999999' id='storageCritterFeather' onchange='onChangeStorage()' title='Critter Feather'></td>");
 	let pstd2 = $("<td class='Beast Feather'><input type='number' min='0' max='9999999' id='storageBeastFeather' onchange='onChangeStorage()' title='Beast Feather'></td>");
 	let pstd3 = $("<td class='Flying Feather'><input type='number' min='0' max='9999999' id='storageFlyingFeather' onchange='onChangeStorage()' title='Flying Feather'></td>");
-	let pstd4 = $("<td class='Aqua Feather'><input type='number' min='0' max='9999999' id='storageAquaFeather' onchange='onChangeStorage()' title='Aqua Feather'></td>");
-	petStorage1.append(pstd).append(pstd0).append(pstd1).append(pstd2).append(pstd3);
+	let pstd4 = $("<td class='Aquatic Feather'><input type='number' min='0' max='9999999' id='storageAquaticFeather' onchange='onChangeStorage()' title='Aquatic Feather'></td>");
+	petStorage1.append(pstd).append(pstd0).append(pstd1).append(pstd2).append(pstd3).append(pstd4);
 	petStorage0.append(petStorage1);
 	petTable.append(totalPet).append(petStorage0).append(tdFp);
 	$("#petTable").append(petTable);
@@ -505,9 +515,9 @@ function start() {
 		td2.css("background", tint[7]);
 		tr.append(th).append(td0).append(td1).append(td2);
 		tintTable.append(tr);
-		if (tintList.indexOf(tint) == 19)
+		if (tintList.indexOf(tint) == 20)
 			tintTable.append(header1);
-		if (tintList.indexOf(tint) == 25)
+		if (tintList.indexOf(tint) == 28)
 			tintTable.append(header2);
 	});
 	let totalTint = $("<tr class='header'><th>Total missing:</th><td id='outTotalTintEnemies'>NaN</td><td id='outTotalTintChallenges'>NaN</td><td id='outTotalTintAmber'>NaN</td></tr>");
