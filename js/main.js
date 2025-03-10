@@ -1,15 +1,18 @@
 const petList = [
+	["Frog"      , "Aquatic" ],//07
+	["Turtle"    , "Aquatic" ],//13
+	["Penguin"   , "Aquatic" ],//18
+	["Crab"      , "Aquatic" ],//19
+	["Otter"     , "Aquatic" ],//20
 	["Bunny"     , "Critter" ],//00
 	["Mouse"     , "Critter" ],//08
 	["Hedgehog"  , "Critter" ],//11
 	["Snake"     , "Critter" ],//12
-	["Frog"      , "Critter" ],//07
 	["Squirrel"  , "Critter" ],//15
 	["Cat"       , "Beast"   ],//01
 	["Dog"       , "Beast"   ],//05
 	["Fox"       , "Beast"   ],//06
 	["Panda"     , "Beast"   ],//09
-	["Turtle"    , "Beast"   ],//13
 	["Racoon"    , "Beast"   ],//16
 	["Chicken"   , "Flying"  ],//02
 	["Crane"     , "Flying"  ],//03
@@ -17,51 +20,48 @@ const petList = [
 	["Dragonfly" , "Flying"  ],//10
 	["Dragonling", "Flying"  ],//14
 	["Parrot"    , "Flying"  ],//17
-	["Penguin"   , "Aquatic" ],//18
-	["Crab"      , "Aquatic" ],//19
-	["Otter"     , "Aquatic" ] //20
 ];
 
 const tintList = [
-//	Name           Parent         Enemy  Challenge Amber   Enemy       Challenge   Amber
-	["Bunny"     , "Bunny"      , 10000000 , 150 , 15000 , "#f187f9" , "#000"    , "#000"   ],
-	["Mouse"     , "Mouse"      , 10000000 , 150 , 15000 , "#000"    , "#cfd2dc" , "#000"   ],
-	["Hedgehog"  , "Hedgehog"   , 10000000 , 150 , 15000 , "#000"    , "#000"    , "#2d9de5"],
-	["Snake"     , "Snake"      , 10000000 , 0   , 0     , "#8c094e" , "#000"    , "#000"   ],
-	["Frog"      , "Frog"       , 10000000 , 150 , 15000 , "#000"    , "#c92312" , "#f8941d"],
-	["Squirrel"  , "Squirrel"   , 0        , 0   , 15000 , "#000"    , "#000"    , "#7f1ad2"],
-	["Cat"       , "Cat"        , 10000000 , 150 , 15000 , "#494c54" , "#b3c0cf" , "#161616"],
-	["Dog"       , "Dog"        , 10000000 , 0   , 15000 , "#292930" , "#000"    , "#ccaa51"],
-	["Fox"       , "Fox"        , 0        , 0   , 15000 , "#000"    , "#000"    , "#e1dcd7"],
-	["Panda"     , "Panda"      , 10000000 , 150 , 15000 , "#000"    , "#000"    , "#fd90b7"],
-	["Turtle"    , "Turtle"     , 10000000 , 150 , 15000 , "#da372d" , "#1c4dff" , "#000"   ],
-	["Racoon"    , "Racoon"     , 0        , 150 , 0     , "#000"    , "#8e8e8e" , "#000"   ],
-	["Chicken"   , "Chicken"    , 0        , 150 , 0     , "#000"    , "#cc5210" , "#000"   ],
-	["Crane"     , "Crane"      , 10000000 , 150 , 15000 , "#000"    , "#000"    , "#e5d244"],
-	["Raven"     , "Raven"      , 10000000 , 150 , 15000 , "#000"    , "#6d4b39" , "#000"   ],
-	["Dragonfly" , "Dragonfly"  , 10000000 , 150 , 15000 , "#48b3ed" , "#7bcf3e" , "#bf2629"],
-	["Dragonling", "Dragonling" , 10000000 , 150 , 15000 , "#000"    , "#64bd48" , "#000"   ],
-	["Parrot"    , "Parrot"     , 10000000 , 150 , 15000 , "#fbeed8" , "#000"    , "#000"   ],
-	["Penguin"   , "Penguin"    , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ],
-	["Crab"      , "Crab"       , 10000000 , 150 , 15000 , "#000"    , "#000"    , "#000"   ],
-	["Otter"     , "Otter"      , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ],
-	["Capybara"  , "Mouse"      , 17500000 , 250 , 25000 , "#50504f" , "#000"    , "#000"   ],
-	["LilKitten" , "Cat"        , 17500000 , 250 , 25000 , "#494c54" , "#b3c0cf" , "#161616"],
-	["LilDoggie" , "Dog"        , 17500000 , 0   , 25000 , "#292930" , "#000"    , "#ccaa51"],
-	["LilFox"    , "Fox"        , 0        , 0   , 25000 , "#000"    , "#000"    , "#e1dcd7"],
-	["Duck"      , "Chicken"    , 17500000 , 250 , 25000 , "#000"    , "#825235" , "#ffef7f"],
-	["LuckDragon", "Dragonling" , 17500000 , 250 , 25000 , "#000"    , "#d164ff" , "#ffc61d"],
-	["Peafowl"   , "Parrot"     , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ],
-	["LilOtter"  , "Otter"      , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ],
-	["Wolf"      , "Dog"        , 25000000 , 0   , 35000 , "#b27623" , "#000"    , "#dce7ea"],
-	["LilChick"  , "Chicken"    , 0        , 0   , 0     , "#000"    , "#000"    , "#000"   ]
+//	Name           Parent         Enemy  Challenge Amber Dungeon Enemy       Challenge   Amber       Dungeon
+	["Frog"      , "Frog"       , 10000000 , 150 , 15000 ,   0 , "#000"    , "#c92312" , "#f8941d" , "#000"   ],
+	["Turtle"    , "Turtle"     , 10000000 , 150 , 15000 ,   0 , "#da372d" , "#1c4dff" , "#000"    , "#000"   ],
+	["Penguin"   , "Penguin"    , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ],
+	["Crab"      , "Crab"       , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ],
+	["Otter"     , "Otter"      , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ],
+	["Bunny"     , "Bunny"      , 10000000 , 150 , 15000 ,   0 , "#f187f9" , "#000"    , "#000"    , "#000"   ],
+	["Mouse"     , "Mouse"      , 10000000 , 150 , 15000 ,   0 , "#000"    , "#cfd2dc" , "#000"    , "#000"   ],
+	["Hedgehog"  , "Hedgehog"   , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#2d9de5" , "#000"   ],
+	["Snake"     , "Snake"      , 10000000 , 150 , 15000 ,   0 , "#8c094e" , "#000"    , "#000"    , "#000"   ],
+	["Squirrel"  , "Squirrel"   , 10000000 , 150 , 15000 , 100 , "#000"    , "#000"    , "#7f1ad2" , "#f0e1d6"],
+	["Cat"       , "Cat"        , 10000000 , 150 , 15000 ,   0 , "#494c54" , "#b3c0cf" , "#161616" , "#000"   ],
+	["Dog"       , "Dog"        , 10000000 , 150 , 15000 ,   0 , "#292930" , "#000"    , "#ccaa51" , "#000"   ],
+	["Fox"       , "Fox"        , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#e1dcd7" , "#000"   ],
+	["Panda"     , "Panda"      , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#fd90b7" , "#000"   ],
+	["Racoon"    , "Racoon"     , 10000000 , 150 , 15000 ,   0 , "#000"    , "#8e8e8e" , "#000"    , "#000"   ],
+	["Chicken"   , "Chicken"    , 10000000 , 150 , 15000 ,   0 , "#000"    , "#cc5210" , "#000"    , "#000"   ],
+	["Crane"     , "Crane"      , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#e5d244" , "#000"   ],
+	["Raven"     , "Raven"      , 10000000 , 150 , 15000 ,   0 , "#000"    , "#6d4b39" , "#000"    , "#000"   ],
+	["Dragonfly" , "Dragonfly"  , 10000000 , 150 , 15000 ,   0 , "#48b3ed" , "#7bcf3e" , "#bf2629" , "#000"   ],
+	["Dragonling", "Dragonling" , 10000000 , 150 , 15000 ,   0 , "#000"    , "#64bd48" , "#000"    , "#000"   ],
+	["Parrot"    , "Parrot"     , 10000000 , 150 , 15000 ,   0 , "#fbeed8" , "#000"    , "#000"    , "#000"   ],
+	["Capybara"  , "Mouse"      , 17500000 , 250 , 25000 ,   0 , "#50504f" , "#000"    , "#000"    , "#000"   ],
+	["LilKitten" , "Cat"        , 17500000 , 250 , 25000 ,   0 , "#494c54" , "#b3c0cf" , "#161616" , "#000"   ],
+	["LilDoggie" , "Dog"        , 17500000 , 250 , 25000 ,   0 , "#292930" , "#000"    , "#ccaa51" , "#000"   ],
+	["LilFox"    , "Fox"        , 17500000 , 250 , 25000 ,   0 , "#000"    , "#000"    , "#e1dcd7" , "#000"   ],
+	["Duck"      , "Chicken"    , 17500000 , 250 , 25000 ,   0 , "#000"    , "#825235" , "#ffef7f" , "#000"   ],
+	["LuckDragon", "Dragonling" , 17500000 , 250 , 25000 ,   0 , "#000"    , "#d164ff" , "#ffc61d" , "#000"   ],
+	["Peafowl"   , "Parrot"     , 17500000 , 250 , 25000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ],
+//	["LilOtter"  , "Otter"      , 17500000 , 250 , 25000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ],
+	["Wolf"      , "Dog"        , 25000000 , 350 , 35000 ,   0 , "#b27623" , "#000"    , "#dce7ea" , "#000"   ],
+//	["LilChick"  , "Chicken"    , 25000000 , 350 , 35000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ]
 ];
 
 const heroList = [
 //	["Uchigo"     , "Legendary" , ""      , ""         , "The Swift Blade"      ],//42
 	["Fin"        , "Legendary" , "Water" , "Warrior"  , "The Scuba Knight"     ],//40
 	["Kito"       , "Legendary" , "Water" , "Assassin" , "The Composed Outlaw"  ],//43
-	["Tièr"       , "Legendary" , "Water" , "Mage"     , "The Wandering Prince" ],//44
+	["Tièr"       , "Legendary" , "Water" , "Mage"     , "The Gray Eminence"    ],//44
 	["Falkron"    , "Legendary" , "Water" , "Support"  , "The Mystic Angler"    ],//47
 	["Dia"        , "Legendary" , "Water" , "Assassin" , "The Rogue"            ],//56
 	["Husk"       , "Legendary" , "Earth" , "Warrior"  , "The Immovable Object" ],//33
@@ -276,6 +276,34 @@ const lookUpEquipments = {
 		[3167,  9.2],
 		[3420,  9.6],
 		[   0, 10  ]
+	],
+	"Yubiwa" : [
+		[1000, 0 ],
+		[1125, 2 ],
+		[1250, 4 ],
+		[1375, 6 ],
+		[1500, 8 ],
+		[1625, 10],
+		[1750, 12],
+		[1875, 14],
+		[2000, 16],
+		[2125, 18],
+		[2250, 20],
+		[2375, 22],
+		[2500, 24],
+		[2625, 26],
+		[2750, 28],
+		[2875, 30],
+		[3000, 32],
+		[3125, 34],
+		[3250, 36],
+		[3375, 38],
+		[3500, 40],
+		[3625, 42],
+		[3750, 44],
+		[3875, 46],
+		[4000, 48],
+		[   0, 50]
 	]
 }
 
@@ -295,10 +323,10 @@ const heroLevelUpExperienceCost = [  0,
 ]
 
 const currencies = [
+	"AquaticFeather",
 	"CritterFeather",
 	"BeastFeather",
 	"FlyingFeather",
-	"AquaticFeather",
 	"WaterDust",
 	"EarthDust",
 	"WindDust",
@@ -348,7 +376,7 @@ function start() {
 		tr.append(td00).append(th).append(td0).append(td1).append(td2).append(td3).append(td4).append(td5);
 		petTable.append(tr);
 	});
-	let totalPet = $("<tr class='header'><th rowspan='2' colspan='2'>Total:</th><td rowspan='2' id='outTotalBond'>NaN</td><td rowspan='2' id='outTotalMedals'>NaN</td><td rowspan='2' id='outTotalTime'>NaN</td></td><td rowspan='2' id='outTotalMedalsSpent'>NaN</td><td rowspan='2' id='outTotalPetStars'>NaN</td><td id='outCritterFeathers' class='Critter Feather'>NaN</td><td id='outBeastFeathers' class='Beast Feather'>NaN</td></tr><tr><td id='outFlyingFeathers' class='Flying Feather'>NaN</td><td id='outAquaticFeathers' class='Aquatic Feather'>NaN</td></tr>");
+	let totalPet = $("<tr class='header'><th rowspan='2' colspan='2'>Total:</th><td rowspan='2' id='outTotalBond'>NaN</td><td rowspan='2' id='outTotalMedals'>NaN</td><td rowspan='2' id='outTotalTime'>NaN</td></td><td rowspan='2' id='outTotalMedalsSpent'>NaN</td><td rowspan='2' id='outTotalPetStars'>NaN</td><td id='outAquaticFeathers' class='Aquatic Feather'>NaN</td><td id='outCritterFeathers' class='Critter Feather'>NaN</td></tr><tr><td id='outFlyingFeathers' class='Flying Feather'>NaN</td><td id='outBeastFeathers' class='Beast Feather'>NaN</td></tr>");
 	let hidePetInput = $("<input></input>").attr("type", "checkbox").attr("id", "hidePetCheckbox").change(hidePet);
 	let hidePetInputLabel = $("<label>").attr("for", "hidePetCheckbox").text("Hide non-obtained pets");
 	let hidePetFavInput = $("<input></input>").attr("type", "checkbox").attr("id", "hidePetFavCheckbox").change(hidePetFav);
@@ -362,10 +390,10 @@ function start() {
 	let petLabelStorage = $("<label for='usePetStorageCheckbox'>Storage:</label>");
 	pstd.append(usePetStorageInput).append(petLabelStorage);
 	let pstd0 = $("<td class='Medal'><input type='number' min='0' max='9999999' id='storageMedal' onchange='onChangeStorage()' title='Medal'></td>");
-	let pstd1 = $("<td class='Critter Feather'><input type='number' min='0' max='9999999' id='storageCritterFeather' onchange='onChangeStorage()' title='Critter Feather'></td>");
-	let pstd2 = $("<td class='Beast Feather'><input type='number' min='0' max='9999999' id='storageBeastFeather' onchange='onChangeStorage()' title='Beast Feather'></td>");
-	let pstd3 = $("<td class='Flying Feather'><input type='number' min='0' max='9999999' id='storageFlyingFeather' onchange='onChangeStorage()' title='Flying Feather'></td>");
-	let pstd4 = $("<td class='Aquatic Feather'><input type='number' min='0' max='9999999' id='storageAquaticFeather' onchange='onChangeStorage()' title='Aquatic Feather'></td>");
+	let pstd1 = $("<td class='Aquatic Feather'><input type='number' min='0' max='9999999' id='storageAquaticFeather' onchange='onChangeStorage()' title='Aquatic Feather'></td>");
+	let pstd2 = $("<td class='Critter Feather'><input type='number' min='0' max='9999999' id='storageCritterFeather' onchange='onChangeStorage()' title='Critter Feather'></td>");
+	let pstd3 = $("<td class='Beast Feather'><input type='number' min='0' max='9999999' id='storageBeastFeather' onchange='onChangeStorage()' title='Beast Feather'></td>");
+	let pstd4 = $("<td class='Flying Feather'><input type='number' min='0' max='9999999' id='storageFlyingFeather' onchange='onChangeStorage()' title='Flying Feather'></td>");
 	petStorage1.append(pstd).append(pstd0).append(pstd1).append(pstd2).append(pstd3).append(pstd4);
 	petStorage0.append(petStorage1);
 	petTable.append(totalPet).append(petStorage0).append(tdFp);
@@ -473,8 +501,8 @@ function start() {
 	})
 
 	let tintTable = $("<tbody></tbody>");
-	let header1 = $("<tr class='header'><th>Skin</th><th>17500000 Enemies</th><th>250 Challenges</th><th>25000 Amber</th></tr>");
-	let header2 = $("<tr class='header'><th>Skin</th><th>25000000 Enemies</th><th>350 Challenges</th><th>35000 Amber</th></tr>");
+	let header1 = $("<tr class='header'><th>Skin</th><th>17500000 Enemies</th><th>250 Challenges</th><th>25000 Amber</th><th>??? Dungeon</th></tr>");
+	let header2 = $("<tr class='header'><th>Skin</th><th>25000000 Enemies</th><th>350 Challenges</th><th>35000 Amber</th><th>??? Dungeon</th></tr>");
 	tintList.forEach(tint => {
 		let tr = $("<tr></tr>").addClass(getPetClass(tint[1]));
 		let th = $("<th></th>");
@@ -490,7 +518,7 @@ function start() {
 			input0.change(onChangeTint);
 			td0.append(input0);
 		}
-		td0.css("background", tint[5]);
+		td0.css("background", tint[6]);
 		let td1 = $("<td></td>");
 		if (tint[3] != 0) {
 			let input1 = $("<input></input>").attr("type", "number")
@@ -501,7 +529,7 @@ function start() {
 			input1.change(onChangeTint);
 			td1.append(input1);
 		}
-		td1.css("background", tint[6]);
+		td1.css("background", tint[7]);
 		let td2 = $("<td></td>");
 		if (tint[4] != 0) {
 			let input2 = $("<input></input>").attr("type", "number")
@@ -512,16 +540,27 @@ function start() {
 			input2.change(onChangeTint);
 			td2.append(input2);
 		}
-		td2.css("background", tint[7]);
-		tr.append(th).append(td0).append(td1).append(td2);
+		td2.css("background", tint[8]);
+		let td3 = $("<td></td>");
+		if (tint[5] != 0) {
+			let input3 = $("<input></input>").attr("type", "number")
+				.attr("min", 0).attr("max", tint[5])
+				.attr("id", "in" + tint[0] + "TintDungeon")
+				.attr("name", "in" + tint[0] + "TintDungeon")
+				.val(localStorageGetItem(tint[0] + "TintDungeon", 0));
+			input3.change(onChangeTint);
+			td3.append(input3);
+		}
+		td3.css("background", tint[9]);
+		tr.append(th).append(td0).append(td1).append(td2).append(td3);
 		tintTable.append(tr);
 		if (tintList.indexOf(tint) == 20)
 			tintTable.append(header1);
-		if (tintList.indexOf(tint) == 28)
+		if (tintList.indexOf(tint) == 27)
 			tintTable.append(header2);
 	});
-	let totalTint = $("<tr class='header'><th>Total missing:</th><td id='outTotalTintEnemies'>NaN</td><td id='outTotalTintChallenges'>NaN</td><td id='outTotalTintAmber'>NaN</td></tr>");
-	let optimalTint = $("<tr class='header'><th>Optmized:</th><td id='outOptimalTintEnemies'>NaN</td><td id='outOptimalTintChallenges'>NaN</td><td id='outOptimalTintAmber'>NaN</td></tr>");
+	let totalTint = $("<tr class='header'><th>Total missing:</th><td id='outTotalTintEnemies'>NaN</td><td id='outTotalTintChallenges'>NaN</td><td id='outTotalTintAmber'>NaN</td><td id='outTotalTintDungeon'>NaN</td></tr>");
+	let optimalTint = $("<tr class='header'><th>Optmized:</th><td id='outOptimalTintEnemies'>NaN</td><td id='outOptimalTintChallenges'>NaN</td><td id='outOptimalTintAmber'>NaN</td><td id='outOptimalTintDungeon'>NaN</td></tr>");
 	let hideTintInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideTintCheckbox")
 		.change(hideTint);
 	let hideTintInputLabel = $("<label>").attr("for", "hideTintCheckbox").text("Hide completed tints");
@@ -795,9 +834,11 @@ function onChangeTint(event) {
 	let totalTintEnemies = 0;
 	let totalTintChallenges = 0;
 	let totalTintAmber = 0;
+	let totalTintDungeon = 0;
 	let rankingEnemies = [];
 	let rankingChallenges = [];
 	let rankingAmber = [];
+	let rankingDungeon = [];
 	tintList.forEach(skin => {
 		if (skin[2] != 0) {
 			localStorage.setItem(skin[0] + "TintEnemies", $("#in" + skin[0] + "TintEnemies").val());
@@ -838,13 +879,28 @@ function onChangeTint(event) {
 				rankingAmber.push([$("#in" + skin[0] + "TintAmber").val() - skin[4], skin[0]]);
 			}
 		}
+		if (skin[5] != 0) {
+			localStorage.setItem(skin[0] + "TintDungeon", $("#in" + skin[0] + "TintDungeon").val());
+			if ($("#in" + skin[1] + "Stars").val() == 0) {
+				$("#in" + skin[0] + "TintDungeon").parent().removeClass().addClass("Unobtained");
+			} else if ($("#in" + skin[0] + "TintDungeon").val() >= skin[5]) {
+				$("#in" + skin[0] + "TintDungeon").parent().removeClass().addClass("Complete");
+				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
+			} else {
+				$("#in" + skin[0] + "TintDungeon").parent().removeClass();
+				totalTintDungeon += $("#in" + skin[0] + "TintDungeon").val() - skin[5];
+				rankingDungeon.push([$("#in" + skin[0] + "TintDungeon").val() - skin[5], skin[0]]);
+			}
+		}
 	})
 	rankingEnemies   .sort((a, b) => a[0] - b[0]);
 	rankingChallenges.sort((a, b) => a[0] - b[0]);
 	rankingAmber     .sort((a, b) => a[0] - b[0]);
+	rankingDungeon   .sort((a, b) => a[0] - b[0]);
 	let optimalTintEnemies    = 0;
 	let optimalTintChallenges = 0;
 	let optimalTintAmber      = 0;
+	let optimalTintDungeon    = 0;
 	for (let i = 0; i < rankingEnemies.length; i += 3) {
 		optimalTintEnemies += rankingEnemies[i][0];
 		if (i + 0 < rankingEnemies.length) $("#in" + rankingEnemies[i + 0][1] + "TintEnemies").parent().removeClass().addClass("Group" + ((i / 3) + 1));
@@ -863,12 +919,20 @@ function onChangeTint(event) {
 		if (i + 1 < rankingAmber.length) $("#in" + rankingAmber[i + 1][1] + "TintAmber").parent().removeClass().addClass("Group" + ((i / 3) + 1));
 		if (i + 2 < rankingAmber.length) $("#in" + rankingAmber[i + 2][1] + "TintAmber").parent().removeClass().addClass("Group" + ((i / 3) + 1));
 	}
+	for (let i = 0; i < rankingDungeon.length; i += 3) {
+		optimalTintDungeon += rankingDungeon[i][0];
+		if (i + 0 < rankingDungeon.length) $("#in" + rankingDungeon[i + 0][1] + "TintDungeon").parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 1 < rankingDungeon.length) $("#in" + rankingDungeon[i + 1][1] + "TintDungeon").parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 2 < rankingDungeon.length) $("#in" + rankingDungeon[i + 2][1] + "TintDungeon").parent().removeClass().addClass("Group" + ((i / 3) + 1));
+	}
 	$("#outTotalTintEnemies")     .text((totalTintEnemies      * -1).toLocaleString(undefined, { signDisplay: "negative" }));
 	$("#outTotalTintChallenges")  .text((totalTintChallenges   * -1).toLocaleString(undefined, { signDisplay: "negative" }));
 	$("#outTotalTintAmber")       .text((totalTintAmber        * -1).toLocaleString(undefined, { signDisplay: "negative" }));
+	$("#outTotalTintDungeon")     .text((totalTintDungeon      * -1).toLocaleString(undefined, { signDisplay: "negative" }));
 	$("#outOptimalTintEnemies")   .text((optimalTintEnemies    * -1).toLocaleString(undefined, { signDisplay: "negative" }));
 	$("#outOptimalTintChallenges").text((optimalTintChallenges * -1).toLocaleString(undefined, { signDisplay: "negative" }));
 	$("#outOptimalTintAmber")     .text((optimalTintAmber      * -1).toLocaleString(undefined, { signDisplay: "negative" }));
+	$("#outOptimalTintDungeon")   .text((optimalTintDungeon    * -1).toLocaleString(undefined, { signDisplay: "negative" }));
 }
 
 function calcMedals(bond) {
