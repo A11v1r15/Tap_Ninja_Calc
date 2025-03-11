@@ -9,17 +9,17 @@ const petList = [
 	["Hedgehog"  , "Critter" ],//11
 	["Snake"     , "Critter" ],//12
 	["Squirrel"  , "Critter" ],//15
-	["Cat"       , "Beast"   ],//01
-	["Dog"       , "Beast"   ],//05
-	["Fox"       , "Beast"   ],//06
-	["Panda"     , "Beast"   ],//09
-	["Racoon"    , "Beast"   ],//16
 	["Chicken"   , "Flying"  ],//02
 	["Crane"     , "Flying"  ],//03
 	["Raven"     , "Flying"  ],//04
 	["Dragonfly" , "Flying"  ],//10
 	["Dragonling", "Flying"  ],//14
 	["Parrot"    , "Flying"  ],//17
+	["Cat"       , "Beast"   ],//01
+	["Dog"       , "Beast"   ],//05
+	["Fox"       , "Beast"   ],//06
+	["Panda"     , "Beast"   ],//09
+	["Racoon"    , "Beast"   ],//16
 ];
 
 const tintList = [
@@ -28,33 +28,33 @@ const tintList = [
 	["Turtle"    , "Turtle"     , 10000000 , 150 , 15000 ,   0 , "#da372d" , "#1c4dff" , "#000"    , "#000"   ],
 	["Penguin"   , "Penguin"    , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ],
 	["Crab"      , "Crab"       , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ],
-	["Otter"     , "Otter"      , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ],
-	["Bunny"     , "Bunny"      , 10000000 , 150 , 15000 ,   0 , "#f187f9" , "#000"    , "#000"    , "#000"   ],
-	["Mouse"     , "Mouse"      , 10000000 , 150 , 15000 ,   0 , "#000"    , "#cfd2dc" , "#000"    , "#000"   ],
-	["Hedgehog"  , "Hedgehog"   , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#2d9de5" , "#000"   ],
-	["Snake"     , "Snake"      , 10000000 , 150 , 15000 ,   0 , "#8c094e" , "#000"    , "#000"    , "#000"   ],
-	["Squirrel"  , "Squirrel"   , 10000000 , 150 , 15000 , 100 , "#000"    , "#000"    , "#7f1ad2" , "#f0e1d6"],
+	["Otter"     , "Otter"      ,        0 , 150 , 15000 , 100 , "#000"    , "#000"    , "#000"    , "#000"   ],
+	["Bunny"     , "Bunny"      , 10000000 , 150 ,     0 , 100 , "#f187f9" , "#000"    , "#000"    , "#000"   ],
+	["Mouse"     , "Mouse"      ,        0 , 150 , 15000 , 100 , "#000"    , "#cfd2dc" , "#000"    , "#000"   ],
+	["Hedgehog"  , "Hedgehog"   ,        0 , 150 , 15000 , 100 , "#000"    , "#000"    , "#2d9de5" , "#000"   ],
+	["Snake"     , "Snake"      , 10000000 ,   0 , 15000 , 100 , "#8c094e" , "#000"    , "#000"    , "#000"   ],
+	["Squirrel"  , "Squirrel"   ,        0 , 150 , 15000 , 100 , "#000"    , "#000"    , "#7f1ad2" , "#f0e1d6"],
+	["Chicken"   , "Chicken"    ,        0 , 150 , 15000 , 100 , "#000"    , "#cc5210" , "#848699" , "#000"   ],
+	["Crane"     , "Crane"      ,        0 , 150 , 15000 , 100 , "#000"    , "#000"    , "#e5d244" , "#000"   ],
+	["Raven"     , "Raven"      ,        0 , 150 , 15000 , 100 , "#000"    , "#6d4b39" , "#000"    , "#000"   ],
+	["Dragonfly" , "Dragonfly"  , 10000000 , 150 , 15000 ,   0 , "#48b3ed" , "#7bcf3e" , "#bf2629" , "#000"   ],
+	["Dragonling", "Dragonling" ,        0 , 150 , 15000 , 100 , "#000"    , "#64bd48" , "#4d5966" , "#000"   ],
+	["Parrot"    , "Parrot"     , 10000000 ,   0 , 15000 , 100 , "#fbeed8" , "#000"    , "#000"    , "#ff9400"],
 	["Cat"       , "Cat"        , 10000000 , 150 , 15000 ,   0 , "#494c54" , "#b3c0cf" , "#161616" , "#000"   ],
 	["Dog"       , "Dog"        , 10000000 , 150 , 15000 ,   0 , "#292930" , "#000"    , "#ccaa51" , "#000"   ],
-	["Fox"       , "Fox"        , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#e1dcd7" , "#000"   ],
+	["Fox"       , "Fox"        , 10000000 ,   0 , 15000 , 100 , "#000"    , "#000"    , "#e1dcd7" , "#000"   ],
 	["Panda"     , "Panda"      , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#fd90b7" , "#000"   ],
 	["Racoon"    , "Racoon"     , 10000000 , 150 , 15000 ,   0 , "#000"    , "#8e8e8e" , "#000"    , "#000"   ],
-	["Chicken"   , "Chicken"    , 10000000 , 150 , 15000 ,   0 , "#000"    , "#cc5210" , "#000"    , "#000"   ],
-	["Crane"     , "Crane"      , 10000000 , 150 , 15000 ,   0 , "#000"    , "#000"    , "#e5d244" , "#000"   ],
-	["Raven"     , "Raven"      , 10000000 , 150 , 15000 ,   0 , "#000"    , "#6d4b39" , "#000"    , "#000"   ],
-	["Dragonfly" , "Dragonfly"  , 10000000 , 150 , 15000 ,   0 , "#48b3ed" , "#7bcf3e" , "#bf2629" , "#000"   ],
-	["Dragonling", "Dragonling" , 10000000 , 150 , 15000 ,   0 , "#000"    , "#64bd48" , "#000"    , "#000"   ],
-	["Parrot"    , "Parrot"     , 10000000 , 150 , 15000 ,   0 , "#fbeed8" , "#000"    , "#000"    , "#000"   ],
-	["Capybara"  , "Mouse"      , 17500000 , 250 , 25000 ,   0 , "#50504f" , "#000"    , "#000"    , "#000"   ],
+	["Capybara"  , "Mouse"      , 17500000 , 250 ,     0 , 150 , "#50504f" , "#000"    , "#000"    , "#000"   ],
+	["Duck"      , "Chicken"    , 17500000 , 250 , 25000 , 150 , "#000"    , "#825235" , "#ffef7f" , "#000"   ],
+	["LuckDragon", "Dragonling" ,        0 , 250 , 25000 , 150 , "#000"    , "#d164ff" , "#ffc61d" , "#000"   ],
+	["Peafowl"   , "Parrot"     , 17500000 , 250 , 25000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ],
 	["LilKitten" , "Cat"        , 17500000 , 250 , 25000 ,   0 , "#494c54" , "#b3c0cf" , "#161616" , "#000"   ],
 	["LilDoggie" , "Dog"        , 17500000 , 250 , 25000 ,   0 , "#292930" , "#000"    , "#ccaa51" , "#000"   ],
-	["LilFox"    , "Fox"        , 17500000 , 250 , 25000 ,   0 , "#000"    , "#000"    , "#e1dcd7" , "#000"   ],
-	["Duck"      , "Chicken"    , 17500000 , 250 , 25000 ,   0 , "#000"    , "#825235" , "#ffef7f" , "#000"   ],
-	["LuckDragon", "Dragonling" , 17500000 , 250 , 25000 ,   0 , "#000"    , "#d164ff" , "#ffc61d" , "#000"   ],
-	["Peafowl"   , "Parrot"     , 17500000 , 250 , 25000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ],
+	["LilFox"    , "Fox"        , 17500000 ,   0 , 25000 , 150 , "#000"    , "#000"    , "#e1dcd7" , "#000"   ],
 //	["LilOtter"  , "Otter"      , 17500000 , 250 , 25000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ],
+//	["LilChick"  , "Chicken"    , 25000000 , 350 , 35000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ],
 	["Wolf"      , "Dog"        , 25000000 , 350 , 35000 ,   0 , "#b27623" , "#000"    , "#dce7ea" , "#000"   ],
-//	["LilChick"  , "Chicken"    , 25000000 , 350 , 35000 ,   0 , "#000"    , "#000"    , "#000"    , "#000"   ]
 ];
 
 const heroList = [
@@ -392,8 +392,8 @@ function start() {
 	let pstd0 = $("<td class='Medal'><input type='number' min='0' max='9999999' id='storageMedal' onchange='onChangeStorage()' title='Medal'></td>");
 	let pstd1 = $("<td class='Aquatic Feather'><input type='number' min='0' max='9999999' id='storageAquaticFeather' onchange='onChangeStorage()' title='Aquatic Feather'></td>");
 	let pstd2 = $("<td class='Critter Feather'><input type='number' min='0' max='9999999' id='storageCritterFeather' onchange='onChangeStorage()' title='Critter Feather'></td>");
-	let pstd3 = $("<td class='Beast Feather'><input type='number' min='0' max='9999999' id='storageBeastFeather' onchange='onChangeStorage()' title='Beast Feather'></td>");
-	let pstd4 = $("<td class='Flying Feather'><input type='number' min='0' max='9999999' id='storageFlyingFeather' onchange='onChangeStorage()' title='Flying Feather'></td>");
+	let pstd3 = $("<td class='Flying Feather'><input type='number' min='0' max='9999999' id='storageFlyingFeather' onchange='onChangeStorage()' title='Flying Feather'></td>");
+	let pstd4 = $("<td class='Beast Feather'><input type='number' min='0' max='9999999' id='storageBeastFeather' onchange='onChangeStorage()' title='Beast Feather'></td>");
 	petStorage1.append(pstd).append(pstd0).append(pstd1).append(pstd2).append(pstd3).append(pstd4);
 	petStorage0.append(petStorage1);
 	petTable.append(totalPet).append(petStorage0).append(tdFp);
@@ -501,8 +501,8 @@ function start() {
 	})
 
 	let tintTable = $("<tbody></tbody>");
-	let header1 = $("<tr class='header'><th>Skin</th><th>17500000 Enemies</th><th>250 Challenges</th><th>25000 Amber</th><th>??? Dungeon</th></tr>");
-	let header2 = $("<tr class='header'><th>Skin</th><th>25000000 Enemies</th><th>350 Challenges</th><th>35000 Amber</th><th>??? Dungeon</th></tr>");
+	let header1 = $("<tr class='header'><th>Skin</th><th>17500000 Enemies</th><th>250 Challenges</th><th>25000 Amber</th><th>150 Dungeon</th></tr>");
+	let header2 = $("<tr class='header'><th>Skin</th><th>25000000 Enemies</th><th>350 Challenges</th><th>35000 Amber</th><th>200 Dungeon</th></tr>");
 	tintList.forEach(tint => {
 		let tr = $("<tr></tr>").addClass(getPetClass(tint[1]));
 		let th = $("<th></th>");
