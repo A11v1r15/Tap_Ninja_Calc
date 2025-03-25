@@ -58,7 +58,6 @@ const tintList = [
 ];
 
 const heroList = [
-//	["Uchigo"     , "Legendary" , ""      , ""         , "The Swift Blade"      ],//42
 	["Fin"        , "Legendary" , "Water" , "Warrior"  , "The Scuba Knight"     ],//40
 	["Kito"       , "Legendary" , "Water" , "Assassin" , "The Composed Outlaw"  ],//43
 	["Tièr"       , "Legendary" , "Water" , "Mage"     , "The Gray Eminence"    ],//44
@@ -77,14 +76,14 @@ const heroList = [
 	["Alekas"     , "Legendary" , "Wind"  , "Warrior"  , "The Archangel"        ],//52
 	["Papyrus"    , "Legendary" , "Wind"  , "Support"  , "The Lore-Master"      ],//53
 	["Scorn"      , "Legendary" , "Fire"  , "Warrior"  , "The Scorching Anger"  ],//16
+	["Tomak"      , "Legendary" , "Fire"  , "Warrior"  , "The Lifter"           ],//17
 	["Scarlet"    , "Legendary" , "Fire"  , "Assassin" , "The Burning Passion"  ],//18
 	["Blazer"     , "Legendary" , "Fire"  , "Mage"     , "The Fire Breather"    ],//20
 	["Maki"       , "Legendary" , "Fire"  , "Support"  , "The Master Chef"      ],//23
 	["Xyzl"       , "Legendary" , "Fire"  , "Mage"     , "The Archdemon"        ],//54
-	["Uchigo"     , "Legendary" , ""      , ""         , "The Swift Blade"      ],//42
-	["Snow"       , "Legendary" , ""      , ""         , "The Tranquil Purity"  ],//46
-	["AmiRot"     , "Legendary" , ""      , ""         , "The Rotting Spirit"   ],//37
-	["Tomak"      , "Legendary" , ""      , ""         , "The Lifter"           ],//17
+//	["Uchigo"     , "Legendary" , ""      , ""         , "The Swift Blade"      ],//42
+//	["Snow"       , "Legendary" , ""      , ""         , "The Tranquil Purity"  ],//46
+//	["AmiRot"     , "Legendary" , ""      , ""         , "The Rotting Spirit"   ],//37
 	["Demid"      , "Epic"      , "Water" , "Mage"     , "The Water Bender"     ],//14
 	["Momo"       , "Epic"      , "Water" , "Support"  , "The Peach Warden"     ],//15
 	["Locke"      , "Epic"      , "Water" , "Mage"     , "The Pirate"           ],//50
