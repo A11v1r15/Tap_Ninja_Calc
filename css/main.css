@@ -236,6 +236,10 @@ th {
 	background-color: #638739;
 	color: #224312;
 }
+.Critter th {
+	background-color: #638739;
+	color: #224312;
+}
 .Critter input {
 	background-color: #A2E26E;
 	float: left;
@@ -250,6 +254,10 @@ th {
 }
 
 .Beast {
+	background-color: #9E4935;
+	color: #611912;
+}
+.Beast th {
 	background-color: #9E4935;
 	color: #611912;
 }
@@ -270,6 +278,10 @@ th {
 	background-color: #A08033;
 	color: #503512;
 }
+.Flying th {
+	background-color: #A08033;
+	color: #503512;
+}
 .Flying input {
 	background-color: #FFE659;
 	float: left;
@@ -284,6 +296,10 @@ th {
 }
 
 .Aquatic {
+	background-color: #35499E;
+	color: #121961;
+}
+.Aquatic th {
 	background-color: #35499E;
 	color: #121961;
 }
@@ -601,6 +617,10 @@ footer span {
 
 #noFunButton {
 	position: absolute;
+}
+
+#tintTable tr:not(.header) {
+    background-color: #000000;
 }
 
 /* No Fun Mode */

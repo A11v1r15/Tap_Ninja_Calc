@@ -1131,6 +1131,7 @@ function hideTint(event) {
 			}
 		}
 		$("#tintTable label:contains('" + tint[0] + "')").parent().parent().toggle(!(complete && checked));
+		$(".Complete").css("opacity", checked? 0.31415926 : 1);
 	})
 }
 
