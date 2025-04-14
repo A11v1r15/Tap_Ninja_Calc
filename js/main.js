@@ -48,7 +48,7 @@ const tintList = [
 	["Capybara"  , "Mouse"      , 17500000 , 250 ,     0 , 150 , "#50504f" , "#99491e" , "#000"    , "#cc8d3c"],
 	["Duck"      , "Chicken"    , 17500000 , 250 , 25000 , 150 , "#fff"    , "#825235" , "#ffef7f" , "#2b2b33"],
 	["LuckDragon", "Dragonling" ,        0 , 250 , 25000 , 150 , "#000"    , "#d164ff" , "#ffc61d" , "#3b3b4d"],
-	["Peafowl"   , "Parrot"     , 17500000 ,   0 , 25000 , 150 , "#fff"    , "#000"    , "#fff"    , "#fff"   ],
+	["Peafowl"   , "Parrot"     , 17500000 ,   0 , 25000 , 150 , "#fff"    , "#000"    , "#fff"    , "#e5e5e5"],
 	["LilKitten" , "Cat"        , 17500000 , 250 , 25000 ,   0 , "#494c54" , "#b3c0cf" , "#161616" , "#000"   ],
 	["LilDoggie" , "Dog"        , 17500000 , 250 , 25000 ,   0 , "#292930" , "#99342d" , "#ccaa51" , "#000"   ],
 	["LilFox"    , "Fox"        , 17500000 ,   0 , 25000 , 150 , "#fff"    , "#000"    , "#e1dcd7" , "#f4cca1"],
@@ -638,10 +638,10 @@ function onChangePetBond(event) {
 	});
 	timeRanking.sort((a, b) => a[0] - b[0]);
 	let x = 3;
-	if (bondTotal < 90) {
+	if (bondTotal < 125) {
 		x = 2;
 		timeRanking.sort((a, b) => b[0] - a[0]);
-		if (bondTotal < 55) {
+		if (bondTotal < 60) {
 			x = 1;
 		}
 	}
@@ -662,9 +662,9 @@ function onChangePetBond(event) {
 	} else {
 		titleText += timeInDays;
 	}
-	if (bondTotal < 55) {
+	if (bondTotal < 60) {
 		titleText += "d with 1 slot";
-	} else if (bondTotal < 90) {
+	} else if (bondTotal < 125) {
 		titleText += "d with 2 slots";
 	} else {
 		titleText += "d with 3 slots";
