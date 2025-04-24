@@ -124,6 +124,9 @@ th {
 	font-size: 0.8em;
 }
 
+.Unobtained {
+	opacity: 0.31415926;
+}
 .Unobtained::after {
 	content: "❎";
 	display: block;

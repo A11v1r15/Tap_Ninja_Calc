@@ -563,8 +563,11 @@ function start() {
 	let hideTintInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideTintCheckbox")
 		.change(hideTint);
 	let hideTintInputLabel = $("<label>").attr("for", "hideTintCheckbox").text("Hide completed tints");
+	let hideUnobtainedTintInput = $("<input></input>").attr("type", "checkbox").attr("id", "hideUnobtainedTintCheckbox")
+		.change(hideUnobtainedTint);
+	let hideUnobtainedTintInputLabel = $("<label>").attr("for", "hideUnobtainedTintCheckbox").text("Hide non-obtained pets");
 	let tdFt = $("<td colspan='5' style='text-align: left;'></td>");
-	tdFt.append(hideTintInput).append(hideTintInputLabel)
+	tdFt.append(hideTintInput).append(hideTintInputLabel).append(hideUnobtainedTintInput).append(hideUnobtainedTintInputLabel)
 	tintTable.append(totalTint).append(optimalTint).append(tdFt);
 	$("#tintTable").append(tintTable);
 
@@ -582,6 +585,7 @@ function start() {
 	hidePetInput .prop("checked", localStorageGetItem("HidePet",  'false') == 'true').change();
 	hideHeroInput.prop("checked", localStorageGetItem("HideHero", 'false') == 'true').change();
 	hideTintInput.prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
+	hideUnobtainedTintInput.prop("checked", localStorageGetItem("HideUnobtainedTint", 'false') == 'true').change();
 	onChangeEquipmentBonus();
 	onChangeTint();
 	tab(localStorageGetItem("Tab", 'pet'));
@@ -849,7 +853,7 @@ function onChangeTint(event) {
 			} else {
 				$("#in" + skin[0] + "TintEnemies").parent().removeClass();
 				totalTintEnemies += $("#in" + skin[0] + "TintEnemies").val() - skin[2];
-				rankingEnemies.push([$("#in" + skin[0] + "TintEnemies").val() - skin[2], skin[0]]);
+				tintPush(rankingEnemies,$("#in" + skin[0] + "TintEnemies").val() - skin[2], skin[1]);
 			}
 		}
 		if (skin[3] != 0) {
@@ -862,7 +866,7 @@ function onChangeTint(event) {
 			} else {
 				$("#in" + skin[0] + "TintChallenges").parent().removeClass();
 				totalTintChallenges += $("#in" + skin[0] + "TintChallenges").val() - skin[3];
-				rankingChallenges.push([$("#in" + skin[0] + "TintChallenges").val() - skin[3], skin[0]]);
+				tintPush(rankingChallenges,$("#in" + skin[0] + "TintChallenges").val() - skin[3], skin[1]);
 			}
 		}
 		if (skin[4] != 0) {
@@ -875,7 +879,7 @@ function onChangeTint(event) {
 			} else {
 				$("#in" + skin[0] + "TintAmber").parent().removeClass();
 				totalTintAmber += $("#in" + skin[0] + "TintAmber").val() - skin[4];
-				rankingAmber.push([$("#in" + skin[0] + "TintAmber").val() - skin[4], skin[0]]);
+				tintPush(rankingAmber,$("#in" + skin[0] + "TintAmber").val() - skin[4], skin[1]);
 			}
 		}
 		if (skin[5] != 0) {
@@ -888,7 +892,7 @@ function onChangeTint(event) {
 			} else {
 				$("#in" + skin[0] + "TintDungeon").parent().removeClass();
 				totalTintDungeon += $("#in" + skin[0] + "TintDungeon").val() - skin[5];
-				rankingDungeon.push([$("#in" + skin[0] + "TintDungeon").val() - skin[5], skin[0]]);
+				tintPush(rankingDungeon,$("#in" + skin[0] + "TintDungeon").val() - skin[5], skin[1]);
 			}
 		}
 	})
@@ -932,6 +936,12 @@ function onChangeTint(event) {
 	$("#outOptimalTintChallenges").text((optimalTintChallenges * -1).toLocaleString(undefined, { signDisplay: "negative" }));
 	$("#outOptimalTintAmber")     .text((optimalTintAmber      * -1).toLocaleString(undefined, { signDisplay: "negative" }));
 	$("#outOptimalTintDungeon")   .text((optimalTintDungeon    * -1).toLocaleString(undefined, { signDisplay: "negative" }));
+}
+
+function tintPush(ranking, value, pet) {
+	const index = ranking.findIndex(element => element[1] == pet);
+	if (index !== -1) ranking.splice(index, 1);
+	ranking.push([value, pet]);
 }
 
 function calcMedals(bond) {
@@ -1104,7 +1114,6 @@ function hideHeroFav(event) {
 	onChangeHeroLevels();
 }
 
-
 function hideTint(event) {
 	let checked = event.target.checked;
 	localStorage.setItem("HideTint", checked);
@@ -1133,6 +1142,13 @@ function hideTint(event) {
 		$("#tintTable label:contains('" + tint[0] + "')").parent().parent().toggle(!(complete && checked));
 		$(".Complete").css("opacity", checked? 0.31415926 : 1);
 	})
+}
+
+function hideUnobtainedTint(event) {
+	let checked = event.target.checked;
+	localStorage.setItem("HideUnobtainedTint", checked);
+	$("#tintTable tr").toggle(true);
+	$(".Unobtained").parent().toggle(!checked);
 }
 
 function noFunMode() {
