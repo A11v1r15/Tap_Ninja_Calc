@@ -240,19 +240,12 @@ th {
 	color: #224312;
 }
 .Critter th {
-	background-color: #638739;
+	background: url("../img/Critter.png");
+	background-size: 100% 100%;
 	color: #224312;
 }
 .Critter input {
 	background-color: #A2E26E;
-	float: left;
-}
-.Critter th::before {
-	background: url("../img/Critter.png") no-repeat;
-	content: "";
-	display: block;
-	width: 21px;
-	height: 21px;
 	float: left;
 }
 
@@ -261,19 +254,12 @@ th {
 	color: #611912;
 }
 .Beast th {
-	background-color: #9E4935;
+	background: url("../img/Beast.png");
+	background-size: 100% 100%;
 	color: #611912;
 }
 .Beast input {
 	background-color: #EF8036;
-	float: left;
-}
-.Beast th::before {
-	background: url("../img/Beast.png") no-repeat;
-	content: "";
-	display: block;
-	width: 21px;
-	height: 21px;
 	float: left;
 }
 
@@ -282,19 +268,12 @@ th {
 	color: #503512;
 }
 .Flying th {
-	background-color: #A08033;
+	background: url("../img/Flying.png");
+	background-size: 100% 100%;
 	color: #503512;
 }
 .Flying input {
 	background-color: #FFE659;
-	float: left;
-}
-.Flying th::before {
-	background: url("../img/Flying.png") no-repeat;
-	content: "";
-	display: block;
-	width: 21px;
-	height: 21px;
 	float: left;
 }
 
@@ -303,19 +282,12 @@ th {
 	color: #121961;
 }
 .Aquatic th {
-	background-color: #35499E;
+	background: url("../img/Aquatic.png");
+	background-size: 100% 100%;
 	color: #121961;
 }
 .Aquatic input {
 	background-color: #3680EF;
-	float: left;
-}
-.Aquatic th::before {
-	background: url("../img/Aquatic.png") no-repeat;
-	content: "";
-	display: block;
-	width: 21px;
-	height: 21px;
 	float: left;
 }
 
