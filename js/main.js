@@ -930,27 +930,27 @@ function onChangeTint(event) {
 	let optimalTintDungeon    = 0;
 	for (let i = 0; i < rankingEnemies.length; i += 3) {
 		optimalTintEnemies += rankingEnemies[i][0];
-		if (i + 0 < rankingEnemies.length) $("#in" + rankingEnemies[i + 0][1] + "TintEnemies").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 1 < rankingEnemies.length) $("#in" + rankingEnemies[i + 1][1] + "TintEnemies").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 2 < rankingEnemies.length) $("#in" + rankingEnemies[i + 2][1] + "TintEnemies").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 0 < rankingEnemies.length) giveTintGroup(rankingEnemies[i + 0][1], "TintEnemies", i);
+		if (i + 1 < rankingEnemies.length) giveTintGroup(rankingEnemies[i + 1][1], "TintEnemies", i);
+		if (i + 2 < rankingEnemies.length) giveTintGroup(rankingEnemies[i + 2][1], "TintEnemies", i);
 	}
 	for (let i = 0; i < rankingChallenges.length; i += 3) {
 		optimalTintChallenges += rankingChallenges[i][0];
-		if (i + 0 < rankingChallenges.length) $("#in" + rankingChallenges[i + 0][1] + "TintChallenges").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 1 < rankingChallenges.length) $("#in" + rankingChallenges[i + 1][1] + "TintChallenges").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 2 < rankingChallenges.length) $("#in" + rankingChallenges[i + 2][1] + "TintChallenges").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 0 < rankingChallenges.length) giveTintGroup(rankingChallenges[i + 0][1], "TintChallenges", i);
+		if (i + 1 < rankingChallenges.length) giveTintGroup(rankingChallenges[i + 1][1], "TintChallenges", i);
+		if (i + 2 < rankingChallenges.length) giveTintGroup(rankingChallenges[i + 2][1], "TintChallenges", i);
 	}
 	for (let i = 0; i < rankingAmber.length; i += 3) {
 		optimalTintAmber += rankingAmber[i][0];
-		if (i + 0 < rankingAmber.length) $("#in" + rankingAmber[i + 0][1] + "TintAmber").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 1 < rankingAmber.length) $("#in" + rankingAmber[i + 1][1] + "TintAmber").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 2 < rankingAmber.length) $("#in" + rankingAmber[i + 2][1] + "TintAmber").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 0 < rankingAmber.length) giveTintGroup(rankingAmber[i + 0][1], "TintAmber", i);
+		if (i + 1 < rankingAmber.length) giveTintGroup(rankingAmber[i + 1][1], "TintAmber", i);
+		if (i + 2 < rankingAmber.length) giveTintGroup(rankingAmber[i + 2][1], "TintAmber", i);
 	}
 	for (let i = 0; i < rankingDungeon.length; i += 3) {
 		optimalTintDungeon += rankingDungeon[i][0];
-		if (i + 0 < rankingDungeon.length) $("#in" + rankingDungeon[i + 0][1] + "TintDungeon").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 1 < rankingDungeon.length) $("#in" + rankingDungeon[i + 1][1] + "TintDungeon").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 2 < rankingDungeon.length) $("#in" + rankingDungeon[i + 2][1] + "TintDungeon").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 0 < rankingDungeon.length) giveTintGroup(rankingDungeon[i + 0][1], "TintDungeon", i);
+		if (i + 1 < rankingDungeon.length) giveTintGroup(rankingDungeon[i + 1][1], "TintDungeon", i);
+		if (i + 2 < rankingDungeon.length) giveTintGroup(rankingDungeon[i + 2][1], "TintDungeon", i);
 	}
 	$("#outTotalTintEnemies")     .text((totalTintEnemies      * -1).toLocaleString(undefined, { signDisplay: "negative" }));
 	$("#outTotalTintChallenges")  .text((totalTintChallenges   * -1).toLocaleString(undefined, { signDisplay: "negative" }));
@@ -960,6 +960,13 @@ function onChangeTint(event) {
 	$("#outOptimalTintChallenges").text((optimalTintChallenges * -1).toLocaleString(undefined, { signDisplay: "negative" }));
 	$("#outOptimalTintAmber")     .text((optimalTintAmber      * -1).toLocaleString(undefined, { signDisplay: "negative" }));
 	$("#outOptimalTintDungeon")   .text((optimalTintDungeon    * -1).toLocaleString(undefined, { signDisplay: "negative" }));
+}
+
+function giveTintGroup(pet, tint, index) {
+	tintList.forEach(skin => {
+		if (skin[1] == pet)
+			$("#in" + skin[0] + tint).parent().parent().removeClass().addClass("Group" + ((index / 3) + 1));
+	})
 }
 
 function tintPush(ranking, value, pet) {
