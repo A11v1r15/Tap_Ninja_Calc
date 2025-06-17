@@ -45,6 +45,7 @@ const tintList = [
 	["Fox"       , "Fox"        , 10000000 ,   0 , 15000 , 100 , "#494c54" , "#000"    , "#e1dcd7" , "#f4cca1"],
 	["Panda"     , "Panda"      , 10000000 , 150 , 15000 ,   0 , "#fff"    , "#6d4b39" , "#fd90b7" , "#000"   ],
 	["Racoon"    , "Racoon"     , 10000000 , 150 , 15000 ,   0 , "#fff"    , "#8e8e8e" , "#fff"    , "#000"   ],
+//	["LilOtter"  , "Otter"      , 17500000 , 250 , 25000 , 150 , "#000"    , "#000"    , "#000"    , "#000"   ],
 	["Capybara"  , "Mouse"      , 17500000 , 250 ,     0 , 150 , "#50504f" , "#99491e" , "#000"    , "#cc8d3c"],
 	["Duck"      , "Chicken"    , 17500000 , 250 , 25000 , 150 , "#014039" , "#825235" , "#ffef7f" , "#2b2b33"],
 	["LuckDragon", "Dragonling" ,        0 , 250 , 25000 , 150 , "#000"    , "#d164ff" , "#ffc61d" , "#3b3b4d"],
@@ -52,7 +53,6 @@ const tintList = [
 	["LilKitten" , "Cat"        , 17500000 , 250 , 25000 ,   0 , "#494c54" , "#b3c0cf" , "#161616" , "#000"   ],
 	["LilDoggie" , "Dog"        , 17500000 , 250 , 25000 ,   0 , "#292930" , "#99342d" , "#ccaa51" , "#000"   ],
 	["LilFox"    , "Fox"        , 17500000 ,   0 , 25000 , 150 , "#494c54" , "#000"    , "#e1dcd7" , "#f4cca1"],
-//	["LilOtter"  , "Otter"      , 17500000 , 250 , 25000 , 150 , "#000"    , "#000"    , "#000"    , "#000"   ],
 //	["LilChick"  , "Chicken"    , 25000000 , 350 , 35000 , 200 , "#000"    , "#000"    , "#000"    , "#000"   ],
 	["Wolf"      , "Dog"        , 25000000 , 350 , 35000 ,   0 , "#b27623" , "#2b2b33" , "#dce7ea" , "#000"   ],
 ];
@@ -509,46 +509,66 @@ function start() {
 		th.append(label);
 		let td0 = $("<td></td>");
 		if (tint[2] != 0) {
+			let wrapper0 = $("<div></div>").addClass("Cell");
 			let input0 = $("<input></input>").attr("type", "number")
 				.attr("min", 0).attr("max", tint[2])
 				.attr("id", "in" + tint[0] + "TintEnemies")
 				.attr("name", "in" + tint[0] + "TintEnemies")
 				.val(localStorageGetItem(tint[0] + "TintEnemies", 0));
 			input0.change(onChangeTint);
-			td0.append(input0);
+			let label0 = $("<div></div>").addClass("TintLabel TintEnemies")
+				.attr("id", "label" + tint[0] + "TintEnemies")
+				.text(Number(input0.val()).toLocaleString());
+			wrapper0.append(input0).append(label0);
+			td0.append(wrapper0);
 		}
 		td0.css("background", tint[6]);
 		let td1 = $("<td></td>");
 		if (tint[3] != 0) {
+			let wrapper1 = $("<div></div>").addClass("Cell");
 			let input1 = $("<input></input>").attr("type", "number")
 				.attr("min", 0).attr("max", tint[3])
 				.attr("id", "in" + tint[0] + "TintChallenges")
 				.attr("name", "in" + tint[0] + "TintChallenges")
 				.val(localStorageGetItem(tint[0] + "TintChallenges", 0));
 			input1.change(onChangeTint);
-			td1.append(input1);
+			let label1 = $("<div></div>").addClass("TintLabel TintChallenges")
+				.attr("id", "label" + tint[0] + "TintChallenges")
+				.text(Number(input1.val()).toLocaleString());
+			wrapper1.append(input1).append(label1);
+			td1.append(wrapper1);
 		}
 		td1.css("background", tint[7]);
 		let td2 = $("<td></td>");
 		if (tint[4] != 0) {
+			let wrapper2 = $("<div></div>").addClass("Cell");
 			let input2 = $("<input></input>").attr("type", "number")
 				.attr("min", 0).attr("max", tint[4])
 				.attr("id", "in" + tint[0] + "TintAmber")
 				.attr("name", "in" + tint[0] + "TintAmber")
 				.val(localStorageGetItem(tint[0] + "TintAmber", 0));
 			input2.change(onChangeTint);
-			td2.append(input2);
+			let label2 = $("<div></div>").addClass("TintLabel TintAmber")
+				.attr("id", "label" + tint[0] + "TintAmber")
+				.text(Number(input2.val()).toLocaleString());
+			wrapper2.append(input2).append(label2);
+			td2.append(wrapper2);
 		}
 		td2.css("background", tint[8]);
 		let td3 = $("<td></td>");
 		if (tint[5] != 0) {
+			let wrapper3 = $("<div></div>").addClass("Cell");
 			let input3 = $("<input></input>").attr("type", "number")
 				.attr("min", 0).attr("max", tint[5])
 				.attr("id", "in" + tint[0] + "TintDungeon")
 				.attr("name", "in" + tint[0] + "TintDungeon")
 				.val(localStorageGetItem(tint[0] + "TintDungeon", 0));
 			input3.change(onChangeTint);
-			td3.append(input3);
+			let label3 = $("<div></div>").addClass("TintLabel TintDungeon")
+				.attr("id", "label" + tint[0] + "TintDungeon")
+				.text(Number(input3.val()).toLocaleString());
+			wrapper3.append(input3).append(label3);
+			td3.append(wrapper3);
 		}
 		td3.css("background", tint[9]);
 		tr.append(th).append(td0).append(td1).append(td2).append(td3);
@@ -572,11 +592,11 @@ function start() {
 	$("#tintTable").append(tintTable);
 
 	$("#tintTable .header").eq(0).children().eq(1).text((10000000).toLocaleString() + " Enemies");
-	$("#tintTable .header").eq(0).children().eq(3).text((15000).toLocaleString() + " Amber");
+	$("#tintTable .header").eq(0).children().eq(3).text((15000).toLocaleString() + " Amber ");
 	$("#tintTable .header").eq(1).children().eq(1).text((17500000).toLocaleString() + " Enemies");
-	$("#tintTable .header").eq(1).children().eq(3).text((25000).toLocaleString() + " Amber");
+	$("#tintTable .header").eq(1).children().eq(3).text((25000).toLocaleString() + " Amber ");
 	$("#tintTable .header").eq(2).children().eq(1).text((25000000).toLocaleString() + " Enemies");
-	$("#tintTable .header").eq(2).children().eq(3).text((35000).toLocaleString() + " Amber");
+	$("#tintTable .header").eq(2).children().eq(3).text((35000).toLocaleString() + " Amber ");
 
 	$("#PetBondCap")  .val(localStorageGetItem("PetBondCap", 15)).change();
 	$("#PetStarCap")  .val(localStorageGetItem("PetStarCap", 12)).change();
@@ -845,52 +865,56 @@ function onChangeTint(event) {
 	tintList.forEach(skin => {
 		if (skin[2] != 0) {
 			localStorage.setItem(skin[0] + "TintEnemies", $("#in" + skin[0] + "TintEnemies").val());
+			$("#label" + skin[0] + "TintEnemies").text(Number($("#in" + skin[0] + "TintEnemies").val()).toLocaleString());
 			if ($("#in" + skin[1] + "Stars").val() == 0) {
-				$("#in" + skin[0] + "TintEnemies").parent().removeClass().addClass("Unobtained");
+				$("#in" + skin[0] + "TintEnemies").parent().parent().removeClass().addClass("Unobtained");
 			} else if ($("#in" + skin[0] + "TintEnemies").val() >= skin[2]) {
-				$("#in" + skin[0] + "TintEnemies").parent().removeClass().addClass("Complete");
+				$("#in" + skin[0] + "TintEnemies").parent().parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
-				$("#in" + skin[0] + "TintEnemies").parent().removeClass();
+				$("#in" + skin[0] + "TintEnemies").parent().parent().removeClass();
 				totalTintEnemies += $("#in" + skin[0] + "TintEnemies").val() - skin[2];
 				tintPush(rankingEnemies,$("#in" + skin[0] + "TintEnemies").val() - skin[2], skin[1]);
 			}
 		}
 		if (skin[3] != 0) {
 			localStorage.setItem(skin[0] + "TintChallenges", $("#in" + skin[0] + "TintChallenges").val());
+			$("#label" + skin[0] + "TintChallenges").text(Number($("#in" + skin[0] + "TintChallenges").val()).toLocaleString());
 			if ($("#in" + skin[1] + "Stars").val() == 0) {
-				$("#in" + skin[0] + "TintChallenges").parent().removeClass().addClass("Unobtained");
+				$("#in" + skin[0] + "TintChallenges").parent().parent().removeClass().addClass("Unobtained");
 			} else if ($("#in" + skin[0] + "TintChallenges").val() >= skin[3]) {
-				$("#in" + skin[0] + "TintChallenges").parent().removeClass().addClass("Complete");
+				$("#in" + skin[0] + "TintChallenges").parent().parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
-				$("#in" + skin[0] + "TintChallenges").parent().removeClass();
+				$("#in" + skin[0] + "TintChallenges").parent().parent().removeClass();
 				totalTintChallenges += $("#in" + skin[0] + "TintChallenges").val() - skin[3];
 				tintPush(rankingChallenges,$("#in" + skin[0] + "TintChallenges").val() - skin[3], skin[1]);
 			}
 		}
 		if (skin[4] != 0) {
 			localStorage.setItem(skin[0] + "TintAmber", $("#in" + skin[0] + "TintAmber").val());
+			$("#label" + skin[0] + "TintAmber").text(Number($("#in" + skin[0] + "TintAmber").val()).toLocaleString());
 			if ($("#in" + skin[1] + "Stars").val() == 0) {
-				$("#in" + skin[0] + "TintAmber").parent().removeClass().addClass("Unobtained");
+				$("#in" + skin[0] + "TintAmber").parent().parent().removeClass().addClass("Unobtained");
 			} else if ($("#in" + skin[0] + "TintAmber").val() >= skin[4]) {
-				$("#in" + skin[0] + "TintAmber").parent().removeClass().addClass("Complete");
+				$("#in" + skin[0] + "TintAmber").parent().parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
-				$("#in" + skin[0] + "TintAmber").parent().removeClass();
+				$("#in" + skin[0] + "TintAmber").parent().parent().removeClass();
 				totalTintAmber += $("#in" + skin[0] + "TintAmber").val() - skin[4];
 				tintPush(rankingAmber,$("#in" + skin[0] + "TintAmber").val() - skin[4], skin[1]);
 			}
 		}
 		if (skin[5] != 0) {
 			localStorage.setItem(skin[0] + "TintDungeon", $("#in" + skin[0] + "TintDungeon").val());
+			$("#label" + skin[0] + "TintDungeon").text(Number($("#in" + skin[0] + "TintDungeon").val()).toLocaleString());
 			if ($("#in" + skin[1] + "Stars").val() == 0) {
-				$("#in" + skin[0] + "TintDungeon").parent().removeClass().addClass("Unobtained");
+				$("#in" + skin[0] + "TintDungeon").parent().parent().removeClass().addClass("Unobtained");
 			} else if ($("#in" + skin[0] + "TintDungeon").val() >= skin[5]) {
-				$("#in" + skin[0] + "TintDungeon").parent().removeClass().addClass("Complete");
+				$("#in" + skin[0] + "TintDungeon").parent().parent().removeClass().addClass("Complete");
 				$("#hideTintCheckbox").prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
 			} else {
-				$("#in" + skin[0] + "TintDungeon").parent().removeClass();
+				$("#in" + skin[0] + "TintDungeon").parent().parent().removeClass();
 				totalTintDungeon += $("#in" + skin[0] + "TintDungeon").val() - skin[5];
 				tintPush(rankingDungeon,$("#in" + skin[0] + "TintDungeon").val() - skin[5], skin[1]);
 			}
@@ -906,27 +930,27 @@ function onChangeTint(event) {
 	let optimalTintDungeon    = 0;
 	for (let i = 0; i < rankingEnemies.length; i += 3) {
 		optimalTintEnemies += rankingEnemies[i][0];
-		if (i + 0 < rankingEnemies.length) $("#in" + rankingEnemies[i + 0][1] + "TintEnemies").parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 1 < rankingEnemies.length) $("#in" + rankingEnemies[i + 1][1] + "TintEnemies").parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 2 < rankingEnemies.length) $("#in" + rankingEnemies[i + 2][1] + "TintEnemies").parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 0 < rankingEnemies.length) $("#in" + rankingEnemies[i + 0][1] + "TintEnemies").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 1 < rankingEnemies.length) $("#in" + rankingEnemies[i + 1][1] + "TintEnemies").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 2 < rankingEnemies.length) $("#in" + rankingEnemies[i + 2][1] + "TintEnemies").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
 	}
 	for (let i = 0; i < rankingChallenges.length; i += 3) {
 		optimalTintChallenges += rankingChallenges[i][0];
-		if (i + 0 < rankingChallenges.length) $("#in" + rankingChallenges[i + 0][1] + "TintChallenges").parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 1 < rankingChallenges.length) $("#in" + rankingChallenges[i + 1][1] + "TintChallenges").parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 2 < rankingChallenges.length) $("#in" + rankingChallenges[i + 2][1] + "TintChallenges").parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 0 < rankingChallenges.length) $("#in" + rankingChallenges[i + 0][1] + "TintChallenges").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 1 < rankingChallenges.length) $("#in" + rankingChallenges[i + 1][1] + "TintChallenges").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 2 < rankingChallenges.length) $("#in" + rankingChallenges[i + 2][1] + "TintChallenges").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
 	}
 	for (let i = 0; i < rankingAmber.length; i += 3) {
 		optimalTintAmber += rankingAmber[i][0];
-		if (i + 0 < rankingAmber.length) $("#in" + rankingAmber[i + 0][1] + "TintAmber").parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 1 < rankingAmber.length) $("#in" + rankingAmber[i + 1][1] + "TintAmber").parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 2 < rankingAmber.length) $("#in" + rankingAmber[i + 2][1] + "TintAmber").parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 0 < rankingAmber.length) $("#in" + rankingAmber[i + 0][1] + "TintAmber").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 1 < rankingAmber.length) $("#in" + rankingAmber[i + 1][1] + "TintAmber").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 2 < rankingAmber.length) $("#in" + rankingAmber[i + 2][1] + "TintAmber").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
 	}
 	for (let i = 0; i < rankingDungeon.length; i += 3) {
 		optimalTintDungeon += rankingDungeon[i][0];
-		if (i + 0 < rankingDungeon.length) $("#in" + rankingDungeon[i + 0][1] + "TintDungeon").parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 1 < rankingDungeon.length) $("#in" + rankingDungeon[i + 1][1] + "TintDungeon").parent().removeClass().addClass("Group" + ((i / 3) + 1));
-		if (i + 2 < rankingDungeon.length) $("#in" + rankingDungeon[i + 2][1] + "TintDungeon").parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 0 < rankingDungeon.length) $("#in" + rankingDungeon[i + 0][1] + "TintDungeon").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 1 < rankingDungeon.length) $("#in" + rankingDungeon[i + 1][1] + "TintDungeon").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
+		if (i + 2 < rankingDungeon.length) $("#in" + rankingDungeon[i + 2][1] + "TintDungeon").parent().parent().removeClass().addClass("Group" + ((i / 3) + 1));
 	}
 	$("#outTotalTintEnemies")     .text((totalTintEnemies      * -1).toLocaleString(undefined, { signDisplay: "negative" }));
 	$("#outTotalTintChallenges")  .text((totalTintChallenges   * -1).toLocaleString(undefined, { signDisplay: "negative" }));

@@ -248,6 +248,9 @@ th {
 	background-color: #A2E26E;
 	float: left;
 }
+.Critter .TintLabel {
+	background-color: #A2E26E;
+}
 
 .Beast {
 	background-color: #9E4935;
@@ -261,6 +264,9 @@ th {
 .Beast input {
 	background-color: #EF8036;
 	float: left;
+}
+.Beast .TintLabel {
+	background-color: #EF8036;
 }
 
 .Flying {
@@ -276,6 +282,9 @@ th {
 	background-color: #FFE659;
 	float: left;
 }
+.Flying .TintLabel {
+	background-color: #FFE659;
+}
 
 .Aquatic {
 	background-color: #35499E;
@@ -289,6 +298,9 @@ th {
 .Aquatic input {
 	background-color: #3680EF;
 	float: left;
+}
+.Aquatic .TintLabel {
+	background-color: #3680EF;
 }
 
 .Feather::after {
@@ -588,6 +600,39 @@ footer span {
 	display: inline-block;
 	vertical-align: middle;
 	line-height: normal;
+}
+
+#tintTable td {
+	text-align: left;
+}
+
+.Cell {
+	position: relative;
+	display: inline-block;
+}
+.Cell input {
+	display: block;
+}
+
+.TintLabel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: calc(100% - 4px);
+	height: calc(100% - 4px);
+	text-align: left;
+	pointer-events: none;
+	border-width: 2px;
+	border-style: inset;
+	border-color: light-dark(#767676, #858585);
+	font-size: smaller;
+	text-indent: 2px;
+}
+
+.Cell input:hover + .TintLabel,
+.Cell input:focus + .TintLabel,
+.Cell input:placeholder-shown + .TintLabel {
+	opacity: 0;
 }
 
 #noFunButton {
