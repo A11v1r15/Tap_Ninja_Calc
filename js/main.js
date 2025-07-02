@@ -32,7 +32,7 @@ const tintList = [
 	["Bunny"     , "Bunny"      , 10000000 , 150 ,     0 , 100 , "#f187f9" , "#848699" , "#000"    , "#b29159"],
 	["Mouse"     , "Mouse"      ,        0 , 150 , 15000 , 100 , "#000"    , "#cfd2dc" , "#fff"    , "#694129"],
 	["Hedgehog"  , "Hedgehog"   ,        0 , 150 , 15000 , 100 , "#000"    , "#f2d2c7" , "#2d9de5" , "#6d4b39"],
-	["Snake"     , "Snake"      , 10000000 ,   0 , 15000 , 100 , "#8c094e" , "#000"    , "#fff"    , "#64bd48"],
+	["Snake"     , "Snake"      , 10000000 ,   0 , 15000 , 100 , "#8c094e" , "#000"    , "#f8941d" , "#64bd48"],
 	["Squirrel"  , "Squirrel"   ,        0 , 150 , 15000 , 100 , "#000"    , "#494c54" , "#7f1ad2" , "#f0e1d6"],
 	["Chicken"   , "Chicken"    ,        0 , 150 , 15000 , 100 , "#000"    , "#cc5210" , "#848699" , "#b29159"],
 	["Crane"     , "Crane"      ,        0 , 150 , 15000 , 100 , "#000"    , "#b2b2b2" , "#e5d244" , "#ceb4aa"],
@@ -43,7 +43,7 @@ const tintList = [
 	["Cat"       , "Cat"        , 10000000 , 150 , 15000 ,   0 , "#494c54" , "#b3c0cf" , "#161616" , "#000"   ],
 	["Dog"       , "Dog"        , 10000000 , 150 , 15000 ,   0 , "#292930" , "#99342d" , "#ccaa51" , "#000"   ],
 	["Fox"       , "Fox"        , 10000000 ,   0 , 15000 , 100 , "#494c54" , "#000"    , "#e1dcd7" , "#f4cca1"],
-	["Panda"     , "Panda"      , 10000000 , 150 , 15000 ,   0 , "#fff"    , "#6d4b39" , "#fd90b7" , "#000"   ],
+	["Panda"     , "Panda"      , 10000000 , 150 , 15000 ,   0 , "#ac4200" , "#6d4b39" , "#fd90b7" , "#000"   ],
 	["Racoon"    , "Racoon"     , 10000000 , 150 , 15000 ,   0 , "#fff"    , "#8e8e8e" , "#fff"    , "#000"   ],
 //	["LilOtter"  , "Otter"      , 17500000 , 250 , 25000 , 150 , "#000"    , "#000"    , "#000"    , "#000"   ],
 	["Capybara"  , "Mouse"      , 17500000 , 250 ,     0 , 150 , "#50504f" , "#99491e" , "#000"    , "#cc8d3c"],
@@ -388,11 +388,11 @@ function start() {
 	let usePetStorageInput = $("<input></input>").attr("type", "checkbox").attr("id", "usePetStorageCheckbox");
 	let petLabelStorage = $("<label for='usePetStorageCheckbox'>Storage:</label>");
 	pstd.append(usePetStorageInput).append(petLabelStorage);
-	let pstd0 = $("<td class='Medal'><input type='number' min='0' max='9999999' id='storageMedal' onchange='onChangeStorage()' title='Medal'></td>");
-	let pstd1 = $("<td class='Aquatic Feather'><input type='number' min='0' max='9999999' id='storageAquaticFeather' onchange='onChangeStorage()' title='Aquatic Feather'></td>");
-	let pstd2 = $("<td class='Critter Feather'><input type='number' min='0' max='9999999' id='storageCritterFeather' onchange='onChangeStorage()' title='Critter Feather'></td>");
-	let pstd3 = $("<td class='Flying Feather'><input type='number' min='0' max='9999999' id='storageFlyingFeather' onchange='onChangeStorage()' title='Flying Feather'></td>");
-	let pstd4 = $("<td class='Beast Feather'><input type='number' min='0' max='9999999' id='storageBeastFeather' onchange='onChangeStorage()' title='Beast Feather'></td>");
+	let pstd0 = $("<td class='Medal'><div class='Cell'><input type='number' min='0' max='9999999' id='storageMedal' onchange='onChangeStorage()' title='Medal'><div class='LocalizedLabel' id='labelStorageMedal'>NaN</div></div></td>");
+	let pstd1 = $("<td class='Aquatic Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageAquaticFeather' onchange='onChangeStorage()' title='Aquatic Feather'><div class='LocalizedLabel' id='labelStorageAquaticFeather'>NaN</div></div></td>");
+	let pstd2 = $("<td class='Critter Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageCritterFeather' onchange='onChangeStorage()' title='Critter Feather'><div class='LocalizedLabel' id='labelStorageCritterFeather'>NaN</div></div></td>");
+	let pstd3 = $("<td class='Flying Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageFlyingFeather' onchange='onChangeStorage()' title='Flying Feather'><div class='LocalizedLabel' id='labelStorageFlyingFeather'>NaN</div></div></td>");
+	let pstd4 = $("<td class='Beast Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageBeastFeather' onchange='onChangeStorage()' title='Beast Feather'><div class='LocalizedLabel' id='labelStorageBeastFeather'>NaN</div></div></td>");
 	petStorage1.append(pstd).append(pstd0).append(pstd1).append(pstd2).append(pstd3).append(pstd4);
 	petStorage0.append(petStorage1);
 	petTable.append(totalPet).append(petStorage0).append(tdFp);
@@ -450,11 +450,11 @@ function start() {
 	let useHeroStorageInput = $("<input></input>").attr("type", "checkbox").attr("id", "useHeroStorageCheckbox");
 	let heroLabelStorage = $("<label for='useHeroStorageCheckbox'>Storage:</label>");
 	hstd.append(useHeroStorageInput).append(heroLabelStorage);
-	let hstd0 = $("<td class='Water Dust'><input type='number' min='0' max='9999999' id='storageWaterDust' onchange='onChangeStorage()' title='Water Dust'></td>");
-	let hstd1 = $("<td class='Earth Dust'><input type='number' min='0' max='9999999' id='storageEarthDust' onchange='onChangeStorage()' title='Earth Dust'></td>");
-	let hstd2 = $("<td class='Wind Dust'><input type='number' min='0' max='9999999' id='storageWindDust' onchange='onChangeStorage()' title='Wind Dust'></td>");
-	let hstd3 = $("<td class='Fire Dust'><input type='number' min='0' max='9999999' id='storageFireDust' onchange='onChangeStorage()' title='Fire Dust'></td>");
-	let hstd4 = $("<td class='Experience'><input type='number' min='0' max='9999999' id='storageExperience' onchange='onChangeStorage()' title='Experience'></td>");
+	let hstd0 = $("<td class='Water Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageWaterDust' onchange='onChangeStorage()' title='Water Dust'><div class='LocalizedLabel' id='labelStorageWaterDust'>NaN</div></div></td>");
+	let hstd1 = $("<td class='Earth Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageEarthDust' onchange='onChangeStorage()' title='Earth Dust'><div class='LocalizedLabel' id='labelStorageEarthDust'>NaN</div></div></td>");
+	let hstd2 = $("<td class='Wind Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageWindDust' onchange='onChangeStorage()' title='Wind Dust'><div class='LocalizedLabel' id='labelStorageWindDust'>NaN</div></div></td>");
+	let hstd3 = $("<td class='Fire Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageFireDust' onchange='onChangeStorage()' title='Fire Dust'><div class='LocalizedLabel' id='labelStorageFireDust'>NaN</div></div></td>");
+	let hstd4 = $("<td class='Experience'><div class='Cell'><input type='number' min='0' max='9999999' id='storageExperience' onchange='onChangeStorage()' title='Experience'><div class='LocalizedLabel' id='labelStorageExperience'>NaN</div></div></td>");
 	heroStorage1.append(hstd).append(hstd0).append(hstd1).append(hstd2).append(hstd3).append(hstd4);
 	heroStorage0.append(heroStorage1);
 	heroTable.append(totalHero).append(heroStorage0).append(tdFh);
@@ -490,7 +490,7 @@ function start() {
 	let useEquipmentStorageInput = $("<input></input>").attr("type", "checkbox").attr("id", "useEquipmentStorageCheckbox");
 	let equipmentLabelStorage = $("<label for='useEquipmentStorageCheckbox'>Storage:</label>");
 	estd.append(useEquipmentStorageInput).append(equipmentLabelStorage);
-	let estd0 = $("<td class='Amber'><input type='number' min='0' id='storageAmber' onchange='onChangeStorage()' title='Amber'></td>");
+	let estd0 = $("<td class='Amber'><div class='Cell'><input type='number' min='0' id='storageAmber' onchange='onChangeStorage()' title='Amber'><div class='LocalizedLabel' id='labelStorageAmber'>NaN</div></div></td>");
 	equipmentStorage1.append(estd).append(estd0);
 	equipmentStorage0.append(equipmentStorage1);
 	equipmentTable.append(totalEquipment).append(equipmentStorage0);
@@ -516,7 +516,7 @@ function start() {
 				.attr("name", "in" + tint[0] + "TintEnemies")
 				.val(localStorageGetItem(tint[0] + "TintEnemies", 0));
 			input0.change(onChangeTint);
-			let label0 = $("<div></div>").addClass("TintLabel TintEnemies")
+			let label0 = $("<div></div>").addClass("LocalizedLabel TintEnemies")
 				.attr("id", "label" + tint[0] + "TintEnemies")
 				.text(Number(input0.val()).toLocaleString());
 			wrapper0.append(input0).append(label0);
@@ -532,7 +532,7 @@ function start() {
 				.attr("name", "in" + tint[0] + "TintChallenges")
 				.val(localStorageGetItem(tint[0] + "TintChallenges", 0));
 			input1.change(onChangeTint);
-			let label1 = $("<div></div>").addClass("TintLabel TintChallenges")
+			let label1 = $("<div></div>").addClass("LocalizedLabel TintChallenges")
 				.attr("id", "label" + tint[0] + "TintChallenges")
 				.text(Number(input1.val()).toLocaleString());
 			wrapper1.append(input1).append(label1);
@@ -548,7 +548,7 @@ function start() {
 				.attr("name", "in" + tint[0] + "TintAmber")
 				.val(localStorageGetItem(tint[0] + "TintAmber", 0));
 			input2.change(onChangeTint);
-			let label2 = $("<div></div>").addClass("TintLabel TintAmber")
+			let label2 = $("<div></div>").addClass("LocalizedLabel TintAmber")
 				.attr("id", "label" + tint[0] + "TintAmber")
 				.text(Number(input2.val()).toLocaleString());
 			wrapper2.append(input2).append(label2);
@@ -564,7 +564,7 @@ function start() {
 				.attr("name", "in" + tint[0] + "TintDungeon")
 				.val(localStorageGetItem(tint[0] + "TintDungeon", 0));
 			input3.change(onChangeTint);
-			let label3 = $("<div></div>").addClass("TintLabel TintDungeon")
+			let label3 = $("<div></div>").addClass("LocalizedLabel TintDungeon")
 				.attr("id", "label" + tint[0] + "TintDungeon")
 				.text(Number(input3.val()).toLocaleString());
 			wrapper3.append(input3).append(label3);
@@ -608,6 +608,7 @@ function start() {
 	hideUnobtainedTintInput.prop("checked", localStorageGetItem("HideUnobtainedTint", 'false') == 'true').change();
 	onChangeEquipmentBonus();
 	onChangeTint();
+	onChangeStorage();
 	tab(localStorageGetItem("Tab", 'pet'));
 	if (localStorageGetItem("noFunMode", 'false') == 'true') {
 		$("#noFunButton").click(funMode);
@@ -850,6 +851,7 @@ function onChangeEquipmentBonus(event) {
 function onChangeStorage(event) {
 	currencies.forEach(currency => {
 		localStorage.setItem("storage" + currency, $("#storage" + currency).val());
+		$("#labelStorage" + currency).text(Number($("#storage" + currency).val()).toLocaleString());
 	})
 }
 

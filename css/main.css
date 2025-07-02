@@ -97,14 +97,15 @@ th {
 	color: #000000;
 }
 .header input {
-	background-color: #46A5D5;
+	background-color: #8b9bb4;
 }
 
 .Amber {
 	background-color: #593A27;
 	color: #DE6C00;
 }
-.Amber input {
+.Amber input,
+.Amber .LocalizedLabel {
 	background-color: #F3D200;
 	color: #9D0F00;
 }
@@ -212,6 +213,10 @@ th {
 	height: 16px;
 	float: right;
 }
+.Medal .LocalizedLabel,
+.Medal input {
+	background: #8b9bb4;
+}
 
 .Elixir {
 	white-space: nowrap;
@@ -234,6 +239,10 @@ th {
 	height: 16px;
 	float: right;
 }
+.Experience .LocalizedLabel,
+.Experience input {
+	background: #8b9bb4;
+}
 
 .Critter {
 	background-color: #638739;
@@ -248,7 +257,7 @@ th {
 	background-color: #A2E26E;
 	float: left;
 }
-.Critter .TintLabel {
+.Critter .LocalizedLabel {
 	background-color: #A2E26E;
 }
 
@@ -265,7 +274,7 @@ th {
 	background-color: #EF8036;
 	float: left;
 }
-.Beast .TintLabel {
+.Beast .LocalizedLabel {
 	background-color: #EF8036;
 }
 
@@ -282,7 +291,7 @@ th {
 	background-color: #FFE659;
 	float: left;
 }
-.Flying .TintLabel {
+.Flying .LocalizedLabel {
 	background-color: #FFE659;
 }
 
@@ -299,7 +308,7 @@ th {
 	background-color: #3680EF;
 	float: left;
 }
-.Aquatic .TintLabel {
+.Aquatic .LocalizedLabel {
 	background-color: #3680EF;
 }
 
@@ -365,7 +374,8 @@ td.Mage {
 	color: #12607F;
 }
 td.Water input,
-td.Mage input {
+td.Mage input,
+td.Water .LocalizedLabel {
 	background-color: #65E5FF;
 }
 
@@ -392,7 +402,8 @@ td.Assassin {
 	color: #164C2F;
 }
 td.Earth input,
-td.Assassin input {
+td.Assassin input,
+td.Earth .LocalizedLabel  {
 	background-color: #E3FF99;
 }
 
@@ -419,7 +430,8 @@ td.Warrior {
 	color: #A5001E;
 }
 td.Fire input,
-td.Warrior input {
+td.Warrior input,
+td.Fire .LocalizedLabel  {
 	background-color: #FFCA99;
 }
 
@@ -446,7 +458,8 @@ td.Support {
 	color: #B27400;
 }
 td.Wind input,
-td.Support input {
+td.Support input,
+td.Wind .LocalizedLabel  {
 	background-color: #FFFDCC;
 }
 
@@ -614,7 +627,7 @@ footer span {
 	display: block;
 }
 
-.TintLabel {
+.LocalizedLabel {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -629,9 +642,9 @@ footer span {
 	text-indent: 2px;
 }
 
-.Cell input:hover + .TintLabel,
-.Cell input:focus + .TintLabel,
-.Cell input:placeholder-shown + .TintLabel {
+.Cell input:hover + .LocalizedLabel,
+.Cell input:focus + .LocalizedLabel,
+.Cell input:placeholder-shown + .LocalizedLabel {
 	opacity: 0;
 }
 
