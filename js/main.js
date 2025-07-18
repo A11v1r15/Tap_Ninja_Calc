@@ -62,6 +62,7 @@ const heroList = [
 	["Kito"       , "Legendary" , "Water" , "Assassin" , "The Composed Outlaw"  ],//43
 	["Tièr"       , "Legendary" , "Water" , "Mage"     , "The Gray Eminence"    ],//44
 	["Falkron"    , "Legendary" , "Water" , "Support"  , "The Mystic Angler"    ],//47
+	["Snow"       , "Legendary" , "Water" , "Support"  , "The Tranquil Purity"  ],//46
 	["Dia"        , "Legendary" , "Water" , "Assassin" , "The Rogue"            ],//56
 	["Husk"       , "Legendary" , "Earth" , "Warrior"  , "The Immovable Object" ],//33
 	["Alivia"     , "Legendary" , "Earth" , "Assassin" , "The Forests Daughter" ],//34
@@ -82,7 +83,6 @@ const heroList = [
 	["Maki"       , "Legendary" , "Fire"  , "Support"  , "The Master Chef"      ],//23
 	["Xyzl"       , "Legendary" , "Fire"  , "Mage"     , "The Archdemon"        ],//54
 //	["Uchigo"     , "Legendary" , ""      , ""         , "The Swift Blade"      ],//42
-//	["Snow"       , "Legendary" , ""      , ""         , "The Tranquil Purity"  ],//46
 //	["AmiRot"     , "Legendary" , ""      , ""         , "The Rotting Spirit"   ],//37
 	["Demid"      , "Epic"      , "Water" , "Mage"     , "The Water Bender"     ],//14
 	["Momo"       , "Epic"      , "Water" , "Support"  , "The Peach Warden"     ],//15
