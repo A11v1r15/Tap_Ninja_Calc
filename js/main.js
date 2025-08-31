@@ -83,7 +83,7 @@ const heroList = [
 	["Maki"       , "Legendary" , "Fire"  , "Support"  , "The Master Chef"      ],//23
 	["Xyzl"       , "Legendary" , "Fire"  , "Mage"     , "The Archdemon"        ],//54
 //	["Uchigo"     , "Legendary" , ""      , ""         , "The Swift Blade"      ],//42
-//	["AmiRot"     , "Legendary" , ""      , ""         , "The Rotting Spirit"   ],//37
+//	["AmiRot"     , "Legendary" , "Earth" , "Mage"     , "The Rotting Spirit"   ],//37
 	["Demid"      , "Epic"      , "Water" , "Mage"     , "The Water Bender"     ],//14
 	["Momo"       , "Epic"      , "Water" , "Support"  , "The Peach Warden"     ],//15
 	["Locke"      , "Epic"      , "Water" , "Mage"     , "The Pirate"           ],//50
@@ -347,8 +347,8 @@ const heroLevelUpExperienceCost = [  0,
 	 280000,  300000,  320000,  340000,  360000,  380000,  400000,  450000,  500000,  550000,
 	 600000,  650000,  700000,  750000,  800000,  850000,  900000,  950000, 1000000, 1050000,
 	1100000, 1150000, 1200000, 1250000, 1300000, 1350000, 1400000, 1450000, 1500000, 1575000,
-	1650000, 1725000, 1800000, 1875000, 1950000, 2025000, 2100000, 2175000, 2250000,   0x130,
-	  0x131,   0x132,   0x133,   0x134,   0x135,   0x136,   0x137,   0x138,   0x139,   0x140
+	1650000, 1725000, 1800000, 1875000, 1950000, 2025000, 2100000, 2175000, 2250000, 2325000,
+    2400000, 2475000, 2550000, 2625000, 2700000, 2775000, 2850000, 2925000, 3000000,   0x140
 ]
 
 const currencies = [
