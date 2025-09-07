@@ -61,8 +61,8 @@ const heroList = [
 	["Fin"        , "Legendary" , "Water" , "Warrior"  , "The Scuba Knight"     ],//40
 	["Kito"       , "Legendary" , "Water" , "Assassin" , "The Composed Outlaw"  ],//43
 	["Tièr"       , "Legendary" , "Water" , "Mage"     , "The Gray Eminence"    ],//44
-	["Falkron"    , "Legendary" , "Water" , "Support"  , "The Mystic Angler"    ],//47
 	["Snow"       , "Legendary" , "Water" , "Support"  , "The Tranquil Purity"  ],//46
+	["Falkron"    , "Legendary" , "Water" , "Support"  , "The Mystic Angler"    ],//47
 	["Dia"        , "Legendary" , "Water" , "Assassin" , "The Rogue"            ],//56
 	["Husk"       , "Legendary" , "Earth" , "Warrior"  , "The Immovable Object" ],//33
 	["Alivia"     , "Legendary" , "Earth" , "Assassin" , "The Forests Daughter" ],//34
