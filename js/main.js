@@ -93,8 +93,10 @@ const heroList = [
 	["Belu"       , "Epic"      , "Wind"  , "Warrior"  , "The Old Timer"        ],//11
 	["Sayid"      , "Epic"      , "Wind"  , "Assassin" , "The Assassin"         ],//49
 	["Ray"        , "Epic"      , "Fire"  , "Mage"     , "The Glimmer of Light" ],//08
+//	["Enquish"    , "Epic"      , "Fire"  , "Support"  , "The Questioner"       ],//09
 	["Waju"       , "Rare"      , "Water" , "Assassin" , ""                     ],//06
 	["Kenju"      , "Rare"      , "Water" , "Warrior"  , ""                     ],//07
+	["Tateju"     , "Rare"      , "Earth" , "Warrior"  , ""                     ],//04
 	["Jie"        , "Rare"      , "Earth" , "Support"  , ""                     ],//05
 	["Sketchy"    , "Rare"      , "Earth" , "Mage"     , ""                     ],//48
 	["Ninja"      , "Rare"      , "Wind"  , "Assassin" , ""                     ],//00
