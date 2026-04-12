@@ -1124,7 +1124,7 @@ function getPetClass(test) {
 
 function tab(id){
 	localStorage.setItem("Tab", id);
-    const ids = ['pet', 'hero', 'equipment', 'tint'];
+    const ids = ['pet', 'hero', 'equipment', 'tint', 'storage'];
 
     ids.forEach(test => {
         if (test === id) {
@@ -1226,6 +1226,71 @@ function funMode() {
 	localStorage.setItem("noFunMode", 'false');
 	$("body").removeClass("noFunMode");
 	$("#noFunButton").off("click").on("click", noFunMode);
+}
+
+function exportData() {
+	let csv = "Type,Name/Key,Val1,Val2,Val3,Val4,Val5\n";
+
+	heroList.forEach(hero => {
+		const name = hero[0];
+		const rarity = hero[1];
+		const stars = localStorageGetItem(name + "Stars", "-");
+		const level = localStorageGetItem(name + "Level", "-");
+
+		csv += `HERO,${name},${stars},${level},-,-,${rarity}\n`;
+	});
+
+	petList.forEach(pet => {
+		const name = pet[0];
+		const stars = localStorageGetItem(name + "Stars", "-");
+		const bond = localStorageGetItem(name + "Bond", "-");
+
+		csv += `PET,${normalizePetName(name)},${stars},${bond},-,-,\n`;
+	});
+
+	Object.keys(lookUpEquipments).forEach(item => {
+		const bonus = Number(localStorageGetItem(item + "Bonus", 0));
+
+		let lvl = 0;
+		for (let i = 0; i < lookUpEquipments[item].length; i++) {
+			if (lookUpEquipments[item][i][1] == bonus) {
+				lvl = i;
+				break;
+			}
+		}
+
+		csv += `EQUIPMENT,${item},${lvl},,,,\n`;
+	});
+
+	downloadCSV(csv);
+}
+
+function downloadCSV(content) {
+	const blob = new Blob([content], { type: "text/csv;charset=utf-8;" });
+	const url = URL.createObjectURL(blob);
+
+	const a = document.createElement("a");
+	a.href = url;
+	a.download = "TapNinjaData.csv";
+	a.click();
+
+	URL.revokeObjectURL(url);
+}
+
+function normalizePetName(name) {
+	switch (name) {
+		case "Mouse":
+		case "Capybara": return "Mouse/Capybara";
+		case "Chicken":
+		case "Duck": return "Chicken/Duck";
+		case "Dragonling":
+		case "LuckDragon": return "Dragonling/Luckdragon";
+		case "Parrot":
+		case "Peafowl": return "Parrot/Peafowl";
+		case "Dog":
+		case "Wolf": return "Dog/Wolf";
+		default: return name;
+	}
 }
 
 $(document).ready(start());
