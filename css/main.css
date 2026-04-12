@@ -65,6 +65,7 @@ button {
 	font-family: inherit;
 	color: #FFFFFF;
 	background-color: #3B4365;
+	cursor: pointer;
 }
 button.selected {
 	background-color: #000000;

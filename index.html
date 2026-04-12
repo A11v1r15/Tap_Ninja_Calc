@@ -92,6 +92,13 @@
         <tbody></tbody>
         <tfoot>
           <tr class="header">
+              <th colspan='4'>
+                <button id="jsonButton" type="button" onclick="exportJSON()">Export json to other browsers</button>
+                <input type="file" id="importFile" accept=".json" hidden>
+                <button type="button" onclick="document.getElementById('importFile').click()">Import Json</button>
+              </th>
+          </tr>
+          <tr class="header">
               <th colspan='4'><button id="exportButton" type="button" onclick="exportData()">Export data to TomCena's TapNinja Database</button></th>
           </tr>
         </tfoot>

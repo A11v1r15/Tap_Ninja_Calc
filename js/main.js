@@ -670,6 +670,16 @@ function start() {
 	} else {
 		$("#noFunButton").click(noFunMode);
 	}
+	$("#importFile").on("change", function (event) {
+		const file = event.target.files[0];
+		if (!file) return;
+	
+		const reader = new FileReader();
+		reader.onload = function (e) {
+			importData(e.target.result);
+		};
+		reader.readAsText(file);
+	});
 }
 
 function toggleFav(event){
@@ -1324,6 +1334,43 @@ function normalizePetName(name) {
 		case "Wolf": return "Dog/Wolf";
 		default: return name;
 	}
+}
+
+function importData(jsonString) {
+	const data = JSON.parse(jsonString);
+
+	localStorage.clear();
+
+	Object.keys(data).forEach(key => {
+		localStorage.setItem(key, data[key]);
+	});
+
+	location.reload();
+}
+
+function exportJSON() {
+	const data = {};
+
+	for (let i = 0; i < localStorage.length; i++) {
+		const key = localStorage.key(i);
+		data[key] = localStorage.getItem(key);
+	}
+
+	const json = JSON.stringify(data);
+
+	downloadJSON(json);
+}
+
+function downloadJSON(content) {
+	const blob = new Blob([content], { type: "application/json" });
+	const url = URL.createObjectURL(blob);
+
+	const a = document.createElement("a");
+	a.href = url;
+	a.download = "TapNinjaSave.json";
+	a.click();
+
+	URL.revokeObjectURL(url);
 }
 
 $(document).ready(start());
