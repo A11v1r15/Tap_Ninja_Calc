@@ -362,8 +362,8 @@ const currencies = [
 	"EarthDust",
 	"WindDust",
 	"FireDust",
-	"Medal",
 	"Amber",
+	"Medal",
 	"Experience",
 ]
 
@@ -527,8 +527,30 @@ function start() {
 	equipmentStorage0.append(equipmentStorage1);
 	equipmentTable.append(totalEquipment).append(equipmentStorage0);
 
+
+	let storageTable = $("#storageTable tbody");
+	let str0  = $("<td class='Aquatic Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabAquaticFeather' onchange='onChangeStorageTab()' title='Aquatic Feather'><div class='LocalizedLabel' id='labelStorageTabAquaticFeather'>NaN</div></div></td>");
+	let str1  = $("<td class='Critter Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabCritterFeather' onchange='onChangeStorageTab()' title='Critter Feather'><div class='LocalizedLabel' id='labelStorageTabCritterFeather'>NaN</div></div></td>");
+	let str2  = $("<td class='Flying Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabFlyingFeather' onchange='onChangeStorageTab()' title='Flying Feather'><div class='LocalizedLabel' id='labelStorageTabFlyingFeather'>NaN</div></div></td>");
+	let str3  = $("<td class='Beast Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabBeastFeather' onchange='onChangeStorageTab()' title='Beast Feather'><div class='LocalizedLabel' id='labelStorageTabBeastFeather'>NaN</div></div></td>");
+	let str4  = $("<td class='Water Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabWaterDust' onchange='onChangeStorageTab()' title='Water Dust'><div class='LocalizedLabel' id='labelStorageTabWaterDust'>NaN</div></div></td>");
+	let str5  = $("<td class='Earth Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabEarthDust' onchange='onChangeStorageTab()' title='Earth Dust'><div class='LocalizedLabel' id='labelStorageTabEarthDust'>NaN</div></div></td>");
+	let str6  = $("<td class='Wind Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabWindDust' onchange='onChangeStorageTab()' title='Wind Dust'><div class='LocalizedLabel' id='labelStorageTabWindDust'>NaN</div></div></td>");
+	let str7  = $("<td class='Fire Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabFireDust' onchange='onChangeStorageTab()' title='Fire Dust'><div class='LocalizedLabel' id='labelStorageTabFireDust'>NaN</div></div></td>");
+	let str8  = $("<td class='Amber' colspan='2'><div class='Cell'><input type='number' min='0' id='storageTabAmber' onchange='onChangeStorageTab()' title='Amber'><div class='LocalizedLabel' id='labelStorageTabAmber'>NaN</div></div></td>");
+	let str9  = $("<td class='Medal'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabMedal' onchange='onChangeStorageTab()' title='Medal'><div class='LocalizedLabel' id='labelStorageTabMedal'>NaN</div></div></td>");
+	let str10 = $("<td class='Experience'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabExperience' onchange='onChangeStorageTab()' title='Experience'><div class='LocalizedLabel' id='labelStorageTabExperience'>NaN</div></div></td>");
+	let strow0 = $("<tr></tr>");
+	strow0.append(str0).append(str1).append(str2).append(str3);
+	let strow1 = $("<tr></tr>");
+	strow1.append(str4).append(str5).append(str6).append(str7);
+	let strow2 = $("<tr class='header	'></tr>");
+	strow2.append(str8).append(str9).append(str10);
+	storageTable.append(strow0).append(strow1).append(strow2);
+
 	currencies.forEach(currency => {
 		$("#storage" + currency).val(localStorageGetItem("storage" + currency, 0));
+		$("#storageTab" + currency).val(localStorageGetItem("storage" + currency, 0));
 	})
 
 	let tintTable = $("<tbody></tbody>");
@@ -883,6 +905,17 @@ function onChangeEquipmentBonus(event) {
 function onChangeStorage(event) {
 	currencies.forEach(currency => {
 		localStorage.setItem("storage" + currency, $("#storage" + currency).val());
+		$("#storageTab" + currency).val($("#storage" + currency).val());
+		$("#labelStorage" + currency).text(Number($("#storage" + currency).val()).toLocaleString());
+		$("#labelStorageTab" + currency).text(Number($("#storage" + currency).val()).toLocaleString());
+	})
+}
+
+function onChangeStorageTab(event) {
+	currencies.forEach(currency => {
+		localStorage.setItem("storage" + currency, $("#storageTab" + currency).val());
+		$("#storage" + currency).val($("#storageTab" + currency).val());
+		$("#labelStorageTab" + currency).text(Number($("#storage" + currency).val()).toLocaleString());
 		$("#labelStorage" + currency).text(Number($("#storage" + currency).val()).toLocaleString());
 	})
 }
