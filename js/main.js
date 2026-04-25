@@ -763,6 +763,7 @@ function onChangePetBond(event) {
 }
 
 function onChangePetStars(event) {
+	$("#PetStarCap").val(Number($("#PetStarCap").val()));
 	$("#PetStarCap").removeClass().addClass("S" + $("#PetStarCap").val());
 	let starsTotal = 0;
 	let feathers = {};
@@ -782,6 +783,7 @@ function onChangePetStars(event) {
 			}
 			$("#out" + pet[0] + "Feathers").text(feathersResult.toLocaleString());
 			feathers[pet[1]] += feathersResult;
+			$("#in" + pet[0] + "Stars").val(Number($("#in" + pet[0] + "Stars").val()));
 			$("#in" + pet[0] + "Stars").removeClass().addClass("S" + $("#in" + pet[0] + "Stars").val());
 			if ($("#in" + pet[0] + "Stars").val() > 0 && $("#in" + pet[0] + "Bond").val() == 0)
 				$("#in" + pet[0] + "Bond").val(1).change();
@@ -797,6 +799,7 @@ function onChangePetStars(event) {
 }
 
 function onChangeHeroStars(event) {
+	$("#HeroStarCap").val(Number($("#HeroStarCap").val()));
 	$("#HeroStarCap").removeClass().addClass("S" + $("#HeroStarCap").val());
 	let starsTotal = 0;
 	let dust = {};
@@ -817,6 +820,7 @@ function onChangeHeroStars(event) {
 			$("#out" + hero[0] + "Dust").text(dustResult.toLocaleString());
 			dust["Total"] += dustResult;
 			dust[hero[2]] += dustResult;
+			$("#in" + hero[0] + "Stars").val(Number($("#in" + hero[0] + "Stars").val()));
 			$("#in" + hero[0] + "Stars").removeClass().addClass("S" + $("#in" + hero[0] + "Stars").val());
 			if ($("#in" + hero[0] + "Stars").val() > 0 && $("#in" + hero[0] + "Level").val() == 0)
 				$("#in" + hero[0] + "Level").val(1).change();
@@ -1362,7 +1366,7 @@ function exportJSON() {
 }
 
 function downloadJSON(content) {
-	const blob = new Blob([content], { type: "application/json" });
+	const blob = new Blob([content], { type: "application/json;charset=utf-8;" });
 	const url = URL.createObjectURL(blob);
 
 	const a = document.createElement("a");
