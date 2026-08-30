@@ -274,6 +274,14 @@ th {
 .Critter .LocalizedLabel {
 	background-color: #A2E26E;
 }
+.Critter th::before {
+	background: url("../img/Critter.png") no-repeat;
+	content: "";
+	display: block;
+	width: 21px;
+	height: 21px;
+	float: left;
+}
 
 .Beast {
 	background-color: #9E4935;
@@ -290,6 +298,14 @@ th {
 }
 .Beast .LocalizedLabel {
 	background-color: #EF8036;
+}
+.Beast th::before {
+	background: url("../img/Beast.png") no-repeat;
+	content: "";
+	display: block;
+	width: 21px;
+	height: 21px;
+	float: left;
 }
 
 .Flying {
@@ -308,6 +324,14 @@ th {
 .Flying .LocalizedLabel {
 	background-color: #FFE659;
 }
+.Flying th::before {
+	background: url("../img/Flying.png") no-repeat;
+	content: "";
+	display: block;
+	width: 21px;
+	height: 21px;
+	float: left;
+}
 
 .Aquatic {
 	background-color: #35499E;
@@ -324,6 +348,14 @@ th {
 }
 .Aquatic .LocalizedLabel {
 	background-color: #3680EF;
+}
+.Aquatic th::before {
+	background: url("../img/Aquatic.png") no-repeat; /* From the wiki */
+	content: "";
+	display: block;
+	width: 21px;
+	height: 21px;
+	float: left;
 }
 
 .Feather::after {
