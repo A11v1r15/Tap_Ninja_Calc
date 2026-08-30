@@ -263,7 +263,7 @@ th {
 	color: #224312;
 }
 .Critter th {
-	background: url("../img/Critter.png");
+	background: url("../img/CritterBg.png");
 	background-size: 100% 100%;
 	color: #224312;
 }
@@ -280,7 +280,7 @@ th {
 	color: #611912;
 }
 .Beast th {
-	background: url("../img/Beast.png");
+	background: url("../img/BeastBg.png");
 	background-size: 100% 100%;
 	color: #611912;
 }
@@ -297,7 +297,7 @@ th {
 	color: #503512;
 }
 .Flying th {
-	background: url("../img/Flying.png");
+	background: url("../img/FlyingBg.png");
 	background-size: 100% 100%;
 	color: #503512;
 }
@@ -314,7 +314,7 @@ th {
 	color: #121961;
 }
 .Aquatic th {
-	background: url("../img/Aquatic.png");
+	background: url("../img/AquaticBg.png");
 	background-size: 100% 100%;
 	color: #121961;
 }
