@@ -87,7 +87,7 @@ function start() {
 			.text("NaN").addClass(hero[2]).addClass("Dust");
 		let td2 = $("<td></td>");
 		let input1 = $("<input></input>").attr("type", "number")
-			.attr("min", 0).attr("max", 140)
+			.attr("min", 0).attr("max", 160)
 			.attr("id", "in" + hero[0] + "Level")
 			.attr("name", "in" + hero[0] + "Level")
 			.val(localStorageGetItem(hero[0] + "Level", 0));
@@ -286,7 +286,7 @@ function start() {
 	$("#PetBondCap")  .val(localStorageGetItem("PetBondCap", 15)).change();
 	$("#PetStarCap")  .val(localStorageGetItem("PetStarCap", 12)).change();
 	$("#HeroStarCap") .val(localStorageGetItem("HeroStarCap", 12)).change();
-	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 140)).change();
+	$("#HeroLevelCap").val(localStorageGetItem("HeroLevelCap", 160)).change();
 	hidePetInput .prop("checked", localStorageGetItem("HidePet",  'false') == 'true').change();
 	hideHeroInput.prop("checked", localStorageGetItem("HideHero", 'false') == 'true').change();
 	hideTintInput.prop("checked", localStorageGetItem("HideTint", 'false') == 'true').change();
