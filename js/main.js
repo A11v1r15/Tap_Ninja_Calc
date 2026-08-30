@@ -158,27 +158,6 @@ function start() {
 	equipmentStorage0.append(equipmentStorage1);
 	equipmentTable.append(totalEquipment).append(equipmentStorage0);
 
-
-	let storageTable = $("#storageTable tbody");
-	let str0  = $("<td class='Aquatic Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabAquaticFeather' onchange='onChangeStorageTab()' title='Aquatic Feather'><div class='LocalizedLabel' id='labelStorageTabAquaticFeather'>NaN</div></div></td>");
-	let str1  = $("<td class='Critter Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabCritterFeather' onchange='onChangeStorageTab()' title='Critter Feather'><div class='LocalizedLabel' id='labelStorageTabCritterFeather'>NaN</div></div></td>");
-	let str2  = $("<td class='Flying Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabFlyingFeather' onchange='onChangeStorageTab()' title='Flying Feather'><div class='LocalizedLabel' id='labelStorageTabFlyingFeather'>NaN</div></div></td>");
-	let str3  = $("<td class='Beast Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabBeastFeather' onchange='onChangeStorageTab()' title='Beast Feather'><div class='LocalizedLabel' id='labelStorageTabBeastFeather'>NaN</div></div></td>");
-	let str4  = $("<td class='Water Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabWaterDust' onchange='onChangeStorageTab()' title='Water Dust'><div class='LocalizedLabel' id='labelStorageTabWaterDust'>NaN</div></div></td>");
-	let str5  = $("<td class='Earth Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabEarthDust' onchange='onChangeStorageTab()' title='Earth Dust'><div class='LocalizedLabel' id='labelStorageTabEarthDust'>NaN</div></div></td>");
-	let str6  = $("<td class='Wind Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabWindDust' onchange='onChangeStorageTab()' title='Wind Dust'><div class='LocalizedLabel' id='labelStorageTabWindDust'>NaN</div></div></td>");
-	let str7  = $("<td class='Fire Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabFireDust' onchange='onChangeStorageTab()' title='Fire Dust'><div class='LocalizedLabel' id='labelStorageTabFireDust'>NaN</div></div></td>");
-	let str8  = $("<td class='Amber' colspan='2'><div class='Cell'><input type='number' min='0' id='storageTabAmber' onchange='onChangeStorageTab()' title='Amber'><div class='LocalizedLabel' id='labelStorageTabAmber'>NaN</div></div></td>");
-	let str9  = $("<td class='Medal'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabMedal' onchange='onChangeStorageTab()' title='Medal'><div class='LocalizedLabel' id='labelStorageTabMedal'>NaN</div></div></td>");
-	let str10 = $("<td class='Experience'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabExperience' onchange='onChangeStorageTab()' title='Experience'><div class='LocalizedLabel' id='labelStorageTabExperience'>NaN</div></div></td>");
-	let strow0 = $("<tr></tr>");
-	strow0.append(str0).append(str1).append(str2).append(str3);
-	let strow1 = $("<tr></tr>");
-	strow1.append(str4).append(str5).append(str6).append(str7);
-	let strow2 = $("<tr class='header	'></tr>");
-	strow2.append(str8).append(str9).append(str10);
-	storageTable.append(strow0).append(strow1).append(strow2);
-
 	currencies.forEach(currency => {
 		$("#storage" + currency).val(localStorageGetItem("storage" + currency, 0));
 		$("#storageTab" + currency).val(localStorageGetItem("storage" + currency, 0));
@@ -258,9 +237,9 @@ function start() {
 		td3.css("background", tint[9]);
 		tr.append(th).append(td0).append(td1).append(td2).append(td3);
 		tintTable.append(tr);
-		if (tintList.indexOf(tint) == 20)
+		if (tintList.indexOf(tint) == 21)
 			tintTable.append(header1);
-		if (tintList.indexOf(tint) == 27)
+		if (tintList.indexOf(tint) == 30)
 			tintTable.append(header2);
 	});
 	let totalTint = $("<tr class='header'><th>Total missing:</th><td id='outTotalTintEnemies'>NaN</td><td id='outTotalTintChallenges'>NaN</td><td id='outTotalTintAmber'>NaN</td><td id='outTotalTintDungeon'>NaN</td></tr>");
@@ -275,6 +254,27 @@ function start() {
 	tdFt.append(hideTintInput).append(hideTintInputLabel).append(hideUnobtainedTintInput).append(hideUnobtainedTintInputLabel)
 	tintTable.append(totalTint).append(optimalTint).append(tdFt);
 	$("#tintTable").append(tintTable);
+
+	let storageTable = $("#storageTable tbody");
+	let str0  = $("<td class='Aquatic Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabAquaticFeather' onchange='onChangeStorageTab()' title='Aquatic Feather'><div class='LocalizedLabel' id='labelStorageTabAquaticFeather'>NaN</div></div></td>");
+	let str1  = $("<td class='Critter Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabCritterFeather' onchange='onChangeStorageTab()' title='Critter Feather'><div class='LocalizedLabel' id='labelStorageTabCritterFeather'>NaN</div></div></td>");
+	let str2  = $("<td class='Flying Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabFlyingFeather' onchange='onChangeStorageTab()' title='Flying Feather'><div class='LocalizedLabel' id='labelStorageTabFlyingFeather'>NaN</div></div></td>");
+	let str3  = $("<td class='Beast Feather'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabBeastFeather' onchange='onChangeStorageTab()' title='Beast Feather'><div class='LocalizedLabel' id='labelStorageTabBeastFeather'>NaN</div></div></td>");
+	let str4  = $("<td class='Water Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabWaterDust' onchange='onChangeStorageTab()' title='Water Dust'><div class='LocalizedLabel' id='labelStorageTabWaterDust'>NaN</div></div></td>");
+	let str5  = $("<td class='Earth Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabEarthDust' onchange='onChangeStorageTab()' title='Earth Dust'><div class='LocalizedLabel' id='labelStorageTabEarthDust'>NaN</div></div></td>");
+	let str6  = $("<td class='Wind Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabWindDust' onchange='onChangeStorageTab()' title='Wind Dust'><div class='LocalizedLabel' id='labelStorageTabWindDust'>NaN</div></div></td>");
+	let str7  = $("<td class='Fire Dust'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabFireDust' onchange='onChangeStorageTab()' title='Fire Dust'><div class='LocalizedLabel' id='labelStorageTabFireDust'>NaN</div></div></td>");
+	let str8  = $("<td class='Amber'><div class='Cell'><input type='number' min='0' id='storageTabAmber' onchange='onChangeStorageTab()' title='Amber'><div class='LocalizedLabel' id='labelStorageTabAmber'>NaN</div></div></td>");
+	let str9  = $("<td class='Medal'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabMedal' onchange='onChangeStorageTab()' title='Medal'><div class='LocalizedLabel' id='labelStorageTabMedal'>NaN</div></div></td>");
+	let str10 = $("<td class='Experience'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabExperience' onchange='onChangeStorageTab()' title='Experience'><div class='LocalizedLabel' id='labelStorageTabExperience'>NaN</div></div></td>");
+	let str11 = $("<td class='Zen'><div class='Cell'><input type='number' min='0' max='9999999' id='storageTabZen' onchange='onChangeStorageTab()' title='Zen'><div class='LocalizedLabel' id='labelStorageTabZen'>NaN</div></div></td>");
+	let strow0 = $("<tr></tr>");
+	strow0.append(str0).append(str1).append(str2).append(str3);
+	let strow1 = $("<tr></tr>");
+	strow1.append(str4).append(str5).append(str6).append(str7);
+	let strow2 = $("<tr class='header	'></tr>");
+	strow2.append(str8).append(str9).append(str10).append(str11);
+	storageTable.append(strow0).append(strow1).append(strow2);
 
 	$("#tintTable .header").eq(0).children().eq(1).text((10000000).toLocaleString() + " Enemies");
 	$("#tintTable .header").eq(0).children().eq(3).text((15000).toLocaleString() + " Amber ");

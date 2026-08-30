@@ -245,6 +245,19 @@ th {
 	background: #8b9bb4;
 }
 
+.Zen::after {
+	content: "";
+	display: block;
+	background: url("../img/Zen.png") no-repeat;
+	width: 16px;
+	height: 16px;
+	float: right;
+}
+.Zen .LocalizedLabel,
+.Zen input {
+	background: #8b9bb4;
+}
+
 .Critter {
 	background-color: #638739;
 	color: #224312;

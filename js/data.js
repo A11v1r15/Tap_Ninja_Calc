@@ -20,6 +20,7 @@ const petList = [
 	["Fox"       , "Beast"   ],//06
 	["Panda"     , "Beast"   ],//09
 	["Racoon"    , "Beast"   ],//16
+	["Deer"      , "Beast"   ],//21
 ];
 
 const tintList = [
@@ -45,8 +46,8 @@ const tintList = [
 	["Fox"       , "Fox"        , 10000000 ,   0 , 15000 , 100 , "#494c54" , "#000000" , "#e1dcd7" , "#f4cca1"],
 	["Panda"     , "Panda"      , 10000000 , 150 , 15000 ,   0 , "#ac4200" , "#6d4b39" , "#fd90b7" , "#000000"],
 	["Racoon"    , "Racoon"     , 10000000 , 150 , 15000 ,   0 , "#cc8d3c" , "#8e8e8e" , "#b75800" , "#000000"],
-//	["Deer"      , "Deer"       , 10000000 , 150 , 15000 , 100 , "#000000" , "#000000" , "#000000" , "#000000"],
-//	["LilOtter"  , "Otter"      , 17500000 , 250 , 25000 , 150 , "#000000" , "#000000" , "#000000" , "#000000"],
+	["Deer"      , "Deer"       , 10000000 , 150 , 15000 , 100 , "#000000" , "#000000" , "#000000" , "#000000"],
+	["LilOtter"  , "Otter"      , 17500000 , 250 , 25000 , 150 , "#000000" , "#000000" , "#000000" , "#000000"],
 	["Capybara"  , "Mouse"      , 17500000 , 250 ,     0 , 150 , "#50504f" , "#99491e" , "#000000" , "#cc8d3c"],
 	["Duck"      , "Chicken"    , 17500000 , 250 , 25000 , 150 , "#014039" , "#825235" , "#ffef7f" , "#2b2b33"],
 	["LuckDragon", "Dragonling" ,        0 , 250 , 25000 , 150 , "#000000" , "#d164ff" , "#ffc61d" , "#3b3b4d"],
@@ -54,8 +55,8 @@ const tintList = [
 	["LilKitten" , "Cat"        , 17500000 , 250 , 25000 ,   0 , "#494c54" , "#b3c0cf" , "#161616" , "#000000"],
 	["LilDoggie" , "Dog"        , 17500000 , 250 , 25000 ,   0 , "#292930" , "#99342d" , "#ccaa51" , "#000000"],
 	["LilFox"    , "Fox"        , 17500000 ,   0 , 25000 , 150 , "#494c54" , "#000000" , "#e1dcd7" , "#f4cca1"],
-//	["Fawn"      , "Deer"       , 17500000 , 250 , 25000 , 150 , "#000000" , "#000000" , "#000000" , "#000000"],
-//	["LilChick"  , "Chicken"    , 25000000 , 350 , 35000 , 200 , "#000000" , "#000000" , "#000000" , "#000000"],
+	["Fawn"      , "Deer"       , 17500000 , 250 , 25000 , 150 , "#000000" , "#000000" , "#000000" , "#000000"],
+	["LilChick"  , "Chicken"    , 25000000 , 350 , 35000 , 200 , "#000000" , "#000000" , "#000000" , "#000000"],
 	["Wolf"      , "Dog"        , 25000000 , 350 , 35000 ,   0 , "#b27623" , "#2b2b33" , "#dce7ea" , "#000000"],
 ];
 
@@ -72,6 +73,7 @@ const heroList = [
 	["Elyanna"    , "Legendary" , "Earth" , "Support"  , "The Natures Guardian" ],//39
 	["Ulrik"      , "Legendary" , "Earth" , "Warrior"  , "The Beastmaster"      ],//55
 	["Ekho"       , "Legendary" , "Earth" , "Support"  , "The Shaman"           ],//57
+	["Whittle"    , "Legendary" , "Earth" , "Support"  , "The Carpenter"        ],//38
 	["Hiro"       , "Legendary" , "Wind"  , "Warrior"  , "The Warrior of Honor" ],//25
 	["Akira"      , "Legendary" , "Wind"  , "Assassin" , "The Grim Revenge"     ],//27
 	["Scythe"     , "Legendary" , "Wind"  , "Mage"     , "The Harvester"        ],//29
@@ -86,7 +88,6 @@ const heroList = [
 	["Xyzl"       , "Legendary" , "Fire"  , "Mage"     , "The Archdemon"        ],//54
 //	["Uchigo"     , "Legendary" , ""      , ""         , "The Swift Blade"      ],//42
 //	["AmiRot"     , "Legendary" , "Earth" , "Mage"     , "The Rotting Spirit"   ],//37
-//	["Whittle"    , "Legendary" , "Earth" , "Support"  , "The Carpenter"        ],//38
 //	["Nina"       , "Legendary" , "Wind"  , "Mage"     , "The Disguised Beauty" ],//28
 	["Demid"      , "Epic"      , "Water" , "Mage"     , "The Water Bender"     ],//14
 	["Momo"       , "Epic"      , "Water" , "Support"  , "The Peach Warden"     ],//15
@@ -369,4 +370,5 @@ const currencies = [
 	"Amber",
 	"Medal",
 	"Experience",
+	"Zen",
 ]
