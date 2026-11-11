@@ -1,28 +1,41 @@
+const petList_NAME = 0;
+const petList_TYPE = 1;
+const petList_ID   = 2;
 const petList = [
-	["Frog"      , "Aquatic" ],//07
-	["Turtle"    , "Aquatic" ],//13
-	["Penguin"   , "Aquatic" ],//18
-	["Crab"      , "Aquatic" ],//19
-	["Otter"     , "Aquatic" ],//20
-	["Bunny"     , "Critter" ],//00
-	["Mouse"     , "Critter" ],//08
-	["Hedgehog"  , "Critter" ],//11
-	["Snake"     , "Critter" ],//12
-	["Squirrel"  , "Critter" ],//15
-	["Chicken"   , "Flying"  ],//02
-	["Crane"     , "Flying"  ],//03
-	["Raven"     , "Flying"  ],//04
-	["Dragonfly" , "Flying"  ],//10
-	["Dragonling", "Flying"  ],//14
-	["Parrot"    , "Flying"  ],//17
-	["Cat"       , "Beast"   ],//01
-	["Dog"       , "Beast"   ],//05
-	["Fox"       , "Beast"   ],//06
-	["Panda"     , "Beast"   ],//09
-	["Racoon"    , "Beast"   ],//16
-	["Deer"      , "Beast"   ],//21
+	["Frog"      , "Aquatic" ,  7],
+	["Turtle"    , "Aquatic" , 13],
+	["Penguin"   , "Aquatic" , 18],
+	["Crab"      , "Aquatic" , 19],
+	["Otter"     , "Aquatic" , 20],
+	["Bunny"     , "Critter" ,  0],
+	["Mouse"     , "Critter" ,  8],
+	["Hedgehog"  , "Critter" , 11],
+	["Snake"     , "Critter" , 12],
+	["Squirrel"  , "Critter" , 15],
+	["Chicken"   , "Flying"  ,  2],
+	["Crane"     , "Flying"  ,  3],
+	["Raven"     , "Flying"  ,  4],
+	["Dragonfly" , "Flying"  , 10],
+	["Dragonling", "Flying"  , 14],
+	["Parrot"    , "Flying"  , 17],
+	["Cat"       , "Beast"   ,  1],
+	["Dog"       , "Beast"   ,  5],
+	["Fox"       , "Beast"   ,  6],
+	["Panda"     , "Beast"   ,  9],
+	["Racoon"    , "Beast"   , 16],
+	["Deer"      , "Beast"   , 21],
 ];
 
+const tintList_NAME            = 0;
+const tintList_PARENT          = 1;
+const tintList_ENEMY_COST      = 2;
+const tintList_CHALLENGE_COST  = 3;
+const tintList_AMBER_COST      = 4;
+const tintList_DUNGEON_COST    = 5;
+const tintList_ENEMY_COLOR     = 6;
+const tintList_CHALLENGE_COLOR = 7;
+const tintList_AMBER_COLOR     = 8;
+const tintList_DUNGEON_COLOR   = 9;
 const tintList = [
 //	Name           Parent         Enemy  Challenge Amber Dungeon Enemy       Challenge   Amber       Dungeon
 	["Frog"      , "Frog"       , 10000000 , 150 , 15000 ,   0 , "#ce180e" , "#c92312" , "#f8941d" , "#000000"],
@@ -60,53 +73,59 @@ const tintList = [
 	["Wolf"      , "Dog"        , 25000000 , 350 , 35000 ,   0 , "#b27623" , "#2b2b33" , "#dce7ea" , "#000000"],
 ];
 
+const heroList_NAME    = 0;
+const heroList_RARITY  = 1;
+const heroList_FACTION = 2;
+const heroList_CLASS   = 3;
+const heroList_TITLE   = 4;
+const heroList_ID      = 5;
 const heroList = [
-	["Fin"        , "Legendary" , "Water" , "Warrior"  , "The Scuba Knight"     ],//40
-	["Kito"       , "Legendary" , "Water" , "Assassin" , "The Composed Outlaw"  ],//43
-	["Tièr"       , "Legendary" , "Water" , "Mage"     , "The Gray Eminence"    ],//44
-	["Snow"       , "Legendary" , "Water" , "Support"  , "The Tranquil Purity"  ],//46
-	["Falkron"    , "Legendary" , "Water" , "Support"  , "The Mystic Angler"    ],//47
-	["Dia"        , "Legendary" , "Water" , "Assassin" , "The Rogue"            ],//56
-	["Husk"       , "Legendary" , "Earth" , "Warrior"  , "The Immovable Object" ],//33
-	["Alivia"     , "Legendary" , "Earth" , "Assassin" , "The Forests Daughter" ],//34
-	["Wasp"       , "Legendary" , "Earth" , "Mage"     , "The Sweet Sting"      ],//36
-	["Elyanna"    , "Legendary" , "Earth" , "Support"  , "The Natures Guardian" ],//39
-	["Ulrik"      , "Legendary" , "Earth" , "Warrior"  , "The Beastmaster"      ],//55
-	["Ekho"       , "Legendary" , "Earth" , "Support"  , "The Shaman"           ],//57
-	["Whittle"    , "Legendary" , "Earth" , "Support"  , "The Carpenter"        ],//38
-	["Hiro"       , "Legendary" , "Wind"  , "Warrior"  , "The Warrior of Honor" ],//25
-	["Akira"      , "Legendary" , "Wind"  , "Assassin" , "The Grim Revenge"     ],//27
-	["Scythe"     , "Legendary" , "Wind"  , "Mage"     , "The Harvester"        ],//29
-	["Irbinok"    , "Legendary" , "Wind"  , "Support"  , "The Puzzled Enigma"   ],//31
-	["Alekas"     , "Legendary" , "Wind"  , "Warrior"  , "The Archangel"        ],//52
-	["Papyrus"    , "Legendary" , "Wind"  , "Support"  , "The Lore-Master"      ],//53
-	["Scorn"      , "Legendary" , "Fire"  , "Warrior"  , "The Scorching Anger"  ],//16
-	["Tomak"      , "Legendary" , "Fire"  , "Warrior"  , "The Lifter"           ],//17
-	["Scarlet"    , "Legendary" , "Fire"  , "Assassin" , "The Burning Passion"  ],//18
-	["Blazer"     , "Legendary" , "Fire"  , "Mage"     , "The Fire Breather"    ],//20
-	["Maki"       , "Legendary" , "Fire"  , "Support"  , "The Master Chef"      ],//23
-	["Xyzl"       , "Legendary" , "Fire"  , "Mage"     , "The Archdemon"        ],//54
-//	["Uchigo"     , "Legendary" , ""      , ""         , "The Swift Blade"      ],//42
-//	["AmiRot"     , "Legendary" , "Earth" , "Mage"     , "The Rotting Spirit"   ],//37
-//	["Nina"       , "Legendary" , "Wind"  , "Mage"     , "The Disguised Beauty" ],//28
-	["Demid"      , "Epic"      , "Water" , "Mage"     , "The Water Bender"     ],//14
-	["Momo"       , "Epic"      , "Water" , "Support"  , "The Peach Warden"     ],//15
-	["Locke"      , "Epic"      , "Water" , "Mage"     , "The Pirate"           ],//50
-	["Terra"      , "Epic"      , "Earth" , "Mage"     , "The Earth Mover"      ],//12
-	["Duncan"     , "Epic"      , "Earth" , "Warrior"  , "The Highlander"       ],//51
-	["Kaoru"      , "Epic"      , "Wind"  , "Mage"     , "The Wind Weaver"      ],//10
-	["Belu"       , "Epic"      , "Wind"  , "Warrior"  , "The Old Timer"        ],//11
-	["Sayid"      , "Epic"      , "Wind"  , "Assassin" , "The Assassin"         ],//49
-	["Ray"        , "Epic"      , "Fire"  , "Mage"     , "The Glimmer of Light" ],//08
-//	["Enquish"    , "Epic"      , "Fire"  , "Support"  , "The Questioner"       ],//09
-	["Waju"       , "Rare"      , "Water" , "Assassin" , ""                     ],//06
-	["Kenju"      , "Rare"      , "Water" , "Warrior"  , ""                     ],//07
-	["Tateju"     , "Rare"      , "Earth" , "Warrior"  , ""                     ],//04
-	["Jie"        , "Rare"      , "Earth" , "Support"  , ""                     ],//05
-	["Sketchy"    , "Rare"      , "Earth" , "Mage"     , ""                     ],//48
-	["Ninja"      , "Rare"      , "Wind"  , "Assassin" , ""                     ],//00
-	["Jari"       , "Rare"      , "Wind"  , "Warrior"  , ""                     ],//02
-	["Fang"       , "Rare"      , "Fire"  , "Assassin" , ""                     ] //01
+	["Fin"        , "Legendary" , "Water" , "Warrior"  , "The Scuba Knight"     , 40],
+	["Kito"       , "Legendary" , "Water" , "Assassin" , "The Composed Outlaw"  , 43],
+	["Tièr"       , "Legendary" , "Water" , "Mage"     , "The Gray Eminence"    , 44],
+	["Snow"       , "Legendary" , "Water" , "Support"  , "The Tranquil Purity"  , 46],
+	["Falkron"    , "Legendary" , "Water" , "Support"  , "The Mystic Angler"    , 47],
+	["Dia"        , "Legendary" , "Water" , "Assassin" , "The Rogue"            , 56],
+	["Husk"       , "Legendary" , "Earth" , "Warrior"  , "The Immovable Object" , 33],
+	["Alivia"     , "Legendary" , "Earth" , "Assassin" , "The Forests Daughter" , 34],
+	["Wasp"       , "Legendary" , "Earth" , "Mage"     , "The Sweet Sting"      , 36],
+	["Elyanna"    , "Legendary" , "Earth" , "Support"  , "The Natures Guardian" , 39],
+	["Ulrik"      , "Legendary" , "Earth" , "Warrior"  , "The Beastmaster"      , 55],
+	["Ekho"       , "Legendary" , "Earth" , "Support"  , "The Shaman"           , 57],
+	["Whittle"    , "Legendary" , "Earth" , "Support"  , "The Carpenter"        , 38],
+	["Hiro"       , "Legendary" , "Wind"  , "Warrior"  , "The Warrior of Honor" , 25],
+	["Akira"      , "Legendary" , "Wind"  , "Assassin" , "The Grim Revenge"     , 27],
+	["Scythe"     , "Legendary" , "Wind"  , "Mage"     , "The Harvester"        , 29],
+	["Irbinok"    , "Legendary" , "Wind"  , "Support"  , "The Puzzled Enigma"   , 31],
+	["Alekas"     , "Legendary" , "Wind"  , "Warrior"  , "The Archangel"        , 52],
+	["Papyrus"    , "Legendary" , "Wind"  , "Support"  , "The Lore-Master"      , 53],
+	["Scorn"      , "Legendary" , "Fire"  , "Warrior"  , "The Scorching Anger"  , 16],
+	["Tomak"      , "Legendary" , "Fire"  , "Warrior"  , "The Lifter"           , 17],
+	["Scarlet"    , "Legendary" , "Fire"  , "Assassin" , "The Burning Passion"  , 18],
+	["Blazer"     , "Legendary" , "Fire"  , "Mage"     , "The Fire Breather"    , 20],
+	["Maki"       , "Legendary" , "Fire"  , "Support"  , "The Master Chef"      , 23],
+	["Xyzl"       , "Legendary" , "Fire"  , "Mage"     , "The Archdemon"        , 54],
+//	["Uchigo"     , "Legendary" , ""      , ""         , "The Swift Blade"      , 42],
+//	["AmiRot"     , "Legendary" , "Earth" , "Mage"     , "The Rotting Spirit"   , 37],
+//	["Nina"       , "Legendary" , "Wind"  , "Mage"     , "The Disguised Beauty" , 28],
+	["Demid"      , "Epic"      , "Water" , "Mage"     , "The Water Bender"     , 14],
+	["Momo"       , "Epic"      , "Water" , "Support"  , "The Peach Warden"     , 15],
+	["Locke"      , "Epic"      , "Water" , "Mage"     , "The Pirate"           , 50],
+	["Terra"      , "Epic"      , "Earth" , "Mage"     , "The Earth Mover"      , 12],
+	["Duncan"     , "Epic"      , "Earth" , "Warrior"  , "The Highlander"       , 51],
+	["Kaoru"      , "Epic"      , "Wind"  , "Mage"     , "The Wind Weaver"      , 10],
+	["Belu"       , "Epic"      , "Wind"  , "Warrior"  , "The Old Timer"        , 11],
+	["Sayid"      , "Epic"      , "Wind"  , "Assassin" , "The Assassin"         , 49],
+	["Ray"        , "Epic"      , "Fire"  , "Mage"     , "The Glimmer of Light" ,  8],
+//	["Enquish"    , "Epic"      , "Fire"  , "Support"  , "The Questioner"       ,  9],
+	["Waju"       , "Rare"      , "Water" , "Assassin" , ""                     ,  6],
+	["Kenju"      , "Rare"      , "Water" , "Warrior"  , ""                     ,  7],
+	["Tateju"     , "Rare"      , "Earth" , "Warrior"  , ""                     ,  4],
+	["Jie"        , "Rare"      , "Earth" , "Support"  , ""                     ,  5],
+	["Sketchy"    , "Rare"      , "Earth" , "Mage"     , ""                     , 48],
+	["Ninja"      , "Rare"      , "Wind"  , "Assassin" , ""                     ,  0],
+	["Jari"       , "Rare"      , "Wind"  , "Warrior"  , ""                     ,  2],
+	["Fang"       , "Rare"      , "Fire"  , "Assassin" , ""                     ,  1] 
 ]
 
 const lookUpDustRareEpicLegendary = [
